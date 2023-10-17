@@ -1,0 +1,7 @@
+.Campaigns {
+    background-color: var(--main-color);
+    color: white;
+}
+.Campaigns h3 {
+    font-size: 60px;
+}

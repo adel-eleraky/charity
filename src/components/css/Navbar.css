@@ -1,0 +1,24 @@
+.nav,
+.nav * {
+    background-color:  #2C3E50 !important;
+    color: white;
+}
+.logo {
+    width: 60px;
+}
+.acc_link {
+    border-left: 1px solid #B7D086;
+    color: #B7D086;
+}
+.acc_logo {
+    width: 25px;
+    margin-left: 5px;
+}
+.cart_logo {
+    font-size: 22px;
+    margin-right: 15px;
+    color: #B7D086;
+}
+.navbar-toggler {
+    border-color: white;
+} 
