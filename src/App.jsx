@@ -4,9 +4,13 @@ import { BrowserRouter, Route , Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.min.js"
 import "bootstrap-icons/font/bootstrap-icons.css"
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 import './App.css'
 import Layout from './components/Layout'
 import Home from './pages/Home'
+
+AOS.init();
 
 function App() {
 

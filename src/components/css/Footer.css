@@ -1,0 +1,15 @@
+footer {
+    background-color: var(--main-color);
+    color: white;
+}
+footer .input-group input {
+    border-radius: 0 5px 5px 0 !important;
+}
+footer .subscribe-span {
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+}
+footer .subscribe-span button,
+footer .subscribe-span button:hover {
+    background-color: var(--secondary-color);
+}

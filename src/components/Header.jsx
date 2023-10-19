@@ -8,10 +8,10 @@ function Header() {
             <header>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-12 col-md-6 pe-0">
+                        <div className="col-12 col-md-6 pe-0" data-aos="fade-left">
                             <img src="images/header-img.png" alt="" className="img-fluid" />
                         </div>
-                        <div className="col-12 col-md-6">
+                        <div className="col-12 col-md-6 " data-aos="fade-right">
                             <div className="content w-75 text-center mx-auto">
                                 <p>قــــــــال الله تعالى :</p>
                                 <p>

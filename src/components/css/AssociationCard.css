@@ -1,0 +1,7 @@
+.association-card .content .donate-button {
+    background-color: var(--secondary-color);
+    color: black;
+}
+.association-card .content .donate-button:hover {
+    color: white;
+}

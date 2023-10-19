@@ -1,0 +1,29 @@
+.CampaignCard {
+    box-shadow: 0px 0px 10px -2px #2C3E50;
+}
+.CampaignCard .content .money_section .money_remaining {
+    color: var(--secondary-color);
+}
+.CampaignCard .content .time-left div {
+    width: 23%;
+    text-align: center;
+    border-radius: 5px;
+}
+.CampaignCard .content .donation button {
+    width: 45%;
+}
+.CampaignCard .content .donation .donate-button {
+    background-color: var(--secondary-color);
+    color: black;
+}
+.CampaignCard .content .donation .donate-button:hover {
+    color: white;
+}
+.CampaignCard .content .donation .addToCart-button {
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+.CampaignCard .content .donation .addToCart-button:hover {
+    color: white;
+    background-color: var(--secondary-color);
+}

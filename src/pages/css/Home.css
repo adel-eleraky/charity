@@ -1,7 +1,34 @@
+/* start Campaigns */
 .Campaigns {
     background-color: var(--main-color);
     color: white;
 }
-.Campaigns h3 {
+.Campaigns h1 {
     font-size: 60px;
 }
+/* end Campaigns */
+
+/* start donation opportunities */
+.donation_opportunities {
+    background-image: var(--gradient-color);
+    color: white;
+}
+.donation_opportunities h1 {
+    font-size: 60px;
+}
+/* end donation opportunities */
+/* start urgent cases */
+.urgent-cases {
+    background-color: var(--main-color);
+    color: white;
+}
+.urgent-cases h1 {
+    font-size: 60px;
+}
+/* end urgent cases */
+/* start associations */
+.associations {
+    background-image: var(--gradient-color);
+    color: white;
+}
+/* end associations */
