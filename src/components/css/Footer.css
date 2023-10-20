@@ -1,15 +1,33 @@
-footer {
+.first-footer,
+.second-footer {
     background-color: var(--main-color);
     color: white;
 }
-footer .input-group input {
+.first-footer .input-group input {
     border-radius: 0 5px 5px 0 !important;
 }
-footer .subscribe-span {
+.first-footer .subscribe-span {
     padding: 5px;
     border-radius: 5px 0 0 5px;
 }
-footer .subscribe-span button,
-footer .subscribe-span button:hover {
+.first-footer .subscribe-span button,
+.first-footer .subscribe-span button:hover {
     background-color: var(--secondary-color);
+}
+.second-footer .mobile-apps > div {
+    height: 60px;
+    background-color: #2F312D;
+}
+.second-footer h2 {
+    margin-bottom: 25px;
+}
+.second-footer li {
+    margin-bottom: 10px;
+}
+.second-footer li:hover {
+    color: var(--secondary-color);
+}
+.third-footer {
+    background-image: var(--gradient-color);
+    color: white;
 }

@@ -1,6 +1,7 @@
 header {
     background-image: var(--gradient-color);
     color: white;
+    margin-top: 81px;
 }
 header .content {
     padding-top: 100px;
@@ -9,9 +10,9 @@ header .content {
 }
 header .content p:first-child {
     font-size: 32px;
-    margin-bottom: 45px;
+    
 }
-header .content:nth-child(1) {
+header .content .verse {
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
@@ -24,4 +25,37 @@ header .content p:last-of-type {
 header .content button,
 header .content button:hover {
     background-color: var(--secondary-color);
+}
+@media (max-width: 1120px) {
+    header .content .verse {
+        font-size: 30px;
+    }
+}
+@media (max-width: 990px) {
+    header .img-column {
+        width: 100%;
+    }
+    header .verse-column {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #00000059;
+    }
+    header .verse-column .content {
+        padding-top: 50px;
+        width: 100% !important;
+    }
+    header .content .verse {
+        font-size: 40px;
+    }
+}
+@media (max-width: 687px) {
+    header .content .verse {
+        font-size: 30px;
+    }
+}
+@media (max-width: 540px) {
+    header .content .verse {
+        font-size: 20px;
+    }
 }

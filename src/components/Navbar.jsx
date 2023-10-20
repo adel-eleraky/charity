@@ -7,8 +7,8 @@ function Navbar() {
         <>
             <div className="nav">
                 <div className="container">
-                    <nav className=" navbar navbar-expand-lg ">
-                        <div className="container-fluid">
+                    <nav className=" navbar navbar-expand-lg fixed-top">
+                        <div className="container">
                             <a className="navbar-brand" href="#"><img src="images/Logo.png" alt="" className="img-fluid logo" /></a>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
