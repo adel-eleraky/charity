@@ -1,6 +1,7 @@
-.nav,
-.nav * {
+nav {
     background-color:  #2C3E50 !important;
+}
+.nav-link {
     color: white;
 }
 .logo {
@@ -22,3 +23,6 @@
 .navbar-toggler {
     border-color: white;
 } 
+ul li a {
+    color: white;
+}

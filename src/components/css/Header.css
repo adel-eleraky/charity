@@ -1,7 +1,6 @@
 header {
     background-image: var(--gradient-color);
     color: white;
-    margin-top: 81px;
 }
 header .content {
     padding-top: 100px;

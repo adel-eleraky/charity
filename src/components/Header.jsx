@@ -9,7 +9,7 @@ function Header() {
                 <div className="container-fluid">
                     <div className="row position-relative">
                         <div className="col-12 col-md-6 pe-0 img-column" data-aos="fade-left">
-                            <img src="images/header-img.png" alt="" className="img-fluid" />
+                            <img src="/images/header-img.png" alt="" className="img-fluid" />
                         </div>
                         <div className="col-12 col-md-6 verse-column" data-aos="fade-right">
                             <div className="content w-75 text-center mx-auto ">

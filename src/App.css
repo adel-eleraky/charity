@@ -11,3 +11,9 @@
 body {
   font-family: 'Cairo', sans-serif;
 }
+a {
+  text-decoration: none;
+}
+.gap-15 {
+  gap: 15px;
+}

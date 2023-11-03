@@ -68,12 +68,12 @@ function Footer() {
                                 <div className="google-app d-flex  mb-2 rounded p-2 border">
                                     <p>لتحميل التطبيق
                                     على اندرويد</p>
-                                    <img src="images/google.png" alt="" className="img-fluid float-left" />
+                                    <img src="/images/google.png" alt="" className="img-fluid float-left" />
                                 </div>
                                 <div className="google-app d-flex  rounded p-2 border">
                                     <p>لتحميل التطبيق
                                     على اندرويد</p>
-                                    <img src="images/google.png" alt="" className="img-fluid float-left" />
+                                    <img src="/images/google.png" alt="" className="img-fluid float-left" />
                                 </div>
 
                             </div>

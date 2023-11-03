@@ -9,6 +9,9 @@ import 'aos/dist/aos.css';
 import './App.css'
 import Layout from './components/Layout'
 import Home from './pages/Home'
+import Account from './pages/Account';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 AOS.init();
 
@@ -20,6 +23,9 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Layout />} >
                         <Route index element={<Home />} />
+                        <Route path='/account' element={<Account />} />
+                        <Route path='/account/login' element={<Login />} />
+                        <Route path='/account/register' element={<Register />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

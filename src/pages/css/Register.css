@@ -1,0 +1,14 @@
+.register-page {
+    background-image: var(--gradient-color);
+    color: white;
+}
+.register-page form .form-floating label {
+    color: #393232;
+    font-weight: 600;
+    left: unset;
+}
+@media (max-width: 768px) {
+    .img-column {
+        display: none;
+    }
+}
