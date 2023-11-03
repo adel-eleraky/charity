@@ -76,7 +76,7 @@ function Navbar() {
                                 </ul>
                                 <ul className="list-unstyled mb-0 d-flex align-items-center">
                                         <li>
-                                            <Link to="account" className="nav-link acc_link ps-2" href="#"> <img src="/images/acc-icon.png" alt="" className="img-fluid acc_logo" /> تسجيل الدخول</Link>
+                                            <Link to="account" className="nav-link acc_link ps-2" href="#"> <img src="/images/acc-icon.png" alt="" className="img-fluid acc_logo" />  الحساب</Link>
                                         </li>
                                     <li>
                                         <i className="bi bi-cart3 cart_logo"></i>
