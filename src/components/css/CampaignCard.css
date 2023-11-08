@@ -1,5 +1,5 @@
 .CampaignCard {
-    box-shadow: 0px 0px 10px -2px #2C3E50;
+    box-shadow: 0px 0px 10px -2px var(--third-color);
 }
 .CampaignCard .content .money_section .money_remaining {
     color: var(--secondary-color);

@@ -13,8 +13,8 @@ function Account() {
 
         if (Object.keys(user).length === 0) {
             console.log("no user found")
-
-            navigate("login" , {replace : true})
+            
+            navigate("login" , {replace: true})
         }
         
         
