@@ -2,7 +2,6 @@
 
 import { BrowserRouter, Route , Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import "bootstrap/dist/js/bootstrap.min.js"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import AOS from 'aos';
@@ -13,7 +12,10 @@ import Home from './pages/Home'
 import Account from './pages/Account';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import AdminDashboard from './pages/AdminDashboard';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import UsersComponent from './pages/AdminDashboard/UsersComponent';
+import CharitiesComponent from './pages/AdminDashboard/CharitiesComponent';
+import HomeComponent from './pages/AdminDashboard/HomeComponent';
 
 AOS.init();
 
@@ -29,7 +31,11 @@ function App() {
                         <Route path='account/login' element={<Login />} />
                         <Route path='account/register' element={<Register />} />
                     </Route>
-                    <Route path='/admin-dashboard' element={<AdminDashboard />}/>
+                    <Route path='admin-dashboard' element={<AdminDashboard />}>
+                        <Route index element={<HomeComponent />} />
+                        <Route path='users' element={<UsersComponent />} />
+                        <Route path='charities' element={<CharitiesComponent />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </>

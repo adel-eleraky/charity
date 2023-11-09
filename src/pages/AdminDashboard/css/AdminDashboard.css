@@ -1,0 +1,19 @@
+.admin-dashboard .sidebar {
+    background-color: var(--third-color);
+    height: 100vh;
+}
+.admin-dashboard .sidebar .admin-details img {
+    width: 60px;
+}
+.admin-dashboard .main-content .dashboard-nav button {
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+.admin-dashboard .main-content .dashboard-nav span.badge {
+    top: 25% !important;
+    left: 75% !important;
+}
+.admin-dashboard .main-content .dashboard-nav .dropdown .dropdown-toggle::after {
+    display: none;
+}
