@@ -14,7 +14,7 @@ function AdminDashboard() {
     return (
         <div className="admin-dashboard">
             <div className="container-fluid ">
-                <div className="row">
+                <div className="row" style={{ minHeight: "100vh" }}>
                     <div className="sidebar-column col-lg-3 col-xxl-2 p-0">
                         <SideBar />
                     </div>

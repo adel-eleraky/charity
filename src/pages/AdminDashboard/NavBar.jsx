@@ -9,7 +9,7 @@ function NavBar() {
     const location = useLocation()
 
     const routes = {
-        "/admin-dashboard": "الصفحة الرئيسية",
+        "/admin-dashboard/home": "الصفحة الرئيسية",
         "/admin-dashboard/users": "المتبرعين",
         "/admin-dashboard/charities": "الجمعيات الخيرية"
     }
