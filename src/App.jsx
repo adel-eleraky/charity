@@ -32,7 +32,7 @@ function App() {
                         <Route path='account/register' element={<Register />} />
                     </Route>
                     <Route path='admin-dashboard' element={<AdminDashboard />}>
-                        <Route index element={<HomeComponent />} />
+                        <Route path='home' element={<HomeComponent />} />
                         <Route path='users' element={<UsersComponent />} />
                         <Route path='charities' element={<CharitiesComponent />} />
                     </Route>
