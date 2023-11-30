@@ -1,0 +1,29 @@
+.charity-home-component .box {
+    display: flex;
+    align-items: center;
+    width: 220px;
+    background-color: #303845;
+    border-radius: 5px;
+    color: white;
+    padding: 7px 7px;
+    margin-bottom: 20px;
+}
+.charity-home-component .box span.img {
+    width: 70px;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 20px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.charity-home-component .box > div > div {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.charity-home-component .box > div > span {
+    font-weight: 100;
+}

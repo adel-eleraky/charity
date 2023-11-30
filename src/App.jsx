@@ -15,7 +15,10 @@ import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import UsersComponent from './pages/AdminDashboard/UsersComponent';
 import CharitiesComponent from './pages/AdminDashboard/CharitiesComponent';
-import HomeComponent from './pages/AdminDashboard/HomeComponent';
+import AdminHomeComponent from './pages/AdminDashboard/AdminHomeComponent';
+import CharityDashboard from './pages/CharityDashboard/CharityDashboard';
+import CharityHomeComponent from './pages/CharityDashboard/CharityHomeComponent';
+import CasesComponent from './pages/CharityDashboard/CasesComponent';
 
 AOS.init();
 
@@ -32,9 +35,13 @@ function App() {
                         <Route path='account/register' element={<Register />} />
                     </Route>
                     <Route path='admin-dashboard' element={<AdminDashboard />}>
-                        <Route path='home' element={<HomeComponent />} />
+                        <Route path='home' element={<AdminHomeComponent />} />
                         <Route path='users' element={<UsersComponent />} />
                         <Route path='charities' element={<CharitiesComponent />} />
+                    </Route>
+                    <Route path="charity-dashboard" element={<CharityDashboard />}>
+                        <Route path="home" element={<CharityHomeComponent />} />
+                        <Route path='cases' element={<CasesComponent />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
