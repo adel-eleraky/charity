@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import "./css/AdminDashboard.css"
-import './js/AdminDashboard.js'
 import { Outlet } from 'react-router-dom'
 import SideBar from './SideBar.jsx'
 import NavBar from './NavBar.jsx'
@@ -12,7 +10,7 @@ function AdminDashboard() {
 
 
     return (
-        <div className="admin-dashboard">
+        <div className="dashboard">
             <div className="container-fluid ">
                 <div className="row" style={{ minHeight: "100vh" }}>
                     <div className="sidebar-column col-lg-3 col-xxl-2 p-0">
