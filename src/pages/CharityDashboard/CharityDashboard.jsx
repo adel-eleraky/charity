@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import "./css/CharityDashboard.css"
 import SideBar from "./SideBar"
 import NavBar from "./NavBar"
 import { Outlet } from 'react-router-dom'
@@ -9,7 +8,7 @@ import { Outlet } from 'react-router-dom'
 function CharityDashboard() {
     return (
         <>
-            <div className="charity-dashboard">
+            <div className="dashboard">
                 <div className="container-fluid ">
                     <div className="row" style={{ minHeight: "100vh" }}>
                         <div className="sidebar-column col-lg-3 col-xxl-2 p-0">
