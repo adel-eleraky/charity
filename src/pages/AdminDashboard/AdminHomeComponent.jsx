@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import "./css/AdminHomeComponent.css"
 
 function AdminHomeComponent() {
     return (
-        <div className="admin-home-component p-5">
+        <div className="dashboard-main-content p-5">
             <div className='d-flex flex-wrap justify-content-evenly'>
                 <div className="box users shadow" data-aos="zoom-in" data-aos-duration="1000">
                     <span className='img'><i className="bi bi-person fs-1 "></i></span>
