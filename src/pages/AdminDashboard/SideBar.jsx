@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import "./css/SideBar.css"
 
 function SideBar() {
 
