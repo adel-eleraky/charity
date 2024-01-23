@@ -7,6 +7,8 @@ import "bootstrap-icons/font/bootstrap-icons.css"
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import './App.css'
+import "./assets/js/dashboard.js"
+import "./assets/css/dashboard.css"
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Account from './pages/Account';
@@ -19,6 +21,8 @@ import AdminHomeComponent from './pages/AdminDashboard/AdminHomeComponent';
 import CharityDashboard from './pages/CharityDashboard/CharityDashboard';
 import CharityHomeComponent from './pages/CharityDashboard/CharityHomeComponent';
 import CasesComponent from './pages/CharityDashboard/CasesComponent';
+import UserDashboard from './pages/UserDashboard/UserDashboard';
+import UserHomeComponent from './pages/UserDashboard/UserHomeComponent';
 
 AOS.init();
 
@@ -42,6 +46,9 @@ function App() {
                     <Route path="charity-dashboard" element={<CharityDashboard />}>
                         <Route path="home" element={<CharityHomeComponent />} />
                         <Route path='cases' element={<CasesComponent />} />
+                    </Route>
+                    <Route path="user-dashboard" element={<UserDashboard />}>
+                        <Route path="home" element={<UserHomeComponent />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
