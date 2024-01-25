@@ -9,14 +9,14 @@ function Navbar() {
         <>
             <div className="first-nav py-3">
                 <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-2">
+                    <div className="row align-items-center justify-content-between">
+                        <div className="col-4 col-md-2">
                             <div className='d-flex'>
                                 <button className="btn btn-primary navbar-toggler d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navOffcanvas" aria-controls="navOffcanvas"><i className="fa-solid fa-bars fs-2 ms-3 text-white"></i></button>
                                 <img src="/images/Logo.png" alt="" className="img-fluid logo" />
                             </div>
                         </div>
-                        <div className="col-8">
+                        <div className="col-md-8 nav-links-col">
                             <ul className='nav-links d-flex justify-content-center m-0 p-0'>
                                 <li className="mx-3">
                                     <a className="nav-link" aria-current="page" href="#">الحالات</a>
@@ -29,8 +29,8 @@ function Navbar() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-2">
-                            <div className="d-flex">
+                        <div className="col-4 col-md-2 ">
+                            <div className="d-flex justify-content-end">
                                 <Link to="account" className="nav-link acc_link ps-2" href="#"> <img src="/images/acc-icon.png" alt="" className="acc_logo" /></Link>
                                 <div className='position-relative'>
                                     <i className="bi bi-cart3 cart_logo"></i>
