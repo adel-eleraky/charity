@@ -6,7 +6,7 @@ function NavOffcanvas() {
 
     return (
         <>
-            <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabIndex="-1" id="navOffcanvas" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div className="offcanvas offcanvas-end" data-bs-scroll="false" tabIndex="-1" id="navOffcanvas" aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div className="offcanvas-header">
                     <button type="button" className="btn-close text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
