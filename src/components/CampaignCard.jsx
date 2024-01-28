@@ -6,7 +6,7 @@ import "./css/CampaignCard.css"
 function CampaignCard() {
     return (
         <>
-            <div className="CampaignCard mb-5" data-aos="fade-up">
+            <div className="CampaignCard mb-5" data-aos="fade-up" data-aos-duration="1000">
                 <img src="/images/campaign-image.png" alt="" className="img-fluid w-100 mb-3" />
                 <div className="content p-2">
                     <div className="title text-center mb-3 ">غذاء للجميع</div>
