@@ -5,7 +5,6 @@ import "./css/Home.css"
 import CampaignCard from '../components/CampaignCard'
 import CategoryCard from '../components/CategoryCard'
 import AssociationCard from '../components/AssociationCard'
-import Footer from '../components/Footer'
 
 function Home() {
     return (
@@ -13,7 +12,7 @@ function Home() {
             <Header />
             <div className="Campaigns py-5">
                 <div className="container">
-                    <h1 className='text-center mb-5'>حملات</h1>
+                    <h1 className='text-center mb-5' data-aos="fade-up" data-aos-duration="1000">حملات</h1>
                     <div className="row">
                         <div className="col-12 col-md-6 col-lg-4">
                             <CampaignCard />
