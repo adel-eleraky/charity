@@ -25,3 +25,11 @@ a {
 .gap-20 {
   gap: 20px;
 }
+.loading-screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+}

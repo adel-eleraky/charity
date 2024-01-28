@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
-
-import { BrowserRouter, Route , Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.min.js"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 import './App.css'
 import "./assets/js/dashboard.js"
 import "./assets/css/dashboard.css"
@@ -23,35 +23,57 @@ import CharityHomeComponent from './pages/CharityDashboard/CharityHomeComponent'
 import CasesComponent from './pages/CharityDashboard/CasesComponent';
 import UserDashboard from './pages/UserDashboard/UserDashboard';
 import UserHomeComponent from './pages/UserDashboard/UserHomeComponent';
+import HashLoader from "react-spinners/HashLoader";
+
 
 AOS.init();
 
 function App() {
 
+    let [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        } , 6000)
+    }, [])
+
     return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Layout />} >
-                        <Route index element={<Home />} />
-                        <Route path='account' element={<Account />} />
-                        <Route path='account/login' element={<Login />} />
-                        <Route path='account/register' element={<Register />} />
-                    </Route>
-                    <Route path='admin-dashboard' element={<AdminDashboard />}>
-                        <Route path='home' element={<AdminHomeComponent />} />
-                        <Route path='users' element={<UsersComponent />} />
-                        <Route path='charities' element={<CharitiesComponent />} />
-                    </Route>
-                    <Route path="charity-dashboard" element={<CharityDashboard />}>
-                        <Route path="home" element={<CharityHomeComponent />} />
-                        <Route path='cases' element={<CasesComponent />} />
-                    </Route>
-                    <Route path="user-dashboard" element={<UserDashboard />}>
-                        <Route path="home" element={<UserHomeComponent />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+            {loading ?
+                <div className="loading-screen">
+                    <HashLoader
+                        color={"#a1cefa"}
+                        loading={loading}
+                        size={150}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                </div>
+                :
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<Layout />} >
+                            <Route index element={<Home />} />
+                            <Route path='account' element={<Account />} />
+                            <Route path='account/login' element={<Login />} />
+                            <Route path='account/register' element={<Register />} />
+                        </Route>
+                        <Route path='admin-dashboard' element={<AdminDashboard />}>
+                            <Route path='home' element={<AdminHomeComponent />} />
+                            <Route path='users' element={<UsersComponent />} />
+                            <Route path='charities' element={<CharitiesComponent />} />
+                        </Route>
+                        <Route path="charity-dashboard" element={<CharityDashboard />}>
+                            <Route path="home" element={<CharityHomeComponent />} />
+                            <Route path='cases' element={<CasesComponent />} />
+                        </Route>
+                        <Route path="user-dashboard" element={<UserDashboard />}>
+                            <Route path="home" element={<UserHomeComponent />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            }
         </>
     )
 }
