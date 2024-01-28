@@ -30,18 +30,18 @@ header .content button:hover {
         font-size: 30px;
     }
 }
-@media (max-width: 990px) {
-    header .header-img {
-        width: 100%;
+@media (max-width: 992px) {
+    header .img-column {
+        display: none;
     }
     header .verse-column {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #00000059;
+        background-image: url("/images/header-img.png");
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: contain; 
     }
     header .verse-column .content {
-        padding-top: 50px;
+        padding: 50px;
         width: 100% !important;
     }
     header .content .verse {

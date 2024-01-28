@@ -7,11 +7,11 @@ function Header() {
         <>
             <header>
                 <div className="container-fluid">
-                    <div className="row position-relative">
-                        <div className="col-12 col-md-6 pe-0 header-img" data-aos="fade-down" data-aos-duration="3000">
+                    <div className="row">
+                        <div className="col-12 col-lg-6 pe-0 img-column" data-aos="fade-down" data-aos-duration="2000">
                             <img src="/images/header-img.png" alt="" className="img-fluid" />
                         </div>
-                        <div className="col-12 col-md-6 verse-column" data-aos="fade-down" data-aos-duration="3000">
+                        <div className="col-12 col-lg-6 verse-column" data-aos="fade-down" data-aos-duration="2000">
                             <div className="content w-75 text-center mx-auto ">
                                 <p>قــــــــال الله تعالى :</p>
                                 <p className='verse'>
