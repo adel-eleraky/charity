@@ -11,10 +11,12 @@ ul {
 }
 .nav-link {
     color: white;
-}
-.nav-link {
     font-size: 20px;
     font-weight: 600;
+}
+.nav-link:focus,
+.nav-link:hover {
+    color: #a1cefa;
 }
 .logo {
     width: 60px;

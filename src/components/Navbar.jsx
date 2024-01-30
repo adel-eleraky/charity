@@ -18,15 +18,21 @@ function Navbar() {
                         </div>
                         <div className="col-md-8 nav-links-col">
                             <ul className='nav-links d-flex justify-content-center m-0 p-0'>
-                                <li className="mx-3">
-                                    <a className="nav-link" aria-current="page" href="#">الحالات</a>
-                                </li>
-                                <li className="mx-3">
-                                    <a className="nav-link" aria-current="page" href="#">تواصل معنا</a>
-                                </li>
-                                <li className="mx-3">
-                                    <a className="nav-link" aria-current="page" href="#">من نحن</a>
-                                </li>
+                                <Link to="cases" className='nav-link'>
+                                    <li className="mx-3">
+                                        الحالات
+                                    </li>
+                                </Link>
+                                <Link to="cases" className='nav-link'>
+                                    <li className="mx-3">
+                                        تواصل معنا
+                                    </li>
+                                </Link>
+                                <Link to="cases" className='nav-link'>
+                                    <li className="mx-3">
+                                        من نحن
+                                    </li>
+                                </Link>
                             </ul>
                         </div>
                         <div className="col-4 col-md-2 ">
