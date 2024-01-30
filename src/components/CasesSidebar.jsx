@@ -1,6 +1,5 @@
 import React from 'react'
 import "./css/CasesSidebar.css"
-import ReactStars from 'react-rating-stars-component';
 
 
 function CasesSidebar() {
