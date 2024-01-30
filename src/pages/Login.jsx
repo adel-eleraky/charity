@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Login() {
 
-    const [role , setRole] = React.useState("user")
+    const [role, setRole] = React.useState("user")
 
 
     return (
@@ -19,13 +19,15 @@ function Login() {
                         <div className="content w-75 mx-auto">
                             <h2 className='text-center mb-4'>تسجيل الدخول </h2>
                             <form method='post'>
-                                <div className="form-floating mb-3">
-                                    <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                    <label htmlFor="floatingInput">بريدك الالكترونى</label>
+                                <label for="exampleFormControlInput1" className="form-label">بريدك الالكترونى</label>
+                                <div className="input-group mb-4">
+                                    <span className="input-group-text  rounded-0 rounded-end" id="basic-addon1"><i className="fa-regular fa-envelope"></i></span>
+                                    <input type="text" className="form-control rounded-0 rounded-start" placeholder="ادخل بريدك الالكترونى" aria-label="Username" aria-describedby="basic-addon1" />
                                 </div>
-                                <div className="form-floating mb-3">
-                                    <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
-                                    <label htmlFor="floatingPassword">الرقم السرى</label>
+                                <label for="exampleFormControlInput1" className="form-label">  كلمة المرور  </label>
+                                <div className="input-group mb-4">
+                                    <span className="input-group-text  rounded-0 rounded-end" id="basic-addon1"><i className="fa-solid fa-lock"></i></span>
+                                    <input type="password" className="form-control rounded-0 rounded-start" placeholder="كلمة المرور" aria-label="Username" aria-describedby="basic-addon1" />
                                 </div>
                                 <div className="form-check mb-3">
                                     <input onClick={() => setRole("user")} className="form-check-input ms-2 float-none" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
