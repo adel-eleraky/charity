@@ -60,7 +60,7 @@ function NavOffcanvas() {
                     </div>
                     <div className="links py-5">
                         <Link to="" >الرئيسية </Link>
-                        <Link to="" >كل الحالات</Link>
+                        <Link to="cases" >كل الحالات</Link>
                         <Link to="" > من نحن </Link>
                         <Link to="" > تواصل معنا  </Link>
                     </div>
