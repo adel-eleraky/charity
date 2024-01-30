@@ -1,0 +1,43 @@
+.cases-page {
+    background-image: var(--gradient-color);
+    border-bottom: 2px solid #a1cefa;
+}
+.cases-page .sm-screen-filter .dropdown-toggle {
+    background-color: #a1cefa;
+}
+.cases-page .sm-screen-filter {
+    display: none;
+}
+.cases-page .sm-screen-filter .dropdown-menu {
+    border: 2px solid #a1cefa;
+}
+.cases-page .sm-screen-filter .dropdown-menu,
+.cases-page .sm-screen-filter .dropdown-menu *  {
+    background-color: var(--main-color) !important;
+    color: white;
+}
+.cases-page .sm-screen-filter .dropdown-menu input {
+    background-color: white !important;
+}
+.cases-page .sm-screen-filter .dropdown-menu input::placeholder {
+    color: black !important;
+    font-weight: bold;
+}
+.cases-page .main-content {
+    box-shadow: 0 0 15px -3px #a1cefa;
+    background-color: var(--main-color);
+}
+.cases-page .main-content .heading div:last-of-type {
+    width: 125px;
+}
+@media (max-width: 768px) {
+    .cases-page .sm-screen-filter {
+        display: block !important;
+    }
+    .cases-page .sidebar-column {
+        display: none;
+    }
+    .cases-page .products-list-column {
+        width: 100%; 
+    }
+}
