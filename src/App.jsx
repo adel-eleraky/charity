@@ -24,6 +24,9 @@ import CasesComponent from './pages/CharityDashboard/CasesComponent';
 import UserDashboard from './pages/UserDashboard/UserDashboard';
 import UserHomeComponent from './pages/UserDashboard/UserHomeComponent';
 import HashLoader from "react-spinners/HashLoader";
+import Cases from './pages/Cases.jsx'
+import ForgetPassword from './pages/ForgetPassword.jsx'
+import ResetPassword from './pages/ResetPassword.jsx'
 
 
 AOS.init();
@@ -35,7 +38,7 @@ function App() {
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        } , 6000)
+        } , 4000)
     }, [])
 
     return (
@@ -55,9 +58,12 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Layout />} >
                             <Route index element={<Home />} />
+                            <Route path='cases' element={<Cases />} />
                             <Route path='account' element={<Account />} />
                             <Route path='account/login' element={<Login />} />
                             <Route path='account/register' element={<Register />} />
+                            <Route path='account/forget-password' element={<ForgetPassword />} />
+                            <Route path='account/reset-password' element={<ResetPassword />} />
                         </Route>
                         <Route path='admin-dashboard' element={<AdminDashboard />}>
                             <Route path='home' element={<AdminHomeComponent />} />
