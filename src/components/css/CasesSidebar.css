@@ -1,0 +1,10 @@
+.sidebar {
+    background-color: var(--main-color);
+}
+.sidebar > div {
+    box-shadow: 0 0 15px -3px #a1cefa;;
+}
+.sidebar input::placeholder {
+    color: black !important;
+    font-weight: bold;
+}
