@@ -23,7 +23,7 @@ export const fetchCaseById = createAsyncThunk(
   async (id) => {
     try {
       const response = await fetch(
-        `https://subul.cyclic.app/api/charities/allCases/${id}`
+        `https://subul.cyclic.app/api/charities/cases/${id}`
       );
       const data = await response.json();
       return data;
