@@ -224,7 +224,6 @@ function Register() {
                                         {role === "user" &&
                                             (
                                                 <div className="mb-4">
-
                                                     <label htmlFor="phone" className="form-label">
                                                         رقم الهاتف
                                                     </label>
@@ -246,7 +245,6 @@ function Register() {
                                                         />
                                                         <ErrorMessage name="phone" component="div" className="invalid-feedback d-block fs-6" />
                                                     </div>
-
                                                     <label htmlFor="governorate" className="form-label">
                                                         المحافظة
                                                     </label>
@@ -290,7 +288,6 @@ function Register() {
                                                         </label>
                                                     </div>
                                                     <ErrorMessage name="gender" component="div" className="invalid-feedback d-block fs-6" />
-
                                                 </div>
                                             )
                                         }
