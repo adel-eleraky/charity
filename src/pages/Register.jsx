@@ -28,11 +28,15 @@ function Register() {
         email: "",
         password: "",
         role: "",
-        firstName: "",
-        lastName: "",
+        name: {
+            firstName: "",
+            lastName: ""
+        },
         gender: "",
         phone: "",
-        governorate: "",
+        location: {
+            governorate: ""
+        },
         organizationName: "",
         contactEmail: "",
     }
@@ -41,6 +45,10 @@ function Register() {
         email: yup.string().required("من فضلك ادخل بريدك الالكترونى علشان ممدش ايدى عليك").email("يبنى دخل ايميل عدل ابوس ايدك"),
         password: yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 'يجب أن تحتوي كلمة المرور على حروف كبيرة وصغيرة وأرقام ورموز وأن تكون طولها 8 أحرف على الأقل').required("من فضلك ادخل كلمة المرور علشان ممدش ايدى عليك"),
         role: yup.string().required("يبنى تعبتنى معاك").oneOf(["user", "organization"], "يبنى تعبتنى معاك"),
+        phone: yup.string().matches(/^[0-9]{11}$/, 'يجب أن يحتوي رقم الهاتف على 11 رقمًا').required("يبنى تعبتنى معاك"),
+        location: yup.object().shape({
+            governorate: yup.string().required("يبنى تعبتنى معاك")
+        })
     })
 
 
@@ -48,11 +56,11 @@ function Register() {
 
         validationSchema = validationSchema.concat(
             yup.object().shape({
-                firstName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
-                lastName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
+                name: yup.object().shape({
+                    firstName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
+                    lastName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
+                }),
                 gender: yup.string().required("يبنى تعبتنى معاك"),
-                phone: yup.string().matches(/^[0-9]{10}$/, 'يجب أن يحتوي رقم الهاتف على 11 رقمًا').required("يبنى تعبتنى معاك"),
-                governorate: yup.string().required("يبنى تعبتنى معاك")
             })
         )
     }
@@ -62,31 +70,40 @@ function Register() {
             yup.object().shape({
                 organizationName: yup.string().required("من فضلك ادخل اسم المنظمة علشان ممدش ايدى عليك"),
                 contactEmail: yup.string().required("من فضلك ادخل بريدك الالكترونى علشان ممدش ايدى عليك").email("يبنى دخل ايميل عدل ابوس ايدك"),
-                phone: yup.string().matches(/^[0-9]{10}$/, 'يجب أن يحتوي رقم الهاتف على 11 رقمًا').required("يبنى تعبتنى معاك"),
-                governorate: yup.string().required("يبنى تعبتنى معاك")
             })
         )
     }
 
     const submitHandler = async (values) => {
 
-        if(values.role === "user") {
-            delete values.organizationName
-            delete values.contactEmail
+        let RegisterData = { email: values.email, password: values.password };
+        if (values.role === "user") {
+
+            RegisterData = {
+                ...RegisterData,
+                name: values.name,
+                gender: values.gender,
+                phone: values.phone,
+                location: values.location
+            }
         }
-        if(values.role === "organization") {
-            delete values.firstName
-            delete values.lastName
-            delete values.gender
+        if (values.role === "organization") {
+            
+            RegisterData = {
+                ...RegisterData,
+                name: values.organizationName,
+                contactInfo: {
+                    email: values.contactEmail,
+                    phone: values.phone
+                },
+                location: values.location
+            }
         }
-        delete values.role
 
-        const registerData = values
+        console.log(RegisterData)
 
-        console.log(registerData)
-
-        const response = await dispatch(registerUser(registerData))
-        console.log(response)
+        const response = await dispatch(registerUser(RegisterData))
+        // console.log("response from server" ,response)
     }
 
     return (
@@ -111,8 +128,8 @@ function Register() {
                             >
                                 {({ values, errors, touched }) => {
 
-                                    console.log("erros" , errors)
-                                    console.log("touched" , touched)
+                                    console.log("erros", errors)
+                                    console.log("touched", touched)
                                     return (
                                         <Form method="post" className="needs-validation" noValidate >
                                             <label htmlFor="email" className="form-label">
@@ -254,13 +271,13 @@ function Register() {
                                                             <Field
                                                                 type="text"
                                                                 id="firstName"
-                                                                name="firstName"
-                                                                className={`form-control ${touched.firstName && errors.firstName && "is-invalid"} rounded-0 rounded-start`}
+                                                                name="name[firstName]"
+                                                                className={`form-control ${touched.name?.firstName && errors.name?.firstName && "is-invalid"} rounded-0 rounded-start`}
                                                                 placeholder="ادخل الاسم الأول"
                                                                 aria-label="First Name"
                                                                 aria-describedby="basic-addon1"
                                                             />
-                                                            <ErrorMessage name="firstName" component="div" className="invalid-feedback d-block fs-6" />
+                                                            <ErrorMessage name="name[firstName]" component="div" className="invalid-feedback d-block fs-6" />
                                                         </div>
                                                         <label htmlFor="lastName" className="form-label">
                                                             اسم العائلة
@@ -275,13 +292,13 @@ function Register() {
                                                             <Field
                                                                 type="text"
                                                                 id="lastName"
-                                                                name="lastName"
-                                                                className={`form-control ${touched.lastName && errors.lastName && "is-invalid"} rounded-0 rounded-start`}
+                                                                name="name[lastName]"
+                                                                className={`form-control ${touched.name?.lastName && errors.name?.lastName && "is-invalid"} rounded-0 rounded-start`}
                                                                 placeholder="ادخل اسم العائلة"
                                                                 aria-label="Last Name"
                                                                 aria-describedby="basic-addon1"
                                                             />
-                                                            <ErrorMessage name="lastName" component="div" className="invalid-feedback d-block fs-6" />
+                                                            <ErrorMessage name="name[lastName]" component="div" className="invalid-feedback d-block fs-6" />
                                                         </div>
                                                         <label htmlFor="gender" className="form-label">
                                                             الجنس
@@ -327,7 +344,7 @@ function Register() {
                                                             <i className="fa-solid fa-phone"></i>
                                                         </span>
                                                         <Field
-                                                            type="number"
+                                                            type="text"
                                                             id="phone"
                                                             name="phone"
                                                             className={`form-control ${touched.phone && errors.phone && "is-invalid"} rounded-0 rounded-start`}
@@ -343,15 +360,15 @@ function Register() {
                                                     <Field
                                                         as="select"
                                                         id="governorate"
-                                                        name="governorate"
-                                                        className={`form-select ${touched.governorate && errors.governorate && "is-invalid"}`}
+                                                        name="location[governorate]"
+                                                        className={`form-select ${touched.location?.governorate && errors.location?.governorate && "is-invalid"}`}
                                                         aria-label="Governorate"
                                                     >
                                                         <option value="">اختر المحافظة</option>
-                                                        <option value="governorate1">محافظة 1</option>
+                                                        <option value="Helwan"> حلوان </option>
                                                         <option value="governorate2">محافظة 2</option>
                                                     </Field>
-                                                    <ErrorMessage name="governorate" component="div" className="invalid-feedback d-block fs-6" />
+                                                    <ErrorMessage name="location[governorate]" component="div" className="invalid-feedback d-block fs-6" />
                                                 </div>
                                             )}
                                             <button
