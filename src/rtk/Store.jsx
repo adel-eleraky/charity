@@ -2,11 +2,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import casesReducer from "./features/casesSlice";
 import userAuthReucer from "./features/userAuthSlice";
-const store = configureStore({
+const Store = configureStore({
   reducer: {
     cases: casesReducer,
     userAuth: userAuthReucer,
   },
 });
 
-export default store;
+export default Store;
