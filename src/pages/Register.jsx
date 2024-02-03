@@ -18,55 +18,66 @@ import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
 import * as yup from "yup"
 
 const initialValues = {
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
-    role: ""
+    role: "",
+    gender: "",
+    phone: "",
+    governorate: "",
 }
 
-const onSubmit = values => {
-    // console.log(values)
-}
+// const onSubmit = async (values) => {
+
+//     delete values.role
+//     const registerData = values
+//     console.log(registerData)
+
+//     const response = await dispatch(registerUser(registerData))
+//     console.log(response)
+// }
 
 const validationSchema = yup.object({
     firstName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
     lastName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
     email: yup.string().required("من فضلك ادخل بريدك الالكترونى علشان ممدش ايدى عليك").email("يبنى دخل ايميل عدل ابوس ايدك"),
-    password: yup.string().required("من فضلك ادخل كلمة المرور علشان ممدش ايدى عليك"),
+    password: yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 'يجب أن تحتوي كلمة المرور على حروف كبيرة وصغيرة وأرقام ورموز وأن تكون طولها 8 أحرف على الأقل').required("من فضلك ادخل كلمة المرور علشان ممدش ايدى عليك"),
     role: yup.string().required("يبنى تعبتنى معاك"),
-    phone: yup.number(),
-
+    gender: yup.string().required("يبنى تعبتنى معاك"),
+    phone: yup.string().matches(/^[0-9]{10}$/, 'يجب أن يحتوي رقم الهاتف على 11 رقمًا').required("يبنى تعبتنى معاك"),
+    governorate: yup.string().required("يبنى تعبتنى معاك")
 })
 function Register() {
 
     const [role, setRole] = useState("")
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const { registerStatus } = useSelector((store) => store.userAuth);
-    function handleRegister() {
-        // some user Data handling
-        const registerData = {
-            name: {
-                firstName: userName,
-                lastName: userName,
-            },
-            email,
-            password,
-            gender: "male",
-            phone: "01030931139",
-            location: { governorate: "Helwan" },
-        };
-        console.log(registerData);
-        if (role === "user") dispatch(registerUser(registerData));
-    }
+    // const { registerStatus } = useSelector((store) => store.userAuth);
+    // function handleRegister() {
+    //     // some user Data handling
+    //     const registerData = {
+    //         name: {
+    //             firstName: userName,
+    //             lastName: userName,
+    //         },
+    //         email,
+    //         password,
+    //         gender: "male",
+    //         phone: "01030931139",
+    //         location: { governorate: "Helwan" },
+    //     };
+    //     console.log(registerData);
+    //     if (role === "user") dispatch(registerUser(registerData));
+    // }
 
-    useEffect(() => {
-        if (registerStatus === "finished") {
-            navigate("/account/login");
-        }
-    }, [registerStatus, navigate]);
+    // useEffect(() => {
+    //     if (registerStatus === "finished") {
+    //         navigate("/account/login");
+    //     }
+    // }, [registerStatus, navigate]);
 
     return (
         <div className="register-page py-5">
@@ -85,7 +96,15 @@ function Register() {
                             <h2 className="text-center mb-4"> انشاء حساب </h2>
                             <Formik
                                 initialValues={initialValues}
-                                onSubmit={onSubmit}
+                                onSubmit={async (values) => {
+
+                                    delete values.role
+                                    const registerData = values
+                                    console.log(registerData)
+
+                                    const response = await dispatch(registerUser(registerData))
+                                    console.log(response)
+                                }}
                                 validationSchema={validationSchema}
                             >
                                 {({ values, errors, touched }) => (
@@ -252,7 +271,7 @@ function Register() {
                                                         as="select"
                                                         id="governorate"
                                                         name="governorate"
-                                                        className={`form-select ${touched.governorate && errors.governorate && "is-invalid"} mb-4`}
+                                                        className={`form-select ${touched.governorate && errors.governorate && "is-invalid"} `}
                                                         aria-label="Governorate"
                                                     >
                                                         <option value="">اختر المحافظة</option>
@@ -260,7 +279,7 @@ function Register() {
                                                         <option value="governorate2">محافظة 2</option>
                                                     </Field>
                                                     <ErrorMessage name="governorate" component="div" className="invalid-feedback d-block fs-6" />
-                                                    <label htmlFor="gender" className="form-label">
+                                                    <label htmlFor="gender" className="form-label mt-4">
                                                         الجنس
                                                     </label>
                                                     <div className="form-check mb-4">
@@ -293,7 +312,6 @@ function Register() {
                                         }
                                         <button
                                             className="btn btn-dark d-block w-50 py-2 mb-4 mx-auto fs-4"
-                                            onClick={handleRegister}
                                             type="submit"
                                         >
                                             انشاء حساب
