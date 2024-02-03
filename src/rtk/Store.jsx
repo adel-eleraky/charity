@@ -1,6 +1,6 @@
 // store.js
 import { configureStore } from "@reduxjs/toolkit";
-import casesReducer from "./features/casesSlice";
+import casesReducer from "./features/CasesSlice";
 import userAuthReucer from "./features/userAuthSlice";
 const Store = configureStore({
   reducer: {
