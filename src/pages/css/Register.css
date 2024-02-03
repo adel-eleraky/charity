@@ -2,6 +2,13 @@
     background-image: var(--gradient-color);
     color: white;
 }
+.register-page .content {
+    background-color: var(--main-color);
+    box-shadow: 0 0 15px -3px #a1cefa;
+}
+.register-page .content .submit-btn {
+    background-color: #a1cefa;
+}
 .register-page form .form-floating label {
     color: #393232;
     font-weight: 600;
