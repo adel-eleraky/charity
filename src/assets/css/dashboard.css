@@ -90,4 +90,14 @@
 .dashboard-main-content .box > div > span {
     font-weight: 100;
 }
+.dashboard .main-content .table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+.dashboard .main-content .table {
+    width: 1150px;
+    border-collapse: collapse;
+    margin: auto;
+}
+
 /*end main content  */ 
