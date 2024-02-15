@@ -1,11 +1,14 @@
 // store.js
 import { configureStore } from "@reduxjs/toolkit";
 import casesReducer from "./features/CasesSlice";
-import userAuthReucer from "./features/userAuthSlice";
+import userAuthReducer from "./features/userAuthSlice";
+import cartReducer from "./features/CartSlice";
+
 const Store = configureStore({
   reducer: {
     cases: casesReducer,
-    userAuth: userAuthReucer,
+    userAuth: userAuthReducer,
+    casesCart: cartReducer,
   },
 });
 
