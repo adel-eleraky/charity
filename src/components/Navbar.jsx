@@ -3,8 +3,12 @@ import React from 'react'
 import "./css/Navbar.css"
 import { Link } from 'react-router-dom'
 import NavOffcanvas from './NavOffcanvas'
+import { useSelector } from 'react-redux'
 
 function Navbar() {
+
+    const cartItemsLength = useSelector(state => state.casesCart).length
+
     return (
         <>
             <div className="first-nav py-3">
@@ -38,12 +42,14 @@ function Navbar() {
                         <div className="col-4 col-md-2 ">
                             <div className="d-flex justify-content-end">
                                 <Link to="account" className="nav-link acc_link ps-2" href="#"> <img src="/images/acc-icon.png" alt="" className="acc_logo" /></Link>
-                                <div className='position-relative'>
-                                    <i className="bi bi-cart3 cart_logo"></i>
-                                    <span className="position-absolute badge rounded-pill">
-                                        2
-                                    </span>
-                                </div>
+                                <Link to="cart">
+                                    <div className='position-relative'>
+                                        <i className="bi bi-cart3 cart_logo"></i>
+                                        <span className="position-absolute badge rounded-pill">
+                                            {cartItemsLength}
+                                        </span>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
