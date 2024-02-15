@@ -15,6 +15,18 @@ function Home() {
                     <h1 className='text-center mb-5' data-aos="fade-up" data-aos-duration="1000">حملات</h1>
                     <div className="row">
                         <div className="col-12 col-md-6 col-lg-4">
+                            <CampaignCard {...{ id: 1, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                        </div>
+                        <div className="col-12 col-md-6 col-lg-4">
+                            <CampaignCard {...{ id: 2, title: "غذاء لسعد", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                        </div>
+                        <div className="col-12 col-md-6 col-lg-4">
+                            <CampaignCard {...{ id: 3, title: "غذاء لسعد برضه", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                        </div>
+                        <div className="col-12 col-md-6 col-lg-4">
+                            <CampaignCard {...{ id: 4, title: "غذاء لسعد كلاكيت تالت مرة", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                        </div>
+                        {/* <div className="col-12 col-md-6 col-lg-4">
                             <CampaignCard />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
@@ -25,10 +37,7 @@ function Home() {
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
                             <CampaignCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
