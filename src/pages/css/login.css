@@ -7,6 +7,13 @@
     font-weight: 600;
     left: unset;
 }
+.login-page .content {
+    background-color: var(--main-color);
+    box-shadow: 0 0 15px -3px #a1cefa;
+}
+.login-page .content .submit-btn {
+    background-color: #a1cefa;
+}
 @media (max-width: 768px) {
     .img-column {
         display: none;
