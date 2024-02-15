@@ -89,16 +89,14 @@ function Cases() {
                                 <div className="products-list">
                                     <div className="row">
                                         <div className="col-md-12 col-lg-6 col-xxl-4">
-                                            <CampaignCard />
+                                            <CampaignCard {...{ id: 1, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
                                         </div>
                                         <div className="col-md-12 col-lg-6 col-xxl-4">
-                                            <CampaignCard />
+                                            <CampaignCard {...{ id: 2, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
                                         </div>
                                         <div className="col-md-12 col-lg-6 col-xxl-4">
-                                            <CampaignCard />
+                                            <CampaignCard {...{ id: 3, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
