@@ -16,9 +16,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../rtk/features/userAuthSlice";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup"
+import { toast } from 'react-toastify';
 
 
 function Register() {
+
+    const { loginStatus, error, registerStatus, user } = useSelector(
+        (store) => store.userAuth
+    );
 
     const [role, setRole] = useState("")
 
@@ -42,12 +47,12 @@ function Register() {
     }
 
     let validationSchema = yup.object().shape({
-        email: yup.string().required("من فضلك ادخل بريدك الالكترونى علشان ممدش ايدى عليك").email("يبنى دخل ايميل عدل ابوس ايدك"),
-        password: yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 'يجب أن تحتوي كلمة المرور على حروف كبيرة وصغيرة وأرقام ورموز وأن تكون طولها 8 أحرف على الأقل').required("من فضلك ادخل كلمة المرور علشان ممدش ايدى عليك"),
-        role: yup.string().required("يبنى تعبتنى معاك").oneOf(["user", "organization"], "يبنى تعبتنى معاك"),
-        phone: yup.string().matches(/^[0-9]{11}$/, 'يجب أن يحتوي رقم الهاتف على 11 رقمًا').required("يبنى تعبتنى معاك"),
+        email: yup.string().required("ادخل بريدك الالكترونى").email("ادخل بريد الكترونى"),
+        password: yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 'يجب أن تحتوي كلمة المرور على حروف كبيرة وصغيرة وأرقام ورموز وأن تكون طولها 8 أحرف على الأقل').required("ادخل كلمة السر"),
+        role: yup.string().required("اختار نوع الحساب").oneOf(["user", "organization"], "نوع الحساب يجب ان يكون متبرع او جمعية"),
+        phone: yup.string().matches(/^[0-9]{11}$/, 'يجب أن يحتوي رقم الهاتف على 11 رقمًا').required("ادخل رقم التليفون"),
         location: yup.object().shape({
-            governorate: yup.string().required("يبنى تعبتنى معاك")
+            governorate: yup.string().required("اختار محافظة")
         })
     })
 
@@ -57,10 +62,10 @@ function Register() {
         validationSchema = validationSchema.concat(
             yup.object().shape({
                 name: yup.object().shape({
-                    firstName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
-                    lastName: yup.string().required("من فضلك ادخل اسم المستخدم علشان ممدش ايدى عليك"),
+                    firstName: yup.string().required("ادخل اسمك الاول"),
+                    lastName: yup.string().required("ادخل اسم العائلة"),
                 }),
-                gender: yup.string().required("يبنى تعبتنى معاك"),
+                gender: yup.string().required("اختار نوع الجنس"),
             })
         )
     }
@@ -68,8 +73,8 @@ function Register() {
 
         validationSchema = validationSchema.concat(
             yup.object().shape({
-                organizationName: yup.string().required("من فضلك ادخل اسم المنظمة علشان ممدش ايدى عليك"),
-                contactEmail: yup.string().required("من فضلك ادخل بريدك الالكترونى علشان ممدش ايدى عليك").email("يبنى دخل ايميل عدل ابوس ايدك"),
+                organizationName: yup.string().required("ادخل اسم الجمعية"),
+                contactEmail: yup.string().required("ادخل بريد الكترونى للتواصل").email("ادخل بريد الكترونى"),
             })
         )
     }
@@ -86,9 +91,18 @@ function Register() {
                 phone: values.phone,
                 location: values.location
             }
+            console.log(RegisterData)
+            toast.promise(
+                dispatch(registerUser(RegisterData)),
+                {
+                    pending: "جارى التسجيل بياناتك",
+                    success: "تم التسجيل بنجاح",
+                    error: "لم يتم التسجيل",
+                }
+            )
         }
         if (values.role === "organization") {
-            
+
             RegisterData = {
                 ...RegisterData,
                 name: values.organizationName,
@@ -98,12 +112,18 @@ function Register() {
                 },
                 location: values.location
             }
+            console.log(RegisterData)
+
+            // implement register charity function
+            // toast.promise(
+            //     dispatch(registerCharity(RegisterData)),
+            //     {
+            //         pending: "جارى التسجيل بياناتك",
+            //         success: "تم التسجيل بنجاح",
+            //         error: "لم يتم التسجيل",
+            //     }
+            // )
         }
-
-        console.log(RegisterData)
-
-        const response = await dispatch(registerUser(RegisterData))
-        // console.log("response from server" ,response)
     }
 
     return (
@@ -128,8 +148,6 @@ function Register() {
                             >
                                 {({ values, errors, touched }) => {
 
-                                    console.log("erros", errors)
-                                    console.log("touched", touched)
                                     return (
                                         <Form method="post" className="needs-validation" noValidate >
                                             <label htmlFor="email" className="form-label">
