@@ -5,30 +5,28 @@
 //       "https://thankful-umbrella-yak.cyclic.app/api/users/auth",
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-// Async action to log in a user
 export const loginUser = createAsyncThunk(
   "userAuth/loginUser",
   async function (loginData) {
-    const response = await fetch("https://subul.cyclic.app/api/users/auth", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
-    });
+    try {
+      const response = await axios.post(
+        "https://subul.cyclic.app/api/users/auth",
+        loginData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Registration failed");
+      return response.data;
+    } catch (error) {
+      console.error(error.response?.data || "Registration failed");
+      throw new Error(error.response?.data?.message || "Registration failed");
     }
-
-    //
-    for (let entry of response.headers.entries()) {
-      console.log("header", entry);
-    }
-    const responseData = await response.json();
-    return responseData;
   }
 );
 
@@ -55,29 +53,28 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-// activateAccount
 export const activateAccount = createAsyncThunk(
   "userAuth/activateAccount",
   async function (token) {
-    const response = await fetch(
-      "https://subul.cyclic.app/api/users/activate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token }),
-      }
-    );
+    try {
+      const response = await axios.post(
+        "https://subul.cyclic.app/api/users/activate",
+        { token },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, // This is important to include cookies with the request
+        }
+      );
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.log(errorData);
-      throw new Error(errorData.message || "Email verification failed");
+      return response.data;
+    } catch (error) {
+      console.error(error.response?.data || "Email verification failed");
+      throw new Error(
+        error.response?.data?.message || "Email verification failed"
+      );
     }
-
-    const responseData = await response.json();
-    return responseData;
   }
 );
 const userAuthSlice = createSlice({
