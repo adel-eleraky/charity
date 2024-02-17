@@ -14,39 +14,62 @@ import "./css/Register.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../rtk/features/userAuthSlice";
+import { registerCharity } from "../rtk/features/charityAuthSlice";
 
 function Register() {
   const [role, setRole] = React.useState("user");
   const [userName, setUserName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
+  const [selectedFile, setSelectedFile] = React.useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { registerStatus } = useSelector((store) => store.userAuth);
-  function handleRegister() {
+  const { charity, charityRegisterStatus, charityError } = useSelector(
+    (store) => store.charityAuth
+  );
+  function handleRegister(e) {
+    e.preventDefault();
     // some user Data handling
-    const registerData = {
-      name: {
-        firstName: userName,
-        lastName: userName,
-      },
-      email,
-      password,
-      gender: "male",
-      phone: "01030931139",
-      location: { governorate: "Helwan" },
-    };
-    console.log(registerData);
-    if (role === "user") dispatch(registerUser(registerData));
+    if (role === "user") {
+      const registerData = {
+        name: {
+          firstName: userName,
+          lastName: userName,
+        },
+        email,
+        password,
+        gender: "male",
+        phone: "01030931139",
+        location: { governorate: "Helwan" },
+      };
+      dispatch(registerUser(registerData));
+    } else {
+      const registerData = {
+        name: userName,
+        email,
+        password,
+        "location[governorate]": "Helwan",
+        "contactInfo[email]": email,
+        "contactInfo[phone]": "01030931139",
+        "contactInfo[websiteUrl]": "www.google.com",
+        description: "hello Wrold",
+        "charityInfo[registeredNumber]": 123,
+        "charityInfo[establishedDate]": "2001-01-01",
+        image: selectedFile,
+      };
+      // console.log(registerData);
+      dispatch(registerCharity(registerData));
+    }
   }
 
   useEffect(() => {
     if (registerStatus === "finished") {
       navigate("/account/login");
     }
-  }, [registerStatus, navigate]);
+    console.log("status: ", charityRegisterStatus, charityError);
+    console.log("charity", charity);
+  }, [registerStatus, navigate, charityRegisterStatus, charityError, charity]);
 
   return (
     <div className="register-page py-5">
@@ -64,7 +87,7 @@ function Register() {
           <div className="col-12 col-md-6">
             <div className="content w-75 mx-auto">
               <h2 className="text-center mb-4"> انشاء حساب </h2>
-              <form method="post" onSubmit={(e) => e.preventDefault()}>
+              <form method="post" onSubmit={handleRegister}>
                 <label for="exampleFormControlInput1" className="form-label">
                   اسم المستخدم{" "}
                 </label>
@@ -128,6 +151,7 @@ function Register() {
                 <div className="form-check mb-3">
                   <input
                     onClick={() => setRole("user")}
+                    checked={role === "user"}
                     className="form-check-input ms-2 float-none"
                     type="radio"
                     name="flexRadioDefault"
@@ -143,6 +167,7 @@ function Register() {
                 <div className="form-check mb-4">
                   <input
                     onClick={() => setRole("organization")}
+                    checked={role === "organization"}
                     className="form-check-input ms-2 float-none"
                     type="radio"
                     name="flexRadioDefault"
@@ -164,13 +189,11 @@ function Register() {
                       className="form-control form-control-lg"
                       id="formFileLg"
                       type="file"
+                      onChange={(e) => setSelectedFile(e.target.files[0])}
                     />
                   </div>
                 )}
-                <button
-                  className="btn btn-dark d-block w-50 py-2 mb-4 mx-auto fs-4"
-                  onClick={handleRegister}
-                >
+                <button className="btn btn-dark d-block w-50 py-2 mb-4 mx-auto fs-4">
                   {" "}
                   انشاء حساب
                 </button>

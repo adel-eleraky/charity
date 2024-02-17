@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { activateAccount } from "../rtk/features/userAuthSlice";
+import { activateCharityAccount } from "../rtk/features/charityAuthSlice";
 
 function AccountActivation() {
   const [token, setToken] = useState("");
-  const { user, error } = useSelector((store) => store.userAuth);
+  const { charity, charityError } = useSelector((store) => store.charityAuth);
   const dispatch = useDispatch();
   function handleVerify(e) {
     e.preventDefault();
     if (!token) return;
-    console.log({ token });
-    dispatch(activateAccount(token));
+    dispatch(activateCharityAccount(token));
   }
   useEffect(() => {
-    console.log(error);
-  }, [error]);
+    console.log(charityError);
+    console.log(charity);
+  }, [charityError, charity]);
   return (
     <form onSubmit={handleVerify}>
       <p>copy token from email</p>

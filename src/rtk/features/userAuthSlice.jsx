@@ -14,6 +14,7 @@ export const loginUser = createAsyncThunk(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-Domain": "subul.cyclic.app",
       },
       body: JSON.stringify(loginData),
     });
@@ -59,13 +60,13 @@ export const registerUser = createAsyncThunk(
 export const activateAccount = createAsyncThunk(
   "userAuth/activateAccount",
   async function (token) {
+    console.log("activating.....");
     const response = await fetch(
       "https://subul.cyclic.app/api/users/activate",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ token }),
       }

@@ -33,6 +33,8 @@ AOS.init();
 function App() {
   let [loading, setLoading] = useState(false);
 
+  // document.cookie = "jwt=sdlfkjdsfkjldsjf";
+  // console.log("sdfsdf", document.cookie);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);

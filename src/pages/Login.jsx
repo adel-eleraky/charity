@@ -10,25 +10,37 @@
 }
  */
 
-import React from "react";
+import React, { useState } from "react";
 import "./css/login.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../rtk/features/userAuthSlice";
+import { activateAccount, loginUser } from "../rtk/features/userAuthSlice";
 import { useEffect } from "react";
 import AccountActivation from "./AccountActivation";
 import Popup from "../components/Popup";
+import { loginCharity } from "../rtk/features/charityAuthSlice";
+import { getUserProfile } from "../rtk/features/userProfileSlice";
 
 function Login() {
+  const [token, setToken] = useState("");
   const [role, setRole] = React.useState("user");
   const [email, setEmail] = React.useState("mohhero4@gmail.com");
   const [password, setPassword] = React.useState("123456");
   const { loginStatus, error, registerStatus, user } = useSelector(
     (store) => store.userAuth
   );
+  const { userData, profileStatus } = useSelector((store) => store.userProfile);
+  const cook = document.cookie;
+  // charity: {},
+  //   charityRegisterStatus: "idle",
+  //   charityLoginStatus: "idle",
+  //   charityError: null,
+  console.log(user);
+  const { charityLoginStatus, charityError, charityRegisterStatus, charity } =
+    useSelector((store) => store.charityAuth);
   const isVerified =
-    user.msg !=
+    charity[1]?.message !=
     "Your Account is not Activated Yet,A Token Was Sent To Your Email.";
   const navigate = useNavigate();
 
@@ -38,18 +50,43 @@ function Login() {
     // checking email (empty, wrong fromat)
     // checking password (empty, number of chars < 6)
     if (role === "user") dispatch(loginUser({ email, password }));
+    else if (role === "organization")
+      dispatch(loginCharity({ email, password }));
   }
 
   useEffect(() => {
-    if (registerStatus === "finished") {
-      setEmail(user.email);
-    }
-    if (loginStatus === "finished") {
-      if (isVerified) navigate("/account");
+    console.log("cookie", cook);
+    if (role === "user") {
+      if (registerStatus === "finished") {
+        setEmail(user.email);
+      }
+      if (loginStatus === "finished") {
+        // if (isVerified) navigate("/account");
+        console.log(user);
+      } else {
+        console.log(error, user);
+      }
     } else {
-      console.log(error, user);
+      if (charityLoginStatus === "finished") console.log(charity);
     }
-  }, [loginStatus, registerStatus, navigate, isVerified, error, user]);
+  }, [
+    loginStatus,
+    registerStatus,
+    navigate,
+    isVerified,
+    error,
+    user,
+    role,
+    charity,
+    charityLoginStatus,
+    cook,
+  ]);
+  useEffect(() => {
+    console.log("userData", userData);
+  }, [userData]);
+  function hanldeResetPassword() {
+    dispatch(activateAccount(token));
+  }
   return (
     <div className="login-page py-5">
       <div className="container">
@@ -66,6 +103,12 @@ function Login() {
           <div className="col-12 col-md-6">
             <div className="content w-75 mx-auto">
               <h2 className="text-center mb-4">تسجيل الدخول </h2>
+              <button onClick={hanldeResetPassword}>confirm</button>
+              <input
+                type="text"
+                value={token}
+                onChange={(e) => setToken(e.target.value)}
+              />
               <form method="post" onSubmit={handleLogin}>
                 <label
                   htmlFor="exampleFormControlInput1"
@@ -117,6 +160,7 @@ function Login() {
                 <div className="form-check mb-3">
                   <input
                     onClick={() => setRole("user")}
+                    checked={role === "user"}
                     className="form-check-input ms-2 float-none"
                     type="radio"
                     name="flexRadioDefault"
@@ -132,6 +176,7 @@ function Login() {
                 <div className="form-check mb-5">
                   <input
                     onClick={() => setRole("organization")}
+                    checked={role === "organization"}
                     className="form-check-input ms-2 float-none"
                     type="radio"
                     name="flexRadioDefault"
