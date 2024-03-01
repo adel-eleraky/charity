@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import "./css/Account.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Logout from "../components/Logout";
 
 function Account() {
   const { user } = useSelector((store) => store.userAuth);
@@ -14,7 +15,7 @@ function Account() {
     if (Object.keys(user).length === 0) {
       console.log("no user found");
 
-      navigate("login", { replace: true });
+      navigate("login");
     }
   }, [navigate, user]);
 
@@ -22,6 +23,7 @@ function Account() {
     <div className="account-page py-5">
       <div className="container">account page</div>
       <h3>{user.name?.firstName}</h3>
+      <Logout />
     </div>
   );
 }

@@ -3,53 +3,35 @@
 // verifyEmail
 // register
 //       "https://thankful-umbrella-yak.cyclic.app/api/users/auth",
-
+// "https://subul.cyclic.app/api/users/auth"
+// "https://subul.cyclic.app/api/users"
+// "https://subul.cyclic.app/api/users/activate"
+// localhost:5000
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { getData, postData } from "../../utils/api";
+import { fetchingErrorHandling } from "../../utils/helpers";
 
 export const loginUser = createAsyncThunk(
   "userAuth/loginUser",
   async function (loginData) {
     try {
-      const response = await axios.post(
-        "https://subul.cyclic.app/api/users/auth",
-        loginData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-
-      return response.data;
+      return postData("users/auth", loginData);
     } catch (error) {
-      console.error(error.response?.data || "Registration failed");
-      throw new Error(error.response?.data?.message || "Registration failed");
+      fetchingErrorHandling(error, "login");
     }
   }
 );
 
-// Async action to register a user
+// Async action to register a user using Axios
 export const registerUser = createAsyncThunk(
   "userAuth/registerUser",
   async function (registerData) {
-    const response = await fetch("https://subul.cyclic.app/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registerData),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Registration failed");
+    try {
+      // Returned data for the fulfilled state
+      return postData("users", registerData);
+    } catch (error) {
+      fetchingErrorHandling(error, "registration");
     }
-
-    const responseData = await response.json();
-    // returned data for fulfilled state
-    return responseData;
   }
 );
 
@@ -57,26 +39,26 @@ export const activateAccount = createAsyncThunk(
   "userAuth/activateAccount",
   async function (token) {
     try {
-      const response = await axios.post(
-        "https://subul.cyclic.app/api/users/activate",
-        { token },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true, // This is important to include cookies with the request
-        }
-      );
-
-      return response.data;
+      return postData("users/activate", { token });
     } catch (error) {
-      console.error(error.response?.data || "Email verification failed");
-      throw new Error(
-        error.response?.data?.message || "Email verification failed"
-      );
+      fetchingErrorHandling(error, "activate");
     }
   }
 );
+
+// Async action to log out a user
+export const logoutUser = createAsyncThunk(
+  "userAuth/logoutUser",
+  async function () {
+    try {
+      await postData("users/logout");
+      return {}; // Empty object as a placeholder
+    } catch (error) {
+      fetchingErrorHandling(error, "logout");
+    }
+  }
+);
+
 const userAuthSlice = createSlice({
   name: "userAuth",
   initialState: {
@@ -84,6 +66,7 @@ const userAuthSlice = createSlice({
     registerStatus: "idle",
     loginStatus: "idle",
     activateStatus: "idle",
+    logoutStatus: "idle",
     error: null,
   },
   reducers: {},
@@ -122,6 +105,18 @@ const userAuthSlice = createSlice({
       })
       .addCase(activateAccount.rejected, (state, action) => {
         state.activateStatus = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.logoutStatus = "loading";
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.logoutStatus = "finished";
+        state.loginStatus = "idle";
+        state.user = {};
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.logoutStatus = "failed";
         state.error = action.error.message;
       });
   },
