@@ -2,6 +2,7 @@
 // logoutUser
 // verifyEmail
 // register
+// reset passwrod by email
 //       "https://thankful-umbrella-yak.cyclic.app/api/users/auth",
 // "https://subul.cyclic.app/api/users/auth"
 // "https://subul.cyclic.app/api/users"
@@ -58,6 +59,28 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
+// Async action to request a password reset email
+export const forgotPassword = createAsyncThunk(
+  "userAuth/forgotPassword",
+  async function (email) {
+    try {
+      return postData("users/reset", { email });
+    } catch (error) {
+      fetchingErrorHandling(error, "forgotPassword");
+    }
+  }
+);
+
+export const confirmResetPass = createAsyncThunk(
+  "userAuth/confirmResetPass",
+  async function (data) {
+    try {
+      return postData("users/reset/confirm", data);
+    } catch (error) {
+      fetchingErrorHandling(error, "confirming reset");
+    }
+  }
+);
 
 const userAuthSlice = createSlice({
   name: "userAuth",
@@ -67,6 +90,8 @@ const userAuthSlice = createSlice({
     loginStatus: "idle",
     activateStatus: "idle",
     logoutStatus: "idle",
+    forgotPasswordStatus: "idle",
+    confirmResetPassStatus: "idle",
     error: null,
   },
   reducers: {},
@@ -82,7 +107,7 @@ const userAuthSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loginStatus = "failed";
-        state.error = action.error;
+        state.error = action.error.message;
       })
 
       // Reducers for registerUser action
@@ -117,6 +142,26 @@ const userAuthSlice = createSlice({
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.logoutStatus = "failed";
+        state.error = action.error.message;
+      }) // forgotPassword reducers
+      .addCase(forgotPassword.pending, (state) => {
+        state.forgotPasswordStatus = "loading";
+      })
+      .addCase(forgotPassword.fulfilled, (state) => {
+        state.forgotPasswordStatus = "finished";
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        state.forgotPasswordStatus = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(confirmResetPass.pending, (state) => {
+        state.confirmResetPassStatus = "loading";
+      })
+      .addCase(confirmResetPass.fulfilled, (state) => {
+        state.confirmResetPassStatus = "finished";
+      })
+      .addCase(confirmResetPass.rejected, (state, action) => {
+        state.confirmResetPassStatus = "failed";
         state.error = action.error.message;
       });
   },

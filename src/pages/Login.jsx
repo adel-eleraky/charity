@@ -69,11 +69,11 @@ function Login() {
 
   useEffect(
     function () {
+      toast.dismiss();
       if (loginStatus === "loading") toast.loading("جارى تسجيل الدخول");
       if (loginStatus === "finished") {
-        toast.dismiss();
         toast.success("تم تسجيل الدخول بنجاح");
-        navigate("/account");
+        navigate("/user-dashboard");
       }
       if (loginStatus === "failed") toast.error("حدث خطأ فى الدخول");
     },

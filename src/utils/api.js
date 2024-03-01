@@ -18,24 +18,14 @@ export const postData = async (endpoint, data) => {
 
 // Function to handle GET requests
 export const getData = async (endpoint) => {
-  try {
-    const response = await instance.get(endpoint);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-    throw error;
-  }
+  const response = await instance.get(endpoint);
+  return response.data;
 };
 
 // Function to handle PUT requests
 export const putData = async (endpoint, data) => {
-  try {
-    const response = await instance.put(endpoint, data);
-    return response.data;
-  } catch (error) {
-    console.error("Error updating data:", error.message);
-    throw error;
-  }
+  const response = await instance.put(endpoint, data);
+  return response.data;
 };
 
 // Add more functions for other HTTP methods (DELETE, PATCH, etc.) as needed
