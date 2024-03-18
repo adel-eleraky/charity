@@ -12,7 +12,7 @@ export const loginUser = createAsyncThunk(
   async function (loginData) {
     try {
       const response = await axios.post(
-        "https://subul.cyclic.app/api/users/auth",
+        "http://localhost:5000/api/users/auth",
         loginData,
         {
           headers: {
@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk(
 export const registerUser = createAsyncThunk(
   "userAuth/registerUser",
   async function (registerData) {
-    const response = await fetch("https://subul.cyclic.app/api/users", {
+    const response = await fetch("http://localhost:5000/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const activateAccount = createAsyncThunk(
   async function (token) {
     try {
       const response = await axios.post(
-        "https://subul.cyclic.app/api/users/activate",
+        "http://localhost:5000/api/users/activate",
         { token },
         {
           headers: {
