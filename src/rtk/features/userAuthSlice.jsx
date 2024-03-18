@@ -16,6 +16,7 @@ export const loginUser = createAsyncThunk(
   "userAuth/loginUser",
   async function (loginData) {
     try {
+
       return postData("users/auth", loginData);
     } catch (error) {
       fetchingErrorHandling(error, "login");
@@ -27,6 +28,7 @@ export const loginUser = createAsyncThunk(
 export const registerUser = createAsyncThunk(
   "userAuth/registerUser",
   async function (registerData) {
+
     try {
       // Returned data for the fulfilled state
       return postData("users", registerData);
@@ -41,6 +43,7 @@ export const activateAccount = createAsyncThunk(
   async function (token) {
     try {
       return postData("users/activate", { token });
+
     } catch (error) {
       fetchingErrorHandling(error, "activate");
     }
