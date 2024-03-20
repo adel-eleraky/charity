@@ -5,21 +5,21 @@ import "./css/Header.css"
 function Header() {
     return (
         <>
-            <header>
+            <header className='py-5'>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-12 col-lg-6 pe-0 img-column" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="/images/header-img.png" alt="" className="img-fluid" />
-                        </div>
-                        <div className="col-12 col-lg-6 verse-column" data-aos="fade-down" data-aos-duration="2000">
-                            <div className="content w-75 text-center mx-auto ">
-                                <p>قــــــــال الله تعالى :</p>
+                        <div className="col-12 col-lg-6 pe-0 verse-column " data-aos="fade-down" data-aos-duration="2000">
+                            <div className="content w-75 mx-auto ">
+                                <img src="/images/Group.png" alt="" className="img-fluid mb-3" />
+                                <p className="fw-bold fs-1" style={{ color: "#343D40" }}>قــــــــال الله تعالى :</p>
                                 <p className='verse'>
-                                    مَّثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ فِي كُلِّ سُنبُلَةٍ مِّائَةُ حَبَّةٍ ۗ وَاللَّهُ يُضَاعِفُ لِمَن يَشَاءُ ۗ وَاللَّهُ وَاسِعٌ عَلِيمٌ
+                                    <img src="/images/verse.png" alt="" className="img-fluid" />
                                 </p>
-                                <p>[البقرة:261]</p>
-                                <button className='btn  px-4 rounded-pill' >تبرع الان</button>
+                                <button className='btn rounded text-white px-4 d-flex align-items-center justify-content-between'> تبرع الان <i className="fa-solid fa-arrow-left me-2" style={{ color: "#ffffff" }}></i> </button>
                             </div>
+                        </div>
+                        <div className="col-12 col-lg-6 img-column text-center" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="/images/header-img.png" alt="" className="img-fluid" />
                         </div>
                     </div>
                 </div>
