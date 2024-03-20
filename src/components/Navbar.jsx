@@ -11,7 +11,7 @@ function Navbar() {
 
     return (
         <>
-            <div className="first-nav py-3">
+            <div className="first-nav ">
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-4 col-md-2">
@@ -40,11 +40,11 @@ function Navbar() {
                             </ul>
                         </div>
                         <div className="col-4 col-md-2 ">
-                            <div className="d-flex justify-content-end">
-                                <Link to="account" className="nav-link acc_link ps-2" href="#"> <img src="/images/acc-icon.png" alt="" className="acc_logo" /></Link>
+                            <div className="d-flex justify-content-end align-items-center">
+                                <Link to="account" className="nav-link acc_link d-flex align-items-center justify-content-center" href="#"> <i className="fa-regular fa-user acc_logo fs-3" style={{color: "#2b373d"}}></i></Link>
                                 <Link to="cart">
                                     <div className='position-relative'>
-                                        <i className="bi bi-cart3 cart_logo"></i>
+                                        <img src="/images/cart.png" alt="" className="img-fluid cart_logo" />
                                         <span className="position-absolute badge rounded-pill">
                                             {cartItemsLength}
                                         </span>
