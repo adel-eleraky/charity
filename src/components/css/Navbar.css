@@ -1,16 +1,15 @@
 .first-nav {
-    background-color:  var(--third-color) !important;
-    border-bottom: 2px solid #a1cefa;
+    background-color:  white;
+    border-bottom: 2px solid #927238;
 }
 .second-nav {
-    background-color: #152a3f;
-    border-bottom: 2px solid #a1cefa;
+    background-color: #C7AB77;
+    border-bottom: 2px solid #927238;
 }
 ul {
     list-style: none;
 }
 .nav-link {
-    color: white;
     font-size: 20px;
     font-weight: 600;
 }
@@ -19,25 +18,21 @@ ul {
     color: #a1cefa;
 }
 .logo {
-    width: 60px;
+    width: 101px;
 }
 .acc_link {
-    border-left: 1px solid #B7D086;
-    color: #B7D086;
-}
-.acc_logo {
-    width: 35px;
-    margin-left: 5px;
-    margin-top: 10px;
+    background-image: linear-gradient(#C7AB77 , white);
+    text-align: center;
+    width: 64px;
+    height: 101px;
 }
 .cart_logo {
-    font-size: 35px;
+    width: 35px;
     margin-right: 15px;
-    color: #B7D086;
 }
 .badge {
     right: 5px;
-    background-color: #2282e3;
+    background-color: #C7AB77;
 }
 @media (max-width: 768px) {
     .navbar-toggler {
