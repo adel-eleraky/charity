@@ -1,34 +1,106 @@
 /* start Campaigns */
-.Campaigns {
+.home-page .Campaigns {
     background-color: var(--main-color);
     color: white;
 }
-.Campaigns h1 {
+.home-page .Campaigns h1 {
     font-size: 60px;
 }
 /* end Campaigns */
 
 /* start donation opportunities */
-.donation_opportunities {
-    background-image: var(--gradient-color);
-    color: white;
+.home-page .donation_opportunities p {
+    font-family: "Tajawal" , sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 67.2px;
+    text-align: right;
+    position: relative;
+    margin-bottom: 80px;
 }
-.donation_opportunities h1 {
-    font-size: 60px;
+.home-page .donation_opportunities p::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    top: 6px;
+    left: 38%;
+    z-index: -1;
+    border-radius: 50%;
+    background-image: linear-gradient(150.19deg, #DFD4C0 -8.79%, rgba(255, 255, 255, 0) 117.88%);
 }
 /* end donation opportunities */
 /* start urgent cases */
-.urgent-cases {
+.home-page .urgent-cases {
     background-color: var(--main-color);
     color: white;
 }
-.urgent-cases h1 {
+.home-page .urgent-cases h1 {
     font-size: 60px;
 }
 /* end urgent cases */
 /* start associations */
-.associations {
+.home-page .associations {
     background-image: var(--gradient-color);
     color: white;
 }
 /* end associations */
+/* start report case section*/
+.home-page .report-case {
+    position: relative;
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 23px 75px 171px 0px #2524241A;
+}
+.home-page .report-case::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 10px);
+    border-radius: 24px;
+    z-index: -1;
+    background: linear-gradient(#EDDCC8, white);
+}
+.home-page .report-case .report-btn {
+    background-color: #EDDCC8;
+    color: #91683A;
+    border-radius: 35px;
+}
+/* end report case section*/
+/* start used section*/
+.home-page .used {
+    background-color: #EDDCC8;
+    box-shadow: 23px 75px 171px 0px #2524241A;
+    position: relative;
+    border-radius: 24px;
+}
+.home-page .used::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 10px);
+    border-radius: 24px;
+    z-index: -1;
+    background-color: #EDDCC8;
+}
+.home-page .used .donate-btn {
+    background-color: white;
+    color: #91683A;
+    border-radius: 35px;
+    width: 172px;
+}
+@media (max-width: 768px) {
+    .home-page .used {
+        text-align: center;
+        flex-direction: column;
+    }
+    .home-page .used .content {
+        width: 100% !important;
+        margin-bottom: 25px;
+    }
+}
+/* end used section*/
