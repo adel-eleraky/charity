@@ -5,6 +5,13 @@ import "./css/Home.css"
 import CampaignCard from '../components/CampaignCard'
 import CategoryCard from '../components/CategoryCard'
 import AssociationCard from '../components/AssociationCard'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 function Home() {
     return (
@@ -15,16 +22,52 @@ function Home() {
                     <h1 className='text-center mb-5' data-aos="fade-up" data-aos-duration="1000">حملات</h1>
                     <div className="row">
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard {...{ id: 1, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                            <CampaignCard
+                                id={1}
+                                title={"غذاء للجميع"}
+                                image={"/images/campaign-image.png"}
+                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
+                                cost={1000}
+                                paymentMade={600}
+                                moneyRemaining={400}
+                                timeRemaining={10}
+                            />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard {...{ id: 2, title: "غذاء لسعد", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                            <CampaignCard
+                                id={1}
+                                title={"غذاء للجميع"}
+                                image={"/images/campaign-image.png"}
+                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
+                                cost={1000}
+                                paymentMade={600}
+                                moneyRemaining={400}
+                                timeRemaining={10}
+                            />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard {...{ id: 3, title: "غذاء لسعد برضه", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                            <CampaignCard
+                                id={1}
+                                title={"غذاء للجميع"}
+                                image={"/images/campaign-image.png"}
+                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
+                                cost={1000}
+                                paymentMade={600}
+                                moneyRemaining={400}
+                                timeRemaining={10}
+                            />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard {...{ id: 4, title: "غذاء لسعد كلاكيت تالت مرة", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                            <CampaignCard
+                                id={1}
+                                title={"غذاء للجميع"}
+                                image={"/images/campaign-image.png"}
+                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
+                                cost={1000}
+                                paymentMade={600}
+                                moneyRemaining={400}
+                                timeRemaining={10}
+                            />
                         </div>
                     </div>
                 </div>
@@ -34,66 +77,101 @@ function Home() {
                 <img src="/images/donation-opportunity-bg-1.png" alt="" className="img-fluid position-absolute bottom-0" />
                 <img src="/images/donation-opportunity-bg-2.png" alt="" className="img-fluid position-absolute bottom-0 start-0" />
                 <div className="container">
-                    <p className='text-center'>فرص التبرع</p>
+                    <p className='text-center sec-title'>فرص التبرع</p>
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="zakat.png" title="زكاة" description=" { وَالْمُقِيمِينَ الصَّلَاةَ ۚ وَالْمُؤْتُونَ الزَّكَاةَ وَالْمُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أُولَٰئِكَ سَنُؤْتِيهِمْ أَجْرًا عَظِيمًا } [النساء:162]" borderStyle="bottom"/>
+                            <CategoryCard img="zakat.png" title="زكاة" description=" { وَالْمُقِيمِينَ الصَّلَاةَ ۚ وَالْمُؤْتُونَ الزَّكَاةَ وَالْمُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أُولَٰئِكَ سَنُؤْتِيهِمْ أَجْرًا عَظِيمًا } [النساء:162]" borderStyle="bottom" />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="sadakat.png" title="صدقات" description="{ إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ } [التوبة:60]" borderStyle="bottom"/>
+                            <CategoryCard img="sadakat.png" title="صدقات" description="{ إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ } [التوبة:60]" borderStyle="bottom" />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
                             <CategoryCard img="kafarat.png" title="كفارات" description="{ وَالْجُرُوحَ قِصَاصٌ فَمَن تَصَدَّقَ بِهِ فَهُوَ كَفَّارَةٌ لَّهُ ۚ وَمَن لَّمْ يَحْكُم بِمَا أَنزَلَ اللَّهُ فَأُولَـٰئِكَ هُمُ الظَّالِمُونَ } [المائدة:45] " borderStyle="top" />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="blood-donation.png" title="تبرع بالدم" description="{ وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا } [المائدة:32]" borderStyle="bottom"/>
+                            <CategoryCard img="blood-donation.png" title="تبرع بالدم" description="{ وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا } [المائدة:32]" borderStyle="bottom" />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
                             <CategoryCard img="used-donation.png" title="التبرعات العينية" description="﴿ وَيُؤثِرونَ عَلى أَنفُسِهِم وَلَو كانَ بِهِم خَصاصَةٌ وَمَن يوقَ شُحَّ نَفسِهِ فَأُولئِكَ هُمُ المُفلِحونَ﴾" borderStyle="top" />
                         </div>
-                        
                     </div>
                 </div>
             </div>
             <div className="urgent-cases py-5">
                 <div className="container">
-                    <h1 className='text-center mb-5'>حالات سريعه</h1>
-                    <div className="row">
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard />
-                        </div>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <p className='mb-5 sec-title'>الحالات سريعه</p>
+                        <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
                     </div>
-                </div>
-            </div>
-            <div className="associations py-5">
-                <h1 className='text-center mb-5'>جمعيات </h1>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <AssociationCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <AssociationCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <AssociationCard />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <AssociationCard />
-                        </div>
-                    </div>
+                    <>
+                        <Swiper
+                            spaceBetween={20}
+                            grabCursor={true}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            freeMode={true}
+                            modules={[FreeMode, Pagination]}
+                            breakpoints={{
+                                500: {
+                                    slidesPerView: 1
+                                },
+                                600: {
+                                    slidesPerView: 2
+                                },
+                                992: {
+                                    slidesPerView: 3
+                                },
+                                1200: {
+                                    slidesPerView: 4
+                                }
+                            }}
+                            className="mySwiper"
+                        >
+                            <SwiperSlide>
+                                <CampaignCard
+                                    img={"case-img"}
+                                    title={" تبرع بالملابس "}
+                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <CampaignCard
+                                    img={"case-img"}
+                                    title={" تبرع بالملابس "}
+                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <CampaignCard
+                                    img={"case-img"}
+                                    title={" تبرع بالملابس "}
+                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <CampaignCard
+                                    img={"case-img"}
+                                    title={" تبرع بالملابس "}
+                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <CampaignCard
+                                    img={"case-img"}
+                                    title={" تبرع بالملابس "}
+                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <CampaignCard
+                                    img={"case-img"}
+                                    title={" تبرع بالملابس "}
+                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                />
+                            </SwiperSlide>
+                        </Swiper>
+                    </>
                 </div>
             </div>
             <div className='container py-5'>
