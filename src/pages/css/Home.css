@@ -9,7 +9,8 @@
 /* end Campaigns */
 
 /* start donation opportunities */
-.home-page .donation_opportunities p {
+.home-page .donation_opportunities .sec-title,
+.home-page .urgent-cases .sec-title {
     font-family: "Tajawal" , sans-serif;
     font-size: 56px;
     font-weight: 700;
@@ -18,25 +19,37 @@
     position: relative;
     margin-bottom: 80px;
 }
-.home-page .donation_opportunities p::after {
+.home-page .donation_opportunities .sec-title::after,
+.home-page .urgent-cases .sec-title::after {
     position: absolute;
     content: "";
     width: 50px;
     height: 50px;
-    top: 6px;
-    left: 38%;
     z-index: -1;
     border-radius: 50%;
     background-image: linear-gradient(150.19deg, #DFD4C0 -8.79%, rgba(255, 255, 255, 0) 117.88%);
 }
+.home-page .donation_opportunities p::after {
+    top: 6px;
+    left: 38%;
+}
+.home-page .urgent-cases p::after {
+    top: 20px;
+    left: -4%;
+}
 /* end donation opportunities */
 /* start urgent cases */
-.home-page .urgent-cases {
-    background-color: var(--main-color);
-    color: white;
+.home-page .urgent-cases .more-btn {
+    color: #91683A;
+    border: 1px solid #91683A;
+    border-radius: 35px;
 }
-.home-page .urgent-cases h1 {
-    font-size: 60px;
+.home-page .urgent-cases .swiper-pagination-bullet-active {
+    background-color: #91683A;
+}
+.home-page .urgent-cases .more-btn:hover {
+    background-color: #91683A;
+    color: white;
 }
 /* end urgent cases */
 /* start associations */
