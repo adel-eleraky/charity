@@ -1,6 +1,3 @@
-.CampaignCard {
-    box-shadow: 0px 0px 10px -2px var(--third-color);
-}
 .CampaignCard .content .money_section .money_remaining {
     color: var(--secondary-color);
 }
@@ -8,22 +5,48 @@
     width: 23%;
     text-align: center;
     border-radius: 5px;
+    background-color: #EDDCC8;
 }
-.CampaignCard .content .donation button {
-    width: 45%;
+.CampaignCard .content .donation button:first-child {
+    width: 78%;
+}
+.CampaignCard .content .donation button:last-child {
+    width: 20%;
 }
 .CampaignCard .content .donation .donate-button {
-    background-color: var(--secondary-color);
+    background-color: #91683A;
     color: black;
 }
 .CampaignCard .content .donation .donate-button:hover {
     color: white;
 }
 .CampaignCard .content .donation .addToCart-button {
-    color: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
+    border: 1px solid #91683A;
 }
 .CampaignCard .content .donation .addToCart-button:hover {
-    color: white;
-    background-color: var(--secondary-color);
+    background-color: #91683A;
+}
+.CampaignCard .donation .addToCart-button:hover i {
+    color: white !important;
+}
+.home-page .CampaignCard {
+    padding: 15px;
+    border-radius: 24px;
+    box-shadow: 0px 30px 28px -6px #C5C5C5;
+}
+.home-page .CampaignCard .title {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Tajawal" , sans-serif;
+}
+.home-page .CampaignCard .money_section {
+    background-color: #EDDCC8;
+    border-radius: 16px;
+    padding: 10px;
+}
+.home-page .CampaignCard .money_section .progress {
+    height: 8px;
+}
+.home-page .CampaignCard .money_section .progress-bar {
+    background-color: #343D40;
 }
