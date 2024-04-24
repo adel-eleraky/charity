@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import "./css/CampaignCard.css"
@@ -6,7 +7,7 @@ import { addToCart } from '../rtk/features/CartSlice'
 import { toast } from 'react-toastify';
 
 
-function CampaignCard({ id, title, image, description, cost, paymentMade, moneyRemaining, timeRemaining }) {
+function CampaignCard({ id, title, img, description, cost, paymentMade, moneyRemaining, timeRemaining }) {
 
     const [donationAmount, setDonationAmount] = useState(10)
     const dispatch = useDispatch()
@@ -25,55 +26,41 @@ function CampaignCard({ id, title, image, description, cost, paymentMade, moneyR
         });
     }
     const addToCartHandler = () => {
-        dispatch(addToCart({ id, title, image, donationAmount }))
+        dispatch(addToCart({ id, title, img, donationAmount }))
         notify()
     }
     return (
         <>
             <div className="CampaignCard mb-5" data-aos="fade-up" data-aos-duration="1000">
-                <img src={image} alt="" className="img-fluid w-100 mb-3" />
+                <img src={`/images/${img}.png`} alt="" className="img-fluid w-100 mb-3" />
                 <div className="content p-2">
                     <div className="title text-center mb-3 "> {title} </div>
                     <div className="description mb-3"> {description} </div>
                     <div className="money_section mb-3">
-                        <div className="cost fw-bold text-danger">التكلفة {cost} جنيه</div>
-                        <strike className="payment_made fw-light">تم سداد {paymentMade} جنيه</strike>
-                        <div className="money_remaining">متبقى {moneyRemaining} جنيه</div>
+                        <div className="progress mb-2" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div className="progress-bar" style={{ width: "20%"}}></div>
+                        </div>
+                        <div className="d-flex justify-content-between">
+                            <div>
+                                <p className='m-0'> EGP 50.000 </p>
+                                <p className='m-0 fw-bold'> الهدف </p>
+                            </div>
+                            <div>
+                                <p className='m-0'> EGP 25.000</p>
+                                <p className='m-0 fw-bold'> المتبقى </p>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div className="time-left d-flex justify-content-between mb-3 pb-2 border-bottom">
-                        <div className="days bg-light text-dark fw-bold">12 <br />يوم</div>
-                        <div className="hours bg-light text-dark fw-bold">5<br />ساعات  </div>
-                        <div className="minutes bg-light text-dark fw-bold">53 <br />دقيقة</div>
-                        <div className="seconds bg-light text-dark fw-bold">10 <br />ثوانى</div>
-                    </div>
-                    <div className='d-flex justify-content-between align-items-center mb-3'>
-                        <label htmlFor="email" className="form-label m-0 fs-4 fw-bold" >
-                            تبرع بقيمة
-                        </label>
-                        <div className="input-group has-validation w-25 mx-3 flex-grow-1">
-                            <span
-                                className="input-group-text  rounded-0 rounded-end"
-                                id="basic-addon1"
-                            >
-                                <i className="fa-solid fa-sack-dollar"></i>
-                            </span>
-                            <input
-                                type="number"
-                                id="donation-amount"
-                                name="donation-amount"
-                                className="form-control rounded-0 rounded-start"
-                                placeholder="ادخل قيمة التبرع"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                value={donationAmount}
-                                onChange={(e) => setDonationAmount(e.target.value)}
-                            />
-                        </div>
-                        <span className='fs-4 fw-bold'> جنية </span>
+                        <div className="days text-dark fw-bold">12 <br />يوم</div>
+                        <div className="hours text-dark fw-bold">5<br />ساعات  </div>
+                        <div className="minutes text-dark fw-bold">53 <br />دقيقة</div>
+                        <div className="seconds text-dark fw-bold">10 <br />ثوانى</div>
                     </div>
                     <div className="donation d-flex justify-content-between">
-                        <button className='donate-button btn  rounded-pill'>تبرع الان</button>
-                        <button className='addToCart-button btn rounded-pill' onClick={addToCartHandler}><i className="bi bi-cart-plus ms-2"></i>اضف للسلة</button>
+                        <button className='donate-button btn text-white'>تبرع الان</button>
+                        <button className='addToCart-button btn ' onClick={addToCartHandler}><i className="bi bi-cart-plus " style={{ color: "#91683A"}}></i> </button>
                     </div>
                 </div>
             </div>
