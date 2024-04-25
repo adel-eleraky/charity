@@ -32,10 +32,10 @@ function CampaignCard({ id, title, img, description, cost, paymentMade, moneyRem
     return (
         <>
             <div className="CampaignCard mb-5" data-aos="fade-up" data-aos-duration="1000">
-                <img src={`/images/${img}.png`} alt="" className="img-fluid w-100 mb-3" />
+                <img src={`/images/${img}.png`} alt="" className="img-fluid mb-3" />
                 <div className="content p-2">
                     <div className="title text-center mb-3 "> {title} </div>
-                    <div className="description mb-3"> {description} </div>
+                    <div className="description text-center mb-3"> {description} </div>
                     <div className="money_section mb-3">
                         <div className="progress mb-2" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                             <div className="progress-bar" style={{ width: "20%"}}></div>
@@ -51,12 +51,6 @@ function CampaignCard({ id, title, img, description, cost, paymentMade, moneyRem
                             </div>
                         </div>
                         
-                    </div>
-                    <div className="time-left d-flex justify-content-between mb-3 pb-2 border-bottom">
-                        <div className="days text-dark fw-bold">12 <br />يوم</div>
-                        <div className="hours text-dark fw-bold">5<br />ساعات  </div>
-                        <div className="minutes text-dark fw-bold">53 <br />دقيقة</div>
-                        <div className="seconds text-dark fw-bold">10 <br />ثوانى</div>
                     </div>
                     <div className="donation d-flex justify-content-between">
                         <button className='donate-button btn text-white'>تبرع الان</button>
