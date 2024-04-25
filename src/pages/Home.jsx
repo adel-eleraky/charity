@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import "./css/Home.css"
 import CampaignCard from '../components/CampaignCard'
 import CategoryCard from '../components/CategoryCard'
+import CaseCard from '../components/CaseCard'
 import AssociationCard from '../components/AssociationCard'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules';
@@ -19,54 +20,22 @@ function Home() {
             <Header />
             <div className="Campaigns py-5">
                 <div className="container">
-                    <h1 className='text-center mb-5' data-aos="fade-up" data-aos-duration="1000">حملات</h1>
                     <div className="row">
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard
-                                id={1}
-                                title={"غذاء للجميع"}
-                                image={"/images/campaign-image.png"}
-                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
-                                cost={1000}
-                                paymentMade={600}
-                                moneyRemaining={400}
-                                timeRemaining={10}
-                            />
+                        <div className="col-12 col-lg-5 mb-5 mb-lg-0">
+                            <p className="sec-title mb-3 mt-5"> الحملات </p>
+                            <p className="content"> هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان  </p>
+                            <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
                         </div>
-                        <div className="col-12 col-md-6 col-lg-4">
+                        <div className="col-12 col-lg-7 d-flex justify-content-between">
                             <CampaignCard
-                                id={1}
-                                title={"غذاء للجميع"}
-                                image={"/images/campaign-image.png"}
-                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
-                                cost={1000}
-                                paymentMade={600}
-                                moneyRemaining={400}
-                                timeRemaining={10}
+                                img={"campaign-img"}
+                                title={"هو ببساطة نص شكلي "}
+                                description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
                             />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
                             <CampaignCard
-                                id={1}
-                                title={"غذاء للجميع"}
-                                image={"/images/campaign-image.png"}
-                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
-                                cost={1000}
-                                paymentMade={600}
-                                moneyRemaining={400}
-                                timeRemaining={10}
-                            />
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-4">
-                            <CampaignCard
-                                id={1}
-                                title={"غذاء للجميع"}
-                                image={"/images/campaign-image.png"}
-                                description={"وفرلهم احتيجاتهم الاساسية من الغذاء"}
-                                cost={1000}
-                                paymentMade={600}
-                                moneyRemaining={400}
-                                timeRemaining={10}
+                                img={"campaign-img"}
+                                title={"هو ببساطة نص شكلي "}
+                                description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
                             />
                         </div>
                     </div>
@@ -129,42 +98,42 @@ function Home() {
                             className="mySwiper"
                         >
                             <SwiperSlide>
-                                <CampaignCard
+                                <CaseCard
                                     img={"case-img"}
                                     title={" تبرع بالملابس "}
                                     description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
                                 />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <CampaignCard
+                                <CaseCard
                                     img={"case-img"}
                                     title={" تبرع بالملابس "}
                                     description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
                                 />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <CampaignCard
+                                <CaseCard
                                     img={"case-img"}
                                     title={" تبرع بالملابس "}
                                     description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
                                 />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <CampaignCard
+                                <CaseCard
                                     img={"case-img"}
                                     title={" تبرع بالملابس "}
                                     description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
                                 />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <CampaignCard
+                                <CaseCard
                                     img={"case-img"}
                                     title={" تبرع بالملابس "}
                                     description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
                                 />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <CampaignCard
+                                <CaseCard
                                     img={"case-img"}
                                     title={" تبرع بالملابس "}
                                     description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
