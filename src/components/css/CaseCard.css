@@ -1,0 +1,52 @@
+.CaseCard .content .money_section .money_remaining {
+    color: var(--secondary-color);
+}
+.CaseCard .content .time-left div {
+    width: 23%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #EDDCC8;
+}
+.CaseCard .content .donation button:first-child {
+    width: 78%;
+}
+.CaseCard .content .donation button:last-child {
+    width: 20%;
+}
+.CaseCard .content .donation .donate-button {
+    background-color: #91683A;
+    color: black;
+}
+.CaseCard .content .donation .donate-button:hover {
+    color: white;
+}
+.CaseCard .content .donation .addToCart-button {
+    border: 1px solid #91683A;
+}
+.CaseCard .content .donation .addToCart-button:hover {
+    background-color: #91683A;
+}
+.CaseCard .donation .addToCart-button:hover i {
+    color: white !important;
+}
+.home-page .CaseCard {
+    padding: 15px;
+    border-radius: 24px;
+    box-shadow: 0px 30px 28px -6px #C5C5C5;
+}
+.home-page .CaseCard .title {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Tajawal" , sans-serif;
+}
+.home-page .CaseCard .money_section {
+    background-color: #EDDCC8;
+    border-radius: 16px;
+    padding: 10px;
+}
+.home-page .CaseCard .money_section .progress {
+    height: 8px;
+}
+.home-page .CaseCard .money_section .progress-bar {
+    background-color: #343D40;
+}
