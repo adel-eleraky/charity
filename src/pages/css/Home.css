@@ -1,7 +1,26 @@
 /* start Campaigns */
 .home-page .Campaigns {
-    background-color: var(--main-color);
+    margin-top: 90px;
+}
+.home-page .Campaigns .CampaignCard {
+    width: 47%;
+}
+.home-page .Campaigns .CampaignCard:first-child {
+    margin-top: 60px;
+}
+.home-page .CampaignCard {
+    height: fit-content;
+}
+.home-page .Campaigns .content {
+    font-family: "Tajawal" , sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+.home-page .Campaigns .more-btn {
     color: white;
+    border: 1px solid #91683A;
+    background-color: #91683A;
+    width: 150px;
 }
 .home-page .Campaigns h1 {
     font-size: 60px;
@@ -10,6 +29,7 @@
 
 /* start donation opportunities */
 .home-page .donation_opportunities .sec-title,
+.home-page .Campaigns .sec-title,
 .home-page .urgent-cases .sec-title {
     font-family: "Tajawal" , sans-serif;
     font-size: 56px;
@@ -20,6 +40,7 @@
     margin-bottom: 80px;
 }
 .home-page .donation_opportunities .sec-title::after,
+.home-page .Campaigns .sec-title::after,
 .home-page .urgent-cases .sec-title::after {
     position: absolute;
     content: "";
@@ -31,11 +52,15 @@
 }
 .home-page .donation_opportunities p::after {
     top: 6px;
-    left: 38%;
+    right: 340px;
+}
+.home-page .Campaigns p::after {
+    top: 5px;
+    right: 160px;
 }
 .home-page .urgent-cases p::after {
     top: 20px;
-    left: -4%;
+    right: 140px;
 }
 /* end donation opportunities */
 /* start urgent cases */
