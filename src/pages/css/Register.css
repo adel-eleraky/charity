@@ -15,7 +15,7 @@
     left: unset;
 }
 @media (max-width: 768px) {
-    .img-column {
+    .register-page .img-column {
         display: none;
     }
 }

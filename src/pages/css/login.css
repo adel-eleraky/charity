@@ -15,7 +15,7 @@
     background-color: #a1cefa;
 }
 @media (max-width: 768px) {
-    .img-column {
+    .login-page .img-column {
         display: none;
     }
 }
