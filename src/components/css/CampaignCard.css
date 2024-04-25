@@ -1,3 +1,28 @@
+.CampaignCard {
+    position: relative;
+    background-color: white;
+}
+.CampaignCard::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 10px);
+    border-radius: 24px;
+    z-index: -1;
+    top: -10px;
+    background-image: linear-gradient(#EDDCC8 ,white);
+}
+.CampaignCard img {
+    position: absolute;
+    width: 128px;
+    top: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.CampaignCard .content {
+    margin-top: 65px;
+}
 .CampaignCard .content .money_section .money_remaining {
     color: var(--secondary-color);
 }
