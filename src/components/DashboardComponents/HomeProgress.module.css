@@ -1,0 +1,14 @@
+.progress {
+  padding: 8px 6px 8px 6px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.positive {
+  color: rgba(1, 195, 106, 1);
+  background-color: rgba(230, 250, 242, 1);
+}
+
+.negative {
+  background-color: rgba(254, 237, 237, 1);
+}
