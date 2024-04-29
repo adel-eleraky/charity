@@ -1,8 +1,21 @@
 .progress {
-  padding: 8px 6px 8px 6px;
   display: flex;
-  text-align: center;
+  justify-content: center;
   align-items: center;
+  column-gap: 2px;
+
+  width: 53px;
+  height: 1.5rem;
+  border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+}
+.progress span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
 }
 .positive {
   color: rgba(1, 195, 106, 1);
@@ -11,4 +24,5 @@
 
 .negative {
   background-color: rgba(254, 237, 237, 1);
+  color: rgba(247, 82, 82, 1);
 }

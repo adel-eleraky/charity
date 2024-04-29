@@ -1,22 +1,19 @@
-/* eslint-disable no-unused-vars */
-window.addEventListener('load', () => {
+// /* eslint-disable no-unused-vars */
+// document.addEventListener("DOMContentLoaded", () => {
+//   let sideBarToggler = document.querySelector(".sidebar-toggler");
+//   console.log(sideBarToggler);
+//   let sideBar = document.querySelector(".sidebar-column");
 
-    let sideBarToggler = document.querySelector(".sidebar-toggler")
-    let sideBar = document.querySelector(".sidebar-column")
+//   // open sidebar
+//   sideBarToggler.addEventListener("click", () => {
+//     sideBar.classList.toggle("shown");
+//     console.log("hello");
+//   });
 
-    // open sidebar
-    sideBarToggler.addEventListener("click", () => {
+//   let closeSideBarBtn = document.querySelector(".close-sidebar");
 
-        sideBar.classList.toggle("shown")
-
-    })
-
-    let closeSideBarBtn = document.querySelector(".close-sidebar")
-
-    // close sidebar
-    closeSideBarBtn.addEventListener("click", () => {
-
-        sideBar.classList.toggle("shown")
-
-    })
-})
+//   // close sidebar
+//   closeSideBarBtn.addEventListener("click", () => {
+//     sideBar.classList.toggle("shown");
+//   });
+// });

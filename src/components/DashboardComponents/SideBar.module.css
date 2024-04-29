@@ -2,9 +2,8 @@
   background: var(--main-dashboard-color)
     url("../../../public/images/metal-texture-with-dust-scratches-cracks-textured-backgrounds\ 2.png");
   background-blend-mode: color-burn;
+  background-size: cover;
   height: 100%;
-  font-family: "Tajawal", sans-serif;
-  font-weight: 500;
   font-size: 19px;
   line-height: 22.8px;
   position: relative;

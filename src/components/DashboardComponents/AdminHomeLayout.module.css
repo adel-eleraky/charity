@@ -1,0 +1,37 @@
+.container .heading {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.container .heading :global(.inner-container) {
+  display: flex;
+  justify-content: left;
+}
+.container .box {
+  display: flex;
+  align-items: center;
+  width: 220px;
+  background-color: #303845;
+  border-radius: 5px;
+  color: white;
+  padding: 7px 7px;
+  margin-bottom: 20px;
+}
+.container .box span.img {
+  width: 70px;
+  background-color: red;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 20px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .box > div > div {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.container .box > div > span {
+  font-weight: 100;
+}

@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
-import "./assets/js/dashboard.js";
-import "./assets/css/dashboard.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
@@ -17,7 +15,6 @@ import Register from "./pages/Register";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import UsersComponent from "./pages/AdminDashboard/UsersComponent";
 import CharitiesComponent from "./pages/AdminDashboard/CharitiesComponent";
-import AdminHomeComponent from "./pages/AdminDashboard/AdminHomeComponent";
 import CharityDashboard from "./pages/CharityDashboard/CharityDashboard";
 import CharityHomeComponent from "./pages/CharityDashboard/CharityHomeComponent";
 import CasesComponent from "./pages/CharityDashboard/CasesComponent";
@@ -29,6 +26,7 @@ import ForgetPassword from "./pages/ForgetPassword.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Cart from "./pages/Cart.jsx";
+import AdminHomeLayout from "./components/DashboardComponents/AdminHomeLayout.jsx";
 
 AOS.init();
 
@@ -74,7 +72,8 @@ function App() {
               <Route path="cart" element={<Cart />} />
             </Route>
             <Route path="admin-dashboard" element={<AdminDashboard />}>
-              <Route path="home" element={<AdminHomeComponent />} />
+              <Route index element={<Navigate replace to="home" />} />
+              <Route path="home" element={<AdminHomeLayout />} />
               <Route path="users" element={<UsersComponent />} />
               <Route path="charities" element={<CharitiesComponent />} />
             </Route>

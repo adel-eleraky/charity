@@ -2,7 +2,27 @@
   width: 220px;
   background: rgba(255, 255, 255, 1);
   color: rgba(18, 18, 18, 1);
-  border-radius: 5px;
-  padding: 7px 7px;
-  flex-wrap: wrap;
+  padding: 1.5rem;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.box .title {
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.box .stats {
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
+}
+.box .stats .opt-num {
+  font-size: 28px;
+  line-height: 24px;
 }
