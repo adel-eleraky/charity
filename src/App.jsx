@@ -27,6 +27,7 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Cart from "./pages/Cart.jsx";
 import AdminHomeLayout from "./components/DashboardComponents/AdminHomeLayout.jsx";
+import AdminCharitiesLayout from "./components/DashboardComponents/AdminCharitiesLayout.jsx";
 
 AOS.init();
 
@@ -75,7 +76,7 @@ function App() {
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<AdminHomeLayout />} />
               <Route path="users" element={<UsersComponent />} />
-              <Route path="charities" element={<CharitiesComponent />} />
+              <Route path="charities" element={<AdminCharitiesLayout />} />
             </Route>
             <Route path="charity-dashboard" element={<CharityDashboard />}>
               <Route path="home" element={<CharityHomeComponent />} />

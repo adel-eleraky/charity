@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap");
+/* start charities layout styling */
+
+.container .heading {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.container .heading :global(.inner-container) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .heading .title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.container .heading .search-filter {
+  display: flex;
+  gap: 1rem;
+}
+/* end charities layout styling */
+
+/* start seach styling */
+.container .heading input[type="text"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 195px;
+  padding: 12px 36px 12px 12px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  background-image: url("/public/images/search-icon.svg");
+  background-position: calc(100% - 12px) 12px;
+  background-repeat: no-repeat;
+}
+.container .heading .search-filter input[type="text"]::placeholder {
+  font-weight: 500;
+  color: rgba(200, 200, 200, 1);
+}
+/* End seach styling */
+
+/* start filter-button styling  */
+.container .heading .search-filter .btn-filter {
+  border: none;
+  width: 146px;
+  height: 40px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(145, 104, 58, 1);
+  color: white;
+}
+.container .heading .search-filter .btn-filter span {
+  font-family: "Readex Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+/* end filter-button styling  */
+
+/* start table styling */
+/* End table styling */
