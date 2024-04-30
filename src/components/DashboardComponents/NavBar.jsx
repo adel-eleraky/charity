@@ -2,11 +2,14 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import styles from "./NavBar.module.css";
 /* eslint-disable  */
-function NavBar({ onToggleSidebar }) {
-  const [route, setRoute] = React.useState("");
-  const location = useLocation();
+function NavBar({ isOpenSidebar, onToggleSidebar }) {
+  const showBorder = isOpenSidebar ? "show-border" : "";
   return (
-    <div className={`${styles["dashboard-nav"]}`}>
+    <div
+      className={`${styles["dashboard-nav"]} ${
+        isOpenSidebar ? styles["show-border"] : ""
+      }`}
+    >
       <div className="inner-container">
         <svg
           onClick={() => onToggleSidebar((isOpen) => !isOpen)}

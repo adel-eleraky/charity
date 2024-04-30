@@ -6,32 +6,50 @@
   display: flex;
   justify-content: left;
 }
-.container .box {
+
+.container .stats :global(.inner-container) {
   display: flex;
-  align-items: center;
-  width: 220px;
-  background-color: #303845;
-  border-radius: 5px;
-  color: white;
-  padding: 7px 7px;
-  margin-bottom: 20px;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
 }
-.container .box span.img {
-  width: 70px;
-  background-color: red;
-  border-radius: 5px;
-  padding: 5px;
-  margin-left: 20px;
-  text-align: center;
-  height: 100%;
+.container .stats .small {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  row-gap: 1rem;
+  flex-basis: 63%;
+  flex-wrap: wrap;
 }
-.container .box > div > div {
-  margin-bottom: 10px;
-  font-weight: bold;
+.container .stats .small .row {
+  display: flex;
+  column-gap: 1rem;
+  flex: 1;
+  flex-basis: 100%;
 }
-.container .box > div > span {
-  font-weight: 100;
+.container .stats .big {
+  display: flex;
+  flex-basis: 37%;
+}
+
+@media (max-width: 1199px) {
+  .container .stats :global(.inner-container) {
+    flex-wrap: wrap;
+  }
+  .container .stats .small {
+    flex-basis: 100%;
+  }
+  .container .stats .big {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .container .stats .small {
+  }
+  .container .stats .small .row {
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+  .container .stats .small .row > div {
+    flex-basis: 100%;
+  }
+  .container .stats .big {
+  }
 }

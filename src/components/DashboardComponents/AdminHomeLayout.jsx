@@ -12,48 +12,51 @@ function AdminHomeLayout() {
           <ShowDate />
         </div>
       </div>
-      <div className="stats">
+      <div className={styles.stats}>
         <div className="inner-container">
-          <AdminHomeBox
-            title="عدد الجمعيات"
-            imagePath="/images/admin-users.svg"
-            value="222"
-          >
-            <HomeProgress value="10" isPositive={true} />
-          </AdminHomeBox>
-          <AdminHomeBox
-            title="عدد الجمعيات"
-            imagePath="/images/admin-users.svg"
-            value="222"
-          >
-            <HomeProgress value="10" isPositive={true} />
-          </AdminHomeBox>
-          <AdminHomeBox
-            title="عدد الجمعيات"
-            imagePath="/images/admin-users.svg"
-            value="222"
-          >
-            <HomeProgress value="10" isPositive={true} />
-          </AdminHomeBox>
-          <AdminHomeBox
-            title="عدد الجمعيات"
-            imagePath="/images/admin-users.svg"
-            value="222"
-          >
-            <HomeProgress value="10" isPositive={true} />
-          </AdminHomeBox>
-          <div
-            className="col-sm-4 box"
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-          >
-            <span className="img">
-              <img src="/images/charity.svg" alt="" />
-            </span>
-            <div>
-              <div> عدد الحالات </div>
-              <span>215</span>
+          <div className={styles.small}>
+            <div className={styles.row}>
+              <AdminHomeBox
+                title="عدد الجمعيات"
+                imagePath="/images/admin-users.svg"
+                value="222"
+              >
+                <HomeProgress value="10" isPositive={true} />
+              </AdminHomeBox>
+              <AdminHomeBox
+                title="عدد الجمعيات"
+                imagePath="/images/admin-users.svg"
+                value="222"
+              >
+                <HomeProgress value="10" isPositive={true} />
+              </AdminHomeBox>
             </div>
+            <div className={styles.row}>
+              <AdminHomeBox
+                title="عدد الجمعيات"
+                imagePath="/images/admin-users.svg"
+                value="222"
+              >
+                <HomeProgress value="10" isPositive={true} />
+              </AdminHomeBox>
+              <AdminHomeBox
+                title="عدد الجمعيات"
+                imagePath="/images/admin-users.svg"
+                value="222"
+              >
+                <HomeProgress value="10" isPositive={true} />
+              </AdminHomeBox>
+            </div>
+          </div>
+          <div className={styles.big}>
+            <AdminHomeBox
+              isBig={true}
+              title="عدد الجمعيات"
+              imagePath="/images/admin-charity.svg"
+              value="222"
+            >
+              <HomeProgress value="10" isPositive={true} />
+            </AdminHomeBox>
           </div>
         </div>
       </div>

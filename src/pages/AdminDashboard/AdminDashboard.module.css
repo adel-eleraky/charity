@@ -6,6 +6,36 @@
   font-family: "Tajawal", sans-serif;
   font-weight: 500;
   font-style: normal;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+.dashboard .sidebar-column {
+  min-width: 235px;
+}
+@media (max-width: 767px) {
+  .dashboard .sidebar-column.open {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    height: 100%;
+  }
+}
+@media (max-width: 991px) {
+  .dashboard .sidebar-column.close {
+    /* just temp  */
+    display: none;
+  }
+  .dashboard .sidebar-column.open {
+    /* just temp */
+    display: block;
+    width: 235px;
+  }
+}
+
+.dashboard .main-content {
+  flex: 1;
 }
 .dashboard .main-content :global(.inner-container) {
   padding-left: 1.5rem;

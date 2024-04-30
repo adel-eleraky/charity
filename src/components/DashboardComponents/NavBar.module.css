@@ -1,7 +1,6 @@
 .dashboard-nav {
   position: relative;
   background: rgba(255, 255, 255, 1);
-  border-top-right-radius: 32px;
   box-shadow: 0px 20px 50px 0px rgba(49, 49, 49, 0.05);
   padding: 1rem 0;
 }
@@ -23,13 +22,13 @@
 .dashboard-nav :global(.inner-container) {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
-@media (min-width: 992px) {
-  .dashboard-nav :global(.inner-container) {
-    justify-content: flex-end;
-  }
+/* @media (min-width: 992px) {
+.dashboard-nav :global(.inner-container) {
+  justify-content: flex-end;
 }
+} */
 
 .dashboard-nav .user-info-container {
   /* so that not diplaying anything pefore the .user-info-elements */
@@ -77,20 +76,26 @@
   stroke: #332414;
 }
 
-.dashboard-nav button {
-  background-color: transparent;
-  color: black;
-  border: none;
-  padding: 0;
+@media (max-width: 767px) {
+  .dashboard-nav {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+  }
 }
-.dashboard-nav span.badge {
-  top: 15% !important;
-  left: 80% !important;
+@media (min-width: 768px) {
+  .dashboard-nav.show-border {
+    border-top-right-radius: 32px;
+  }
 }
-.dashboard-nav .dropdown .dropdown-toggle::after {
-  display: none;
+@media (min-width: 992px) {
+  .dashboard-nav {
+    border-top-right-radius: 32px;
+  }
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .dashboard-nav :global(.sidebar-toggler) {
     display: block !important;
   }
