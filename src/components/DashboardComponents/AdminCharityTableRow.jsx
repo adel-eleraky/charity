@@ -4,11 +4,11 @@ import styles from "./AdminCharityTable.module.css";
 import CharityStatus from "./CharityStatus";
 import { useRef } from "react";
 import CharityDetails from "./CharityDetails";
+import Popup from "reactjs-popup";
 function AdminCharityTableRow({ charity }) {
   // for using normal dom select and adding event to it you should loop over them in the table component and add event to them
   // so use useRef
   const [isActionShow, setIsActionShow] = useState(false);
-  const actionButton = useRef(null);
   function handleToggleAction() {
     setIsActionShow((a) => !a);
   }
@@ -55,7 +55,7 @@ function AdminCharityTableRow({ charity }) {
         </div>
         <div className={`${styles.col} ${styles["col-8"]}`} data-label="btn">
           <div className={styles["button-action-container"]}>
-            <button ref={actionButton} onClick={handleToggleAction}>
+            <button onClick={handleToggleAction}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="14"
@@ -68,12 +68,15 @@ function AdminCharityTableRow({ charity }) {
                 />
               </svg>
             </button>
-            {isActionShow && <AdminCharityActions />}
-            {/* {isDetailsShow && <CharityDetails/>} */}
+            {isActionShow && (
+              <AdminCharityActions handleToggleAction={handleToggleAction}>
+                <CharityDetails charityId={charity.id} />
+              </AdminCharityActions>
+            )}
           </div>
         </div>
       </li>
-      <CharityDetails />
+      {/* <CharityDetails /> */}
     </>
   );
 }

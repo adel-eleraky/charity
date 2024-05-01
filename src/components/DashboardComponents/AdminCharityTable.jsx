@@ -1,3 +1,4 @@
+import Popup from "reactjs-popup";
 import styles from "./AdminCharityTable.module.css";
 import AdminCharityTableRow from "./AdminCharityTableRow";
 function AdminCharityTable() {
@@ -90,7 +91,8 @@ function AdminCharityTable() {
       </div>
       <div className={styles.rows}>
         <AdminCharityTableRow charity={charities[0]} />
-        {/* <AdminCharityTableRow charity={charities[1]} />
+
+        <AdminCharityTableRow charity={charities[1]} />
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
@@ -103,7 +105,7 @@ function AdminCharityTable() {
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
-        <AdminCharityTableRow charity={charities[2]} /> */}
+        <AdminCharityTableRow charity={charities[2]} />
       </div>
     </ul>
   );

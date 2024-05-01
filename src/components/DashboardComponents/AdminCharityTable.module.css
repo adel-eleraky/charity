@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  padding: 0 1.5rem;
+  padding: 0 24px 0 20px;
   font-size: 14px;
   letter-spacing: 0.03em;
 }
@@ -51,6 +51,7 @@
 .rows::-webkit-scrollbar {
   display: block;
   width: 6px;
+  /* margin-right: 50px; */
 }
 .rows::-webkit-scrollbar-thumb {
   background-color: #eee;
