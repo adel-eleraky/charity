@@ -9,11 +9,14 @@
 .table {
   /* direction: rtl; */
   padding-left: 0;
+  margin-bottom: 0;
   /* display: inherit;
   flex-direction: inherit;
   flex-grow: inherit; */
 }
-
+.header-wrapper {
+  padding-left: 14px;
+}
 .table-header {
   display: flex;
   justify-content: space-between;
@@ -36,15 +39,18 @@
   color: rgba(18, 18, 18, 1);
 }
 
+/* 8 + 6 = 14 so make the wrapper padding-left:14px to align
+  then make the inner-container margin = 24px - 14px = 10px
+*/
 .table .rows {
   overflow: auto;
-  height: 500px;
+  height: calc(100vh - 214px);
   padding-left: 8px;
+  padding-bottom: 10px;
 }
 .rows::-webkit-scrollbar {
   display: block;
   width: 6px;
-  position: relative;
 }
 .rows::-webkit-scrollbar-thumb {
   background-color: #eee;
@@ -106,10 +112,23 @@
   flex-basis: 6.5%;
   text-align: left;
 }
-.col-8 svg:hover path {
+.table-row .col-8 .button-action-container {
+  position: relative;
+}
+.col-8 button {
+  background-color: transparent;
+  border: none;
+  line-height: 1;
+}
+.col-8 button:hover path {
   fill: rgba(182, 88, 32, 1);
 }
-
+.table-row .col-8 .button-action-container > div {
+  position: absolute;
+  left: -1.5rem;
+  top: 28px;
+  z-index: 100;
+}
 @media all and (max-width: 767px) {
   .table-header {
     display: none;

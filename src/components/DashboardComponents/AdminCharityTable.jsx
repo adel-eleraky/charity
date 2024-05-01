@@ -35,60 +35,62 @@ function AdminCharityTable() {
   ];
   return (
     <ul className={styles.table}>
-      <li className={styles["table-header"]}>
-        <div className={`${styles.col} ${styles["col-1"]}`}>
-          {/* you can move to new component called TableAttribute. */}
-          <button>
-            id
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-        <div className={`${styles.col} ${styles["col-2"]}`}>
-          <button>
-            اسم الجمعية
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-        <div className={`${styles.col} ${styles["col-3"]}`}>
-          <button>
-            عدد الحالات
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-        <div className={`${styles.col} ${styles["col-4"]}`}>
-          <button>
-            تاريخ التسجل علي الموقع
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-        <div className={`${styles.col} ${styles["col-5"]}`}>
-          <button>
-            الاموال المجمعة
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-        <div className={`${styles.col} ${styles["col-6"]}`}>
-          <button>
-            عدد المتبرعين
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-        <div className={`${styles.col} ${styles["col-7"]}`}>
-          <button>
-            نوع الحالة
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-        <div className={`${styles.col} ${styles["col-8"]}`}>
-          <button>
-            الاكشن
-            <img src="/images/admin-arrow-down.svg" alt="" />
-          </button>
-        </div>
-      </li>
+      <div className={styles["header-wrapper"]}>
+        <li className={styles["table-header"]}>
+          <div className={`${styles.col} ${styles["col-1"]}`}>
+            {/* you can move to new component called TableAttribute. */}
+            <button>
+              id
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+          <div className={`${styles.col} ${styles["col-2"]}`}>
+            <button>
+              اسم الجمعية
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+          <div className={`${styles.col} ${styles["col-3"]}`}>
+            <button>
+              عدد الحالات
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+          <div className={`${styles.col} ${styles["col-4"]}`}>
+            <button>
+              تاريخ التسجل علي الموقع
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+          <div className={`${styles.col} ${styles["col-5"]}`}>
+            <button>
+              الاموال المجمعة
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+          <div className={`${styles.col} ${styles["col-6"]}`}>
+            <button>
+              عدد المتبرعين
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+          <div className={`${styles.col} ${styles["col-7"]}`}>
+            <button>
+              نوع الحالة
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+          <div className={`${styles.col} ${styles["col-8"]}`}>
+            <button>
+              الاكشن
+              <img src="/images/admin-arrow-down.svg" alt="" />
+            </button>
+          </div>
+        </li>
+      </div>
       <div className={styles.rows}>
         <AdminCharityTableRow charity={charities[0]} />
-        <AdminCharityTableRow charity={charities[1]} />
+        {/* <AdminCharityTableRow charity={charities[1]} />
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
@@ -98,6 +100,10 @@ function AdminCharityTable() {
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
         <AdminCharityTableRow charity={charities[2]} />
+        <AdminCharityTableRow charity={charities[2]} />
+        <AdminCharityTableRow charity={charities[2]} />
+        <AdminCharityTableRow charity={charities[2]} />
+        <AdminCharityTableRow charity={charities[2]} /> */}
       </div>
     </ul>
   );

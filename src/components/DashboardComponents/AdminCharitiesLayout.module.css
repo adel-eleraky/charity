@@ -68,4 +68,7 @@
 /* end filter-button styling  */
 
 /* start table styling */
+.container div:not(:first-child) :global(.inner-container) {
+  padding-left: 10px;
+}
 /* End table styling */
