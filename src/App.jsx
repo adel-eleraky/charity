@@ -29,7 +29,7 @@ import ForgetPassword from "./pages/ForgetPassword.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Cart from "./pages/Cart.jsx";
-import Used from "./pages/used.jsx";
+import Used from "./pages/Used.jsx";
 
 AOS.init();
 
