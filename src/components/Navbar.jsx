@@ -41,7 +41,7 @@ function Navbar() {
                         </div>
                         <div className="col-4 col-md-2 ">
                             <div className="d-flex justify-content-end align-items-center">
-                                <Link to="account" className="nav-link acc_link d-flex align-items-center justify-content-center" href="#"> <i className="fa-regular fa-user acc_logo fs-3" style={{color: "#2b373d"}}></i></Link>
+                                <Link to="account" className="nav-link acc_link d-flex align-items-center justify-content-center" href="#"> <i className="fa-regular fa-user acc_logo fs-3" style={{ color: "#2b373d" }}></i></Link>
                                 <Link to="cart">
                                     <div className='position-relative'>
                                         <img src="/images/cart.png" alt="" className="img-fluid cart_logo" />
@@ -57,63 +57,23 @@ function Navbar() {
             </div>
             <div className="second-nav py-3">
                 <div className="container">
-                    <ul className='d-flex justify-content-center m-0 p-0'>
-                        <li className="mx-4">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                زكاة
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li className="mx-4">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                صدقات
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li className="mx-4">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                كفارات
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li className="mx-4">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                اضاحى
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li className="mx-4">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                تبرع بالدم
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div className='d-flex justify-content-center m-0 p-0'>
+                        <Link to="" className="category-link mx-4">
+                            زكاة
+                        </Link>
+                        <Link to="" className="category-link mx-4">
+                            صدقات
+                        </Link>
+                        <Link to="" className="category-link mx-4">
+                            اضاحى
+                        </Link>
+                        <Link to="" className="category-link mx-4">
+                            كفارات
+                        </Link>
+                        <Link to="used" className="category-link mx-4">
+                            المستعمل
+                        </Link>
+                    </div>
                 </div>
             </div>
             <NavOffcanvas />
