@@ -73,7 +73,7 @@ function Login() {
       if (loginStatus === "loading") toast.loading("جارى تسجيل الدخول");
       if (loginStatus === "finished") {
         toast.success("تم تسجيل الدخول بنجاح");
-        navigate("/user-dashboard");
+        navigate("/account/activate");
       }
       if (loginStatus === "failed") toast.error("حدث خطأ فى الدخول");
     },
