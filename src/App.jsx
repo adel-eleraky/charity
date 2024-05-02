@@ -31,6 +31,7 @@ import AdminHomeLayout from "./components/DashboardComponents/AdminHomeLayout.js
 import AdminCharitiesLayout from "./components/DashboardComponents/AdminCharitiesLayout.jsx";
 import AdminUsersLayout from "./components/DashboardComponents/AdminUsersLayout.jsx";
 import AdminTransactionsLayout from "./components/DashboardComponents/AdminTransactionsLayout.jsx";
+import Used from "./pages/Used";
 
 AOS.init();
 
