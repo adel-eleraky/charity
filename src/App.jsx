@@ -27,6 +27,10 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Cart from "./pages/Cart.jsx";
 
+import AdminHomeLayout from "./components/DashboardComponents/AdminHomeLayout.jsx";
+import AdminCharitiesLayout from "./components/DashboardComponents/AdminCharitiesLayout.jsx";
+import AdminUsersLayout from "./components/DashboardComponents/AdminUsersLayout.jsx";
+import AdminTransactionsLayout from "./components/DashboardComponents/AdminTransactionsLayout.jsx";
 
 AOS.init();
 
