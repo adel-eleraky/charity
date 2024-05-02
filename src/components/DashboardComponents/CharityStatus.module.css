@@ -1,0 +1,24 @@
+.status {
+  width: 119px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -o-border-radius: 24px;
+}
+.accepted {
+  background: #ebf5ed;
+  color: rgba(58, 151, 76, 1);
+}
+.rejected {
+  background: #fae8ea;
+  color: rgba(209, 26, 42, 1);
+}
+.pending {
+  background: #fef4eb;
+  color: rgba(242, 147, 57, 1);
+}

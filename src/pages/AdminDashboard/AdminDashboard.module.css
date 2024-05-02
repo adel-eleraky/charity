@@ -1,0 +1,88 @@
+/*start main content  */
+/* global container */
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap");
+
+.dashboard {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+.dashboard .sidebar-column {
+  min-width: 235px;
+}
+@media (max-width: 767px) {
+  .dashboard .sidebar-column.open {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    height: 100%;
+  }
+}
+@media (max-width: 991px) {
+  .dashboard .sidebar-column.close {
+    /* just temp  */
+    display: none;
+  }
+  .dashboard .sidebar-column.open {
+    /* just temp */
+    display: block;
+    width: 235px;
+  }
+}
+
+.dashboard .main-content {
+  flex: 1;
+}
+.dashboard .main-content :global(.inner-container) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.dashboard .main-content {
+  /* enable in the last */
+  background-color: rgba(250, 250, 251, 1);
+  /* for top right border of the navbar */
+  z-index: 1;
+  position: relative;
+}
+.dashboard .main-content .table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+.dashboard .main-content .table {
+  width: 1150px;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+/*end main content  */
+
+/* media for sidebar */
+/* 
+@media (max-width: 991px) {
+  .dashboard :global(.row) {
+    position: relative;
+  }
+  .dashboard .sidebar-column {
+    position: absolute;
+    right: -100%;
+    transition: 1s;
+    z-index: 1000;
+    height: 100%;
+  }
+  .dashboard .sidebar-column.open {
+    right: 0;
+    width: 235px;
+  }
+  icon
+  .dashboard .sidebar-column .close-sidebar {
+    display: block !important;
+    top: 10px;
+    left: 15px;
+  }
+} */
+/* media for sidebar */

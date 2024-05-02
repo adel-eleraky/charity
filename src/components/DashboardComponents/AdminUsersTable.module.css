@@ -1,0 +1,143 @@
+/* .container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ */
+.table {
+  /* direction: rtl; */
+  padding-left: 0;
+  margin-bottom: 0;
+  /* display: inherit;
+  flex-direction: inherit;
+  flex-grow: inherit; */
+}
+.header-wrapper {
+  padding-left: 14px;
+}
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 24px 0 20px;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+.table-header .col button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-content: center;
+  align-items: center;
+  text-align: right;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  height: 16px;
+  color: rgba(18, 18, 18, 1);
+}
+
+/* 8 + 6 = 14 so make the wrapper padding-left:14px to align
+  then make the inner-container margin = 24px - 14px = 10px
+*/
+.table .rows {
+  overflow: auto;
+  height: calc(100vh - 220px);
+  padding-left: 8px;
+  padding-bottom: 10px;
+}
+.rows::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+  /* margin-right: 50px; */
+}
+.rows::-webkit-scrollbar-thumb {
+  background-color: #eee;
+  /*Setthecolorofthethumb*/
+  /* width: 5px; */
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.rows::-webkit-scrollbar-thumb:hover {
+  background-color: #ddd;
+}
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  color: #000;
+  height: 70px;
+  padding: 0 1.5rem;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.table-row:hover {
+  box-shadow: 1px 17px 44px 0px rgba(3, 2, 41, 0.07);
+}
+.col {
+  padding-left: 10px;
+}
+.col-1 {
+  flex-basis: 7.7%;
+}
+.col-2 {
+  flex-basis: 13.7%;
+}
+
+.col-3 {
+  flex-basis: 19%;
+}
+.col-4 {
+  flex-basis: 11.6%;
+}
+.col-5 {
+  flex-basis: 16%;
+}
+.col-6 {
+  flex-basis: 17%;
+}
+.col-7 {
+  flex-basis: 15%;
+}
+
+.table-row .col-8 .button-action-container {
+  position: relative;
+}
+
+@media all and (max-width: 767px) {
+  .table-header {
+    display: none;
+  }
+
+  .table-row {
+    display: block;
+    height: fit-content;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .col {
+    flex-basis: 100%;
+    display: flex;
+    padding: 10px 0;
+  }
+
+  .col::before {
+    color: #6c7a89;
+    padding-right: 10px;
+    content: attr(data-label);
+    flex-basis: 50%;
+    text-align: right;
+  }
+}

@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.container {
+  display: flex;
+  /* width: fit-content; */
+  gap: 6px;
+  background-color: white;
+  border: 1px solid rgba(222, 224, 229, 1);
+  box-shadow: 0px 20.63px 50px 0px rgba(157, 145, 145, 0.15);
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -o-border-radius: 24px;
+  width: 166px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+}
+.date {
+  /* 26/02/2024 */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #1e1b39; /* Inside auto layout */
+}
+
+.container .date-icon {
+  fill: none;
+}
+.container .date-icon path {
+  stroke: #999;
+}
