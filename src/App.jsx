@@ -28,6 +28,8 @@ import Checkout from "./pages/Checkout.jsx";
 import Cart from "./pages/Cart.jsx";
 import AdminHomeLayout from "./components/DashboardComponents/AdminHomeLayout.jsx";
 import AdminCharitiesLayout from "./components/DashboardComponents/AdminCharitiesLayout.jsx";
+import AdminUsersLayout from "./components/DashboardComponents/AdminUsersLayout.jsx";
+import AdminTransactionsLayout from "./components/DashboardComponents/AdminTransactionsLayout.jsx";
 
 AOS.init();
 
@@ -75,8 +77,12 @@ function App() {
             <Route path="admin-dashboard" element={<AdminDashboard />}>
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<AdminHomeLayout />} />
-              <Route path="users" element={<UsersComponent />} />
+              <Route path="users" element={<AdminUsersLayout />} />
               <Route path="charities" element={<AdminCharitiesLayout />} />
+              <Route
+                path="transactions"
+                element={<AdminTransactionsLayout />}
+              />
             </Route>
             <Route path="charity-dashboard" element={<CharityDashboard />}>
               <Route path="home" element={<CharityHomeComponent />} />
