@@ -1,6 +1,6 @@
 .sidebar-content {
   background: var(--main-dashboard-color)
-    url("../../../public/images/metal-texture-with-dust-scratches-cracks-textured-backgrounds\ 2.png");
+    url("/images/metal-texture-with-dust-scratches-cracks-textured-backgrounds\ 2.png");
   background-blend-mode: color-burn;
   background-size: cover;
   height: 100%;
