@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import styles from "./NavBar.module.css";
 /* eslint-disable  */
 function NavBar({ isOpenSidebar, onToggleSidebar }) {
@@ -12,8 +11,8 @@ function NavBar({ isOpenSidebar, onToggleSidebar }) {
     >
       <div className="inner-container">
         <svg
-          onClick={() => onToggleSidebar((isOpen) => !isOpen)}
-          className={`sidebar-toggler fa-solid fa-bars fs-4 ms-4 d-none`}
+          onClick={onToggleSidebar}
+          className={`${styles["sidebar-toggler"]} `}
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"

@@ -1,5 +1,5 @@
 import styles from "./AdminTransactionsLayout.module.css";
-import AdminCharityTable from "./AdminCharityTable";
+import AdminTransactionsTable from "./AdminTransactionsTable";
 function AdminTransactionsLayout() {
   return (
     <div className={styles.container}>
@@ -11,7 +11,7 @@ function AdminTransactionsLayout() {
 
       <div>
         <div className="inner-container">
-          <AdminCharityTable />
+          <AdminTransactionsTable />
         </div>
       </div>
     </div>

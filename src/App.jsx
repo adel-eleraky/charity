@@ -69,7 +69,7 @@ function App() {
               <Route path="account" element={<Account />} />
               <Route path="account/login" element={<Login />} />
               <Route path="account/register" element={<Register />} />
-                            <Route path="account/activate" element={<AccountActivation />} />
+              <Route path="account/activate" element={<AccountActivation />} />
 
               <Route
                 path="account/forget-password"
