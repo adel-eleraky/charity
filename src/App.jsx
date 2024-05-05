@@ -33,6 +33,7 @@ import AdminUsersLayout from "./components/DashboardComponents/AdminUsersLayout.
 import AdminTransactionsLayout from "./components/DashboardComponents/AdminTransactionsLayout.jsx";
 import Used from "./pages/Used";
 import AccountActivation from "./pages/AccountActivation.jsx";
+import Zakat from "./pages/Zakat.jsx";
 
 AOS.init();
 
@@ -64,6 +65,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="cases" element={<Cases />} />
               <Route path="used" element={<Used />} />
+              <Route path="zakat" element={<Zakat />} />
               <Route path="account" element={<Account />} />
               <Route path="account/login" element={<Login />} />
               <Route path="account/register" element={<Register />} />
