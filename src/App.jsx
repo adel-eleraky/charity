@@ -30,6 +30,7 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Cart from "./pages/Cart.jsx";
 import Used from "./pages/Used.jsx";
+import Zakat from "./pages/Zakat.jsx";
 
 AOS.init();
 
@@ -61,6 +62,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="cases" element={<Cases />} />
               <Route path="used" element={<Used />} />
+              <Route path="zakat" element={<Zakat />} />
               <Route path="account" element={<Account />} />
               <Route path="account/login" element={<Login />} />
               <Route path="account/register" element={<Register />} />
