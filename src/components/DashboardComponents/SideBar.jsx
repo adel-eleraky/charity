@@ -3,13 +3,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./SideBar.module.css";
-function SideBar() {
+function SideBar({ isOpenSidebar, onToggleSidebar }) {
   return (
     <>
       <div
         className={`${styles["sidebar-content"]}  position-relative text-white`}
       >
-        <i className="close-sidebar fa-solid fa-xmark fs-1 d-none position-absolute"></i>
+        <i className="fa-solid fa-xmark fs-1" onClick={onToggleSidebar}></i>
         <img className={styles.logo} src="/images/Logo.svg" alt="" />
         <div className={`${styles.links} d-flex flex-column text-white`}>
           <NavLink to="home">
@@ -21,7 +21,7 @@ function SideBar() {
                 d="m4 10 8-7 8 7v10h-5v-4a3 3 0 0 0-6 0v4H4V10Z"
               />
             </svg>
-            الصفحة الرئيسية
+            <span>الصفحة الرئيسية</span>
           </NavLink>
           <NavLink to="charities">
             <svg
@@ -40,7 +40,7 @@ function SideBar() {
                 </clipPath>
               </defs>
             </svg>
-            الجمعيات
+            <span>الجمعيات</span>
           </NavLink>
           <NavLink to="users">
             <svg
@@ -57,7 +57,7 @@ function SideBar() {
                 d="M3 19H1v-1a4.002 4.002 0 0 1 3-3.874M6 10.83a3.001 3.001 0 0 1 0-5.66M21 19h2v-1a4.002 4.002 0 0 0-3-3.874M18 5.17a3.001 3.001 0 0 1 0 5.66M14 14h-4a4 4 0 0 0-4 4v1h12v-1a4 4 0 0 0-4-4ZM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
               />
             </svg>
-            الاعضاء
+            <span>الاعضاء</span>
           </NavLink>
           <NavLink to="transactions">
             <svg
@@ -81,7 +81,7 @@ function SideBar() {
                 d="M21.5 9H14a3 3 0 1 0 0 6h7.5M14 12v.01"
               />
             </svg>
-            التحويلات
+            <span>التحويلات</span>
           </NavLink>
           <NavLink to="/">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -92,7 +92,7 @@ function SideBar() {
                 d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M8 8l-4 4 4 4M4 12h12"
               />
             </svg>
-            الخروج
+            <span>الخروج</span>
           </NavLink>
         </div>
       </div>

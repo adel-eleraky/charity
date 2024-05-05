@@ -140,6 +140,9 @@
   .table-header {
     display: none;
   }
+  .table .rows {
+    height: calc(100vh - 178px);
+  }
 
   .table-row {
     display: block;

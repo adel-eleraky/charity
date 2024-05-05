@@ -14,7 +14,6 @@ function AdminCharityTableRow({ charity }) {
   }
   return (
     <>
-      {" "}
       <li className={styles["table-row"]}>
         <div className={`${styles.col} ${styles["col-1"]}`} data-label="id">
           {"#" + charity.id}

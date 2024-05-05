@@ -8,7 +8,18 @@
   line-height: 22.8px;
   position: relative;
 }
-
+.sidebar-content i {
+  display: none;
+}
+@media (max-width: 991px) {
+  .sidebar-content i {
+    display: block;
+    position: absolute;
+    left: 24px;
+    top: 27px;
+    z-index: 300;
+  }
+}
 .sidebar-content .logo {
   margin-top: 2rem;
   margin-right: 1.5rem;

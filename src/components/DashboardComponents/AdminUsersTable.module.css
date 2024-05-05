@@ -18,8 +18,14 @@
   padding-left: 14px;
 }
 .table-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns:
+    minmax(54px, 1fr) minmax(81px, 1.7fr) minmax(177px, 2.5fr) minmax(
+      86px,
+      1.3fr
+    )
+    1.9fr 2.2fr 2.3fr;
+  gap: 8px;
   margin-bottom: 20px;
   padding: 0 24px 0 20px;
   font-size: 14px;
@@ -69,8 +75,11 @@
   background-color: #ddd;
 }
 .table-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns:
+    1fr minmax(81px, 1.7fr) minmax(177px, 2.5fr) minmax(86px, 1.3fr)
+    1.9fr 2.2fr 2.3fr;
+  gap: 8px;
   align-items: center;
   background-color: #ffffff;
   color: #000;
@@ -83,44 +92,21 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+.col {
+  overflow-wrap: break-word;
+}
+
 .table-row:hover {
   box-shadow: 1px 17px 44px 0px rgba(3, 2, 41, 0.07);
-}
-.col {
-  padding-left: 10px;
-}
-.col-1 {
-  flex-basis: 7.7%;
-}
-.col-2 {
-  flex-basis: 13.7%;
-}
-
-.col-3 {
-  flex-basis: 19%;
-}
-.col-4 {
-  flex-basis: 11.6%;
-}
-.col-5 {
-  flex-basis: 16%;
-}
-.col-6 {
-  flex-basis: 17%;
-}
-.col-7 {
-  flex-basis: 15%;
-}
-
-.table-row .col-8 .button-action-container {
-  position: relative;
 }
 
 @media all and (max-width: 767px) {
   .table-header {
     display: none;
   }
-
+  .table .rows {
+    height: calc(100vh - 178px);
+  }
   .table-row {
     display: block;
     height: fit-content;
