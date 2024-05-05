@@ -58,7 +58,7 @@ function Navbar() {
             <div className="second-nav py-3">
                 <div className="container">
                     <div className='d-flex justify-content-center m-0 p-0'>
-                        <Link to="" className="category-link mx-4">
+                        <Link to="zakat" className="category-link mx-4">
                             زكاة
                         </Link>
                         <Link to="" className="category-link mx-4">
