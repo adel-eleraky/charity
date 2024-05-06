@@ -17,7 +17,9 @@ function Navbar() {
                         <div className="col-4 col-md-2">
                             <div className='d-flex'>
                                 <button className="btn btn-primary navbar-toggler d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navOffcanvas" aria-controls="navOffcanvas"><i className="fa-solid fa-bars fs-2 ms-3 text-white"></i></button>
-                                <img src="/images/Logo.png" alt="" className="img-fluid logo" />
+                                <Link to="/">
+                                    <img src="/images/Logo.png" alt="" className="img-fluid logo" />
+                                </Link>
                             </div>
                         </div>
                         <div className="col-md-8 nav-links-col">
@@ -59,19 +61,13 @@ function Navbar() {
                 <div className="container">
                     <div className='d-flex justify-content-center m-0 p-0'>
                         <Link to="zakat" className="category-link mx-4">
-                            زكاة
+                            دفع الزكاة
                         </Link>
-                        <Link to="" className="category-link mx-4">
-                            صدقات
-                        </Link>
-                        <Link to="" className="category-link mx-4">
-                            اضاحى
-                        </Link>
-                        <Link to="" className="category-link mx-4">
-                            كفارات
+                        <Link to="donations" className='category-link mx-4'>
+                            قنوات التبرع
                         </Link>
                         <Link to="used" className="category-link mx-4">
-                            المستعمل
+                            تبرع بالمستعمل
                         </Link>
                     </div>
                 </div>
