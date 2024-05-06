@@ -35,6 +35,7 @@ import CharityHomeLayout from "./components/DashboardComponents/CharityHomeLayou
 import CharityCasesLayout from "./components/DashboardComponents/CharityCasesLayout.jsx";
 import CharityTransactionsLayout from "./components/DashboardComponents/CharityTransactionsLayout.jsx";
 import CharityCampaignsLayout from "./components/DashboardComponents/CharityCampaignsLayout.jsx";
+import Donations from "./pages/Donations.jsx";
 
 AOS.init();
 
@@ -67,6 +68,7 @@ function App() {
               <Route path="cases" element={<Cases />} />
               <Route path="used" element={<Used />} />
               <Route path="zakat" element={<Zakat />} />
+              <Route path="donations" element={<Donations />} />
               <Route path="account" element={<Account />} />
               <Route path="account/login" element={<Login />} />
               <Route path="account/register" element={<Register />} />
