@@ -1,5 +1,5 @@
-import styles from "./AdminHomeBox.module.css";
-function AdminHomeBox({ title, imagePath, value, isBig, children }) {
+import styles from "./HomeBox.module.css";
+function HomeBox({ title, imagePath, value, isBig, children }) {
   return (
     <div className={`${styles.box} ${isBig ? styles.big : ""}`}>
       <div className={styles.title}>
@@ -16,4 +16,4 @@ function AdminHomeBox({ title, imagePath, value, isBig, children }) {
   );
 }
 
-export default AdminHomeBox;
+export default HomeBox;
