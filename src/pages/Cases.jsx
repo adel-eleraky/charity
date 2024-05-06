@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import CasesSidebar from '../components/CasesSidebar';
 import "./css/Cases.css"
 import CampaignCard from '../components/CampaignCard';
+import CaseCard from './../components/CaseCard';
 
 function Cases() {
 
@@ -12,51 +14,24 @@ function Cases() {
                     <div className="row" >
                         <div className="sm-screen-filter dropdown mb-4 ">
                             <button className="btn btn-secondary btn-lg w-25 dropdown-toggle text-dark border-0" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                Filters
+                                فلترة
                             </button>
-                            <ul className="dropdown-menu w-50" dir='rtl'>
+                            <ul className="dropdown-menu w-50 text-end" dir='rtl'>
                                 <li>
-                                    <div className="categories bg-white rounded p-3 mb-3">
-                                        <h3 className='mb-4 fw-bold'>اقسام التبرع</h3>
-                                        <ul className="list-unstyled">
-                                            <li className='mb-4 ms-2 fw-light fs-5'>
-                                                <a data-bs-toggle="collapse" href="#div1" role="button" aria-expanded="false" aria-controls="div1">
-                                                    <span className='ms-2'>صدقات</span> <i className="fa-solid fa-arrow-down-wide-short"></i>
-                                                </a>
-                                                <div className="collapse" id="div1">
-                                                    <div className="card card-body">
-                                                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li className='mb-4 ms-2 fw-light fs-5'>
-                                                <a data-bs-toggle="collapse" href="#div2" role="button" aria-expanded="false" aria-controls="div2">
-                                                    <span className='ms-2'>زكاة</span> <i className="fa-solid fa-arrow-down-wide-short"></i>
-                                                </a>
-                                                <div className="collapse" id="div2">
-                                                    <div className="card card-body">
-                                                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li className='mb-4 ms-2 fw-light fs-5'>
-                                                <a data-bs-toggle="collapse" href="#div3" role="button" aria-expanded="false" aria-controls="div3">
-                                                    <span className='ms-2'>تبرع بالدم</span> <i className="fa-solid fa-arrow-down-wide-short"></i>
-                                                </a>
-                                                <div className="collapse" id="div3">
-                                                    <div className="card card-body">
-                                                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                                    </div>
-                                                </div>
-                                            </li>
+                                    <div className="categories py-3 ms-2 mb-3">
+                                        <h4 className='mb-3 fw-bold'> نوع الحالة </h4>
+                                        <ul className="list-group">
+                                            <li className="list-group-item bg-transparent border-0 active"> كل الحالات </li>
+                                            <li className="list-group-item bg-transparent border-0"> كفالة ايتام </li>
+                                            <li className="list-group-item bg-transparent border-0"> غارمات </li>
+                                            <li className="list-group-item bg-transparent border-0"> مرضى </li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className="main-filter  bg-white rounded p-3 mb-3">
-                                        <h5 className='mb-4'>Filter By</h5>
-                                        <div className="price py-3 ms-2 mb-3 border-top border-3">
-                                            <h6 className='mb-3'>الاموال المطلوبة</h6>
+                                    <div className="money-filter bg-white rounded p-3 mb-3">
+                                        <div className="price py-3 ms-2 mb-3 border-top border-black border-3">
+                                            <h4 className='mb-3 fw-bold'>الاموال المطلوبة</h4>
                                             <div className="inputs d-flex justify-content-between gap-15">
                                                 <input type="number" className="form-control" placeholder="From" />
                                                 <input type="number" className="form-control" placeholder="To" />
@@ -72,7 +47,7 @@ function Cases() {
                             <CasesSidebar />
                         </div>
                         <div className="products-list-column col-8 col-lg-9">
-                            <div className="main-content text-white rounded p-3">
+                            <div className="main-content rounded p-3">
                                 <div className="heading mb-4 d-flex align-items-center">
                                     <h6 className='mb-0 me-3'> رتب حسب: </h6>
                                     <select className="form-select w-25 me-3 ms-auto" aria-label="Default select example">
@@ -89,13 +64,32 @@ function Cases() {
                                 <div className="products-list">
                                     <div className="row">
                                         <div className="col-md-12 col-lg-6 col-xxl-4">
-                                            <CampaignCard {...{ id: 1, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                                            <CaseCard
+                                                img={"case-img"}
+                                                title={" تبرع بالملابس "}
+                                                description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                            />
                                         </div>
                                         <div className="col-md-12 col-lg-6 col-xxl-4">
-                                            <CampaignCard {...{ id: 2, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                                            <CaseCard
+                                                img={"case-img"}
+                                                title={" تبرع بالملابس "}
+                                                description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                            />
                                         </div>
                                         <div className="col-md-12 col-lg-6 col-xxl-4">
-                                            <CampaignCard {...{ id: 3, title: "غذاء للجميع", image: "/images/campaign-image.png", description: "وفرلهم احتيجاتهم الاساسية من الغذاء", cost: 1000, paymentMade: 600, moneyRemaining: 400, timeRemaining: 10 }} />
+                                            <CaseCard
+                                                img={"case-img"}
+                                                title={" تبرع بالملابس "}
+                                                description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                            />
+                                        </div>
+                                        <div className="col-md-12 col-lg-6 col-xxl-4">
+                                            <CaseCard
+                                                img={"case-img"}
+                                                title={" تبرع بالملابس "}
+                                                description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
+                                            />
                                         </div>
                                     </div>
                                 </div>

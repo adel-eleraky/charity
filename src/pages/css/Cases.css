@@ -1,31 +1,50 @@
 .cases-page {
-    background-image: var(--gradient-color);
-    border-bottom: 2px solid #a1cefa;
+    background-image: linear-gradient(#EDDCC8, white);
+    color: black;
+}
+.cases-page .sidebar-filter {
+    background-color: #C7AB77;
+    box-shadow: 0 0 25px 1px #927238;
 }
 .cases-page .sm-screen-filter .dropdown-toggle {
-    background-color: #a1cefa;
+    background-color: white;
+    color: black;
 }
 .cases-page .sm-screen-filter {
     display: none;
 }
 .cases-page .sm-screen-filter .dropdown-menu {
-    border: 2px solid #a1cefa;
+    border: 2px solid #927238;
+    padding: 15px;
 }
-.cases-page .sm-screen-filter .dropdown-menu,
-.cases-page .sm-screen-filter .dropdown-menu *  {
-    background-color: var(--main-color) !important;
-    color: white;
+.cases-page .sm-screen-filter .categories .list-group-item {
+    font-size: 18px;
+}
+.cases-page .sm-screen-filter .categories .list-group-item.active {
+    background-image: linear-gradient(to right , transparent , #a58446);
+    font-size: 20px;
+    font-weight: bold;
 }
 .cases-page .sm-screen-filter .dropdown-menu input {
     background-color: white !important;
+    outline: 2px solid;
 }
 .cases-page .sm-screen-filter .dropdown-menu input::placeholder {
     color: black !important;
     font-weight: bold;
 }
 .cases-page .main-content {
-    box-shadow: 0 0 15px -3px #a1cefa;
-    background-color: var(--main-color);
+    box-shadow: 0 0 25px 1px #927238;
+    background-color:#C7AB77;
+}
+.cases-page .main-content .CaseCard {
+    border: 1px solid #927238;
+    padding: 10px;
+    border-radius: 24px;
+    box-shadow: 0 0 25px 1px #a98a52;
+}
+.cases-page .main-content .CaseCard .progress-bar {
+    background-color: black;
 }
 .cases-page .main-content .heading div:last-of-type {
     width: 125px;
