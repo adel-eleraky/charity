@@ -1,6 +1,6 @@
-import styles from "./AdminTransactionsLayout.module.css";
-import AdminTransactionsTable from "./AdminTransactionsTable";
-function AdminTransactionsLayout() {
+import styles from "./CharityTransactionsLayout.module.css";
+import AdminTransactionsTable from "./CharityTransactionsTable";
+function CharityTransactionsLayout() {
   return (
     <div className={styles.container}>
       <div className={styles["heading"]}>
@@ -18,4 +18,4 @@ function AdminTransactionsLayout() {
   );
 }
 
-export default AdminTransactionsLayout;
+export default CharityTransactionsLayout;

@@ -7,6 +7,9 @@ import NavBar from "../../components/DashboardComponents/NavBar.jsx";
 import styles from "./AdminDashboard.module.css";
 function AdminDashboard() {
   // use useRef instead
+  function handleToggleSidebar() {
+    setIsOpenSidebar((o) => !o);
+  }
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
   return (
     <div className={styles.dashboard}>
@@ -15,12 +18,15 @@ function AdminDashboard() {
           styles["sidebar-column"]
         }`}
       >
-        <SideBar isOpenSidebar />
+        <SideBar
+          isOpenSidebar={isOpenSidebar}
+          onToggleSidebar={handleToggleSidebar}
+        />
       </div>
       <div className={`${styles["main-content"]} `}>
         <NavBar
           isOpenSidebar={isOpenSidebar}
-          onToggleSidebar={setIsOpenSidebar}
+          onToggleSidebar={handleToggleSidebar}
         />
         <Outlet />
       </div>

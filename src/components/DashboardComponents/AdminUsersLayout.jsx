@@ -1,5 +1,4 @@
 import styles from "./AdminUsersLayout.module.css";
-import AdminCharityTable from "./AdminCharityTable";
 import { useEffect } from "react";
 import AdminUsersTable from "./AdminUsersTable";
 let slider;

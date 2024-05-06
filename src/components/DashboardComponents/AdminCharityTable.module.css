@@ -18,8 +18,9 @@
   padding-left: 14px;
 }
 .table-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(45px, 1.25fr) minmax(121px, 2.3fr) 1.8fr 3.2fr 2.4fr 2fr 2.25fr 1fr;
+  gap: 8px;
   margin-bottom: 20px;
   padding: 0 24px 0 20px;
   font-size: 14px;
@@ -69,9 +70,12 @@
   background-color: #ddd;
 }
 .table-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(45px, 1.25fr) minmax(121px, 2.3fr) 1.8fr 3.2fr 2.4fr 2fr 2.25fr 1fr;
+
+  gap: 8px;
   align-items: center;
+
   background-color: #ffffff;
   color: #000;
   padding: 0 1.5rem;
@@ -86,37 +90,15 @@
 .table-row:hover {
   box-shadow: 1px 17px 44px 0px rgba(3, 2, 41, 0.07);
 }
-.col {
-  padding-left: 10px;
-}
-.col-1 {
-  flex-basis: 7.7%;
-}
+
 .col-2 {
-  flex-basis: 14%;
   display: flex;
   align-items: center;
 }
 .col-2 img {
   margin-left: 0.5rem;
 }
-.col-3 {
-  flex-basis: 11.3%;
-}
-.col-4 {
-  flex-basis: 20%;
-}
-.col-5 {
-  flex-basis: 14%;
-}
-.col-6 {
-  flex-basis: 13%;
-}
-.col-7 {
-  flex-basis: 13.5%;
-}
 .col-8 {
-  flex-basis: 6.5%;
   text-align: left;
 }
 .table-row .col-8 .button-action-container {
@@ -139,6 +121,9 @@
 @media all and (max-width: 767px) {
   .table-header {
     display: none;
+  }
+  .table .rows {
+    height: calc(100vh - 178px);
   }
 
   .table-row {

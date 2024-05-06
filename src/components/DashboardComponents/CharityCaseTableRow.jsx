@@ -1,13 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AdminCharityActions from "./AdminCharityActions";
-import styles from "./AdminCharityTable.module.css";
-import CharityStatus from "./CharityStatus";
-import { useRef } from "react";
+import styles from "./CharityCasesTable.module.css";
 import CharityDetails from "./CharityDetails";
-import Popup from "reactjs-popup";
-function AdminCharityTableRow({ charity }) {
+import CaseStatus from "../common/CaseStatus";
+function CharityCaseTableRow({ currentCase }) {
   // for using normal dom select and adding event to it you should loop over them in the table component and add event to them
   // so use useRef
+  [
+    {
+      id: 876123,
+      title: "لوريم ابسيم",
+      targetAmount: 10000,
+      currentCollected: 500,
+      dateFinished: "14/02/2024",
+      donatinsNum: 20,
+      caseStatus: "open" /* open - close */,
+    },
+  ];
   const [isActionShow, setIsActionShow] = useState(false);
   function handleToggleAction() {
     setIsActionShow((a) => !a);
@@ -16,41 +25,40 @@ function AdminCharityTableRow({ charity }) {
     <>
       <li className={styles["table-row"]}>
         <div className={`${styles.col} ${styles["col-1"]}`} data-label="id">
-          {"#" + charity.id}
+          {"#" + currentCase.id}
         </div>
         <div
           className={`${styles.col} ${styles["col-2"]}`}
           data-label="اسم الجمعية"
         >
-          <img src="/images/charity-logo.png" alt="" />
-          {charity.charityName}
+          {currentCase.title}
         </div>
         <div className={`${styles.col} ${styles["col-3"]}`} data-label="Amount">
-          {charity.casesNum}
+          {currentCase.targetAmount + "جنيه"}
         </div>
         <div
           className={`${styles.col} ${styles["col-4"]}`}
           data-label="Payment Status"
         >
-          {charity.regDate}
+          {currentCase.currentCollected + "جنيه"}
         </div>
         <div
           className={`${styles.col} ${styles["col-5"]}`}
           data-label="Payment Status"
         >
-          {charity.collectedMoney + "جنيه"}
+          {currentCase.dateFinished}
         </div>
         <div
           className={`${styles.col} ${styles["col-6"]}`}
           data-label="Payment Status"
         >
-          {charity.donersNum}
+          {currentCase.donatinsNum}
         </div>
         <div
           className={`${styles.col} ${styles["col-7"]}`}
           data-label="Payment Status"
         >
-          <CharityStatus statusType={charity.statusType} />
+          <CaseStatus statusType={currentCase.caseStatus} />
         </div>
         <div className={`${styles.col} ${styles["col-8"]}`} data-label="btn">
           <div className={styles["button-action-container"]}>
@@ -69,7 +77,7 @@ function AdminCharityTableRow({ charity }) {
             </button>
             {isActionShow && (
               <AdminCharityActions handleToggleAction={handleToggleAction}>
-                <CharityDetails charityId={charity.id} />
+                <CharityDetails charityId={currentCase.id} />
               </AdminCharityActions>
             )}
           </div>
@@ -80,4 +88,4 @@ function AdminCharityTableRow({ charity }) {
   );
 }
 
-export default AdminCharityTableRow;
+export default CharityCaseTableRow;

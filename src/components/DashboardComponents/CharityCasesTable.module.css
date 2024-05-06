@@ -19,12 +19,7 @@
 }
 .table-header {
   display: grid;
-  grid-template-columns:
-    minmax(54px, 1fr) minmax(81px, 1.7fr) minmax(177px, 2.5fr) minmax(
-      86px,
-      1.3fr
-    )
-    1.9fr 2.2fr 2.3fr;
+  grid-template-columns: minmax(45px, 1.25fr) minmax(121px, 2.3fr) 1.8fr 3.2fr 2.4fr 2fr 2.25fr 1fr;
   gap: 8px;
   margin-bottom: 20px;
   padding: 0 24px 0 20px;
@@ -52,7 +47,7 @@
 */
 .table .rows {
   overflow: auto;
-  height: calc(100vh - 220px);
+  height: calc(100vh - 214px);
   padding-left: 8px;
   padding-bottom: 10px;
 }
@@ -76,15 +71,15 @@
 }
 .table-row {
   display: grid;
-  grid-template-columns:
-    1fr minmax(81px, 1.7fr) minmax(177px, 2.5fr) minmax(86px, 1.3fr)
-    1.9fr 2.2fr 2.3fr;
+  grid-template-columns: minmax(45px, 1.25fr) minmax(121px, 2.3fr) 1.8fr 3.2fr 2.4fr 2fr 2.25fr 1fr;
+
   gap: 8px;
   align-items: center;
+
   background-color: #ffffff;
   color: #000;
-  height: 70px;
   padding: 0 1.5rem;
+  height: 70px;
   margin-bottom: 10px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -92,14 +87,30 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-.col {
-  overflow-wrap: break-word;
-}
-
 .table-row:hover {
   box-shadow: 1px 17px 44px 0px rgba(3, 2, 41, 0.07);
 }
 
+.col-8 {
+  text-align: left;
+}
+.table-row .col-8 .button-action-container {
+  position: relative;
+}
+.col-8 button {
+  background-color: transparent;
+  border: none;
+  line-height: 1;
+}
+.col-8 button:hover path {
+  fill: rgba(182, 88, 32, 1);
+}
+.table-row .col-8 .button-action-container > div {
+  position: absolute;
+  left: -1.5rem;
+  top: 28px;
+  z-index: 100;
+}
 @media all and (max-width: 767px) {
   .table-header {
     display: none;
@@ -107,6 +118,7 @@
   .table .rows {
     height: calc(100vh - 178px);
   }
+
   .table-row {
     display: block;
     height: fit-content;

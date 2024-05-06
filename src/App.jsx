@@ -13,10 +13,7 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
-import UsersComponent from "./pages/AdminDashboard/UsersComponent";
-import CharitiesComponent from "./pages/AdminDashboard/CharitiesComponent";
 import CharityDashboard from "./pages/CharityDashboard/CharityDashboard";
-import CharityHomeComponent from "./pages/CharityDashboard/CharityHomeComponent";
 import CasesComponent from "./pages/CharityDashboard/CasesComponent";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import UserHomeComponent from "./pages/UserDashboard/UserHomeComponent";
@@ -34,6 +31,10 @@ import AdminTransactionsLayout from "./components/DashboardComponents/AdminTrans
 import Used from "./pages/Used";
 import AccountActivation from "./pages/AccountActivation.jsx";
 import Zakat from "./pages/Zakat.jsx";
+import CharityHomeLayout from "./components/DashboardComponents/CharityHomeLayout.jsx";
+import CharityCasesLayout from "./components/DashboardComponents/CharityCasesLayout.jsx";
+import CharityTransactionsLayout from "./components/DashboardComponents/CharityTransactionsLayout.jsx";
+import CharityCampaignsLayout from "./components/DashboardComponents/CharityCampaignsLayout.jsx";
 
 AOS.init();
 
@@ -69,7 +70,7 @@ function App() {
               <Route path="account" element={<Account />} />
               <Route path="account/login" element={<Login />} />
               <Route path="account/register" element={<Register />} />
-                            <Route path="account/activate" element={<AccountActivation />} />
+              <Route path="account/activate" element={<AccountActivation />} />
 
               <Route
                 path="account/forget-password"
@@ -93,10 +94,17 @@ function App() {
               />
             </Route>
             <Route path="charity-dashboard" element={<CharityDashboard />}>
-              <Route path="home" element={<CharityHomeComponent />} />
-              <Route path="cases" element={<CasesComponent />} />
+              <Route index element={<Navigate replace to="home" />} />
+              <Route path="home" element={<CharityHomeLayout />} />
+              <Route path="cases" element={<CharityCasesLayout />} />
+              <Route
+                path="transactions"
+                element={<CharityTransactionsLayout />}
+              />
+              <Route path="campaigns" element={<CharityCampaignsLayout />} />
             </Route>
             <Route path="user-dashboard" element={<UserDashboard />}>
+              <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<UserHomeComponent />} />
             </Route>
           </Routes>
