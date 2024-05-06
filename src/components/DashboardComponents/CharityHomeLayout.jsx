@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import ShowDate from "../common/ShowDate";
+import styles from "./CharityHomeLayout.module.css";
 import AdminHomeBox from "../common/HomeBox";
 import HomeProgress from "../common/HomeProgress";
-import styles from "./AdminHomeLayout.module.css";
-function AdminHomeLayout() {
+function CharityHomeLayout() {
   return (
     <div className={styles.container}>
       <div className={styles["heading"]}>
@@ -17,14 +17,14 @@ function AdminHomeLayout() {
           <div className={styles.small}>
             <div className={styles.row}>
               <AdminHomeBox
-                title="عدد الجمعيات"
+                title="عدد المتبرعين"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
                 <HomeProgress value="10" isPositive={true} />
               </AdminHomeBox>
               <AdminHomeBox
-                title="عدد الجمعيات"
+                title="عدد التبرعات"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
@@ -33,14 +33,14 @@ function AdminHomeLayout() {
             </div>
             <div className={styles.row}>
               <AdminHomeBox
-                title="عدد الجمعيات"
+                title="عدد الحملات"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
                 <HomeProgress value="10" isPositive={true} />
               </AdminHomeBox>
               <AdminHomeBox
-                title="عدد الجمعيات"
+                title="اجمالي التبرعات"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
@@ -51,7 +51,7 @@ function AdminHomeLayout() {
           <div className={styles.big}>
             <AdminHomeBox
               isBig={true}
-              title="عدد الجمعيات"
+              title="عدد الحالات"
               imagePath="/images/admin-charity.svg"
               value="222"
             >
@@ -64,4 +64,4 @@ function AdminHomeLayout() {
   );
 }
 
-export default AdminHomeLayout;
+export default CharityHomeLayout;

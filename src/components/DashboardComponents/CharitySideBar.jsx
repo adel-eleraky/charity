@@ -2,8 +2,8 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./SideBar.module.css";
-function SideBar({ isOpenSidebar, onToggleSidebar }) {
+import styles from "./CharitySideBar.module.css";
+function CharitySideBar({ isOpenSidebar, onToggleSidebar }) {
   return (
     <>
       <div
@@ -23,7 +23,7 @@ function SideBar({ isOpenSidebar, onToggleSidebar }) {
             </svg>
             <span>الصفحة الرئيسية</span>
           </NavLink>
-          <NavLink to="charities">
+          <NavLink to="cases">
             <svg
               className={styles.building}
               xmlns="http://www.w3.org/2000/svg"
@@ -40,24 +40,7 @@ function SideBar({ isOpenSidebar, onToggleSidebar }) {
                 </clipPath>
               </defs>
             </svg>
-            <span>الجمعيات</span>
-          </NavLink>
-          <NavLink to="users">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-            >
-              <path
-                stroke="#C8C8C8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M3 19H1v-1a4.002 4.002 0 0 1 3-3.874M6 10.83a3.001 3.001 0 0 1 0-5.66M21 19h2v-1a4.002 4.002 0 0 0-3-3.874M18 5.17a3.001 3.001 0 0 1 0 5.66M14 14h-4a4 4 0 0 0-4 4v1h12v-1a4 4 0 0 0-4-4ZM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-              />
-            </svg>
-            <span>الاعضاء</span>
+            <span>الحالات</span>
           </NavLink>
           <NavLink to="transactions">
             <svg
@@ -83,6 +66,23 @@ function SideBar({ isOpenSidebar, onToggleSidebar }) {
             </svg>
             <span>التحويلات</span>
           </NavLink>
+          <NavLink to="campaigns">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+            >
+              <path
+                stroke="#C8C8C8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M3 19H1v-1a4.002 4.002 0 0 1 3-3.874M6 10.83a3.001 3.001 0 0 1 0-5.66M21 19h2v-1a4.002 4.002 0 0 0-3-3.874M18 5.17a3.001 3.001 0 0 1 0 5.66M14 14h-4a4 4 0 0 0-4 4v1h12v-1a4 4 0 0 0-4-4ZM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+              />
+            </svg>
+            <span>الحملات</span>
+          </NavLink>
           <NavLink to="/">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
               <path
@@ -100,4 +100,4 @@ function SideBar({ isOpenSidebar, onToggleSidebar }) {
   );
 }
 
-export default SideBar;
+export default CharitySideBar;
