@@ -1,0 +1,66 @@
+.report-case-page {
+    background-image: linear-gradient(to left, #EDDCC8, white);
+}
+.report-case-page .report-details > div {
+    background-image: url("/images/used-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+.report-case-page .report-details .content h3 {
+    font-family: "tajawal" , sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    position: relative;
+}
+.report-case-page .report-details .content h3::after,
+.report-case-page .report-form .content h3::after,
+.report-case-page .items-sec h2::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: linear-gradient(150.19deg, #DFD4C0 -8.79%, rgba(255, 255, 255, 0) 117.88%);
+}
+.report-case-page .report-details .content h3::after {
+    top: -5px;
+    right: 0px;
+}
+.report-case-page .report-form .content h3.reporter-details::after {
+    left: 20%;
+    top: -5px;
+}
+.report-case-page .report-form .content h3.case-details::after {
+    left: 10%;
+    top: -5px;
+}
+.report-case-page .report-form .content {
+    box-shadow: 0px 0px 20px -10px #b8acac;
+}
+.report-case-page .report-form .content .input {
+    width: 288px !important;
+}
+.report-case-page .submit-btn {
+    background-color: #91683A;
+}
+@media (max-width: 1200px) {
+    .report-case-page .report-case-items div {
+        width: 415px;
+    }
+}
+@media (max-width: 992px) {
+    .report-case-page .report-case-items div {
+        width: 335px;
+    }
+}
+@media (max-width: 768px) {
+    .report-case-page .report-case-items div {
+        width: 350px;
+    }
+}
+.report-case-page .items-sec h2::after {
+    top: 0;
+    left: 1%;
+}
