@@ -2,6 +2,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import "./css/Home.css"
+import { Link } from 'react-router-dom'
 import CampaignCard from '../components/CampaignCard'
 import CategoryCard from '../components/CategoryCard'
 import CaseCard from '../components/CaseCard'
@@ -147,7 +148,7 @@ function Home() {
                 <div className="row justify-content-evenly">
                     <div className="col-12 col-lg-4 report-case text-center pt-4 mb-lg-0 mb-5">
                         <p className='fs-3 fw-normal'> الابلاغ عن حالة مستحقة </p>
-                        <button className="btn report-btn mb-3 d-block mx-auto"> ابلاغ الان <i className="fa-solid fa-arrow-left me-2"></i> </button>
+                        <Link to="report-case" className="btn report-btn mb-3 d-block mx-auto"> ابلاغ الان <i className="fa-solid fa-arrow-left me-2"></i> </Link>
                         <img src="/images/report-case.png" alt="" className="img-fluid py-2" />
                     </div>
                     <div className="col-12 col-lg-7 used p-4 d-flex justify-content-between">
