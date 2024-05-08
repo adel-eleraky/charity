@@ -34,7 +34,7 @@ function Navbar() {
                                         تواصل معنا
                                     </li>
                                 </Link>
-                                <Link to="cases" className='nav-link'>
+                                <Link to="about-us" className='nav-link'>
                                     <li className="mx-3">
                                         من نحن
                                     </li>
@@ -68,6 +68,9 @@ function Navbar() {
                         </Link>
                         <Link to="used" className="category-link mx-4">
                             تبرع بالمستعمل
+                        </Link>
+                        <Link to="report-case" className="category-link mx-4">
+                            ابلاغ عن حالة
                         </Link>
                     </div>
                 </div>
