@@ -1,7 +1,7 @@
 .zakat-page {
     background-image: linear-gradient(to left, #EDDCC8, white);
 }
-.zakat-page .payment-details .content {
+.zakat-page .payment-details  > div {
     background-image: url("/images/used-bg.png");
     background-size: cover;
     background-position: center;
