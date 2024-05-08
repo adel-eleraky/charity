@@ -1,7 +1,7 @@
 .used-page {
     background-image: linear-gradient(to left, #EDDCC8, white);
 }
-.used-page .report-details .content {
+.used-page .report-details  > div {
     background-image: url("/images/used-bg.png");
     background-size: cover;
     background-position: center;
