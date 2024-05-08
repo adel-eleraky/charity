@@ -4,3 +4,62 @@
 .about-us-page .intro-sec .sec-title {
     color: #906921;
 }
+.about-us-page .statistics-sec .sec-title,
+.about-us-page .services-sec .sec-title {
+    font-family: "tajawal" , sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    position: relative;
+}
+.about-us-page .statistics-sec .sec-title::after,
+.about-us-page .services-sec .sec-title::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: linear-gradient(150.19deg, #c8a564 -8.79%, rgb(61 11 11 / 0%) 117.88%);
+}
+.about-us-page .statistics-sec .sec-title::after {
+    top: 0;
+    left: -10px;
+}
+.about-us-page .services-sec .sec-title::after {
+    top: 0;
+    left: 15px;
+}
+.about-us-page .statistics-sec .content {
+    text-align: center;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: 0 0 25px 1px #927238;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about-us-page .statistics-sec .content h2 {
+    border-bottom: 1px solid #927238;
+    padding-bottom: 15px;
+}
+.about-us-page .statistics-sec .content p {
+    font-size: 30px;
+    font-weight: bold;
+}
+.about-us-page .services-sec .service-card .content {
+    padding: 15px;
+    box-shadow: 0 0 25px 1px #927238;
+    border-radius: 5px;
+    text-align: center;
+}
+.about-us-page .services-sec .service-card h2 {
+    margin: 20px 0 ;
+}
+.about-us-page .services-sec .service-card .content button {
+    width: 100px;
+    margin-top: 10px;
+    background-color: #927238;
+    color: white;
+}
