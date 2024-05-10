@@ -5,7 +5,7 @@ function AdminTransactionsLayout() {
     <div className={styles.container}>
       <div className={styles["heading"]}>
         <div className="inner-container">
-          <div className={styles.title}>الجمعيات</div>
+          <div className={styles.title}>التحويلات</div>
         </div>
       </div>
 

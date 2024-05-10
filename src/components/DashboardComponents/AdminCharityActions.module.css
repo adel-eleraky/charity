@@ -1,23 +1,31 @@
 .action {
   width: 184px;
-  height: 128px;
-
+  /* height: 128px; */
   background: rgba(255, 255, 255, 1);
   box-shadow: 0px 40px 50px 0px rgba(18, 18, 18, 0.15);
-
   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
-
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
   row-gap: 12px;
+
+  /* to control the position after popup */
+  font-family: "Tajawal", sans-serif;
+  position: absolute;
+  left: -31px;
+  top: 20px;
+  z-index: 100;
 }
+
 .action button {
+  font-size: 16px;
+  font-weight: 500;
   background-color: transparent;
+  color: #121212;
   border: none;
   line-height: 19.2px;
 }
@@ -28,25 +36,30 @@
   font-weight: 500;
 }
 
-:global(.popup-overlay) {
-  background: rgba(18, 18, 18, 0.56);
+/* docs popup styling */
+:global(.docs-popup-content) {
+  height: 100%;
 }
-
-@keyframes anvil {
-  0% {
-    transform: scale(1) translateY(0px);
-    opacity: 0;
-  }
-  1% {
-    transform: scale(0.96) translateY(10px);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) translateY(0px);
-    opacity: 1;
-  }
+:global(.docs-popup-overlay) {
+  overflow: auto;
 }
-:global(.popup-content) {
-  animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
-  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+:global(.docs-popup-overlay)::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  /* margin-right: 50px; */
+}
+:global(.docs-popup-overlay)::-webkit-scrollbar-thumb {
+  background-color: #eee;
+  /*Setthecolorofthethumb*/
+  /* width: 5px; */
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+:global(.docs-popup-overlay)::-webkit-scrollbar-thumb:hover {
+  background-color: #ddd;
 }

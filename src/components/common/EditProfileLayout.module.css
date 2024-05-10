@@ -1,0 +1,83 @@
+/* start charities layout styling */
+
+.container .heading {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.container .heading .title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.profile :global(.inner-container) {
+  display: flex;
+}
+.profile .navigate {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  flex-basis: 243px;
+  align-content: flex-start;
+  background-color: #fff;
+  box-shadow: 0px 44px 54px 0px #80818212;
+  border-radius: 0px 10px 10px 0px;
+  -webkit-border-radius: 0px 10px 10px 0px;
+  -moz-border-radius: 0px 10px 10px 0px;
+  -ms-border-radius: 0px 10px 10px 0px;
+  -o-border-radius: 0px 10px 10px 0px;
+  flex-shrink: 1;
+}
+.profile .navigate::after {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: #efefef;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+.profile .navigate a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 1.5rem;
+  gap: 8px;
+  font-size: 19px;
+  color: black;
+  flex-basis: 100%;
+  height: 72px;
+  background-color: #fff;
+  color: #121212;
+  z-index: 1;
+}
+.profile .navigate a:global(.active) {
+  background: rgb(221 208 194 / 20%);
+  color: var(--main-dashboard-color);
+  z-index: 3;
+}
+.profile .navigate a:global(.active)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: rgb(145 104 58 / 20%);
+}
+.profile .navigate a svg path {
+  stroke: #121212;
+}
+.profile .navigate a:global(.active) svg path {
+  stroke: var(--main-dashboard-color);
+}
+
+.profile .content {
+  padding: 2rem;
+  background-color: white;
+  flex-grow: 1;
+  flex-shrink: 2;
+  flex-basis: 700px;
+}

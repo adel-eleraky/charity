@@ -1,17 +1,17 @@
 import styles from "./CharityTransactionsLayout.module.css";
-import AdminTransactionsTable from "./CharityTransactionsTable";
+import CharityTransactionsTable from "./CharityTransactionsTable";
 function CharityTransactionsLayout() {
   return (
     <div className={styles.container}>
       <div className={styles["heading"]}>
         <div className="inner-container">
-          <div className={styles.title}>الجمعيات</div>
+          <div className={styles.title}>التحويلات</div>
         </div>
       </div>
 
       <div>
         <div className="inner-container">
-          <AdminTransactionsTable />
+          <CharityTransactionsTable />
         </div>
       </div>
     </div>

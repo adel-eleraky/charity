@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import ShowDate from "../common/ShowDate";
-import AdminHomeBox from "../common/HomeBox";
+import HomeBox from "../common/HomeBox";
 import HomeProgress from "../common/HomeProgress";
 import styles from "./AdminHomeLayout.module.css";
 function AdminHomeLayout() {
@@ -16,47 +16,47 @@ function AdminHomeLayout() {
         <div className="inner-container">
           <div className={styles.small}>
             <div className={styles.row}>
-              <AdminHomeBox
+              <HomeBox
                 title="عدد الجمعيات"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
                 <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
-              <AdminHomeBox
+              </HomeBox>
+              <HomeBox
                 title="عدد الجمعيات"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
                 <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
+              </HomeBox>
             </div>
             <div className={styles.row}>
-              <AdminHomeBox
+              <HomeBox
                 title="عدد الجمعيات"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
                 <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
-              <AdminHomeBox
+              </HomeBox>
+              <HomeBox
                 title="عدد الجمعيات"
                 imagePath="/images/admin-users.svg"
                 value="222"
               >
                 <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
+              </HomeBox>
             </div>
           </div>
           <div className={styles.big}>
-            <AdminHomeBox
+            <HomeBox
               isBig={true}
               title="عدد الجمعيات"
               imagePath="/images/admin-charity.svg"
               value="222"
             >
               <HomeProgress value="10" isPositive={true} />
-            </AdminHomeBox>
+            </HomeBox>
           </div>
         </div>
       </div>

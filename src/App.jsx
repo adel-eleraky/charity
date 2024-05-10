@@ -14,7 +14,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import CharityDashboard from "./pages/CharityDashboard/CharityDashboard";
-import CasesComponent from "./pages/CharityDashboard/CasesComponent";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import UserHomeComponent from "./pages/UserDashboard/UserHomeComponent";
 import HashLoader from "react-spinners/HashLoader";
@@ -35,6 +34,13 @@ import CharityHomeLayout from "./components/DashboardComponents/CharityHomeLayou
 import CharityCasesLayout from "./components/DashboardComponents/CharityCasesLayout.jsx";
 import CharityTransactionsLayout from "./components/DashboardComponents/CharityTransactionsLayout.jsx";
 import CharityCampaignsLayout from "./components/DashboardComponents/CharityCampaignsLayout.jsx";
+import UserHomeLayout from "./components/DashboardComponents/UserHomeLayout.jsx";
+import UserTransactionsLayout from "./components/DashboardComponents/UserTransactionsLayout.jsx";
+import EditProfileLayout from "./components/common/EditProfileLayout.jsx";
+import EditUserData from "./components/common/EditUserData.jsx";
+import EditUserPassword from "./components/common/EditUserPassword.jsx";
+import CharityDocsLayout from "./components/DashboardComponents/CharityDocsLayout.jsx";
+import AdminCharityDocs from "./components/DashboardComponents/AdminCharityDocs.jsx";
 
 AOS.init();
 
@@ -92,6 +98,12 @@ function App() {
                 path="transactions"
                 element={<AdminTransactionsLayout />}
               />
+              {/* <Route path="docs" element={<AdminCharityDocs />} /> */}
+              <Route path="profile" element={<EditProfileLayout />}>
+                <Route index element={<Navigate replace to="edit-profile" />} />
+                <Route path="edit-profile" element={<EditUserData />} />
+                <Route path="change-pwd" element={<EditUserPassword />} />
+              </Route>
             </Route>
             <Route path="charity-dashboard" element={<CharityDashboard />}>
               <Route index element={<Navigate replace to="home" />} />
@@ -102,10 +114,12 @@ function App() {
                 element={<CharityTransactionsLayout />}
               />
               <Route path="campaigns" element={<CharityCampaignsLayout />} />
+              <Route path="upload-docs" element={<CharityDocsLayout />} />
             </Route>
             <Route path="user-dashboard" element={<UserDashboard />}>
               <Route index element={<Navigate replace to="home" />} />
-              <Route path="home" element={<UserHomeComponent />} />
+              <Route path="home" element={<UserHomeLayout />} />
+              <Route path="transactions" element={<UserTransactionsLayout />} />
             </Route>
           </Routes>
         </BrowserRouter>

@@ -7,10 +7,12 @@ import styles from "./CharityDashboard.module.css";
 import CharitySideBar from "../../components/DashboardComponents/CharitySideBar.jsx";
 function CharityDashboard() {
   // use useRef instead
+  const [isOpenSidebar, setIsOpenSidebar] = useState(false);
+  const [isCharityApproved, setIsCharityApproved] = useState(false);
+
   function handleToggleSidebar() {
     setIsOpenSidebar((o) => !o);
   }
-  const [isOpenSidebar, setIsOpenSidebar] = useState(false);
   return (
     <div className={styles.dashboard}>
       <div
@@ -21,6 +23,7 @@ function CharityDashboard() {
         <CharitySideBar
           isOpenSidebar={isOpenSidebar}
           onToggleSidebar={handleToggleSidebar}
+          isCharityApproved={isCharityApproved}
         />
       </div>
       <div className={`${styles["main-content"]} `}>
@@ -28,7 +31,7 @@ function CharityDashboard() {
           isOpenSidebar={isOpenSidebar}
           onToggleSidebar={handleToggleSidebar}
         />
-        <Outlet />
+        <Outlet context={[isCharityApproved]} />
       </div>
     </div>
   );

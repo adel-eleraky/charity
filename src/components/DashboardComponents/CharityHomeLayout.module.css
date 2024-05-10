@@ -53,3 +53,16 @@
   .container .stats .big {
   }
 }
+
+.container .upload-warning {
+  width: 100%;
+  background-color: rgb(209, 26, 42, 20%);
+  color: #d11a2a;
+}
+.container .upload-warning a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 20px;
+  color: var(--main-dashboard-color);
+}

@@ -1,0 +1,52 @@
+.container {
+  /* position: relative; */
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  /* justify-content: center; */
+  background-color: rgba(45, 9, 9, 0.2);
+  /* overflow: auto; */
+}
+
+.container .pages_nav {
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-bottom: 0;
+  bottom: 0;
+  align-items: flex-end;
+  display: flex;
+  text-align: center;
+  /*  what a *** issue whaattttt???!!!!!! */
+  /* justify-content: center; */
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  max-width: 100vw;
+}
+
+.container .pages_nav :global(.react-pdf__Page) {
+  cursor: pointer;
+}
+.container .page2 {
+}
+
+/*
+.test canvas {
+  width: 100vw !important;
+  aspect-ratio: 1;
+}
+
+.container button {
+  position: fixed;
+  bottom: 20px;
+  right: 50%;
+  z-index: 50;
+  width: 100px;
+  height: 50px;
+  background-color: red;
+} */

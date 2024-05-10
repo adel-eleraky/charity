@@ -1,0 +1,40 @@
+.action {
+  width: 184px;
+  /* height: 128px; */
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 40px 50px 0px rgba(18, 18, 18, 0.15);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  row-gap: 15px;
+  align-items: center;
+
+  /* to control the position after popup */
+  font-family: "Tajawal", sans-serif;
+  position: absolute;
+  left: -31px;
+  top: 20px;
+  z-index: 100;
+}
+
+.action a {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: transparent;
+  color: #121212;
+  border: none;
+  outline: none;
+  line-height: 19.2px;
+}
+.action a img {
+  margin-left: 1rem;
+}
+.action a span {
+  font-weight: 500;
+}
