@@ -35,7 +35,7 @@ function CaseCard({ id, title, img, description, cost, paymentMade, moneyRemaini
                 <img src={`/images/${img}.png`} alt="" className="img-fluid w-100 mb-3" />
                 <div className="content p-2">
                     <div className="title text-center mb-3 "> {title} </div>
-                    <div className="description mb-3"> {description} </div>
+                    <div className="description text-center mb-3"> {description} </div>
                     <div className="money_section mb-3">
                         <div className="progress mb-2" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                             <div className="progress-bar" style={{ width: "20%"}}></div>

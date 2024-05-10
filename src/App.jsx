@@ -34,6 +34,7 @@ import CharityHomeLayout from "./components/DashboardComponents/CharityHomeLayou
 import CharityCasesLayout from "./components/DashboardComponents/CharityCasesLayout.jsx";
 import CharityTransactionsLayout from "./components/DashboardComponents/CharityTransactionsLayout.jsx";
 import CharityCampaignsLayout from "./components/DashboardComponents/CharityCampaignsLayout.jsx";
+
 import UserHomeLayout from "./components/DashboardComponents/UserHomeLayout.jsx";
 import UserTransactionsLayout from "./components/DashboardComponents/UserTransactionsLayout.jsx";
 import EditProfileLayout from "./components/common/EditProfileLayout.jsx";
@@ -41,6 +42,9 @@ import EditUserData from "./components/common/EditUserData.jsx";
 import EditUserPassword from "./components/common/EditUserPassword.jsx";
 import CharityDocsLayout from "./components/DashboardComponents/CharityDocsLayout.jsx";
 import AdminCharityDocs from "./components/DashboardComponents/AdminCharityDocs.jsx";
+import Donations from "./pages/Donations.jsx";
+import About_us from "./pages/About_us.jsx";
+import ReportCase from "./pages/ReportCase.jsx";
 
 AOS.init();
 
@@ -70,9 +74,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="about-us" element={<About_us />} />
               <Route path="cases" element={<Cases />} />
               <Route path="used" element={<Used />} />
               <Route path="zakat" element={<Zakat />} />
+              <Route path="donations" element={<Donations />} />
+              <Route path="report-case" element={<ReportCase />} />
               <Route path="account" element={<Account />} />
               <Route path="account/login" element={<Login />} />
               <Route path="account/register" element={<Register />} />

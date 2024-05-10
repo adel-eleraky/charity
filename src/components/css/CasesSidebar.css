@@ -1,10 +1,14 @@
 .sidebar {
-    background-color: var(--main-color);
-}
-.sidebar > div {
-    box-shadow: 0 0 15px -3px #a1cefa;;
+    color: black !important;
 }
 .sidebar input::placeholder {
     color: black !important;
     font-weight: bold;
+}
+.sidebar .sidebar-filter .categories .list-group-item {
+    font-size: 18px;
+}
+.sidebar .sidebar-filter .categories .list-group-item.active {
+    background-image: linear-gradient(to right , transparent , #a58446);
+    font-size: 20px;
 }
