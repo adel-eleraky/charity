@@ -1,0 +1,98 @@
+/*start main content  */
+/* global container */
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap");
+
+.dashboard {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+.dashboard .sidebar-column {
+  min-width: 235px;
+  width: 235px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+}
+@media (max-width: 991px) {
+  .dashboard .sidebar-column {
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    top: 0;
+  }
+  .dashboard .sidebar-column.open {
+    right: 0;
+  }
+  .dashboard .sidebar-column.close {
+    right: -800px;
+  }
+}
+@media (min-width: 991.1px) and (max-width: 1199px) {
+  .dashboard .sidebar-column {
+  }
+  /* .dashboard .sidebar-column.open {
+  } */
+  .dashboard .sidebar-column.close {
+    min-width: 64px;
+    width: 64px;
+  }
+  .dashboard .sidebar-column.close div div span {
+    display: none;
+  }
+  .dashboard .sidebar-column.close div > img {
+    visibility: hidden;
+    /* width: 1px; */
+  }
+}
+
+/* @media (max-width: 991px) {
+  .dashboard .sidebar-column.open {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    height: 100%;
+  }
+}
+@media (max-width: 991px) {
+  .dashboard .sidebar-column.close {
+    width: 64px;
+  }
+  .dashboard .sidebar-column.open {
+
+    width: 235px;
+  }
+} */
+
+.dashboard .main-content {
+  flex: 1;
+}
+.dashboard .main-content :global(.inner-container) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.dashboard .main-content {
+  /* enable in the last */
+  background-color: rgba(250, 250, 251, 1);
+  /* for top right border of the navbar */
+  z-index: 1;
+  position: relative;
+}
+.dashboard .main-content .table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+.dashboard .main-content .table {
+  width: 1150px;
+  border-collapse: collapse;
+  margin: auto;
+}

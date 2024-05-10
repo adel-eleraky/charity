@@ -1,4 +1,6 @@
 import React from "react";
+import Tooltip from "../common/Tooltip";
+import AccountTooltip from "../common/AccountTooltip";
 import styles from "./NavBar.module.css";
 /* eslint-disable  */
 function NavBar({ isOpenSidebar, onToggleSidebar }) {
@@ -29,7 +31,9 @@ function NavBar({ isOpenSidebar, onToggleSidebar }) {
           className={`${styles["user-info-container"]} d-flex align-items-center flex-row-reverse`}
         >
           <span className={styles.avatar}>
-            <img src="/images/Avatar.png" alt="" />
+            <Tooltip trigger={<img src="/images/avatar.png" alt="" />}>
+              <AccountTooltip />
+            </Tooltip>
           </span>
           <span className={styles.bell}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">

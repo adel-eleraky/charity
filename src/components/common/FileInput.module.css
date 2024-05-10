@@ -1,0 +1,15 @@
+.file-input {
+  cursor: pointer;
+  display: flex;
+  padding: 12px 24px 12px 24px;
+  gap: 8px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  background: #f4f0eb;
+}
+.file-input:hover {
+  background-color: #efeae5;
+}

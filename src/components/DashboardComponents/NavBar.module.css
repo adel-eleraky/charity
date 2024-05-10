@@ -34,11 +34,7 @@
   align-items: center;
   justify-content: space-between;
 }
-/* @media (min-width: 992px) {
-.dashboard-nav :global(.inner-container) {
-  justify-content: flex-end;
-}
-} */
+
 .dashboard-nav .user-info-container {
   /* so that not diplaying anything pefore the .user-info-elements */
   position: relative;
@@ -56,7 +52,6 @@
   height: 48px;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08); */
   background: linear-gradient(
     156.46deg,
     #e8cbba 7.15%,
@@ -68,7 +63,9 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
-
+.dashboard-nav .user-info-container .avatar img {
+  cursor: pointer;
+}
 .dashboard-nav .user-info-container .bell {
   width: 32px;
   height: 32px;

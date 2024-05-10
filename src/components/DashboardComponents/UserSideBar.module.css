@@ -1,0 +1,64 @@
+.sidebar-content {
+  background: var(--main-dashboard-color)
+    url("/images/metal-texture-with-dust-scratches-cracks-textured-backgrounds\ 2.png");
+  background-blend-mode: color-burn;
+  background-size: cover;
+  height: 100%;
+  font-size: 19px;
+  line-height: 22.8px;
+  position: relative;
+}
+.sidebar-content i {
+  display: none;
+}
+@media (max-width: 991px) {
+  .sidebar-content i {
+    display: block;
+    position: absolute;
+    left: 24px;
+    top: 27px;
+    z-index: 300;
+  }
+}
+.sidebar-content .logo {
+  margin-top: 2rem;
+  margin-right: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-content .links {
+  gap: 0.5rem;
+}
+.sidebar-content .links a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: rgba(200, 200, 200, 1);
+}
+/* because a is not class it will be nicely formated */
+.sidebar-content .links a svg {
+  margin-left: 1rem;
+  fill: none;
+}
+.sidebar-content .links a svg path {
+  stroke: rgb(200, 200, 200);
+}
+.sidebar-content .links a svg.building path {
+  stroke: transparent;
+  fill: #c8c8c8;
+}
+
+.sidebar-content .links a:global(.active) {
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.2) 6.81%,
+    rgba(255, 255, 255, 0) 112.34%
+  );
+  color: rgba(255, 255, 255, 1);
+}
+.sidebar-content .links a:global(.active) path {
+  stroke: rgba(255, 255, 255, 1);
+}
+.sidebar-content .links a:global(.active) svg.building path {
+  fill: rgba(255, 255, 255, 1);
+  stroke: transparent;
+}

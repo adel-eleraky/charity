@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -11,6 +14,7 @@
   --gradient-color: linear-gradient(#1f2c39, #202d3afe, #2c3e50);
 
   --main-dashboard-color: #91683a;
+  --secondary-dashboard-color: #c8c8c8;
   --gradient-selection: linear-gradient(
     270deg,
     #ffffff 6.81%,
@@ -40,4 +44,28 @@ a {
   justify-content: center;
   align-items: center;
   background-color: var(--main-color);
+}
+
+/* react js popup */
+[data-popup="modal"].popup-overlay {
+  background: rgba(18, 18, 18, 0.56);
+}
+
+@keyframes anvil {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0;
+  }
+  1% {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+.popup-content {
+  animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }

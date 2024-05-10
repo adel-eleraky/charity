@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import ShowDate from "../common/ShowDate";
-import styles from "./CharityHomeLayout.module.css";
-import AdminHomeBox from "../common/HomeBox";
+import HomeBox from "../common/HomeBox";
 import HomeProgress from "../common/HomeProgress";
+import { Link, useOutletContext } from "react-router-dom";
+import styles from "./CharityHomeLayout.module.css";
 function CharityHomeLayout() {
+  const [isCharityApproved] = useOutletContext();
+  console.log(isCharityApproved);
   return (
     <div className={styles.container}>
       <div className={styles["heading"]}>
@@ -12,54 +15,67 @@ function CharityHomeLayout() {
           <ShowDate />
         </div>
       </div>
-      <div className={styles.stats}>
-        <div className="inner-container">
-          <div className={styles.small}>
-            <div className={styles.row}>
-              <AdminHomeBox
-                title="عدد المتبرعين"
-                imagePath="/images/admin-users.svg"
-                value="222"
-              >
-                <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
-              <AdminHomeBox
-                title="عدد التبرعات"
-                imagePath="/images/admin-users.svg"
-                value="222"
-              >
-                <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
+      {isCharityApproved ? (
+        // move to another component better
+        <div className={styles.stats}>
+          <div className="inner-container">
+            <div className={styles.small}>
+              <div className={styles.row}>
+                <HomeBox
+                  title="عدد المتبرعين"
+                  imagePath="/images/admin-users.svg"
+                  value="222"
+                >
+                  <HomeProgress value="10" isPositive={true} />
+                </HomeBox>
+                <HomeBox
+                  title="عدد التبرعات"
+                  imagePath="/images/admin-users.svg"
+                  value="222"
+                >
+                  <HomeProgress value="10" isPositive={true} />
+                </HomeBox>
+              </div>
+              <div className={styles.row}>
+                <HomeBox
+                  title="عدد الحملات"
+                  imagePath="/images/admin-users.svg"
+                  value="222"
+                >
+                  <HomeProgress value="10" isPositive={true} />
+                </HomeBox>
+                <HomeBox
+                  title="اجمالي التبرعات"
+                  imagePath="/images/admin-users.svg"
+                  value="222"
+                >
+                  <HomeProgress value="10" isPositive={true} />
+                </HomeBox>
+              </div>
             </div>
-            <div className={styles.row}>
-              <AdminHomeBox
-                title="عدد الحملات"
-                imagePath="/images/admin-users.svg"
+            <div className={styles.big}>
+              <HomeBox
+                isBig={true}
+                title="عدد الحالات"
+                imagePath="/images/admin-charity.svg"
                 value="222"
               >
                 <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
-              <AdminHomeBox
-                title="اجمالي التبرعات"
-                imagePath="/images/admin-users.svg"
-                value="222"
-              >
-                <HomeProgress value="10" isPositive={true} />
-              </AdminHomeBox>
+              </HomeBox>
             </div>
-          </div>
-          <div className={styles.big}>
-            <AdminHomeBox
-              isBig={true}
-              title="عدد الحالات"
-              imagePath="/images/admin-charity.svg"
-              value="222"
-            >
-              <HomeProgress value="10" isPositive={true} />
-            </AdminHomeBox>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className={styles["upload-warning"]}>
+          <div className="inner-container">
+            <div className="message">ارفع الوثائق يلا</div>
+            <Link to="/charity-dashboard/upload-docs">
+              ارفع الوثائق من هنا
+              <i className="fa-solid fa-chevron-left fa-xs fa-beat"></i>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
