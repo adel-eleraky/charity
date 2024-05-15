@@ -1,22 +1,14 @@
 .offcanvas {
     width: 300px !important;
-    background-color: var(--third-color);
+    background-color: #EDDCC8;
 }
-.offcanvas-body .accordion .accordion-body a ,
-.offcanvas-body .accordion .accordion-body .card-body {
-    color: black !important;
-    margin-bottom: 15px;
-}
-.offcanvas-body .accordion .accordion-body a span {
-    font-size: 20px;
-    font-weight: 600;
-}
-.links a {
+.offcanvas .links a {
     display: block;
     padding: 15px 0;
 }
-.accordion-button,
-.links a {
-    font-size: 20px;
+.offcanvas .links a {
+    font-size: 30px;
     font-weight: 600;
+    border-bottom: 1px solid #927238;
+    color: black;
 }

@@ -16,7 +16,7 @@ function Navbar() {
                     <div className="row align-items-center justify-content-between">
                         <div className="col-4 col-md-2">
                             <div className='d-flex'>
-                                <button className="btn btn-primary navbar-toggler d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navOffcanvas" aria-controls="navOffcanvas"><i className="fa-solid fa-bars fs-2 ms-3 text-white"></i></button>
+                                <button className="btn btn-primary navbar-toggler d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navOffcanvas" aria-controls="navOffcanvas"><i className="fa-solid fa-bars fs-2 ms-3" style={{ color: "#7b5309 "}}></i></button>
                                 <Link to="/">
                                     <img src="/images/Logo.png" alt="" className="img-fluid logo" />
                                 </Link>
