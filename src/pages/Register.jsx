@@ -184,7 +184,7 @@ function Register() {
                         <ErrorMessage
                           name="email"
                           component="div"
-                          className="invalid-feedback d-block fs-6"
+                          className="invalid-feedback d-block fs-6 fw-bold"
                         />
                       </div>
                       <label htmlFor="password" className="form-label">
@@ -211,7 +211,7 @@ function Register() {
                         <ErrorMessage
                           name="password"
                           component="div"
-                          className="invalid-feedback d-block fs-6"
+                          className="invalid-feedback d-block fs-6 fw-bold"
                         />
                       </div>
                       <div className="form-check mb-3">
@@ -247,7 +247,7 @@ function Register() {
                       <ErrorMessage
                         name="role"
                         component="div"
-                        className="invalid-feedback d-block fs-6 mb-4"
+                        className="invalid-feedback d-block fs-6 mb-4 fw-bold"
                       />
                       {role === "organization" && (
                         <div className="mb-4">
@@ -280,7 +280,7 @@ function Register() {
                             <ErrorMessage
                               name="organizationName"
                               component="div"
-                              className="invalid-feedback d-block fs-6"
+                              className="invalid-feedback d-block fs-6 fw-bold"
                             />
                           </div>
                           <label htmlFor="contactEmail" className="form-label">
@@ -309,7 +309,7 @@ function Register() {
                             <ErrorMessage
                               name="contactEmail"
                               component="div"
-                              className="invalid-feedback d-block fs-6"
+                              className="invalid-feedback d-block fs-6 fw-bold"
                             />
                           </div>
                         </div>
@@ -342,7 +342,7 @@ function Register() {
                             <ErrorMessage
                               name="name[firstName]"
                               component="div"
-                              className="invalid-feedback d-block fs-6"
+                              className="invalid-feedback d-block fs-6 fw-bold"
                             />
                           </div>
                           <label htmlFor="lastName" className="form-label">
@@ -371,7 +371,7 @@ function Register() {
                             <ErrorMessage
                               name="name[lastName]"
                               component="div"
-                              className="invalid-feedback d-block fs-6"
+                              className="invalid-feedback d-block fs-6 fw-bold"
                             />
                           </div>
                           <label htmlFor="gender" className="form-label">
@@ -411,7 +411,7 @@ function Register() {
                           <ErrorMessage
                             name="gender"
                             component="div"
-                            className="invalid-feedback d-block fs-6"
+                            className="invalid-feedback d-block fs-6 fw-bold"
                           />
                         </div>
                       )}
@@ -441,7 +441,7 @@ function Register() {
                             <ErrorMessage
                               name="phone"
                               component="div"
-                              className="invalid-feedback d-block fs-6"
+                              className="invalid-feedback d-block fs-6 fw-bold"
                             />
                           </div>
                           <label htmlFor="governorate" className="form-label">
@@ -465,7 +465,7 @@ function Register() {
                           <ErrorMessage
                             name="location[governorate]"
                             component="div"
-                            className="invalid-feedback d-block fs-6"
+                            className="invalid-feedback d-block fs-6 fw-bold"
                           />
                         </div>
                       )}
@@ -506,7 +506,7 @@ function Register() {
               <div>
                 <Link
                   to="/account/login"
-                  className="text-white d-block text-center mb-3"
+                  className="text-dark fs-5 fw-bold d-block text-center mb-3"
                 >
                   لديك حساب ؟
                 </Link>
