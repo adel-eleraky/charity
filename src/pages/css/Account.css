@@ -1,4 +1,4 @@
 .account-page {
-    background-image: var(--gradient-color);
+    background-image: linear-gradient(#d5bfa6, white);
     color: white;
 }
