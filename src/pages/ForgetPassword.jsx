@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./css/ForgetPassword.css";
 import { Form, Formik, Field, ErrorMessage } from "formik";
@@ -84,7 +85,7 @@ function ForgetPassword() {
                             <ErrorMessage
                               name="email"
                               component="div"
-                              className="invalid-feedback d-block fs-6"
+                              className="invalid-feedback d-block fs-6 fw-bold"
                             />
                           </div>
                           <button
@@ -104,7 +105,7 @@ function ForgetPassword() {
                     {" "}
                     تم ارسال الرابط الى بريدك الالكترونى
                   </h3>
-                  <i className="fa-solid fa-paper-plane sent-icon"></i>
+                  <i className="fa-solid fa-paper-plane sent-icon" style={{ color: "#EEE"}}></i>
                   <h4 className="mt-4">افحص بريدك الالكترونى الان</h4>
                   <ConfirmResetPass />
                 </div>
