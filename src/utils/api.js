@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const baseURL = "http://localhost:5000/api"; // Adjust the base URL as per your API
-const baseURL = "https://subul-1.onrender.com/api"; // Adjust the base URL as per your API
+const baseURL = "https://subul.onrender.com/api"; // Adjust the base URL as per your API
 
 const instance = axios.create({
   baseURL,
@@ -10,10 +10,20 @@ const instance = axios.create({
   },
   withCredentials: true,
 });
+const instanceFormData = axios.create({
+  baseURL,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+  withCredentials: true,
+});
 
 // Function to handle POST requests
-export const postData = async (endpoint, data) => {
-  const response = await instance.post(endpoint, data);
+export const postData = async (endpoint, data, formData = false) => {
+  const response = formData
+    ? await instanceFormData.post(endpoint, data)
+    : await instance.post(endpoint, data);
+
   return response.data;
 };
 

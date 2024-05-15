@@ -11,3 +11,11 @@ export function fetchingErrorHandling(error, process) {
     throw new Error(`Error during ${process}:` + error.message);
   }
 }
+
+export function createFormData(data) {
+  const formData = new FormData();
+  for (const key in data) {
+    formData.append(key, data[key]);
+  }
+  return formData;
+}
