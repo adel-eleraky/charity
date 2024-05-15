@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { activateAccount } from "../rtk/features/userAuthSlice";
+import { getUserProfile } from "../rtk/features/userProfileSlice";
 
 function AccountActivation() {
   const [token, setToken] = useState("");
@@ -12,9 +13,10 @@ function AccountActivation() {
     console.log({ token });
     dispatch(activateAccount(token));
   }
-  useEffect(() => {
-    console.log(error);
-  }, [error]);
+
+  // charityauthSlice (login - register are handled in the login page)
+  // 3.activate charity account
+
   return (
     <form onSubmit={handleVerify}>
       <p>copy token from email</p>

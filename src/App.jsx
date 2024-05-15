@@ -45,6 +45,7 @@ import AdminCharityDocs from "./components/DashboardComponents/AdminCharityDocs.
 import Donations from "./pages/Donations.jsx";
 import About_us from "./pages/About_us.jsx";
 import ReportCase from "./pages/ReportCase.jsx";
+import ApiTesting from "./pages/ApiTesting.jsx";
 
 AOS.init();
 
@@ -95,6 +96,7 @@ function App() {
               />
               <Route path="checkout" element={<Checkout />} />
               <Route path="cart" element={<Cart />} />
+              <Route path="api-testing" element={<ApiTesting />} />
             </Route>
             <Route path="admin-dashboard" element={<AdminDashboard />}>
               <Route index element={<Navigate replace to="home" />} />
