@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
+import AddCase from "../AddCase";
 import styles from "./CharityCasesLayout.module.css";
 import CharityCasesTable from "./CharityCasesTable";
+
 function CharityCasesLayout() {
+
   return (
     <div className={styles.container}>
       <div className={styles["heading"]}>
@@ -13,6 +17,7 @@ function CharityCasesLayout() {
               <span>اضافة فلتر</span>
             </button>
           </div>
+          <AddCase />
         </div>
       </div>
 

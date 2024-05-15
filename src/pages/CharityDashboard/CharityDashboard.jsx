@@ -8,7 +8,7 @@ import CharitySideBar from "../../components/DashboardComponents/CharitySideBar.
 function CharityDashboard() {
   // use useRef instead
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
-  const [isCharityApproved, setIsCharityApproved] = useState(false);
+  const [isCharityApproved, setIsCharityApproved] = useState(true);
 
   function handleToggleSidebar() {
     setIsOpenSidebar((o) => !o);

@@ -13,6 +13,7 @@
 .container .heading .title {
   font-size: 28px;
   font-weight: 700;
+  margin-left: auto;
 }
 .container .heading .search-filter {
   /* display: flex;
@@ -51,7 +52,8 @@
 /* End seach styling */
 
 /* start filter-button styling  */
-.container .heading .search-filter .btn-filter {
+.container .heading .search-filter .btn-filter,
+.container .heading .add-case-btn {
   border: none;
   height: 40px;
   border-radius: 8px;
@@ -66,13 +68,17 @@
   background: rgba(145, 104, 58, 1);
   color: white;
 }
-.container .heading .search-filter .btn-filter span {
+.container .heading .search-filter .btn-filter span,
+.container .heading .add-case-btn {
   font-family: "Readex Pro", sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
 /* end filter-button styling  */
-
+.container .heading .add-case-btn {
+  padding: 15px;
+  margin-right: 8px;
+}
 /* start table styling */
 .container div:not(:first-child) :global(.inner-container) {
   padding-left: 10px;
