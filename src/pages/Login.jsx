@@ -137,7 +137,7 @@ function Login() {
                         <ErrorMessage
                           name="email"
                           component="div"
-                          className="invalid-feedback d-block fs-6"
+                          className="invalid-feedback d-block fs-6 fw-bold"
                         />
                       </div>
                       <label htmlFor="password" className="form-label">
@@ -164,7 +164,7 @@ function Login() {
                         <ErrorMessage
                           name="password"
                           component="div"
-                          className="invalid-feedback d-block fs-6"
+                          className="invalid-feedback d-block fs-6 fw-bold"
                         />
                       </div>
                       <button
@@ -207,13 +207,13 @@ function Login() {
               <div>
                 <Link
                   to="/account/register"
-                  className="text-white d-block text-center mb-3"
+                  className="text-dark fs-5 fw-bold d-block text-center mb-3"
                 >
                   ليس لديك حساب ؟
                 </Link>
                 <Link
                   to="/account/forget-password"
-                  className="text-white d-block text-center mb-3"
+                  className="text-dark fs-5 fw-bold d-block text-center mb-3"
                 >
                   هل نسيت كلمة السر ؟
                 </Link>
