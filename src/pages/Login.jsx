@@ -21,10 +21,10 @@ function Login() {
     (store) => store.userAuth
   );
 
-  console.log("user", user);
-  console.log("error", error);
+  // console.log("user", user);
+  // console.log("error", error);
   console.log("loginStatus", loginStatus);
-  console.log("registerStatus", registerStatus);
+  // console.log("registerStatus", registerStatus);
   const isVerified =
     user.msg !=
     "Your Account is not Activated Yet,A Token Was Sent To Your Email.";
@@ -67,17 +67,20 @@ function Login() {
       .required("ادخل كلمة السر"),
   });
 
+  console.log(isVerified)
   useEffect(
     function () {
       toast.dismiss();
+
       if (loginStatus === "loading") toast.loading("جارى تسجيل الدخول");
       if (loginStatus === "finished") {
         toast.success("تم تسجيل الدخول بنجاح");
-        navigate("/account/activate");
+
+        isVerified ? navigate("/account") : navigate("/account/activate");
       }
       if (loginStatus === "failed") toast.error("حدث خطأ فى الدخول");
     },
-    [loginStatus, navigate]
+    [loginStatus ]
   );
   const submitHandler = (values) => {
     dispatch(loginUser(values));

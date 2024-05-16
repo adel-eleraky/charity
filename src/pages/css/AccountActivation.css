@@ -1,0 +1,8 @@
+.account-activation-page {
+    background-image: linear-gradient(#d5bfa6, white);
+}
+.account-activation-page form {
+    background-color: #C7AB77;
+    color: black;
+    box-shadow: 0 0 23px -3px #927238;
+}
