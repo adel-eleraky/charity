@@ -5,20 +5,30 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import styles from "./CharityDocsLayout.module.css";
 import * as yup from "yup";
 import FileInput from "../common/FileInput";
+import { sendDocs } from "../../rtk/features/charity/charityActivitySlice";
+import { useDispatch } from "react-redux";
 function CharityDocsLayout() {
+  const dispatch = useDispatch();
   const initialValues = {
-    bankDocs: "",
-    charityDocs1: "",
-    charityDocs2: "",
-    charityDocs3: "",
-    charityDocs4: "",
+    bankDocs: {},
+    charityDocs1: {},
+    charityDocs2: {},
+    charityDocs3: {},
+    charityDocs4: {},
   };
 
   const validationSchema = yup.object().shape({});
 
   const submitHandler = (values) => {
     // wow you still have access to the data here without prop-drilling (wow)
-    console.log(values);
+    const docsData = {
+      accNumber: "1503070704120700019",
+      swiftCode: "ECBAEGCA",
+      iban: "EG890003000930603696309000540",
+      ...values,
+    };
+    dispatch(sendDocs(docsData));
+    console.log(docsData);
   };
 
   return (
@@ -34,15 +44,25 @@ function CharityDocsLayout() {
           validationSchema={validationSchema}
           onSubmit={submitHandler}
         >
-          {({ values, errors, touched }) => {
+          {({ values, errors, touched, setFieldValue }) => {
             return (
               <Form method="post" className="needs-validation" noValidate>
                 <div className={styles["input-group"]}>
-                  <FileInput name="bankDocs">ادخل الصورة</FileInput>
-                  <FileInput name="charityDocs1">ادخل الصورة1</FileInput>
-                  <FileInput name="charityDocs2">ادخل الصورة2</FileInput>
-                  <FileInput name="charityDocs3">ادخل الصورة3</FileInput>
-                  <FileInput name="charityDocs4">ادخل الصورة4</FileInput>
+                  <FileInput name="bankDocs" setFieldValue={setFieldValue}>
+                    ادخل الصورة
+                  </FileInput>
+                  <FileInput name="charityDocs1" setFieldValue={setFieldValue}>
+                    ادخل الصورة1
+                  </FileInput>
+                  <FileInput name="charityDocs2" setFieldValue={setFieldValue}>
+                    ادخل الصورة2
+                  </FileInput>
+                  <FileInput name="charityDocs3" setFieldValue={setFieldValue}>
+                    ادخل الصورة3
+                  </FileInput>
+                  <FileInput name="charityDocs4" setFieldValue={setFieldValue}>
+                    ادخل الصورة4
+                  </FileInput>
                 </div>
                 <div className={styles["button-container"]}>
                   <button type="submit">ارسال الملفات</button>

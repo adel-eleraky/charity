@@ -34,8 +34,11 @@ export const getData = async (endpoint) => {
 };
 
 // Function to handle PUT requests
-export const putData = async (endpoint, data) => {
-  const response = await instance.put(endpoint, data);
+export const putData = async (endpoint, data, formData = false) => {
+  const response = formData
+    ? await instanceFormData.put(endpoint, data)
+    : await instance.put(endpoint, data);
+
   return response.data;
 };
 

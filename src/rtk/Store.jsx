@@ -4,14 +4,16 @@ import casesReducer from "./features/CasesSlice";
 import userAuthReducer from "./features/userAuthSlice";
 import cartReducer from "./features/CartSlice";
 import userProfileReducer from "./features/userProfileSlice";
-import charityAuthSlice from "./features/charity/charityAuthSlice";
+import charityAuthReducer from "./features/charity/charityAuthSlice";
+import charityProfileReducer from "./features/charity/charityProfileSlice";
 
 const Store = configureStore({
   reducer: {
     cases: casesReducer,
     userAuth: userAuthReducer,
     userProfile: userProfileReducer,
-    charityAuth: charityAuthSlice,
+    charityAuth: charityAuthReducer,
+    charityProfile: charityProfileReducer,
     casesCart: cartReducer,
   },
 });
