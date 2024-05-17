@@ -1,13 +1,3 @@
-// loginUser
-// logoutUser
-// verifyEmail
-// register
-// reset passwrod by email
-//       "https://thankful-umbrella-yak.cyclic.app/api/users/auth",
-// "https://subul.cyclic.app/api/users/auth"
-// "https://subul.cyclic.app/api/users"
-// "https://subul.cyclic.app/api/users/activate"
-// localhost:5000
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getData, postData } from "../../../utils/api";
 import { createFormData, fetchingErrorHandling } from "../../../utils/helpers";
@@ -17,7 +7,6 @@ export const registerCharity = createAsyncThunk(
   "charityAuth/registerCharity",
   async function (charityData) {
     const formData = createFormData(charityData);
-    console.log(formData);
     try {
       return postData("charities/register", formData, true);
     } catch (error) {
@@ -29,7 +18,7 @@ export const registerCharity = createAsyncThunk(
 
 // Async action to authenticate a charity
 export const loginCharity = createAsyncThunk(
-  "charities/loginCharity",
+  "charityAuth/loginCharity",
   async function (loginData) {
     try {
       return postData("charities/auth", loginData);
@@ -42,7 +31,7 @@ export const loginCharity = createAsyncThunk(
 
 // Async action to activate a charity account
 export const activateCharityAccount = createAsyncThunk(
-  "charities/activateCharityAccount",
+  "charityAuth/activateCharityAccount",
   async function (token) {
     try {
       return postData("charities/activate", { token });
@@ -55,7 +44,7 @@ export const activateCharityAccount = createAsyncThunk(
 
 // Async action to reset a charity's password
 export const resetCharityPassword = createAsyncThunk(
-  "charities/resetCharityPassword",
+  "charityAuth/resetCharityPassword",
   async function (email) {
     try {
       return postData("charities/reset", { email });
@@ -68,7 +57,7 @@ export const resetCharityPassword = createAsyncThunk(
 
 // Async action to confirm a charity's password reset
 export const confirmResetCharityPassword = createAsyncThunk(
-  "charities/confirmResetCharityPassword",
+  "charityAuth/confirmResetCharityPassword",
   async function (data) {
     try {
       return postData("charities/reset/confirm", data);
@@ -81,7 +70,7 @@ export const confirmResetCharityPassword = createAsyncThunk(
 
 // Async action to log out a charity
 export const logoutCharity = createAsyncThunk(
-  "charities/logoutCharity",
+  "charityAuth/logoutCharity",
   async function () {
     try {
       await postData("charities/logout");
