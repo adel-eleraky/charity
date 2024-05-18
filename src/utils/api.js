@@ -30,6 +30,7 @@ export const postData = async (endpoint, data, formData = false) => {
 // Function to handle GET requests
 export const getData = async (endpoint) => {
   const response = await instance.get(endpoint);
+
   return response.data;
 };
 
@@ -39,6 +40,10 @@ export const putData = async (endpoint, data, formData = false) => {
     ? await instanceFormData.put(endpoint, data)
     : await instance.put(endpoint, data);
 
+  return response.data;
+};
+export const deleteData = async (endpoint) => {
+  const response = await instance.delete(endpoint);
   return response.data;
 };
 

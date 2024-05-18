@@ -1,9 +1,23 @@
 /* eslint-disable no-unused-vars */
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCases } from "../../rtk/features/charity/charityCaseSlice";
 import AddCase from "../AddCase";
 import styles from "./CharityCasesLayout.module.css";
 import CharityCasesTable from "./CharityCasesTable";
+import { useEffect } from "react";
 
 function CharityCasesLayout() {
+  const dispatch = useDispatch();
+  // you can use it anywhere so no prob-drilling
+  const { cases, getAllCasesStatus } = useSelector(
+    (store) => store.charityCase
+  );
+  useEffect(
+    function () {
+      if (getAllCasesStatus === "idle") dispatch(getAllCases());
+    },
+    [dispatch, getAllCasesStatus]
+  );
 
   return (
     <div className={styles.container}>

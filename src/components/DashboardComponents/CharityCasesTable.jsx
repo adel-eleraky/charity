@@ -1,62 +1,13 @@
+import { useSelector } from "react-redux";
 import CharityCaseTableRow from "./CharityCaseTableRow";
 import styles from "./CharityCasesTable.module.css";
+import Loader from "../common/Loader";
+import Error from "../common/Error";
 function CharityCasesTable() {
-  const cases = [
-    {
-      id: 876123,
-      title: "لوريم ابسيم",
-      targetAmount: 10000,
-      currentCollected: 500,
-      dateFinished: "14/02/2024",
-      donatinsNum: 20,
-      caseStatus: "open" /* open - close */,
-    },
-    {
-      id: 876123,
-      title: "لوريم ابسيم",
-      targetAmount: 10000,
-      currentCollected: 500,
-      dateFinished: "14/02/2024",
-      donatinsNum: 20,
-      caseStatus: "closed" /* open - close */,
-    },
-    {
-      id: 876123,
-      title: "لوريم ابسيم",
-      targetAmount: 10000,
-      currentCollected: 500,
-      dateFinished: "14/02/2024",
-      donatinsNum: 20,
-      caseStatus: "closed" /* open - close */,
-    },
-    {
-      id: 876123,
-      title: "لوريم ابسيم",
-      targetAmount: 10000,
-      currentCollected: 500,
-      dateFinished: "14/02/2024",
-      donatinsNum: 20,
-      caseStatus: "closed" /* open - close */,
-    },
-    {
-      id: 876123,
-      title: "لوريم ابسيم",
-      targetAmount: 10000,
-      currentCollected: 500,
-      dateFinished: "14/02/2024",
-      donatinsNum: 20,
-      caseStatus: "closed" /* open - close */,
-    },
-    {
-      id: 876123,
-      title: "لوريم ابسيم",
-      targetAmount: 10000,
-      currentCollected: 500,
-      dateFinished: "14/02/2024",
-      donatinsNum: 20,
-      caseStatus: "closed" /* open - close */,
-    },
-  ];
+  const { cases, getAllCasesStatus, error } = useSelector(
+    (store) => store.charityCase
+  );
+
   return (
     <ul className={styles.table}>
       <div className={styles["header-wrapper"]}>
@@ -88,13 +39,13 @@ function CharityCasesTable() {
           </div>
           <div className={`${styles.col} ${styles["col-5"]}`}>
             <button>
-              تاريخ الانتهاء
+              النوع الرئيسي
               <img src="/images/admin-arrow-down.svg" alt="" />
             </button>
           </div>
           <div className={`${styles.col} ${styles["col-6"]}`}>
             <button>
-              عدد عمليات التبرع
+              النوع الفرعي
               <img src="/images/admin-arrow-down.svg" alt="" />
             </button>
           </div>
@@ -113,9 +64,15 @@ function CharityCasesTable() {
         </li>
       </div>
       <div className={styles.rows}>
-        {cases.map((currentCase) => (
-          <CharityCaseTableRow currentCase={currentCase} key={currentCase.id} />
-        ))}
+        {getAllCasesStatus === "finished" &&
+          cases.map((currentCase) => (
+            <CharityCaseTableRow
+              currentCase={currentCase}
+              key={currentCase._id}
+            />
+          ))}
+        {getAllCasesStatus === "loading" && <Loader />}
+        {getAllCasesStatus === "failed" && <Error msg={error} />}
       </div>
     </ul>
   );
