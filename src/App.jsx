@@ -19,7 +19,6 @@ import UserHomeComponent from "./pages/UserDashboard/UserHomeComponent";
 import HashLoader from "react-spinners/HashLoader";
 import Cases from "./pages/Cases.jsx";
 import ForgetPassword from "./pages/ForgetPassword.jsx";
-import ResetPassword from "./pages/ResetPassword.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Cart from "./pages/Cart.jsx";
 
@@ -89,10 +88,6 @@ function App() {
               <Route
                 path="account/forget-password"
                 element={<ForgetPassword />}
-              />
-              <Route
-                path="account/reset-password"
-                element={<ResetPassword />}
               />
               <Route path="checkout" element={<Checkout />} />
               <Route path="cart" element={<Cart />} />
