@@ -25,21 +25,9 @@ function ForgetPassword() {
   const submitHandler = (values) => {
     console.log(values);
     setFormStatus("submitted");
-    toast.promise(
-      // implement forget password function
-      dispatch(forgotPassword(values.email)),
-      new Promise((resolve, reject) => {
-        setTimeout(() => {
-          reject();
-        }, 2000);
-      }),
-      {
-        pending: "جاري التحقق...",
-        success: "تم التحقق بنجاح",
-        error: "فشل التحقق",
-      }
-    );
+    dispatch(forgotPassword(values.email))
   };
+
   return (
     <>
       <div className="forget-password-page py-5">
@@ -75,9 +63,8 @@ function ForgetPassword() {
                               type="email"
                               id="email"
                               name="email"
-                              className={`form-control ${
-                                touched.email && errors.email && "is-invalid"
-                              } rounded-0 rounded-start`}
+                              className={`form-control ${touched.email && errors.email && "is-invalid"
+                                } rounded-0 rounded-start`}
                               placeholder="ادخل بريدك الالكترونى"
                               aria-label="Username"
                               aria-describedby="basic-addon1"
@@ -92,7 +79,7 @@ function ForgetPassword() {
                             type="submit"
                             className="btn d-block m-auto submit-btn fw-bold"
                           >
-                            ارسل الرابط الى البريد
+                            ارسل الرمز الى البريد
                           </button>
                         </Form>
                       );
@@ -103,14 +90,14 @@ function ForgetPassword() {
                 <div className="form-submitted-content text-center p-5 rounded w-75 m-auto">
                   <h3 className="mb-4">
                     {" "}
-                    تم ارسال الرابط الى بريدك الالكترونى
+                    تم ارسال الرمز الى بريدك الالكترونى
                   </h3>
-                  <i className="fa-solid fa-paper-plane sent-icon" style={{ color: "#EEE"}}></i>
+                  <i className="fa-solid fa-paper-plane sent-icon" style={{ color: "#EEE" }}></i>
                   <h4 className="mt-4">افحص بريدك الالكترونى الان</h4>
-                  <ConfirmResetPass />
                 </div>
               )}
             </div>
+            { formStatus === "submitted" && <ConfirmResetPass /> }
           </div>
         </div>
       </div>
