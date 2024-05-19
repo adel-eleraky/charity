@@ -30,12 +30,20 @@ export const postData = async (endpoint, data, formData = false) => {
 // Function to handle GET requests
 export const getData = async (endpoint) => {
   const response = await instance.get(endpoint);
+
   return response.data;
 };
 
 // Function to handle PUT requests
-export const putData = async (endpoint, data) => {
-  const response = await instance.put(endpoint, data);
+export const putData = async (endpoint, data, formData = false) => {
+  const response = formData
+    ? await instanceFormData.put(endpoint, data)
+    : await instance.put(endpoint, data);
+
+  return response.data;
+};
+export const deleteData = async (endpoint) => {
+  const response = await instance.delete(endpoint);
   return response.data;
 };
 

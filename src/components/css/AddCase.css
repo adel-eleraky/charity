@@ -1,39 +1,39 @@
-.popup-content {
-    width: 80%;
+.add-case-popup-content {
+  width: 80% !important;
 }
-.modal-content {
-    background-color: white;
+.modal-content1 {
+  background-color: white;
 }
-.modal-content form .input {
-    width: calc((100% / 2) - 20px);
-    font-weight: bold;
+.modal-content1 form .input {
+  width: calc((100% / 2) - 20px);
+  font-weight: bold;
 }
-.modal-content form .save-btn {
-    display: block;
-    margin: auto;
-    color: white;
-    width: 200px;
-    padding: 10px;
-    font-weight: bold;
-    background-color: rgba(145, 104, 58, 1);
+.modal-content1 form .save-btn {
+  display: block;
+  margin: auto;
+  color: white;
+  width: 200px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: rgba(145, 104, 58, 1);
 }
 .add-case-btn {
-    border: none;
-    height: 40px;
-    border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: rgba(145, 104, 58, 1);
-    color: white;
-    font-family: "Readex Pro", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 15px;
-    margin-right: 8px;
+  border: none;
+  height: 40px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(145, 104, 58, 1);
+  color: white;
+  font-family: "Readex Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 15px;
+  margin-right: 8px;
 }
