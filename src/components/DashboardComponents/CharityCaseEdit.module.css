@@ -1,0 +1,64 @@
+.content {
+  /* width: 80% !important; */
+  background-color: white;
+}
+.content .image {
+  position: relative;
+  width: fit-content;
+}
+.content .image img:first-of-type {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.content .image img:last-of-type {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0px 2px 15px 0px hsla(0, 0%, 56%, 0.251);
+  padding: 4px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  cursor: pointer;
+}
+.content form .input {
+  width: calc((100% / 2) - 20px);
+  font-weight: bold;
+}
+.content form .save-btn {
+  display: block;
+  margin: auto;
+  color: white;
+  width: 200px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: rgba(145, 104, 58, 1);
+}
+.add-case-btn {
+  border: none;
+  height: 40px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(145, 104, 58, 1);
+  color: white;
+  font-family: "Readex Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 15px;
+  margin-right: 8px;
+}

@@ -36,6 +36,9 @@
   font-weight: 500;
 }
 
+:global(.edit-case-content) {
+  width: 80%;
+}
 /* docs popup styling */
 :global(.docs-popup-content) {
   height: 100%;

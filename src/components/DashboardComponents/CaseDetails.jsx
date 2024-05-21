@@ -3,6 +3,7 @@ import styles from "./CaseDetails.module.css";
 import CharityInfo from "./CharityInfo";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  finishGetCaseByIdStatus,
   getCaseById,
   resetGetCaseByIdStatus,
 } from "../../rtk/features/charity/charityCaseSlice";
@@ -15,30 +16,19 @@ function CaseDetails({ caseId, close }) {
 
   useEffect(
     function () {
-      if (getCaseByIdStatus === "idle") {
-        dispatch(getCaseById(caseId));
-      }
-      // return function () {
-      //   getCaseByIdStatus = "idle";
-      // };
+      dispatch(getCaseById(caseId));
+      // if (getCaseByIdStatus === "idle") {
+      //   dispatch(getCaseById(caseId));
+      // }
     },
-    [caseId, dispatch, getCaseByIdStatus]
+    [caseId, dispatch]
   );
 
   return (
     <div className={styles.popup}>
-      <button
-        onClick={() => {
-          close();
-        }}
-      >
-        x
+      <button className="close" onClick={close}>
+        &times;
       </button>
-      {/* https://res.cloudinary.com/${cloudName}/image/upload/${publicId} */}
-      <img
-        src="https://res.cloudinary.com/ddvetozyq/image/upload/caseCoverImagedb5adb98-a6fe-4c0b-a8cd-266204803ff0-1715959479251--subul.jpeg"
-        alt="image"
-      />
       <div className={styles.heading}></div>
       {(getCaseByIdStatus === "loading" || getCaseByIdStatus === "idle") && (
         <Loader />
@@ -47,16 +37,19 @@ function CaseDetails({ caseId, close }) {
         <div className={styles.info}>
           <div className={styles.head}>
             <div>
-              <h3>{currentCase.title}</h3>
+              <h3>
+                {currentCase.title}
+                <img
+                  src="https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273/charityDocs/bankDocs-abdo--6643a88f94d1dfa828c97f78--0--f4ad0205-00f6-4cb1-a3d1-3e0e6429ff8f.jpg"
+                  alt="image"
+                />
+              </h3>
               <span>
                 01112120215
                 <img src="/images/phone-icon.svg" alt="" />
               </span>
             </div>
-            <p>
-              هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس النشر. الشكل وليس
-              النشرهو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس النشر. الشكل
-            </p>
+            <p>{currentCase.description}</p>
           </div>
           <div className={styles.details}>
             <div className={styles.right}>

@@ -30,7 +30,6 @@ export const postData = async (endpoint, data, formData = false) => {
 // Function to handle GET requests
 export const getData = async (endpoint) => {
   const response = await instance.get(endpoint);
-
   return response.data;
 };
 

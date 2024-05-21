@@ -1,6 +1,5 @@
 // store.js
 import { configureStore } from "@reduxjs/toolkit";
-import casesReducer from "./features/CasesSlice";
 import userAuthReducer from "./features/userAuthSlice";
 import cartReducer from "./features/CartSlice";
 import userProfileReducer from "./features/userProfileSlice";
@@ -10,7 +9,6 @@ import charityCaseReducer from "./features/charity/charityCaseSlice";
 
 const Store = configureStore({
   reducer: {
-    cases: casesReducer,
     userAuth: userAuthReducer,
     userProfile: userProfileReducer,
     charityAuth: charityAuthReducer,

@@ -66,9 +66,10 @@ export const editCase = createAsyncThunk(
 // Update case cover image
 export const updateCaseCoverImg = createAsyncThunk(
   "charityCase/updateCaseCoverImg",
-  async function ({ id, imageData }) {
+  async function ({ id, image }) {
     try {
-      return putData(`charities/caseCoverImg/${id}`, imageData);
+      const imageData = createFormData({ image });
+      return putData(`charities/caseCoverImg/${id}`, imageData, true);
     } catch (error) {
       fetchingErrorHandling(error, "updateCaseCoverImg");
     }
@@ -99,11 +100,15 @@ const charityCaseSlice = createSlice({
     editCaseStatus: "idle",
     updateCaseCoverImgStatus: "idle",
     deleteCaseStatus: "idle",
+    deleteCaseId: null,
     error: null,
   },
   reducers: {
     resetGetCaseByIdStatus(state) {
       state.getCaseByIdStatus = "idle";
+    },
+    finishGetCaseByIdStatus(state) {
+      state.getCaseByIdStatus = "finished";
     },
   },
   extraReducers: (builder) => {
@@ -166,9 +171,11 @@ const charityCaseSlice = createSlice({
       })
       .addCase(editCase.fulfilled, (state, action) => {
         state.editCaseStatus = "finished";
-        const index = state.cases.findIndex((c) => c.id === action.payload.id);
+        const index = state.cases.findIndex(
+          (c) => c._id === action.payload.case._id
+        );
         if (index !== -1) {
-          state.cases[index] = action.payload;
+          state.cases[index] = action.payload.case;
         }
       })
       .addCase(editCase.rejected, (state, action) => {
@@ -182,9 +189,12 @@ const charityCaseSlice = createSlice({
       })
       .addCase(updateCaseCoverImg.fulfilled, (state, action) => {
         state.updateCaseCoverImgStatus = "finished";
-        const index = state.cases.findIndex((c) => c.id === action.payload.id);
+        const index = state.cases.findIndex(
+          (c) => c._id === action.payload.case._id
+        );
+        console.log(index);
         if (index !== -1) {
-          state.cases[index].coverImage = action.payload.coverImage;
+          state.cases[index].coverImage = action.payload.case.coverImage;
         }
       })
       .addCase(updateCaseCoverImg.rejected, (state, action) => {
@@ -193,12 +203,15 @@ const charityCaseSlice = createSlice({
       })
 
       // Delete a case
-      .addCase(deleteCase.pending, (state) => {
+      .addCase(deleteCase.pending, (state, action) => {
+        state.deleteCaseId = action.meta.arg;
         state.deleteCaseStatus = "loading";
       })
       .addCase(deleteCase.fulfilled, (state, action) => {
         state.deleteCaseStatus = "finished";
-        state.cases = state.cases.filter((c) => c.id !== action.payload.id);
+        state.cases = state.cases.filter(
+          (c) => c._id !== action.payload.case._id
+        );
       })
       .addCase(deleteCase.rejected, (state, action) => {
         state.deleteCaseStatus = "failed";
@@ -206,5 +219,6 @@ const charityCaseSlice = createSlice({
       });
   },
 });
-export const { resetGetCaseByIdStatus } = charityCaseSlice.actions;
+export const { resetGetCaseByIdStatus, finishGetCaseByIdStatus } =
+  charityCaseSlice.actions;
 export default charityCaseSlice.reducer;
