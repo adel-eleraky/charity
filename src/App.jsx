@@ -48,10 +48,11 @@ import ReportCase from "./pages/ReportCase.jsx";
 import ApiTesting from "./pages/ApiTesting.jsx";
 
 AOS.init();
-
 function App() {
   let [loading, setLoading] = useState(false);
 
+  const cloudinaryBaseUrl =
+    "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273/";
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);

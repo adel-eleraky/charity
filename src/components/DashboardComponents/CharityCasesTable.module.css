@@ -87,9 +87,27 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-.table-row:hover {
+.table-row-temp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #000;
+  padding: 0 1.5rem;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.table-row:hover,
+.table-row-temp:hover {
   box-shadow: 1px 17px 44px 0px rgba(3, 2, 41, 0.07);
 }
+
 .col-1 {
   overflow: hidden;
 }
