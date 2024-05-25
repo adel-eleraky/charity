@@ -1,3 +1,123 @@
 .Checkout-page {
-    background-color: var(--third-color);
+    background-image: linear-gradient(to left, #d5bfa6, white);
 }
+
+
+
+.Checkout-page .Checkout-details h3::after,
+.Checkout-page .Checkout-form .content h3::after{
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: linear-gradient(150.19deg, #DFD4C0 -8.79%, rgba(255, 255, 255, 0) 117.88%);
+}
+.Checkout-page .Checkout-details  h3::after {
+   top: -5px;
+   left: 33%;
+}
+.Checkout-page .Checkout-form .content h3::after {
+    left: 25%;
+    top: -5px;
+}
+.Checkout-page .Checkout-form .content {
+    box-shadow: 0px 0px 20px -10px #b8acac;
+}
+.Checkout-page .Checkout-form .content .input {
+    width: 288px !important;
+}
+
+
+.Checkout-page .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.Checkout-page .form-control:focus {
+    border-color: #91683A;
+    box-shadow: 0 0 5px rgba(145, 104, 58, 0.5);
+}
+
+.Checkout-page .form-control.is-invalid {
+    border-color: #e3342f;
+}
+
+.Checkout-page .invalid-feedback {
+    color: #e3342f;
+}
+
+.Checkout-page .submit-btn {
+    background-color: #91683A;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.Checkout-page .submit-btn:hover {
+    background-color: #73532b;
+}
+
+@media (max-width: 768px) {
+    .Checkout-page .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Checkout-page .Checkout-form,
+    .Checkout-page .Checkout-details {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .Checkout-page .form-control {
+        font-size: 14px;
+    }
+
+    .Checkout-page .submit-btn {
+        width: 100%;
+    }
+}
+
+
+.Checkout-page .Checkout-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.Checkout-page .Checkout-details th,
+.Checkout-page .Checkout-details td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.Checkout-page .Checkout-details th {
+    background-color: #91683A;
+    font-weight: bold;
+    color: white;
+}
+
+.Checkout-page .Checkout-details tfoot {
+    font-weight: bold;
+}
+
+.Checkout-page .Checkout-details tfoot th {
+    border-top: 2px solid #ddd;
+}
+
+
+.Checkout-page .Checkout-details .table{
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 15px;
+}
+
+
+
+
+

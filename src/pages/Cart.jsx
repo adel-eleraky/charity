@@ -39,7 +39,7 @@ function Cart() {
                     <img src={image} alt="" className="img-fluid product-img d-block mx-3" />
                     <Link to={`/case/${id}`} className='text-dark'><p>{title?.substring(0, 20) + "..."}</p></Link>
                 </td>
-                <td><input type="number" name={`${title}-donationAmount`} value={donationAmount} onChange={e => console.log(e.target.value)} /> جنية </td>
+                <td><input type="number" name={`${title}-donationAmount`} value={donationAmount} onChange={e => console.log(e.target.value)} /> جنيه </td>
             </tr>
         )
     })
@@ -55,10 +55,10 @@ function Cart() {
                 </div>
                 :
                 <div className="container">
-                    <h3 className="mb-3 text-center text-white"> السلة </h3>
+                    <h2 className="mb-3 text-center  position-relative fw-bold mx-auto "> السلة </h2>
                     <div className="row">
                         <div className='col-12 col-lg-7 table-container'>
-                            <table className="table text-center">
+                            <table className="table text-center ">
                                 <thead>
                                     <tr>
                                         <th scope="col" className='w-50'> الحالة </th>
@@ -70,10 +70,10 @@ function Cart() {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="col-12 col-lg-5">
-                            <div className='cart-total text-center'>
-                                <h3 className='mb-3 text-white'> اجمالى قيمة التبرع : {totalDonationAmount} جنية </h3>
-                                <Link to="/checkout" className='btn checkout-btn d-block m-auto w-50 fw-bold'> الذهاب الى صفحة الدفع </Link>
+                        <div className="col-12 col-lg-5 m-auto">
+                            <div className='cart-total text-center '>
+                                <h3 className='mb-3 text-center fw-bold '> اجمالى قيمة التبرع : {totalDonationAmount} جنيه </h3>
+                                <Link to="/checkout" className='btn checkout-btn d-block m-auto py-2 w-50 fw-bold fs-5 text-white'> الذهاب الى صفحة الدفع <i className='bi bi-arrow-left'></i></Link>
                             </div>
                         </div>
                     </div>
