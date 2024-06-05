@@ -17,6 +17,9 @@ import { registerUser } from "../rtk/features/userAuthSlice";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { registerCharity } from './../rtk/features/charity/charityAuthSlice';
+import RegisterUser from "../components/RegisterUser";
+import RegisterCharity from "../components/RegisterCharity";
 
 function Register() {
   const { loginStatus, error, registerStatus, user } = useSelector(
@@ -44,7 +47,8 @@ function Register() {
       governorate: "",
     },
     organizationName: "",
-    contactEmail: "",
+    organizationImage: "",
+    organizationDescription: ""
   };
 
   let validationSchema = yup.object().shape({
@@ -87,10 +91,22 @@ function Register() {
     validationSchema = validationSchema.concat(
       yup.object().shape({
         organizationName: yup.string().required("ادخل اسم الجمعية"),
-        contactEmail: yup
-          .string()
-          .required("ادخل بريد الكترونى للتواصل")
-          .email("ادخل بريد الكترونى"),
+        organizationDescription: yup.string().required("ادخل وصف الجمعية"),
+        // organizationImage: yup.mixed()
+        //   .test("fileType", "يجب أن يكون صورة JPG أو PNG", (value) => {
+        //     if (!value) {
+        //       return true; // Skip validation if the field is empty
+        //     }
+        //     const allowedTypes = ["image/jpeg", "image/png"];
+        //     return allowedTypes.includes(value.type);
+        //   })
+        //   .test("fileSize", "يجب أن لا يتجاوز حجم الصورة 5 ميغابايت", (value) => {
+        //     if (!value) {
+        //       return true; // Skip validation if the field is empty
+        //     }
+        //     return value.size <= 5 * 1024 * 1024;
+        //   })
+        //   .required("ادخل صورة الجمعية"),
       })
     );
   }
@@ -116,14 +132,14 @@ function Register() {
       RegisterData = {
         ...RegisterData,
         name: values.organizationName,
-        contactInfo: {
-          email: values.contactEmail,
-          phone: values.phone,
-        },
+        // image: values.organizationImage,
+        description: values.organizationDescription,
+        phone: values.phone,
         location: values.location,
       };
       console.log(RegisterData);
 
+      // dispatch(registerCharity(RegisterData));
       // implement register charity function
       // toast.promise(
       //     dispatch(registerCharity(RegisterData)),
@@ -142,9 +158,8 @@ function Register() {
         <div className="row">
           <div className="col-6 text-center img-column">
             <img
-              src={`/images/${
-                role === "user" ? "individual" : "organization"
-              }.png`}
+              src={`/images/${role === "user" ? "individual" : "organization"
+                }.png`}
               alt=""
               className="img-fluid"
             />
@@ -174,9 +189,8 @@ function Register() {
                           type="email"
                           id="email"
                           name="email"
-                          className={`form-control ${
-                            touched.email && errors.email && "is-invalid"
-                          } rounded-0 rounded-start`}
+                          className={`form-control ${touched.email && errors.email && "is-invalid"
+                            } rounded-0 rounded-start`}
                           placeholder="ادخل بريدك الالكترونى"
                           aria-label="Username"
                           aria-describedby="basic-addon1"
@@ -201,9 +215,8 @@ function Register() {
                           type="password"
                           id="password"
                           name="password"
-                          className={`form-control ${
-                            touched.password && errors.password && "is-invalid"
-                          } rounded-0 rounded-start`}
+                          className={`form-control ${touched.password && errors.password && "is-invalid"
+                            } rounded-0 rounded-start`}
                           placeholder="ادخل كلمة المرور"
                           aria-label="Username"
                           aria-describedby="basic-addon1"
@@ -217,9 +230,8 @@ function Register() {
                       <div className="form-check mb-3">
                         <Field
                           onClick={() => setRole("user")}
-                          className={`form-check-input ${
-                            touched.role && errors.role && "is-invalid"
-                          } ms-2 float-none`}
+                          className={`form-check-input ${touched.role && errors.role && "is-invalid"
+                            } ms-2 float-none`}
                           type="radio"
                           name="role"
                           value="user"
@@ -232,9 +244,8 @@ function Register() {
                       <div className="form-check mb-4">
                         <Field
                           onClick={() => setRole("organization")}
-                          className={`form-check-input ${
-                            touched.role && errors.role && "is-invalid"
-                          } ms-2 float-none`}
+                          className={`form-check-input ${touched.role && errors.role && "is-invalid"
+                            } ms-2 float-none`}
                           type="radio"
                           name="role"
                           value="organization"
@@ -250,170 +261,10 @@ function Register() {
                         className="invalid-feedback d-block fs-6 mb-4 fw-bold"
                       />
                       {role === "organization" && (
-                        <div className="mb-4">
-                          <label
-                            htmlFor="organizationName"
-                            className="form-label"
-                          >
-                            اسم الجمعية
-                          </label>
-                          <div className="input-group has-validation mb-4">
-                            <span
-                              className="input-group-text  rounded-0 rounded-end"
-                              id="basic-addon1"
-                            >
-                              <i className="fa-solid fa-hand-holding-heart"></i>
-                            </span>
-                            <Field
-                              type="text"
-                              id="organizationName"
-                              name="organizationName"
-                              className={`form-control ${
-                                touched.organizationName &&
-                                errors.organizationName &&
-                                "is-invalid"
-                              } rounded-0 rounded-start`}
-                              placeholder="ادخل اسم الجمعية"
-                              aria-label="Organization Name"
-                              aria-describedby="basic-addon1"
-                            />
-                            <ErrorMessage
-                              name="organizationName"
-                              component="div"
-                              className="invalid-feedback d-block fs-6 fw-bold"
-                            />
-                          </div>
-                          <label htmlFor="contactEmail" className="form-label">
-                            بريدك الالكترونى للتواصل
-                          </label>
-                          <div className="input-group has-validation mb-4">
-                            <span
-                              className="input-group-text  rounded-0 rounded-end"
-                              id="basic-addon1"
-                            >
-                              <i className="fa-regular fa-envelope"></i>
-                            </span>
-                            <Field
-                              type="email"
-                              id="contactEmail"
-                              name="contactEmail"
-                              className={`form-control ${
-                                touched.contactEmail &&
-                                errors.contactEmail &&
-                                "is-invalid"
-                              } rounded-0 rounded-start`}
-                              placeholder="ادخل بريد الكترونى للتواصل"
-                              aria-label="contact email"
-                              aria-describedby="basic-addon1"
-                            />
-                            <ErrorMessage
-                              name="contactEmail"
-                              component="div"
-                              className="invalid-feedback d-block fs-6 fw-bold"
-                            />
-                          </div>
-                        </div>
+                        <RegisterCharity touched={touched} errors={errors}  />
                       )}
                       {role === "user" && (
-                        <div className="mb-4">
-                          <label htmlFor="firstName" className="form-label">
-                            الاسم الأول
-                          </label>
-                          <div className="input-group has-validation mb-4">
-                            <span
-                              className="input-group-text  rounded-0 rounded-end"
-                              id="basic-addon1"
-                            >
-                              <i className="fa-regular fa-user"></i>
-                            </span>
-                            <Field
-                              type="text"
-                              id="firstName"
-                              name="name[firstName]"
-                              className={`form-control ${
-                                touched.name?.firstName &&
-                                errors.name?.firstName &&
-                                "is-invalid"
-                              } rounded-0 rounded-start`}
-                              placeholder="ادخل الاسم الأول"
-                              aria-label="First Name"
-                              aria-describedby="basic-addon1"
-                            />
-                            <ErrorMessage
-                              name="name[firstName]"
-                              component="div"
-                              className="invalid-feedback d-block fs-6 fw-bold"
-                            />
-                          </div>
-                          <label htmlFor="lastName" className="form-label">
-                            اسم العائلة
-                          </label>
-                          <div className="input-group has-validation mb-4">
-                            <span
-                              className="input-group-text  rounded-0 rounded-end"
-                              id="basic-addon1"
-                            >
-                              <i className="fa-regular fa-user"></i>
-                            </span>
-                            <Field
-                              type="text"
-                              id="lastName"
-                              name="name[lastName]"
-                              className={`form-control ${
-                                touched.name?.lastName &&
-                                errors.name?.lastName &&
-                                "is-invalid"
-                              } rounded-0 rounded-start`}
-                              placeholder="ادخل اسم العائلة"
-                              aria-label="Last Name"
-                              aria-describedby="basic-addon1"
-                            />
-                            <ErrorMessage
-                              name="name[lastName]"
-                              component="div"
-                              className="invalid-feedback d-block fs-6 fw-bold"
-                            />
-                          </div>
-                          <label htmlFor="gender" className="form-label">
-                            الجنس
-                          </label>
-                          <div className="form-check mb-4">
-                            <Field
-                              type="radio"
-                              id="male"
-                              name="gender"
-                              value="male"
-                              className={`form-check-input ${
-                                touched.gender && errors.gender && "is-invalid"
-                              } float-none ms-2`}
-                            />
-                            <label className="form-check-label" htmlFor="male">
-                              ذكر
-                            </label>
-                          </div>
-                          <div className="form-check mb-4">
-                            <Field
-                              type="radio"
-                              id="female"
-                              name="gender"
-                              value="female"
-                              className={`form-check-input ${
-                                touched.gender && errors.gender && "is-invalid"
-                              } float-none ms-2`}
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="female"
-                            >
-                              أنثى
-                            </label>
-                          </div>
-                          <ErrorMessage
-                            name="gender"
-                            component="div"
-                            className="invalid-feedback d-block fs-6 fw-bold"
-                          />
-                        </div>
+                        <RegisterUser touched={touched} errors={errors} />
                       )}
                       {role && (
                         <div className="mb-4">
@@ -431,9 +282,8 @@ function Register() {
                               type="text"
                               id="phone"
                               name="phone"
-                              className={`form-control ${
-                                touched.phone && errors.phone && "is-invalid"
-                              } rounded-0 rounded-start`}
+                              className={`form-control ${touched.phone && errors.phone && "is-invalid"
+                                } rounded-0 rounded-start`}
                               placeholder="ادخل رقم الهاتف"
                               aria-label="Phone"
                               aria-describedby="basic-addon1"
@@ -451,11 +301,10 @@ function Register() {
                             as="select"
                             id="governorate"
                             name="location[governorate]"
-                            className={`form-select ${
-                              touched.location?.governorate &&
+                            className={`form-select ${touched.location?.governorate &&
                               errors.location?.governorate &&
                               "is-invalid"
-                            }`}
+                              }`}
                             aria-label="Governorate"
                           >
                             <option value="">اختر المحافظة</option>
