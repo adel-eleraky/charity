@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 import "./css/Register.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../rtk/features/userAuthSlice";
+import { registerUser } from "../rtk/features/user/userAuthSlice";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";

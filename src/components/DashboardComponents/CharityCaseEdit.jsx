@@ -8,36 +8,15 @@ import {
   editCase,
   updateCaseCoverImg,
 } from "../../rtk/features/charity/charityCaseSlice";
-import Loader from "../common/Loader";
-import Error from "../common/Error";
+
 import { ThreeDot } from "react-loading-indicators";
-const cloudinaryBaseUrl =
-  "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273";
+import ProfileImageEdit from "../common/ProfileImageEdit";
 
 function CharityCaseEdit({ currentCase }) {
   const { updateCaseCoverImgStatus, error, editCaseStatus } = useSelector(
     (s) => s.charityCase
   );
   const dispatch = useDispatch();
-  const fileInput = useRef(null);
-  // handling file upload
-  // const [imageSource, setImageSource] = useState(
-  //   `${cloudinaryBaseUrl}/caseCoverImages/${currentCase.coverImage}`
-  // );
-
-  function handleChangeCoverImage(e) {
-    // handle change image locally
-    const file = e.currentTarget.files[0];
-    // const reader = new FileReader();
-    // reader.onloadend = () => {
-    //   setImageSource(reader.result); // reader.result contains the data URL
-    // };
-    // reader.readAsDataURL(file); // Read the file as a data URL
-
-    // handle uploading image to server
-    const updateCoverData = { id: currentCase._id, image: file };
-    dispatch(updateCaseCoverImg(updateCoverData));
-  }
 
   const initialValues = {
     title: currentCase.title,
@@ -77,32 +56,12 @@ function CharityCaseEdit({ currentCase }) {
   return (
     <div className={`${styles.content} bg-white p-3 rounded `}>
       <div className="fs-3 fw-bold text-center mb-5">تعديل الحالة</div>
-      {(updateCaseCoverImgStatus === "idle" ||
-        updateCaseCoverImgStatus === "finished") && (
-        <>
-          <div className={styles.image}>
-            <img
-              // src={`${cloudinaryBaseUrl}/caseCoverImage/${currentCase.coverImage}`}
-              src={`${cloudinaryBaseUrl}/caseCoverImages/${currentCase.coverImage}`}
-              alt=""
-            />
-            <img
-              src="/images/change-image.svg"
-              alt=""
-              onClick={() => fileInput.current.click()}
-            />
-
-            <input
-              style={{ display: "none" }}
-              type="file"
-              ref={fileInput}
-              onChange={handleChangeCoverImage}
-            />
-          </div>
-        </>
-      )}
-      {updateCaseCoverImgStatus === "loading" && <Loader />}
-      {updateCaseCoverImgStatus === "failed" && <Error mgs={error} />}
+      <ProfileImageEdit
+        currentValue={currentCase}
+        updateProfileImageStatus={updateCaseCoverImgStatus}
+        error={error}
+        updateProfileImage={updateCaseCoverImg}
+      />
       <div className="form">
         <Formik
           initialValues={initialValues}

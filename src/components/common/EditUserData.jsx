@@ -1,13 +1,22 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import styles from "./EditUserData.module.css";
 import * as yup from "yup";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfile } from "../../rtk/features/user/userProfileSlice";
+import Loader from "./Loader";
+import Error from "./Error";
 
 function EditUserData() {
-  const initialValues = {
-    username: "",
-    email: "",
-    address: "",
-  };
+  // JUST FETCH PROFILE HERE AS TEMP BUT IT MUST BE FETCHED BEFORE !IMP
+  const dispatch = useDispatch();
+  const { userProfile, getUserProfileStatus, error } = useSelector(
+    (store) => store.userProfile
+  );
+
+  useEffect(() => {
+    if (Object.keys(userProfile).length === 0) dispatch(getUserProfile());
+  }, [dispatch, userProfile]);
 
   // error messages
   const validationSchema = yup.object().shape({
@@ -19,12 +28,23 @@ function EditUserData() {
   const submitHandler = (values) => {
     console.log(values);
   };
+
+  if (getUserProfileStatus === "loading") return <Loader />;
+  if (getUserProfileStatus === "failed") return <Error msg={error} />;
+  // the right way to handle idle state
+
+  // status is idle or finished
   return (
     <div className={styles["edit-profile"]}>
       <Formik
-        initialValues={initialValues}
+        initialValues={{
+          username: userProfile?.name?.firstName || "",
+          email: userProfile.email || "",
+          address: userProfile?.userLocation?.governorate || "",
+        }}
         validationSchema={validationSchema}
         onSubmit={submitHandler}
+        enableReinitialize={true}
       >
         {({ values, errors, touched }) => {
           return (

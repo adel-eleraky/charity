@@ -3,8 +3,8 @@
 // changePassword
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getData, putData } from "../../utils/api";
-import { fetchingErrorHandling } from "../../utils/helpers";
+import { getData, putData } from "../../../utils/api";
+import { fetchingErrorHandling } from "../../../utils/helpers";
 
 // Async action to change the user's password
 export const changePasswordByUser = createAsyncThunk(
@@ -70,8 +70,10 @@ const userProfileSlice = createSlice({
       .addCase(editUserProfile.pending, (state) => {
         state.editProfileStatus = "loading";
       })
-      .addCase(editUserProfile.fulfilled, (state) => {
+      .addCase(editUserProfile.fulfilled, (state, action) => {
         state.editProfileStatus = "finished";
+        // as the returned object has less data than userProfile
+        state.userProfile = { ...state.userProfile, ...action.user };
       })
       .addCase(editUserProfile.rejected, (state, action) => {
         state.editProfileStatus = "failed";
@@ -84,7 +86,7 @@ const userProfileSlice = createSlice({
       })
       .addCase(getUserProfile.fulfilled, (state, action) => {
         state.getUserProfileStatus = "finished";
-        state.userProfile = action.payload;
+        state.userProfile = action.payload.user;
       })
       .addCase(getUserProfile.rejected, (state, action) => {
         state.getUserProfileStatus = "failed";

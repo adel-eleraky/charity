@@ -5,7 +5,7 @@ import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { forgotPassword } from "../rtk/features/userAuthSlice";
+import { forgotPassword } from "../rtk/features/user/userAuthSlice";
 import ConfirmResetPass from "../components/ConfirmResetPass";
 
 function ForgetPassword() {
@@ -25,7 +25,7 @@ function ForgetPassword() {
   const submitHandler = (values) => {
     console.log(values);
     setFormStatus("submitted");
-    dispatch(forgotPassword(values.email))
+    dispatch(forgotPassword(values.email));
   };
 
   return (
@@ -63,8 +63,9 @@ function ForgetPassword() {
                               type="email"
                               id="email"
                               name="email"
-                              className={`form-control ${touched.email && errors.email && "is-invalid"
-                                } rounded-0 rounded-start`}
+                              className={`form-control ${
+                                touched.email && errors.email && "is-invalid"
+                              } rounded-0 rounded-start`}
                               placeholder="ادخل بريدك الالكترونى"
                               aria-label="Username"
                               aria-describedby="basic-addon1"
@@ -88,16 +89,16 @@ function ForgetPassword() {
                 </div>
               ) : (
                 <div className="form-submitted-content text-center p-5 rounded w-75 m-auto">
-                  <h3 className="mb-4">
-                    {" "}
-                    تم ارسال الرمز الى بريدك الالكترونى
-                  </h3>
-                  <i className="fa-solid fa-paper-plane sent-icon" style={{ color: "#EEE" }}></i>
+                  <h3 className="mb-4"> تم ارسال الرمز الى بريدك الالكترونى</h3>
+                  <i
+                    className="fa-solid fa-paper-plane sent-icon"
+                    style={{ color: "#EEE" }}
+                  ></i>
                   <h4 className="mt-4">افحص بريدك الالكترونى الان</h4>
                 </div>
               )}
             </div>
-            { formStatus === "submitted" && <ConfirmResetPass /> }
+            {formStatus === "submitted" && <ConfirmResetPass />}
           </div>
         </div>
       </div>

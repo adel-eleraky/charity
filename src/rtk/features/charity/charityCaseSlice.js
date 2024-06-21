@@ -19,7 +19,7 @@ export const getAllCases = createAsyncThunk(
   "charityCase/getAllCases",
   async function () {
     try {
-      return getData("charities/allCases");
+      return getData("charities/allCasesOfCharity");
     } catch (error) {
       fetchingErrorHandling(error, "fetchAllCases");
     }

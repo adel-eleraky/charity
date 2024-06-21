@@ -19,11 +19,13 @@ function ApiTesting() {
   const { getCharityProfileStatus, profile } = useSelector(
     (store) => store.charityProfile
   );
+  const { charity } = useSelector((store) => store.charityAuth);
   console.log(getCharityProfileStatus);
   const [charityImage, setCharityImage] = useState("");
   const [token, setToken] = useState("");
   // registerCharity (true)
   // loginCharity
+  console.log("chairty from api testing", charity);
   const charityRegisterData = {
     email: "moh.hero4@gmail.com",
     password: "123456",
@@ -41,7 +43,7 @@ function ApiTesting() {
 
   const charityLoginData = {
     email: "moh.hero4@gmail.com",
-    password: "123123",
+    password: "aA@123456",
   };
 
   const confirmResetCharityData = {
