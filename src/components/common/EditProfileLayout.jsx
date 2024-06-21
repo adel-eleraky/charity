@@ -1,4 +1,3 @@
-import EditUserData from "./EditUserData";
 import styles from "./EditProfileLayout.module.css";
 import { Link, NavLink, Outlet } from "react-router-dom";
 function EditProfileLayout() {

@@ -5,7 +5,7 @@ import "./css/login.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../rtk/features/userAuthSlice";
+import { loginUser } from "../rtk/features/user/userAuthSlice";
 import { useEffect } from "react";
 import AccountActivation from "./AccountActivation";
 import Popup from "../components/Popup";
@@ -67,7 +67,7 @@ function Login() {
       .required("ادخل كلمة السر"),
   });
 
-  console.log(isVerified)
+  console.log(isVerified);
   useEffect(
     function () {
       toast.dismiss();
@@ -80,7 +80,7 @@ function Login() {
       }
       if (loginStatus === "failed") toast.error("حدث خطأ فى الدخول");
     },
-    [loginStatus ]
+    [loginStatus]
   );
   const submitHandler = (values) => {
     dispatch(loginUser(values));

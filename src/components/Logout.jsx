@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../rtk/features/userAuthSlice";
+import { logoutUser } from "../rtk/features/user/userAuthSlice";
 import { useNavigate } from "react-router-dom";
 
 function Logout() {
