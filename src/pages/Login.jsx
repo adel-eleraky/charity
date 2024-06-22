@@ -15,39 +15,17 @@ import { toast } from "react-toastify";
 
 function Login() {
   const [role, setRole] = React.useState("user");
-  // const [email, setEmail] = React.useState("mohhero4@gmail.com");
-  // const [password, setPassword] = React.useState("123456");
+  
   const { loginStatus, error, registerStatus, user } = useSelector(
     (store) => store.userAuth
   );
 
-  // console.log("user", user);
-  // console.log("error", error);
-  console.log("loginStatus", loginStatus);
-  // console.log("registerStatus", registerStatus);
-  const isVerified =
-    user.msg !=
-    "Your Account is not Activated Yet,A Token Was Sent To Your Email.";
+  
+  const isVerified = user?.isVerified
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // function handleLogin(e) {
-  //     e.preventDefault();
-  //     // checking email (empty, wrong fromat)
-  //     // checking password (empty, number of chars < 6)
-  //     if (role === "user") dispatch(loginUser({ email, password }));
-  // }
-
-  // useEffect(() => {
-  //     if (registerStatus === "finished") {
-  //         setEmail(user.email);
-  //     }
-  //     if (loginStatus === "finished") {
-  //         if (isVerified) navigate("/account");
-  //     } else {
-  //         console.log(error, user);
-  //     }
-  // }, [loginStatus, registerStatus, navigate, isVerified, error, user]);
-
+  
   const initialValues = {
     email: "",
     password: "",
@@ -67,7 +45,6 @@ function Login() {
       .required("ادخل كلمة السر"),
   });
 
-  console.log(isVerified);
   useEffect(
     function () {
       toast.dismiss();
@@ -85,11 +62,6 @@ function Login() {
   const submitHandler = (values) => {
     dispatch(loginUser(values));
 
-    // toast.promise(dispatch(loginUser(values)), {
-    //   pending: "جارى تسجيل الدخول",
-    //   success: "تم تسجيل الدخول بنجاح",
-    //   error: "حدث خطأ فى الدخول",
-    // });
   };
 
   return (
@@ -180,9 +152,7 @@ function Login() {
                   );
                 }}
               </Formik>
-              <Popup isOpen={!isVerified}>
-                <AccountActivation />
-              </Popup>
+              
               <h5 className="mb-4 text-center">او سجل الدخول باستخدام </h5>
               <div className="social-icons d-flex gap-15 justify-content-center mb-4">
                 <div className="facebook-icon bg-white text-dark py-1 px-4 rounded">
