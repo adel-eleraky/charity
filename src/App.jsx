@@ -58,11 +58,9 @@ function App() {
   const dispatch = useDispatch();
 
   // dispatch(getUserProfile())
-  const { userProfile } = useSelector(
-    (store) => store.userProfile
-  );
+  const { userProfile } = useSelector((store) => store.userProfile);
 
-  console.log(userProfile)
+  console.log(userProfile);
   const cloudinaryBaseUrl =
     "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273/";
 
@@ -72,7 +70,6 @@ function App() {
     }, 4000);
 
     if (Object.keys(userProfile).length === 0) dispatch(getUserProfile());
-
   }, [userProfile]);
 
   return (
@@ -101,8 +98,14 @@ function App() {
               <Route element={<UnAuthRoute />}>
                 <Route path="account/login" element={<Login />} />
                 <Route path="account/register" element={<Register />} />
-                <Route path="account/activate" element={<AccountActivation />} />
-                <Route path="account/forget-password" element={<ForgetPassword />} />
+                <Route
+                  path="account/activate"
+                  element={<AccountActivation />}
+                />
+                <Route
+                  path="account/forget-password"
+                  element={<ForgetPassword />}
+                />
               </Route>
               <Route path="checkout" element={<Checkout />} />
               <Route path="cart" element={<Cart />} />
@@ -165,41 +168,6 @@ function App() {
                   path="change-pwd"
                   element={<EditProfilePassword type={"user"} />}
                 />
-              </Route>
-            <Route element={<ProtectedRoute />}>
-              <Route element={<AuthAdmin />}>
-                <Route path="admin-dashboard" element={<AdminDashboard />}>
-                  <Route index element={<Navigate replace to="home" />} />
-                  <Route path="home" element={<AdminHomeLayout />} />
-                  <Route path="users" element={<AdminUsersLayout />} />
-                  <Route path="charities" element={<AdminCharitiesLayout />} />
-                  <Route
-                    path="transactions"
-                    element={<AdminTransactionsLayout />}
-                  />
-                  {/* <Route path="docs" element={<AdminCharityDocs />} /> */}
-                  <Route path="profile" element={<EditProfileLayout />}>
-                    <Route index element={<Navigate replace to="edit-profile" />} />
-                    <Route path="edit-profile" element={<EditUserData />} />
-                    <Route path="change-pwd" element={<EditUserPassword />} />
-                  </Route>
-                </Route>
-              </Route>
-              <Route path="charity-dashboard" element={<CharityDashboard />}>
-                <Route index element={<Navigate replace to="home" />} />
-                <Route path="home" element={<CharityHomeLayout />} />
-                <Route path="cases" element={<CharityCasesLayout />} />
-                <Route
-                  path="transactions"
-                  element={<CharityTransactionsLayout />}
-                />
-                <Route path="campaigns" element={<CharityCampaignsLayout />} />
-                <Route path="upload-docs" element={<CharityDocsLayout />} />
-              </Route>
-              <Route path="user-dashboard" element={<UserDashboard />}>
-                <Route index element={<Navigate replace to="home" />} />
-                <Route path="home" element={<UserHomeLayout />} />
-                <Route path="transactions" element={<UserTransactionsLayout />} />
               </Route>
             </Route>
           </Routes>
