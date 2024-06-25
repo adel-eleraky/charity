@@ -12,7 +12,7 @@ function RegisterUser({ touched, errors }) {
                 </label>
                 <div className="input-group has-validation mb-4">
                     <span
-                        className="input-group-text  rounded-0 rounded-end"
+                        className="input-group-text rounded-0 rounded-end"
                         id="basic-addon1"
                     >
                         <i className="fa-regular fa-user"></i>

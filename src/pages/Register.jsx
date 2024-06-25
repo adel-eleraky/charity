@@ -92,21 +92,14 @@ function Register() {
       yup.object().shape({
         organizationName: yup.string().required("ادخل اسم الجمعية"),
         organizationDescription: yup.string().required("ادخل وصف الجمعية"),
-        // organizationImage: yup.mixed()
-        //   .test("fileType", "يجب أن يكون صورة JPG أو PNG", (value) => {
-        //     if (!value) {
-        //       return true; // Skip validation if the field is empty
-        //     }
-        //     const allowedTypes = ["image/jpeg", "image/png"];
-        //     return allowedTypes.includes(value.type);
-        //   })
-        //   .test("fileSize", "يجب أن لا يتجاوز حجم الصورة 5 ميغابايت", (value) => {
-        //     if (!value) {
-        //       return true; // Skip validation if the field is empty
-        //     }
-        //     return value.size <= 5 * 1024 * 1024;
-        //   })
-        //   .required("ادخل صورة الجمعية"),
+        organizationImage: yup.mixed()
+        .test("fileType",  "يجب أن يكون الصورة من نوع png , jpg , jpeg", (value) => {
+          return value && ["image/jpeg", "image/png", "image/jpg"].includes(value.type)
+        })
+        .test("fileSize", "يجب أن يكون الصورة اقل من 5MB", (value) => {
+          return value && value.size <= 5 * 1024 * 1024
+        })
+        .required("ادخل صورة الجمعية"),
       })
     );
   }
@@ -132,23 +125,23 @@ function Register() {
       RegisterData = {
         ...RegisterData,
         name: values.organizationName,
-        // image: values.organizationImage,
+        image: values.organizationImage,
+        contactInfo: {
+          email: values.email,
+          phone: values.phone,
+          websiteUrl: "subul.com"
+        },
+        charityInfo: {
+          registeredNumber: 123,
+          establishedDate: 2001-1-18
+        },
         description: values.organizationDescription,
         phone: values.phone,
         location: values.location,
       };
       console.log(RegisterData);
 
-      // dispatch(registerCharity(RegisterData));
-      // implement register charity function
-      // toast.promise(
-      //     dispatch(registerCharity(RegisterData)),
-      //     {
-      //         pending: "جارى التسجيل بياناتك",
-      //         success: "تم التسجيل بنجاح",
-      //         error: "لم يتم التسجيل",
-      //     }
-      // )
+      
     }
   };
 
@@ -172,9 +165,10 @@ function Register() {
                 onSubmit={submitHandler}
                 validationSchema={validationSchema}
               >
-                {({ values, errors, touched }) => {
+                {({ values, errors, touched, setFieldValue }) => {
                   return (
-                    <Form method="post" className="needs-validation" noValidate>
+                    <Form method="post" className="needs-validation" noValidate encType="multipart/form-data">
+                      
                       <label htmlFor="email" className="form-label">
                         بريدك الالكترونى
                       </label>
@@ -261,7 +255,7 @@ function Register() {
                         className="invalid-feedback d-block fs-6 mb-4 fw-bold"
                       />
                       {role === "organization" && (
-                        <RegisterCharity touched={touched} errors={errors}  />
+                        <RegisterCharity touched={touched} errors={errors} setFieldValue={setFieldValue}  />
                       )}
                       {role === "user" && (
                         <RegisterUser touched={touched} errors={errors} />
