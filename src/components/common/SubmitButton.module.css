@@ -1,0 +1,9 @@
+button.save-btn {
+  display: block;
+  margin: auto;
+  color: white !important;
+  width: 180px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: rgba(145, 104, 58, 1) !important;
+}

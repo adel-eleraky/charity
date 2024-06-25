@@ -8,7 +8,9 @@ function AccountTooltip() {
         <span>تعديل الحساب</span>
       </NavLink>
 
-      {/* just temp I think it will be button*/}
+      {
+        //todo: just temp I think it will be button
+      }
       <NavLink to="/">
         <img src="/images/admin-action-accept.svg" alt="" />
         <span>تسجيل الخروج</span>

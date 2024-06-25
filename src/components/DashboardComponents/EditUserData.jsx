@@ -1,52 +1,79 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import styles from "./EditUserData.module.css";
 import * as yup from "yup";
-import { useEffect } from "react";
+import { Profiler, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserProfile } from "../../rtk/features/user/userProfileSlice";
-import Loader from "./Loader";
-import Error from "./Error";
+import {
+  editUserProfile,
+  getUserProfile,
+} from "../../rtk/features/user/userProfileSlice";
+import Loader from "../common/Loader";
+import Error from "../common/Error";
+import SubmitButton from "../common/SubmitButton";
+import { useNavigate } from "react-router-dom";
 
+//todo: preview errors and success masseges (after submit)
 function EditUserData() {
   // JUST FETCH PROFILE HERE AS TEMP BUT IT MUST BE FETCHED BEFORE !IMP
   const dispatch = useDispatch();
-  const { userProfile, getUserProfileStatus, error } = useSelector(
-    (store) => store.userProfile
-  );
-
+  const navigate = useNavigate();
+  const { userProfile, getUserProfileStatus, error, isEmailVerified } =
+    useSelector((store) => store.userProfile);
+  //* if not verfied go to activate
+  if (!isEmailVerified) navigate("/account/activate");
   useEffect(() => {
-    if (Object.keys(userProfile).length === 0) dispatch(getUserProfile());
-  }, [dispatch, userProfile]);
+    if (
+      Object.keys(userProfile).length === 0 &&
+      getUserProfileStatus !== "loading"
+    )
+      dispatch(getUserProfile());
+  }, [dispatch, userProfile, getUserProfileStatus]);
 
   // error messages
   const validationSchema = yup.object().shape({
     username: yup.string().required("ادخل الاسم"),
-    email: yup.string().required("ادخل الايميل"),
+    email: yup
+      .string()
+      .email("البريد الإلكتروني غير صالح")
+      .required("ادخل الايميل"),
     address: yup.string().required("ادخل العنوان"),
   });
 
-  const submitHandler = (values) => {
-    console.log(values);
-  };
-
   if (getUserProfileStatus === "loading") return <Loader />;
   if (getUserProfileStatus === "failed") return <Error msg={error} />;
-  // the right way to handle idle state
 
+  const initialValues = {
+    username: userProfile?.name?.firstName || "",
+    email: userProfile.email || "",
+    address: userProfile?.userLocation?.governorate || "",
+  };
+
+  const submitHandler = (values, { setSubmitting, resetForm }) => {
+    // make object of modified data only
+    const editObject = {};
+    if (values.username !== userProfile.name["firstName"])
+      editObject.name = { firstName: values.username };
+    if (values.email !== userProfile.email) editObject.email = values.email;
+    if (values.address !== userProfile.userLocation["governorate"])
+      editObject.userLocation = { governorate: values.address };
+
+    dispatch(editUserProfile(editObject)).then(() => {
+      setSubmitting(false);
+      // * initialValues because they are based on userProfile
+      // * not values so when error happens still display the right stored value
+      resetForm({ initialValues });
+    });
+  };
   // status is idle or finished
   return (
     <div className={styles["edit-profile"]}>
       <Formik
-        initialValues={{
-          username: userProfile?.name?.firstName || "",
-          email: userProfile.email || "",
-          address: userProfile?.userLocation?.governorate || "",
-        }}
+        initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={submitHandler}
         enableReinitialize={true}
       >
-        {({ values, errors, touched }) => {
+        {({ values, errors, touched, isSubmitting, dirty }) => {
           return (
             <Form method="post" className="needs-validation" noValidate>
               <div className={styles.image}>
@@ -125,7 +152,11 @@ function EditUserData() {
                 </div>
               </div>
               <div className={styles["button-container"]}>
-                <button type="submit">حفظ التعديلات</button>
+                <SubmitButton
+                  isDisabled={isSubmitting || !dirty}
+                  isLoading={isSubmitting}
+                  text={"حفظ التعديلات"}
+                />
               </div>
             </Form>
           );

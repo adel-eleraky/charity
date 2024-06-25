@@ -42,7 +42,7 @@ export const editCharityProfile = createAsyncThunk(
 export const editCharityProfileImg = createAsyncThunk(
   "charityProfile/editCharityProfileImg",
   async function (image) {
-    const formData = createFormData({ image });
+    const formData = createFormData(image);
     try {
       return putData("charities/edit-profileImg", formData, true);
     } catch (error) {
@@ -58,7 +58,8 @@ const charityProfileSlice = createSlice({
     getCharityProfileStatus: "idle",
     editCharityProfileStatus: "idle",
     editCharityImgStatus: "idle",
-    profile: null,
+    charityProfile: {},
+    isEmailVerified: true,
     error: null,
   },
   reducers: {},
@@ -82,7 +83,9 @@ const charityProfileSlice = createSlice({
       })
       .addCase(getCharityProfile.fulfilled, (state, action) => {
         state.getCharityProfileStatus = "finished";
-        state.profile = action.payload;
+        const charity = action.payload.charity;
+        state.charityProfile = charity;
+        state.isEmailVerified = charity.emailVerification.isVerified;
       })
       .addCase(getCharityProfile.rejected, (state, action) => {
         state.getCharityProfileStatus = "failed";
@@ -93,8 +96,14 @@ const charityProfileSlice = createSlice({
       .addCase(editCharityProfile.pending, (state) => {
         state.editCharityProfileStatus = "loading";
       })
-      .addCase(editCharityProfile.fulfilled, (state) => {
+      .addCase(editCharityProfile.fulfilled, (state, action) => {
         state.editCharityProfileStatus = "finished";
+        state.charityProfile = {
+          ...state.charityProfile,
+          ...action.payload.charity,
+        };
+        state.isEmailVerified =
+          state.charityProfile.emailVerification.isVerified;
       })
       .addCase(editCharityProfile.rejected, (state, action) => {
         state.editCharityProfileStatus = "failed";
@@ -105,8 +114,9 @@ const charityProfileSlice = createSlice({
       .addCase(editCharityProfileImg.pending, (state) => {
         state.editCharityImgStatus = "loading";
       })
-      .addCase(editCharityProfileImg.fulfilled, (state) => {
+      .addCase(editCharityProfileImg.fulfilled, (state, action) => {
         state.editCharityImgStatus = "finished";
+        state.charityProfile.image = action.payload.image;
       })
       .addCase(editCharityProfileImg.rejected, (state, action) => {
         state.editCharityImgStatus = "failed";
