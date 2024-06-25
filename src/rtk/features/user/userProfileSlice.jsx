@@ -9,9 +9,10 @@ import { fetchingErrorHandling } from "../../../utils/helpers";
 // Async action to change the user's password
 export const changePasswordByUser = createAsyncThunk(
   "userProfile/changePasswordByUser",
+  //* takes value password="123"
   async function (password) {
     try {
-      return putData("users/changepassword", password);
+      return putData("users/changepassword", { password });
     } catch (error) {
       fetchingErrorHandling(error, "changePasswordByUser");
     }
@@ -46,6 +47,7 @@ const userProfileSlice = createSlice({
   name: "userProfile",
   initialState: {
     userProfile: {},
+    isEmailVerified: true,
     changePasswordStatus: "idle",
     editProfileStatus: "idle",
     getUserProfileStatus: "idle",
@@ -73,7 +75,13 @@ const userProfileSlice = createSlice({
       .addCase(editUserProfile.fulfilled, (state, action) => {
         state.editProfileStatus = "finished";
         // as the returned object has less data than userProfile
-        state.userProfile = { ...state.userProfile, ...action.user };
+        //todo: make the isEmailVerified like the way in getProfile -> it depends if the isVerified is returned in the small object
+        if (action.payload.user.email !== state.userProfile.email)
+          state.isEmailVerified = false;
+        state.userProfile = {
+          ...state.userProfile,
+          ...action.payload.user,
+        };
       })
       .addCase(editUserProfile.rejected, (state, action) => {
         state.editProfileStatus = "failed";
@@ -85,8 +93,10 @@ const userProfileSlice = createSlice({
         state.getUserProfileStatus = "loading";
       })
       .addCase(getUserProfile.fulfilled, (state, action) => {
+        const user = action.payload.user;
         state.getUserProfileStatus = "finished";
-        state.userProfile = action.payload.user;
+        state.userProfile = user;
+        state.isEmailVerified = user.emailVerification.isVerified;
       })
       .addCase(getUserProfile.rejected, (state, action) => {
         state.getUserProfileStatus = "failed";

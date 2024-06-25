@@ -1,15 +1,25 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import styles from "./EditUserPassword.module.css";
+import styles from "./EditProfilePassword.module.css";
 import * as yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { changePasswordByUser } from "../../rtk/features/user/userProfileSlice";
+import SubmitButton from "./SubmitButton";
+import useEditPwdReducer from "../../hooks/useEditPwdReducer";
 
-function EditUserPassword() {
-  const initialValues = {
-    oldPwd: "",
-    newPwd: "",
-    confirmPwd: "",
-  };
+const initialValues = {
+  oldPwd: "",
+  newPwd: "",
+  confirmPwd: "",
+};
 
-  // error messages
+//*common for all user and charity
+//todo: preview errors and success messages (after submit)
+function EditProfilePassword({ type = "user" }) {
+  console.log(type);
+  // ? it is best practice to do it ?  -> they are just 2;
+  const [changePassword, changePasswordStatus, error] = useEditPwdReducer(type);
+  const dispatch = useDispatch();
+
   const validationSchema = yup.object().shape({
     oldPwd: yup.string().required("ادخل كلمة السر القديمة"),
     newPwd: yup
@@ -21,15 +31,15 @@ function EditUserPassword() {
       .required("ادخل كلمة السر"),
     confirmPwd: yup
       .string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        "يجب أن تحتوي كلمة المرور على حروف كبيرة وصغيرة وأرقام ورموز وأن تكون طولها 8 أحرف على الأقل"
-      )
+      .oneOf([yup.ref("newPwd"), null], "يجب أن تتطابق كلمة المرور")
       .required("ادخل كلمة السر"),
   });
 
-  const submitHandler = (values) => {
-    console.log(values);
+  const submitHandler = (values, { setSubmitting, resetForm }) => {
+    dispatch(changePassword(values.newPwd)).then(() => {
+      setSubmitting(false);
+      resetForm({ initialValues });
+    });
   };
   return (
     <div className={styles["edit-profile"]}>
@@ -37,8 +47,15 @@ function EditUserPassword() {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={submitHandler}
+        enableReinitialize={true}
       >
-        {({ values, errors, touched }) => {
+        {({ values, errors, touched, isSubmitting, setFieldValue }) => {
+          const isValidNewPwd = validationSchema.fields.newPwd.isValidSync(
+            values.newPwd
+          );
+          if (!isValidNewPwd && values.confirmPwd !== "") {
+            setFieldValue("confirmPwd", "");
+          }
           return (
             <Form method="post" className="needs-validation" noValidate>
               <div className={styles.group}>
@@ -48,7 +65,7 @@ function EditUserPassword() {
                   </label>
                   <div>
                     <Field
-                      type="text"
+                      type="password"
                       id="old-pwd"
                       name="oldPwd"
                       className={`form-control ${
@@ -71,7 +88,7 @@ function EditUserPassword() {
                   </label>
                   <div>
                     <Field
-                      type="text"
+                      type="password"
                       id="new-pwd"
                       name="newPwd"
                       className={`form-control ${
@@ -94,15 +111,16 @@ function EditUserPassword() {
                   </label>
                   <div>
                     <Field
-                      type="text"
+                      type="password"
                       id="confirm-pwd"
                       name="confirmPwd"
                       className={`form-control ${
                         touched.confirmPwd && errors.confirmPwd && "is-invalid"
-                      }  ${styles["input-field"]}`}
+                      }  ${styles["input-field"]} `}
                       placeholder="قم بتاكيد الرقم السري  هنا..."
                       aria-label="Username"
                       aria-describedby="basic-addon1"
+                      disabled={!isValidNewPwd}
                     />
                     <ErrorMessage
                       name="confirmPwd"
@@ -113,7 +131,11 @@ function EditUserPassword() {
                 </div>
               </div>
               <div className={styles["button-container"]}>
-                <button type="submit">حفظ التعديلات</button>
+                <SubmitButton
+                  isDisabled={isSubmitting}
+                  isLoading={isSubmitting}
+                  text={"حفظ التعديلات"}
+                />
               </div>
             </Form>
           );
@@ -123,4 +145,4 @@ function EditUserPassword() {
   );
 }
 
-export default EditUserPassword;
+export default EditProfilePassword;

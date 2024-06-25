@@ -37,14 +37,15 @@ import CharityCampaignsLayout from "./components/DashboardComponents/CharityCamp
 import UserHomeLayout from "./components/DashboardComponents/UserHomeLayout.jsx";
 import UserTransactionsLayout from "./components/DashboardComponents/UserTransactionsLayout.jsx";
 import EditProfileLayout from "./components/common/EditProfileLayout.jsx";
-import EditUserData from "./components/common/EditUserData.jsx";
-import EditUserPassword from "./components/common/EditUserPassword.jsx";
+import EditUserData from "./components/DashboardComponents/EditUserData.jsx";
 import CharityDocsLayout from "./components/DashboardComponents/CharityDocsLayout.jsx";
 import AdminCharityDocs from "./components/DashboardComponents/AdminCharityDocs.jsx";
 import Donations from "./pages/Donations.jsx";
 import About_us from "./pages/About_us.jsx";
 import ReportCase from "./pages/ReportCase.jsx";
 import ApiTesting from "./pages/ApiTesting.jsx";
+import EditProfilePassword from "./components/common/EditProfilePassword.jsx";
+import EditCharityData from "./components/DashboardComponents/EditCharityData.jsx";
 
 AOS.init();
 function App() {
@@ -94,6 +95,8 @@ function App() {
               <Route path="cart" element={<Cart />} />
               <Route path="api-testing" element={<ApiTesting />} />
             </Route>
+
+            {/* //*admin dashboard*/}
             <Route path="admin-dashboard" element={<AdminDashboard />}>
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<AdminHomeLayout />} />
@@ -107,9 +110,14 @@ function App() {
               <Route path="profile" element={<EditProfileLayout />}>
                 <Route index element={<Navigate replace to="edit-profile" />} />
                 <Route path="edit-profile" element={<EditUserData />} />
-                <Route path="change-pwd" element={<EditUserPassword />} />
+                <Route
+                  path="change-pwd"
+                  element={<EditProfilePassword type={"user"} />}
+                />
               </Route>
             </Route>
+
+            {/* //*charity dashboard*/}
             <Route path="charity-dashboard" element={<CharityDashboard />}>
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<CharityHomeLayout />} />
@@ -120,11 +128,31 @@ function App() {
               />
               <Route path="campaigns" element={<CharityCampaignsLayout />} />
               <Route path="upload-docs" element={<CharityDocsLayout />} />
+              <Route path="profile" element={<EditProfileLayout />}>
+                <Route index element={<Navigate replace to="edit-profile" />} />
+                <Route path="edit-profile" element={<EditCharityData />} />
+                <Route
+                  path="change-pwd"
+                  element={<EditProfilePassword type="charity" />}
+                />
+              </Route>
             </Route>
+
+            {/* //*user dashboard */}
             <Route path="user-dashboard" element={<UserDashboard />}>
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<UserHomeLayout />} />
               <Route path="transactions" element={<UserTransactionsLayout />} />
+
+              {/* //*really same as admin */}
+              <Route path="profile" element={<EditProfileLayout />}>
+                <Route index element={<Navigate replace to="edit-profile" />} />
+                <Route path="edit-profile" element={<EditUserData />} />
+                <Route
+                  path="change-pwd"
+                  element={<EditProfilePassword type={"user"} />}
+                />
+              </Route>
             </Route>
           </Routes>
         </BrowserRouter>

@@ -5,7 +5,19 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 const cloudinaryBaseUrl =
   "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273";
+const subDomains = {
+  case: "caseCoverImages",
+  charity: "charityLogos",
+  chDocs: "charityDocs",
+  usedItems: "usedItemsImages",
+};
+/**
+ *
+ * @param {object} currentValue={id,image}
+ * @returns
+ */
 function ProfileImageEdit({
+  type = "case",
   currentValue,
   updateProfileImageStatus,
   error,
@@ -28,7 +40,9 @@ function ProfileImageEdit({
     // reader.readAsDataURL(file); // Read the file as a data URL
 
     // handle uploading image to server
-    const updateCoverData = { id: currentValue._id, image: file };
+    //* work for cases and charity
+    const updateCoverData = { image: file };
+    if (currentValue.id) updateCoverData.id = currentValue.id;
     dispatch(updateProfileImage(updateCoverData));
   }
   return (
@@ -39,7 +53,7 @@ function ProfileImageEdit({
           <div className={styles.image}>
             <img
               // src={`${cloudinaryBaseUrl}/caseCoverImage/${currentCase.coverImage}`}
-              src={`${cloudinaryBaseUrl}/caseCoverImages/${currentValue.coverImage}`}
+              src={`${cloudinaryBaseUrl}/${subDomains[type]}/${currentValue.image}`}
               alt=""
             />
             <img

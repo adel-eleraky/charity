@@ -9,8 +9,8 @@ import {
   updateCaseCoverImg,
 } from "../../rtk/features/charity/charityCaseSlice";
 
-import { ThreeDot } from "react-loading-indicators";
 import ProfileImageEdit from "../common/ProfileImageEdit";
+import SubmitButton from "../common/SubmitButton";
 
 function CharityCaseEdit({ currentCase }) {
   const { updateCaseCoverImgStatus, error, editCaseStatus } = useSelector(
@@ -57,7 +57,8 @@ function CharityCaseEdit({ currentCase }) {
     <div className={`${styles.content} bg-white p-3 rounded `}>
       <div className="fs-3 fw-bold text-center mb-5">تعديل الحالة</div>
       <ProfileImageEdit
-        currentValue={currentCase}
+        type="case"
+        currentValue={{ id: currentCase._id, image: currentCase.coverImage }}
         updateProfileImageStatus={updateCaseCoverImgStatus}
         error={error}
         updateProfileImage={updateCaseCoverImg}
@@ -207,16 +208,12 @@ function CharityCaseEdit({ currentCase }) {
                   component="div"
                   className="invalid-feedback d-block fs-6"
                 />
-                <button
-                  className={`btn ${styles["save-btn"]}`}
-                  disabled={editCaseStatus === "loading"}
-                >
-                  {editCaseStatus === "loading" ? (
-                    <ThreeDot variant="pulsate" color="#E1D4C5" size="small" />
-                  ) : (
-                    <span>حفظ البيانات</span>
-                  )}
-                </button>
+                <SubmitButton
+                  // TODO: disabled also when the form is not touched
+                  isDisabled={editCaseStatus === "loading"}
+                  isLoading={editCaseStatus === "loading"}
+                  text={"حفظ البيانات"}
+                />
               </Form>
             );
           }}
