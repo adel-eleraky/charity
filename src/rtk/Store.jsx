@@ -6,6 +6,7 @@ import userProfileReducer from "./features/user/userProfileSlice";
 import charityAuthReducer from "./features/charity/charityAuthSlice";
 import charityProfileReducer from "./features/charity/charityProfileSlice";
 import charityCaseReducer from "./features/charity/charityCaseSlice";
+import UsedItemSlice from "./features/UsedItemSlice";
 
 const Store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const Store = configureStore({
     charityProfile: charityProfileReducer,
     charityCase: charityCaseReducer,
     casesCart: cartReducer,
+    usedItems: UsedItemSlice,
   },
 });
 
