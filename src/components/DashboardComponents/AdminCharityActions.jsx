@@ -2,12 +2,26 @@ import Popup from "reactjs-popup";
 import AdminCharityDocs from "./AdminCharityDocs";
 import styles from "./AdminCharityActions.module.css";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  confirmCharity,
+  rejectCharity,
+} from "../../rtk/features/user/adminSlice";
+
+// todo: handle loading using library
 function AdminCharityActions({ children, charity }) {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
   function handleClosePopup() {
     setOpen(false);
     console.log(open);
     console.log("closed");
+  }
+  function handleConfirmCharity() {
+    dispatch(confirmCharity(charity._id));
+  }
+  function handleRejectCharity() {
+    dispatch(rejectCharity(charity._id));
   }
   return (
     <div className={styles.action}>
@@ -35,11 +49,11 @@ function AdminCharityActions({ children, charity }) {
               onClosePopup={handleClosePopup}
             />
           </Popup>
-          <button>
+          <button onClick={handleConfirmCharity}>
             <img src="/images/admin-action-accept.svg" alt="" />
             <span>قبول الجمعية</span>
           </button>
-          <button>
+          <button onClick={handleRejectCharity}>
             <img src="/images/admin-action-reject.svg" alt="" />
             <span>رفض الجمعية</span>
           </button>

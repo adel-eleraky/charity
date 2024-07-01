@@ -230,8 +230,15 @@ const adminSlice = createSlice({
       .addCase(confirmCharity.pending, (state) => {
         state.confirmCharityStatus = "loading";
       })
-      .addCase(confirmCharity.fulfilled, (state) => {
+      .addCase(confirmCharity.fulfilled, (state, action) => {
         state.confirmCharityStatus = "finished";
+        const charity = action.payload.charity;
+        state.charities.forEach((item, index) => {
+          if (item._id === charity._id) {
+            state.charities[index].isConfirmed = charity.isConfirmed;
+            state.charities[index].isPending = charity.isPending;
+          }
+        });
       })
       .addCase(confirmCharity.rejected, (state, action) => {
         state.confirmCharityStatus = "failed";
@@ -242,8 +249,18 @@ const adminSlice = createSlice({
       .addCase(rejectCharity.pending, (state) => {
         state.rejectCharityStatus = "loading";
       })
-      .addCase(rejectCharity.fulfilled, (state) => {
+      .addCase(rejectCharity.fulfilled, (state, action) => {
         state.rejectCharityStatus = "finished";
+        //* no need to update pendingRequestCharity;
+        const charity = action.payload.charity;
+        state.charities.forEach((item, index) => {
+          if (item._id === charity._id) {
+            state.charities[index].isConfirmed = charity.isConfirmed;
+            state.charities[index].isPending = charity.isPending;
+          }
+        });
+
+        console.log(action.payload.charity);
       })
       .addCase(rejectCharity.rejected, (state, action) => {
         state.rejectCharityStatus = "failed";

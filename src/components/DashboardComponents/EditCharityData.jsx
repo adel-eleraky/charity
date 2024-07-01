@@ -18,6 +18,8 @@ import ProfileImageEdit from "../common/ProfileImageEdit";
 //todo: preview errors and success masseges (after submit)
 //todo: for adding new attributes:
 //todo             1. don't do anything in the slice 2.update initialValues , formik field and error msg, yup, submit Object
+//* i do this fetching in CharityDashboard (i think no need to do it here)
+//todo: make it in custome hook <--
 function EditCharityData() {
   // JUST FETCH PROFILE HERE AS TEMP BUT IT MUST BE FETCHED BEFORE !IMP
   const dispatch = useDispatch();
