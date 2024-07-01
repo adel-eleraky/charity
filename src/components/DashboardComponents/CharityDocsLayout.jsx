@@ -7,6 +7,7 @@ import * as yup from "yup";
 import FileInput from "../common/FileInput";
 import { sendDocs } from "../../rtk/features/charity/charityActivitySlice";
 import { useDispatch } from "react-redux";
+//todo: add the loading and error handling
 function CharityDocsLayout() {
   const dispatch = useDispatch();
   const initialValues = {

@@ -5,8 +5,9 @@ import HomeBox from "../common/HomeBox";
 import HomeProgress from "../common/HomeProgress";
 import { Link, useOutletContext } from "react-router-dom";
 import styles from "./CharityHomeLayout.module.css";
+//todo: show the uploaded docs. to the user
 function CharityHomeLayout() {
-  const [isCharityApproved] = useOutletContext();
+  const [isCharityApproved, isPending] = useOutletContext();
   console.log(isCharityApproved);
   return (
     <div className={styles.container}>
@@ -68,11 +69,24 @@ function CharityHomeLayout() {
       ) : (
         <div className={styles["upload-warning"]}>
           <div className="inner-container">
-            <div className="message">ارفع الوثائق يلا</div>
-            <Link to="/charity-dashboard/upload-docs">
-              ارفع الوثائق من هنا
-              <i className="fa-solid fa-chevron-left fa-xs fa-beat"></i>
-            </Link>
+            {!isPending && (
+              <>
+                <div className="message">ارفع الوثائق يلا</div>
+                <Link to="/charity-dashboard/upload-docs">
+                  ارفع الوثائق من هنا
+                  <i className="fa-solid fa-chevron-left fa-xs fa-beat"></i>
+                </Link>
+              </>
+            )}
+            {isPending && (
+              <>
+                <div className="message">بانتظار تأكيد الوثائق</div>
+                <Link to="/charity-dashboard/upload-docs">
+                  لتعديل الوثائق
+                  <i className="fa-solid fa-chevron-left fa-xs fa-beat"></i>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

@@ -42,8 +42,10 @@ function ApiTesting() {
   };
 
   const charityLoginData = {
-    email: "moh.hero4@gmail.com",
-    password: "aA@123456",
+    // email: "moh.hero4@gmail.com",
+    // password: "aA@123456",
+    email: "mohhero.4@gmail.com",
+    password: "123456",
   };
 
   const confirmResetCharityData = {

@@ -33,8 +33,21 @@ function AdminCharityDocs({ charity, onClosePopup }) {
     function () {
       if (getPendingRequestCharityByIdStatus === "idle")
         dispatch(getPendingRequestCharityById(charity._id));
+      //todo: test it
+      else if (
+        getPendingRequestCharityByIdStatus === "finished" &&
+        charity._id !== pendingRequestCharity._id
+      ) {
+        dispatch(getPendingRequestCharityById(charity._id));
+      }
     },
-    [charity._id, dispatch, getPendingRequestCharityByIdStatus, visible]
+    [
+      charity._id,
+      dispatch,
+      getPendingRequestCharityByIdStatus,
+      pendingRequestCharity._id,
+      visible,
+    ]
   );
 
   //* === idle because i need it to load only once (it will not change)
