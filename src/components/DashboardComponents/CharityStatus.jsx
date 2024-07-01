@@ -1,6 +1,7 @@
 import styles from "./CharityStatus.module.css";
 /* accepted - rejected - pending */
 function CharityStatus({ statusType }) {
+  // todo: add another status: غير موثق
   const statusText =
     statusType === "accepted"
       ? "مقبول"

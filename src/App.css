@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap");
 
 * {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   padding: 0;
   margin: 0;
 }
@@ -68,4 +68,11 @@ a {
 .popup-content {
   animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
+.PhotoView-Portal {
+  direction: ltr;
+}
+/*! it is important to reset it ffffffffffffffffffffffffffffff */
+.PhotoView-Portal .PhotoView__PhotoWrap {
+  right: unset !important;
 }

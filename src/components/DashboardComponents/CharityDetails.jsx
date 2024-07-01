@@ -2,6 +2,8 @@ import styles from "./CharityDetails.module.css";
 import CharityInfo from "./CharityInfo";
 function CharityDetails() {
   // load data here and also add the loader
+  console.log("hello from charityDetails");
+  // todo: async. to fetchCharityById -> waiting #backend
   return (
     <div className={styles.popup}>
       <div className={styles.heading}></div>

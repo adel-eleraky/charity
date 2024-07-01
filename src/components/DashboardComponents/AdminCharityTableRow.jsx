@@ -7,42 +7,54 @@ import CharityDetails from "./CharityDetails";
 import Popup from "reactjs-popup";
 import Tooltip from "../common/Tooltip";
 function AdminCharityTableRow({ charity }) {
-  // for using normal dom select and adding event to it you should loop over them in the table component and add event to them
-  // so use useRef
-
-  // you can do it if you need
-  // const [isActionShow, setIsActionShow] = useState(false);
-  // function handleToggleAction() {
-  //   setIsActionShow((a) => !a);
+  // "accepted" /* accepted - rejected - pending*/
+  //   {
+  //     "_id": "65f9fb313dbbeaaa8c2afebc",
+  //     "email": "saadmu7ammad7@gmail.com", not used
+  //     "name": "test",
+  //     "isConfirmed": true,
+  //     "isPending": false
   // }
+  // todo: the rejected condition must be isRejected(from api) and //
+  const charityStatus = charity.isConfirmed
+    ? "accepted"
+    : charity.isPending
+    ? "pending"
+    : "rejected";
+
   return (
     <>
       <li className={styles["table-row"]}>
         <div className={`${styles.col} ${styles["col-1"]}`} data-label="id">
-          {"#" + charity.id}
+          {"#" + charity._id}
         </div>
         <div
           className={`${styles.col} ${styles["col-2"]}`}
           data-label="اسم الجمعية"
         >
+          {/* //todo: ask for the logo to be reterned #backend */}
           <img src="/images/charity-logo.png" alt="" />
-          {charity.charityName}
+          {charity.name}
         </div>
+        {/* //todo: ask for the casesNum to be reterned #backend */}
         <div className={`${styles.col} ${styles["col-3"]}`} data-label="Amount">
           {charity.casesNum}
         </div>
+        {/* //todo: remove it */}
         <div
           className={`${styles.col} ${styles["col-4"]}`}
           data-label="Payment Status"
         >
           {charity.regDate}
         </div>
+        {/* //todo: ask to return it */}
         <div
           className={`${styles.col} ${styles["col-5"]}`}
           data-label="Payment Status"
         >
           {charity.collectedMoney + "جنيه"}
         </div>
+        {/* //todo: ask to return it */}
         <div
           className={`${styles.col} ${styles["col-6"]}`}
           data-label="Payment Status"
@@ -53,7 +65,7 @@ function AdminCharityTableRow({ charity }) {
           className={`${styles.col} ${styles["col-7"]}`}
           data-label="Payment Status"
         >
-          <CharityStatus statusType={charity.statusType} />
+          <CharityStatus statusType={charityStatus} />
         </div>
         <div className={`${styles.col} ${styles["col-8"]}`} data-label="btn">
           <div className={styles["button-action-container"]}>
@@ -77,8 +89,8 @@ function AdminCharityTableRow({ charity }) {
               }
               nested
             >
-              <AdminCharityActions>
-                <CharityDetails charityId={charity.id} />
+              <AdminCharityActions charity={charity}>
+                <CharityDetails charityId={charity._id} />
               </AdminCharityActions>
             </Popup>
           </div>
