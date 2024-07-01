@@ -1,3 +1,5 @@
+//todo: update the ui of the popup to make loader fancy and update the swiper better and add other controls in the tool bar
+
 import styles from "./AdminCharityDocs.module.css";
 
 import { useCallback, useEffect, useState } from "react";
@@ -45,67 +47,60 @@ function AdminCharityDocs({ charity, onClosePopup }) {
     return <Error msg={error} />;
   const docs = Object.values(pendingRequestCharity.charityDocs);
   return (
-    <div className={styles.container}>
-      <>
-        <button onClick={() => setIndex(2)}>setIndex(2)</button>
-        <button onClick={() => setIndex(4)}>setIndex(4)</button>
+    <PhotoSlider
+      images={docs.map((item) => ({
+        src: `${cloudinaryUrl("chDocs")}/${item[0]}`,
+        key: item[0],
+      }))}
+      maskOpacity={0.8}
+      visible={visible}
+      onClose={() => {
+        setVisible(false);
+        onClosePopup();
+      }}
+      index={index}
+      onIndexChange={setIndex}
+      //* see what you want to do first before you remove this line
+      afterClose={() => {}}
+      overlayRender={({}) => (
+        <div className={styles.swiperContainer}>
+          <Swiper
+            modules={[Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={4}
+            scrollbar={{ draggable: true }}
+            centeredSlides={true}
 
-        <PhotoSlider
-          images={docs.map((item) => ({
-            src: `${cloudinaryUrl("chDocs")}/${item[0]}`,
-            key: item[0],
-          }))}
-          maskOpacity={0.8}
-          visible={visible}
-          onClose={() => {
-            setVisible(false);
-            onClosePopup();
-          }}
-          index={index}
-          onIndexChange={setIndex}
-          //* see what you want to do first before you remove this line
-          afterClose={() => {}}
-          overlayRender={({}) => (
-            <div className={styles.swiperContainer}>
-              <Swiper
-                modules={[Scrollbar, A11y]}
-                spaceBetween={50}
-                slidesPerView={4}
-                scrollbar={{ draggable: true }}
-                centeredSlides={true}
-
-                // className={styles.Swiper}
-              >
-                {docs.map((item, i) => (
-                  <SwiperSlide key={i}>
-                    <img
-                      onClick={() => setIndex(i)}
-                      className={i === index ? styles.active : ""}
-                      src={`${cloudinaryUrl("chDocs")}/${item[0]}`}
-                      alt="1"
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          )}
-          toolbarRender={({ rotate, onRotate }) => {
-            return (
-              <svg
-                onClick={() => onRotate(rotate + 90)}
-                className="PhotoView-Slider__toolbarIcon"
-                width="44"
-                height="44"
-                fill="white"
-                viewBox="0 0 768 768"
-              >
-                <path d="M565.5 202.5l75-75v225h-225l103.5-103.5c-34.5-34.5-82.5-57-135-57-106.5 0-192 85.5-192 192s85.5 192 192 192c84 0 156-52.5 181.5-127.5h66c-28.5 111-127.5 192-247.5 192-141 0-255-115.5-255-256.5s114-256.5 255-256.5c70.5 0 135 28.5 181.5 75z"></path>
-              </svg>
-            );
-          }}
-        />
-      </>
-    </div>
+            // className={styles.Swiper}
+          >
+            {docs.map((item, i) => (
+              <SwiperSlide key={i}>
+                <img
+                  onClick={() => setIndex(i)}
+                  className={i === index ? styles.active : ""}
+                  src={`${cloudinaryUrl("chDocs")}/${item[0]}`}
+                  alt="1"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
+      toolbarRender={({ rotate, onRotate }) => {
+        return (
+          <svg
+            onClick={() => onRotate(rotate + 90)}
+            className="PhotoView-Slider__toolbarIcon"
+            width="44"
+            height="44"
+            fill="white"
+            viewBox="0 0 768 768"
+          >
+            <path d="M565.5 202.5l75-75v225h-225l103.5-103.5c-34.5-34.5-82.5-57-135-57-106.5 0-192 85.5-192 192s85.5 192 192 192c84 0 156-52.5 181.5-127.5h66c-28.5 111-127.5 192-247.5 192-141 0-255-115.5-255-256.5s114-256.5 255-256.5c70.5 0 135 28.5 181.5 75z"></path>
+          </svg>
+        );
+      }}
+    />
   );
 }
 
