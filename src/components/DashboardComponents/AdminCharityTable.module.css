@@ -90,7 +90,9 @@
 .table-row:hover {
   box-shadow: 1px 17px 44px 0px rgba(3, 2, 41, 0.07);
 }
-
+.col-1 {
+  overflow: hidden;
+}
 .col-2 {
   display: flex;
   align-items: center;

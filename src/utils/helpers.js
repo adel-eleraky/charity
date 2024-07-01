@@ -1,3 +1,11 @@
+const cloudinaryBaseUrl =
+  "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273";
+const subDomains = {
+  case: "caseCoverImages",
+  charity: "charityLogos",
+  chDocs: "charityDocs",
+  usedItems: "usedItemsImages",
+};
 export function fetchingErrorHandling(error, process) {
   // Axios throws an error for network errors, so handle it here
   if (error.response) {
@@ -18,4 +26,8 @@ export function createFormData(data) {
     formData.append(key, data[key]);
   }
   return formData;
+}
+
+export function cloudinaryUrl(subDomain) {
+  return `${cloudinaryBaseUrl}/${subDomains[subDomain]}`;
 }

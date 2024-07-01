@@ -39,10 +39,11 @@
 :global(.edit-case-content) {
   width: 80%;
 }
+/* todo: see how this will affect the charityCaseActions */
 /* docs popup styling */
-:global(.docs-popup-content) {
+/* :global(.docs-popup-content) {
   height: 100%;
-}
+} */
 :global(.docs-popup-overlay) {
   overflow: auto;
 }
