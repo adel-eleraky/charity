@@ -1,244 +1,112 @@
 import styles from "./AdminCharityDocs.module.css";
-import { useCallback, useState } from "react";
-import { Document, Outline, Page, Thumbnail } from "react-pdf";
-import { pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/TextLayer.css";
-import samplePDF from "/ChatGPT.pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
 
-function highlightPattern(text, pattern) {
-  return text.replace(pattern, (value) => `<mark>${value}</mark>`);
-}
+import { useCallback, useEffect, useState } from "react";
 
-function AdminCharityDocs() {
-  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    "pdfjs-dist/build/pdf.worker.min.js",
-    import.meta.url
-  ).toString();
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+import { useDispatch, useSelector } from "react-redux";
+import { getPendingRequestCharityById } from "../../rtk/features/user/adminSlice";
+import { cloudinaryUrl } from "../../utils/helpers";
+import Loader from "../common/Loader";
+import Error from "../common/Error";
+import { PhotoProvider, PhotoView, PhotoSlider } from "react-photo-view";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setPageNumber(1);
-  }
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-  function changePage(offset) {
-    setPageNumber((prevPageNumber) => prevPageNumber + offset);
-  }
+// Import required modules
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
-  function previousPage() {
-    changePage(-1);
-  }
+function AdminCharityDocs({ charity, onClosePopup }) {
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState(true);
+  const [index, setIndex] = useState(0);
 
-  function nextPage() {
-    changePage(1);
-  }
+  // you can use it anywhere so no prob-drilling
+  const { pendingRequestCharity, getPendingRequestCharityByIdStatus, error } =
+    useSelector((store) => store.admin);
+  useEffect(
+    function () {
+      if (getPendingRequestCharityByIdStatus === "idle")
+        dispatch(getPendingRequestCharityById(charity._id));
+    },
+    [charity._id, dispatch, getPendingRequestCharityByIdStatus, visible]
+  );
 
+  //* === idle because i need it to load only once (it will not change)
+  if (
+    getPendingRequestCharityByIdStatus === "loading" ||
+    getPendingRequestCharityByIdStatus === "idle"
+  )
+    return <Loader type="mosaic" />;
+  if (getPendingRequestCharityByIdStatus === "failed")
+    return <Error msg={error} />;
+  const docs = Object.values(pendingRequestCharity.charityDocs);
   return (
     <div className={styles.container}>
-      <Document
-        file="/ChatGPT.pdf"
-        onLoadSuccess={onDocumentLoadSuccess}
-        renderAnnotationLayer="false"
-        height={window.innerHeight}
-      >
-        <Page
-          pageNumber={pageNumber}
-          renderAnnotationLayer={false}
-          renderTextLayer={false}
-          height={window.innerHeight}
-          // renderTextLayer={false}
-          // annotation={false}
-        />
-        <div className={styles["pages_nav"]}>
-          <div>
-            <Page
-              pageNumber={2}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(2)}
-              // renderTextLayer={false}
-              // annotation={false}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={3}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(3)}
-              // renderTextLayer={false}
-              // annotation={false}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-          <div>
-            <Page
-              pageNumber={4}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className={styles.page2}
-              height={100}
-              onClick={() => setPageNumber(4)}
-            />
-          </div>
-        </div>
-      </Document>
-      {/* <Document
-        file="/ChatGPT.pdf"
-        onLoadSuccess={onDocumentLoadSuccess}
-        renderAnnotationLayer="false"
-        className={styles.test}
-      >
-        <Page
-          pageNumber={pageNumber}
-          renderAnnotationLayer={false}
-          renderTextLayer={false}
-          className={styles.test}
-          height={window.innerHeight}
-          // renderTextLayer={false}
-          // annotation={false}
-        />
-        <div className={styles["pages_nav"]}>
-          <Page
-            pageNumber={2}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
-            className={styles.page2}
-            height={100}
-            onClick={() => setPageNumber(2)}
-            // renderTextLayer={false}
-            // annotation={false}
-          />
-          <Page
-            pageNumber={3}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
-            className={styles.page2}
-            height={100}
-            onClick={() => setPageNumber(3)}
-            // renderTextLayer={false}
-            // annotation={false}
-          />
-          <Page
-            pageNumber={4}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
-            className={styles.page2}
-            height={100}
-            onClick={() => setPageNumber(4)}
-          />
-        </div>
-      </Document> */}
+      <>
+        <button onClick={() => setIndex(2)}>setIndex(2)</button>
+        <button onClick={() => setIndex(4)}>setIndex(4)</button>
 
-      {/* <div>
-        <p>
-          Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
-        </p>
-        <button type="button" disabled={pageNumber <= 1} onClick={previousPage}>
-          Previous
-        </button>
-        <button
-          type="button"
-          disabled={pageNumber >= numPages}
-          onClick={nextPage}
-        >
-          Next
-        </button>
-      </div> */}
+        <PhotoSlider
+          images={docs.map((item) => ({
+            src: `${cloudinaryUrl("chDocs")}/${item[0]}`,
+            key: item[0],
+          }))}
+          maskOpacity={0.8}
+          visible={visible}
+          onClose={() => {
+            setVisible(false);
+            onClosePopup();
+          }}
+          index={index}
+          onIndexChange={setIndex}
+          //* see what you want to do first before you remove this line
+          afterClose={() => {}}
+          overlayRender={({}) => (
+            <div className={styles.swiperContainer}>
+              <Swiper
+                modules={[Scrollbar, A11y]}
+                spaceBetween={50}
+                slidesPerView={4}
+                scrollbar={{ draggable: true }}
+                centeredSlides={true}
+
+                // className={styles.Swiper}
+              >
+                {docs.map((item, i) => (
+                  <SwiperSlide key={i}>
+                    <img
+                      onClick={() => setIndex(i)}
+                      className={i === index ? styles.active : ""}
+                      src={`${cloudinaryUrl("chDocs")}/${item[0]}`}
+                      alt="1"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          )}
+          toolbarRender={({ rotate, onRotate }) => {
+            return (
+              <svg
+                onClick={() => onRotate(rotate + 90)}
+                className="PhotoView-Slider__toolbarIcon"
+                width="44"
+                height="44"
+                fill="white"
+                viewBox="0 0 768 768"
+              >
+                <path d="M565.5 202.5l75-75v225h-225l103.5-103.5c-34.5-34.5-82.5-57-135-57-106.5 0-192 85.5-192 192s85.5 192 192 192c84 0 156-52.5 181.5-127.5h66c-28.5 111-127.5 192-247.5 192-141 0-255-115.5-255-256.5s114-256.5 255-256.5c70.5 0 135 28.5 181.5 75z"></path>
+              </svg>
+            );
+          }}
+        />
+      </>
     </div>
   );
 }
 
 export default AdminCharityDocs;
-{
-  /* 
-      assume 1 document 
-
-*/
-}

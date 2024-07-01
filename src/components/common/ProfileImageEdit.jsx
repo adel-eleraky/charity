@@ -3,14 +3,8 @@ import Loader from "../common/Loader";
 import Error from "../common/Error";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-const cloudinaryBaseUrl =
-  "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273";
-const subDomains = {
-  case: "caseCoverImages",
-  charity: "charityLogos",
-  chDocs: "charityDocs",
-  usedItems: "usedItemsImages",
-};
+import { cloudinaryUrl } from "../../utils/helpers";
+
 /**
  *
  * @param {object} currentValue={id,image}
@@ -53,7 +47,7 @@ function ProfileImageEdit({
           <div className={styles.image}>
             <img
               // src={`${cloudinaryBaseUrl}/caseCoverImage/${currentCase.coverImage}`}
-              src={`${cloudinaryBaseUrl}/${subDomains[type]}/${currentValue.image}`}
+              src={`${cloudinaryUrl("case")}/${currentValue.image}`}
               alt=""
             />
             <img

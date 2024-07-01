@@ -23,6 +23,7 @@ function EditUserData() {
   if (!isEmailVerified) navigate("/account/activate");
   useEffect(() => {
     if (
+      //* this will refetch untill get data
       Object.keys(userProfile).length === 0 &&
       getUserProfileStatus !== "loading"
     )
