@@ -6,6 +6,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addCase } from "../rtk/features/charity/charityCaseSlice";
+import SubmitButton from "./common/SubmitButton";
 
 function AddCase() {
   const dispatch = useDispatch();
@@ -33,15 +34,18 @@ function AddCase() {
     description: yup.string().required("  ادخل وصف الحالة"),
   });
 
-  const submitHandler = (values) => {
+  const submitHandler = (values, { setSubmitting }) => {
     const { type, location, ...rest } = values;
     const caseData = {
       ...rest,
       mainType: type,
       subType: type,
       "caseLocation[0][governorate]": location,
+      helpedNumbers: 1,
     };
-    dispatch(addCase(caseData));
+    dispatch(addCase(caseData)).then(() => {
+      setSubmitting(false);
+    });
   };
 
   return (
@@ -60,8 +64,17 @@ function AddCase() {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={submitHandler}
+              enableReinitialize={true}
             >
-              {({ values, errors, touched, setFieldValue }) => {
+              {({
+                values,
+                errors,
+                touched,
+                setFieldValue,
+                isSubmitting,
+                dirty,
+                isValid,
+              }) => {
                 return (
                   <Form method="post" className="needs-validation" noValidate>
                     <div className="d-flex flex-wrap justify-content-between mb-3">
@@ -230,7 +243,11 @@ function AddCase() {
                       component="div"
                       className="invalid-feedback d-block fs-6"
                     />
-                    <button className="btn save-btn"> حفظ البيانات </button>
+                    <SubmitButton
+                      isDisabled={isSubmitting || !dirty || !isValid}
+                      isLoading={isSubmitting}
+                      text="حفظ البيانات"
+                    />
                   </Form>
                 );
               }}

@@ -47,7 +47,7 @@ function ProfileImageEdit({
           <div className={styles.image}>
             <img
               // src={`${cloudinaryBaseUrl}/caseCoverImage/${currentCase.coverImage}`}
-              src={`${cloudinaryUrl("case")}/${currentValue.image}`}
+              src={`${cloudinaryUrl(type)}/${currentValue.image}`}
               alt=""
             />
             <img
