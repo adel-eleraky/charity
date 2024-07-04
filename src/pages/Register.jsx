@@ -140,7 +140,11 @@ function Register() {
         location: values.location,
       };
       console.log(RegisterData);
-
+      toast.promise(dispatch(registerCharity(RegisterData)), {
+        pending: "جارى التسجيل بياناتك",
+        success: "تم التسجيل بنجاح",
+        error: "لم يتم التسجيل",
+      });
       
     }
   };
