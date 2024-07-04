@@ -3,29 +3,53 @@ import React, { useRef } from 'react'
 import "./css/Used.css"
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { AddUsedItem } from '../rtk/features/UsedItemSlice'
 function Used() {
+
+    const { userProfile } = useSelector((store) => store.userProfile)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleUploadClick = (e) => {
         document.querySelector(".file-input").click()
     }
 
     const initialValues = {
-        name: "",
-        address: "",
-        phone: "",
-        used: "",
-        images: [],
+        title: "",
+        category: "",
+        description: "",
+        image: '',
+        amount: "",
     }
 
     const validationSchema = yup.object().shape({
-        name: yup.string().required("ادخل الاسم"),
-        address: yup.string().required("ادخل العنوان"),
-        phone: yup.string().matches(/^[0-9]{11}$/, "يجب أن يحتوي رقم الهاتف على 11 رقمًا").required("ادخل رقم الهاتف"),
-        used: yup.string().required(" ادخل اسم المسنعمل  "),
+        title: yup.string().required("ادخل الاسم"),
+        category: yup.string().required("ادخل الفئة").oneOf(["electronics", "clothes", "appliances", "furniture", "other"], "ادخل الفئة"),
+        description: yup.string().required("ادخل وصف الحالة"),
+        amount: yup.number().required("ادخل الكمية"),
+        image: yup.mixed()
+            .test("fileType", "يجب أن يكون الصورة من نوع png , jpg , jpeg", (value) => {
+                return value && ["image/jpeg", "image/png", "image/jpg"].includes(value.type)
+            })
+            .test("fileSize", "يجب أن يكون الصورة اقل من 5MB", (value) => {
+                return value && value.size <= 5 * 1024 * 1024
+            })
+            .required("ادخل صورة الحاجة المستعملة"),
     })
 
     const submitHandler = (values) => {
+
+        // if (Object.keys(userProfile).length === 0) {
+        //     toast.error(" يجب عليك تسجيل الدخول اولا ") 
+        //     setTimeout(() => {
+        //         return navigate("/account/login")
+        //     }, 3000)
+        // }
         console.log(values)
+        dispatch(AddUsedItem(values))
     }
 
     return (
@@ -70,19 +94,19 @@ function Used() {
                     </div>
                     <div className="col-12 col-lg-6 report-form d-flex justify-content-center align-items-center">
                         <div className="content rounded bg-white p-3 w-100">
-                            <h3 className='text-center mb-4 position-relative fw-bold mx-auto' style={{ width: "350px"}}> التبرع بالحاجات المستعملة </h3>
+                            <h3 className='text-center mb-4 position-relative fw-bold mx-auto' style={{ width: "350px" }}> التبرع بالحاجات المستعملة </h3>
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
                                 onSubmit={submitHandler}
                             >
-                                {({ values, errors, touched }) => {
+                                {({ values, errors, touched, setFieldValue }) => {
                                     return (
                                         <Form method='post' className="needs-validation" noValidate>
                                             <div className="d-flex justify-content-evenly flex-wrap">
                                                 <div className='input'>
-                                                    <label htmlFor="name" className="form-label">
-                                                        الاسم
+                                                    <label htmlFor="title" className="form-label">
+                                                        اسم الحاجة المستعملة
                                                     </label>
                                                     <div className="input-group has-validation mb-4">
                                                         <span className="input-group-text  rounded-0 rounded-end" id="basic-addon1" >
@@ -90,39 +114,39 @@ function Used() {
                                                         </span>
                                                         <Field
                                                             type="text"
-                                                            id="name"
-                                                            name="name"
-                                                            className={`form-control ${touched.name && errors.name && "is-invalid"} rounded-0 rounded-start`}
-                                                            placeholder=" اكتب اسمك "
+                                                            id="title"
+                                                            name="title"
+                                                            className={`form-control ${touched.title && errors.title && "is-invalid"} rounded-0 rounded-start`}
+                                                            placeholder=" اكتب اسم الحاجة المستملة "
                                                             aria-label="Username"
                                                             aria-describedby="basic-addon1"
                                                         />
                                                         <ErrorMessage
-                                                            name="name"
+                                                            name="title"
                                                             component="div"
                                                             className="invalid-feedback d-block fs-6"
                                                         />
                                                     </div>
                                                 </div>
-                                                <div  className='input'>
-                                                    <label htmlFor="address" className="form-label">
-                                                        العنوان
+                                                <div className='input'>
+                                                    <label htmlFor="amount" className="form-label">
+                                                        الكمية
                                                     </label>
                                                     <div className="input-group has-validation mb-4">
                                                         <span className="input-group-text  rounded-0 rounded-end" id="basic-addon1" >
                                                             <i className="fa-solid fa-location-dot"></i>
                                                         </span>
                                                         <Field
-                                                            type="text"
-                                                            id="address"
-                                                            name="address"
-                                                            className={`form-control ${touched.address && errors.address && "is-invalid"} rounded-0 rounded-start`}
-                                                            placeholder=" اكتب عنوانك "
-                                                            aria-label="address"
+                                                            type="number"
+                                                            id="amount"
+                                                            name="amount"
+                                                            className={`form-control ${touched.amount && errors.amount && "is-invalid"} rounded-0 rounded-start`}
+                                                            placeholder=" ادخل الكمية "
+                                                            aria-label="amount"
                                                             aria-describedby="basic-addon1"
                                                         />
                                                         <ErrorMessage
-                                                            name="address"
+                                                            name="amount"
                                                             component="div"
                                                             className="invalid-feedback d-block fs-6"
                                                         />
@@ -131,64 +155,67 @@ function Used() {
                                             </div>
                                             <div className="d-flex justify-content-evenly flex-wrap">
                                                 <div className='input'>
-                                                    <label htmlFor="phone" className="form-label">
-                                                        التليفون
+                                                    <label htmlFor="category" className="form-label">
+                                                        فئة الحاجة المستعملة
                                                     </label>
                                                     <div className="input-group has-validation mb-4">
                                                         <span className="input-group-text  rounded-0 rounded-end" id="basic-addon1" >
                                                             <i className="fa-solid fa-phone"></i>
                                                         </span>
-                                                        <Field
-                                                            type="number"
-                                                            id="phone"
-                                                            name="phone"
-                                                            className={`form-control ${touched.phone && errors.phone && "is-invalid"} rounded-0 rounded-start`}
-                                                            placeholder=" رقم التليفون "
-                                                            aria-label="phone"
-                                                            aria-describedby="basic-addon1"
-                                                        />
-                                                        <ErrorMessage
-                                                            name="phone"
-                                                            component="div"
-                                                            className="invalid-feedback d-block fs-6"
-                                                        />
+                                                        <Field name="category" as="select" className={`form-select ${touched.category && errors.category && "is-invalid"} rounded-0 rounded-start`}>
+                                                            <option value="">اختر فئة الحاجة المستعملة</option>
+                                                            <option value="electronics">الكترونيات</option>
+                                                            <option value="clothes">ملابس</option>
+                                                            <option value="appliances">اجهزة</option>
+                                                            <option value="furniture">اثاث</option>
+                                                            <option value="other">اخرى</option>
+                                                        </Field>
+                                                        <ErrorMessage name="category" component="div" className="invalid-feedback d-block fs-6" />
                                                     </div>
                                                 </div>
                                                 <div className='input'>
-                                                    <label htmlFor="used" className="form-label">
-                                                        الحاجة المستعملة
+                                                    <label htmlFor="description" className="form-label">
+                                                        وصف الحاجة المستعملة
                                                     </label>
                                                     <div className="input-group has-validation mb-4">
                                                         <span className="input-group-text  rounded-0 rounded-end" id="basic-addon1" >
                                                             <i className="fa-solid fa-location-dot"></i>
                                                         </span>
                                                         <Field
-                                                            type="text"
-                                                            id="used"
-                                                            name="used"
-                                                            className={`form-control ${touched.used && errors.used && "is-invalid"} rounded-0 rounded-start`}
-                                                            placeholder=" اكتب اسم الحاجة المستعملة "
-                                                            aria-label="used"
+                                                            as="textarea"
+                                                            id="description"
+                                                            name="description"
+                                                            className={`form-control ${touched.description && errors.description && "is-invalid"} rounded-0 rounded-start`}
+                                                            placeholder=" اكتب وصف الحاجة المستعملة "
+                                                            aria-label="description"
                                                             aria-describedby="basic-addon1"
                                                         />
                                                         <ErrorMessage
-                                                            name="used"
+                                                            name="description"
                                                             component="div"
                                                             className="invalid-feedback d-block fs-6"
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='p-2 text-center fw-600 border rounded w-50 mx-auto' onClick={handleUploadClick}> <img src="/images/upload-icon.png" alt="" className="img-fluid mx-2" />قم بارفاق صور التبرع
-                                                <Field
+                                            <div className='p-2 text-center fw-600 border rounded w-50 mx-auto' onClick={handleUploadClick}> <img src="/images/upload-icon.png" alt="" className="img-fluid mx-2" />قم بارفاق صور الحاجة المستعملة
+                                                <input
                                                     type="file"
-                                                    id="images"
-                                                    name="images"
-                                                    className={`form-control ${touched.images && errors.images && "is-invalid"} file-input rounded-0 rounded-start d-none`}
-                                                    aria-label="images"
+                                                    id="image"
+                                                    name="image"
+                                                    onChange={(e) => {
+                                                        setFieldValue("image", e.currentTarget.files[0])
+                                                    }}
+                                                    className={`form-control ${touched.image && errors.image && "is-invalid"} file-input rounded-0 rounded-start d-none`}
+                                                    aria-label="image"
                                                     aria-describedby="basic-addon1"
                                                 />
                                             </div>
+                                            <ErrorMessage
+                                                name="image"
+                                                component="div"
+                                                className="invalid-feedback d-block text-center fs-6 w-50 mx-auto"
+                                            />
                                             <button
                                                 className="submit-btn btn d-block w-50 py-2 mt-4 mx-auto fs-5 text-white"
                                                 type="submit"
@@ -204,7 +231,7 @@ function Used() {
                 </div>
             </div>
             <div className="container items-sec">
-                <h2 className='text-center fw-bold  mb-4 position-relative mx-auto' style={{ width: "275px"}}> الحالات المتبرع بها  </h2>
+                <h2 className='text-center fw-bold  mb-4 position-relative mx-auto' style={{ width: "275px" }}> الحالات المتبرع بها  </h2>
                 <div className="d-flex flex-wrap justify-content-center gap-4 used-items" >
                     <div className='rounded border p-3 bg-white'> <img src="/images/used-item.png" alt="" className="img-fluid w-100" /> </div>
                     <div className='rounded border p-3 bg-white'> <img src="/images/used-item.png" alt="" className="img-fluid w-100" /> </div>
