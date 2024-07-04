@@ -70,7 +70,7 @@ function RegisterCharity({ touched, errors }) {
                     />
                 </div>
                 <div className='p-2 text-center fw-600 border rounded bg-white' onClick={handleUploadClick}> <img src="/images/upload-icon.png" alt="" className="img-fluid mx-2" /> قم بارفاق صورة الجمعية
-                    <Field
+                    <input
                         type="file"
                         id="image"
                         name="organizationImage"
