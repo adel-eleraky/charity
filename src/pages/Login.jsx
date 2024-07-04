@@ -12,23 +12,25 @@ import Popup from "../components/Popup";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { loginCharity } from "../rtk/features/charity/charityAuthSlice";
 
 function Login() {
-  const [role, setRole] = React.useState("user");
-  
+  const [role, setRole] = React.useState("");
+
   const { loginStatus, error, registerStatus, user } = useSelector(
     (store) => store.userAuth
   );
 
-  
+
   const isVerified = user?.isVerified
-  
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const initialValues = {
     email: "",
     password: "",
+    role: ''
   };
 
   const validationSchema = yup.object().shape({
@@ -43,6 +45,11 @@ function Login() {
         "يجب أن تحتوي كلمة المرور على حروف كبيرة وصغيرة وأرقام ورموز وأن تكون طولها 8 أحرف على الأقل"
       )
       .required("ادخل كلمة السر"),
+
+    role: yup
+      .string()
+      .required("اختار نوع الحساب")
+      .oneOf(["user", "organization"], "نوع الحساب يجب ان يكون متبرع او جمعية"),
   });
 
   useEffect(
@@ -60,7 +67,12 @@ function Login() {
     [loginStatus]
   );
   const submitHandler = (values) => {
-    dispatch(loginUser(values));
+    if(role === "user"){
+      dispatch(loginUser(values));
+    }else{
+      dispatch(loginCharity(values));
+    }
+    // dispatch(loginUser(values));
 
   };
 
@@ -70,9 +82,8 @@ function Login() {
         <div className="row">
           <div className="col-6 text-center img-column">
             <img
-              src={`/images/${
-                role === "user" ? "individual" : "organization"
-              }.png`}
+              src={`/images/${role === "user" ? "individual" : "organization"
+                }.png`}
               alt=""
               className="img-fluid"
             />
@@ -102,9 +113,8 @@ function Login() {
                           type="email"
                           id="email"
                           name="email"
-                          className={`form-control ${
-                            touched.email && errors.email && "is-invalid"
-                          } rounded-0 rounded-start`}
+                          className={`form-control ${touched.email && errors.email && "is-invalid"
+                            } rounded-0 rounded-start`}
                           placeholder="ادخل بريدك الالكترونى"
                           aria-label="Username"
                           aria-describedby="basic-addon1"
@@ -129,9 +139,8 @@ function Login() {
                           type="password"
                           id="password"
                           name="password"
-                          className={`form-control ${
-                            touched.password && errors.password && "is-invalid"
-                          } rounded-0 rounded-start`}
+                          className={`form-control ${touched.password && errors.password && "is-invalid"
+                            } rounded-0 rounded-start`}
                           placeholder="ادخل كلمة المرور"
                           aria-label="Username"
                           aria-describedby="basic-addon1"
@@ -142,6 +151,39 @@ function Login() {
                           className="invalid-feedback d-block fs-6 fw-bold"
                         />
                       </div>
+                      <div className="form-check mb-3">
+                        <Field
+                          onClick={() => setRole("user")}
+                          className={`form-check-input ${touched.role && errors.role && "is-invalid"
+                            } ms-2 float-none`}
+                          type="radio"
+                          name="role"
+                          value="user"
+                          id="user-role"
+                        />
+                        <label className="form-check-label" htmlFor="user-role">
+                          تسجيل الدخول (متبرع) 
+                        </label>
+                      </div>
+                      <div className="form-check mb-4">
+                        <Field
+                          onClick={() => setRole("organization")}
+                          className={`form-check-input ${touched.role && errors.role && "is-invalid"
+                            } ms-2 float-none`}
+                          type="radio"
+                          name="role"
+                          value="organization"
+                          id="org-role"
+                        />
+                        <label className="form-check-label" htmlFor="org-role">
+                          تسجيل الدخول (جمعية)
+                        </label>
+                      </div>
+                      <ErrorMessage
+                        name="role"
+                        component="div"
+                        className="invalid-feedback d-block fs-6 mb-4 fw-bold"
+                      />
                       <button
                         className="submit-btn btn d-block w-50 py-2 mb-4 mx-auto fs-4"
                         type="submit"
@@ -152,7 +194,7 @@ function Login() {
                   );
                 }}
               </Formik>
-              
+
               <h5 className="mb-4 text-center">او سجل الدخول باستخدام </h5>
               <div className="social-icons d-flex gap-15 justify-content-center mb-4">
                 <div className="facebook-icon bg-white text-dark py-1 px-4 rounded">
