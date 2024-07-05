@@ -12,6 +12,7 @@ import Error from "../common/Error";
 import SubmitButton from "../common/SubmitButton";
 import { useNavigate } from "react-router-dom";
 
+//*guide for formik submit
 //todo: preview errors and success masseges (after submit)
 function EditUserData() {
   // JUST FETCH PROFILE HERE AS TEMP BUT IT MUST BE FETCHED BEFORE !IMP
@@ -74,7 +75,7 @@ function EditUserData() {
         onSubmit={submitHandler}
         enableReinitialize={true}
       >
-        {({ values, errors, touched, isSubmitting, dirty }) => {
+        {({ values, errors, touched, isSubmitting, dirty, isValid }) => {
           return (
             <Form method="post" className="needs-validation" noValidate>
               <div className={styles.image}>
