@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCase } from "../rtk/features/charity/charityCaseSlice";
 import SubmitButton from "./common/SubmitButton";
 
+//*guide for formik submit
+
 function AddCase() {
   const dispatch = useDispatch();
   const initialValues = {

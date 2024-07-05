@@ -13,6 +13,7 @@ import {
   editCharityProfile,
   getCharityProfile,
 } from "../rtk/features/charity/charityProfileSlice";
+import { openChat } from "../rtk/features/chatSlice";
 
 function ApiTesting() {
   const dispatch = useDispatch();
@@ -98,6 +99,15 @@ function ApiTesting() {
   return (
     <div>
       hello see the console
+      <button
+        onClick={() => {
+          console.log("hello");
+          dispatch(openChat("667deb168463750ac3ab48de"));
+        }}
+      >
+        open chat
+      </button>
+      <button>close chat</button>
       <input
         type="file"
         onChange={(e) => {

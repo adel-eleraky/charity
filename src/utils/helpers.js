@@ -31,3 +31,12 @@ export function createFormData(data) {
 export function cloudinaryUrl(subDomain) {
   return `${cloudinaryBaseUrl}/${subDomains[subDomain]}`;
 }
+
+export function prepareChatMessages(messages, receiverId) {
+  return messages.map((messageObj) => ({
+    ...messageObj,
+    text: messageObj.message,
+    position: messageObj.receiverId === receiverId ? "right" : "left",
+    type: "text",
+  }));
+}

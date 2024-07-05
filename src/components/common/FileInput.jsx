@@ -1,6 +1,6 @@
 import { Field } from "formik";
 import styles from "./FileInput.module.css";
-// make sure that you use this component in Formik component
+//* make sure that you use this component in Formik component
 function FileInput({ name, children, setFieldValue }) {
   const handleUploadClick = () => {
     document.querySelector(`.${name}`).click();

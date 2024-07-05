@@ -53,6 +53,7 @@ import { getUserProfile } from "./rtk/features/user/userProfileSlice.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AuthAdmin from "./components/AuthAdmin.jsx";
 import UnAuthRoute from "./components/UnAuthRoute.jsx";
+import ChatComponent from "./components/common/ChatComponent.jsx";
 
 AOS.init();
 function App() {
@@ -87,93 +88,108 @@ function App() {
           />
         </div>
       ) : (
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="about-us" element={<About_us />} />
-              <Route path="cases" element={<Cases />} />
-              <Route path="used" element={<Used />} />
-              <Route path="zakat" element={<Zakat />} />
-              <Route path="donations" element={<Donations />} />
-              <Route path="report-case" element={<ReportCase />} />
-              <Route element={<UnAuthRoute />}>
-                <Route path="account/login" element={<Login />} />
-                <Route path="account/register" element={<Register />} />
-                <Route
-                  path="account/activate"
-                  element={<AccountActivation />}
-                />
-                <Route
-                  path="account/forget-password"
-                  element={<ForgetPassword />}
-                />
+        <>
+          <ChatComponent />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="about-us" element={<About_us />} />
+                <Route path="cases" element={<Cases />} />
+                <Route path="used" element={<Used />} />
+                <Route path="zakat" element={<Zakat />} />
+                <Route path="donations" element={<Donations />} />
+                <Route path="report-case" element={<ReportCase />} />
+                <Route element={<UnAuthRoute />}>
+                  <Route path="account/login" element={<Login />} />
+                  <Route path="account/register" element={<Register />} />
+                  <Route
+                    path="account/activate"
+                    element={<AccountActivation />}
+                  />
+                  <Route
+                    path="account/forget-password"
+                    element={<ForgetPassword />}
+                  />
+                </Route>
+                <Route path="checkout" element={<Checkout />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="api-testing" element={<ApiTesting />} />
               </Route>
-              <Route path="checkout" element={<Checkout />} />
-              <Route path="cart" element={<Cart />} />
-              <Route path="api-testing" element={<ApiTesting />} />
-            </Route>
 
-            {/* //*admin dashboard*/}
-            <Route path="admin-dashboard" element={<AdminDashboard />}>
-              <Route index element={<Navigate replace to="home" />} />
-              <Route path="home" element={<AdminHomeLayout />} />
-              <Route path="users" element={<AdminUsersLayout />} />
-              <Route path="charities" element={<AdminCharitiesLayout />} />
-              <Route
-                path="transactions"
-                element={<AdminTransactionsLayout />}
-              />
-              {/* <Route path="docs" element={<AdminCharityDocs />} /> */}
-              <Route path="profile" element={<EditProfileLayout />}>
-                <Route index element={<Navigate replace to="edit-profile" />} />
-                <Route path="edit-profile" element={<EditUserData />} />
+              {/* //*admin dashboard*/}
+              <Route path="admin-dashboard" element={<AdminDashboard />}>
+                <Route index element={<Navigate replace to="home" />} />
+                <Route path="home" element={<AdminHomeLayout />} />
+                <Route path="users" element={<AdminUsersLayout />} />
+                <Route path="charities" element={<AdminCharitiesLayout />} />
                 <Route
-                  path="change-pwd"
-                  element={<EditProfilePassword type={"user"} />}
+                  path="transactions"
+                  element={<AdminTransactionsLayout />}
                 />
+                {/* <Route path="docs" element={<AdminCharityDocs />} /> */}
+                <Route path="profile" element={<EditProfileLayout />}>
+                  <Route
+                    index
+                    element={<Navigate replace to="edit-profile" />}
+                  />
+                  <Route path="edit-profile" element={<EditUserData />} />
+                  <Route
+                    path="change-pwd"
+                    element={<EditProfilePassword type={"user"} />}
+                  />
+                </Route>
               </Route>
-            </Route>
 
-            {/* //*charity dashboard*/}
-            <Route path="charity-dashboard" element={<CharityDashboard />}>
-              <Route index element={<Navigate replace to="home" />} />
-              <Route path="home" element={<CharityHomeLayout />} />
-              <Route path="cases" element={<CharityCasesLayout />} />
-              <Route
-                path="transactions"
-                element={<CharityTransactionsLayout />}
-              />
-              <Route path="campaigns" element={<CharityCampaignsLayout />} />
-              <Route path="upload-docs" element={<CharityDocsLayout />} />
-              <Route path="profile" element={<EditProfileLayout />}>
-                <Route index element={<Navigate replace to="edit-profile" />} />
-                <Route path="edit-profile" element={<EditCharityData />} />
+              {/* //*charity dashboard*/}
+              <Route path="charity-dashboard" element={<CharityDashboard />}>
+                <Route index element={<Navigate replace to="home" />} />
+                <Route path="home" element={<CharityHomeLayout />} />
+                <Route path="cases" element={<CharityCasesLayout />} />
                 <Route
-                  path="change-pwd"
-                  element={<EditProfilePassword type="charity" />}
+                  path="transactions"
+                  element={<CharityTransactionsLayout />}
                 />
+                <Route path="campaigns" element={<CharityCampaignsLayout />} />
+                <Route path="upload-docs" element={<CharityDocsLayout />} />
+                <Route path="profile" element={<EditProfileLayout />}>
+                  <Route
+                    index
+                    element={<Navigate replace to="edit-profile" />}
+                  />
+                  <Route path="edit-profile" element={<EditCharityData />} />
+                  <Route
+                    path="change-pwd"
+                    element={<EditProfilePassword type="charity" />}
+                  />
+                </Route>
               </Route>
-            </Route>
 
-            {/* //*user dashboard */}
-            <Route path="user-dashboard" element={<UserDashboard />}>
-              <Route index element={<Navigate replace to="home" />} />
-              <Route path="home" element={<UserHomeLayout />} />
-              <Route path="transactions" element={<UserTransactionsLayout />} />
-
-              {/* //*really same as admin */}
-              <Route path="profile" element={<EditProfileLayout />}>
-                <Route index element={<Navigate replace to="edit-profile" />} />
-                <Route path="edit-profile" element={<EditUserData />} />
+              {/* //*user dashboard */}
+              <Route path="user-dashboard" element={<UserDashboard />}>
+                <Route index element={<Navigate replace to="home" />} />
+                <Route path="home" element={<UserHomeLayout />} />
                 <Route
-                  path="change-pwd"
-                  element={<EditProfilePassword type={"user"} />}
+                  path="transactions"
+                  element={<UserTransactionsLayout />}
                 />
+
+                {/* //*really same as admin */}
+                <Route path="profile" element={<EditProfileLayout />}>
+                  <Route
+                    index
+                    element={<Navigate replace to="edit-profile" />}
+                  />
+                  <Route path="edit-profile" element={<EditUserData />} />
+                  <Route
+                    path="change-pwd"
+                    element={<EditProfilePassword type={"user"} />}
+                  />
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </>
       )}
     </>
   );
