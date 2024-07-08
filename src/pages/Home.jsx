@@ -60,10 +60,10 @@ function Home() {
                 <img src="/images/donation-opportunity-bg-1.png" alt="" className="img-fluid position-absolute bottom-0" />
                 <img src="/images/donation-opportunity-bg-2.png" alt="" className="img-fluid position-absolute bottom-0 start-0" />
                 <div className="container">
-                    <p className='text-center sec-title'>فرص التبرع</p>
+                    <p className='text-center sec-title mx-auto'>فرص التبرع</p>
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="zakat.png" title="زكاة" description=" { وَالْمُقِيمِينَ الصَّلَاةَ ۚ وَالْمُؤْتُونَ الزَّكَاةَ وَالْمُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أُولَٰئِكَ سَنُؤْتِيهِمْ أَجْرًا عَظِيمًا } [النساء:162]" borderStyle="bottom" />
+                            <CategoryCard img="zakat.png" title="زكاة" description=" { وَالْمُقِيمِينَ الصَّلَاةَ ۚ وَالْمُؤْتُونَ الزَّكَاةَ وَالْمُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أُولَٰئِكَ سَنُؤْتِيهِمْ أَجْرًا عَظِيمًا } [النساء:162]" borderStyle="top" />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
                             <CategoryCard img="sadakat.png" title="صدقات" description="{ إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ } [التوبة:60]" borderStyle="bottom" />
@@ -80,10 +80,10 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="urgent-cases py-5">
+            <div className="cases py-5">
                 <div className="container">
-                    <div className="d-flex justify-content-between align-items-center">
-                        <p className='mb-5 sec-title'>الحالات سريعه</p>
+                    <div className="d-flex justify-content-between align-items-center mb-4">
+                        <p className='mb-0 sec-title '>حالات التبرع </p>
                         <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
                     </div>
                     <>
