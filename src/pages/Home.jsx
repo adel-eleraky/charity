@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import "./css/Home.css"
 import { Link } from 'react-router-dom'
@@ -14,8 +14,21 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
+import { useDispatch, useSelector } from 'react-redux'
+import { getCases } from '../rtk/features/CasesSlice'
 
 function Home() {
+
+
+    const dispatch = useDispatch()
+    const { cases } = useSelector(state => state.cases)
+
+    // dispatch(getCases())
+    console.log(cases)
+    useEffect(() => {
+        dispatch(getCases())
+    }, [])
+
     return (
         <div className='home-page'>
             <Header />

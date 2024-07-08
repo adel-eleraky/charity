@@ -8,6 +8,7 @@ import charityProfileReducer from "./features/charity/charityProfileSlice";
 import charityCaseReducer from "./features/charity/charityCaseSlice";
 import adminReducer from "./features/user/adminSlice";
 import UsedItemSlice from "./features/UsedItemSlice";
+import CasesSlice from "./features/CasesSlice";
 import chatReducer from "./features/chatSlice";
 
 const Store = configureStore({
@@ -20,6 +21,7 @@ const Store = configureStore({
     casesCart: cartReducer,
     admin: adminReducer,
     usedItems: UsedItemSlice,
+    cases: CasesSlice,
     chat: chatReducer,
   },
 });
