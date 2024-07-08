@@ -48,7 +48,16 @@ function Register() {
     },
     organizationName: "",
     organizationImage: "",
-    organizationDescription: ""
+    organizationDescription: "",
+    contactInfo: {
+      websiteUrl: "www.org.com",
+      email: "xsxsxs@gmail.com",
+      phone: "01554138144",
+    },
+    charityInfo: {
+      registeredNumber: "123",
+      establishedDate: "2001-01-01",
+    },
   };
 
   let validationSchema = yup.object().shape({
@@ -126,19 +135,13 @@ function Register() {
         ...RegisterData,
         name: values.organizationName,
         image: values.organizationImage,
-        contactInfo: {
-          email: values.email,
-          phone: values.phone,
-          websiteUrl: "subul.com"
-        },
-        charityInfo: {
-          registeredNumber: 123,
-          establishedDate: 2001-1-18
-        },
+        contactInfo: values.contactInfo,
+        charityInfo: values.charityInfo,
         description: values.organizationDescription,
         phone: values.phone,
         location: values.location,
       };
+      console.log('values: ',values)
       console.log(RegisterData);
       toast.promise(dispatch(registerCharity(RegisterData)), {
         pending: "جارى التسجيل بياناتك",
@@ -326,30 +329,6 @@ function Register() {
                   );
                 }}
               </Formik>
-              <h5 className="mb-4 text-center"> انشاء حساب باستخدام</h5>
-              <div className="social-icons d-flex gap-15 justify-content-center mb-4">
-                <div className="facebook-icon bg-white text-dark py-1 px-4 rounded">
-                  <img
-                    src="/images/facebook_icon.svg"
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="google-icon bg-white text-dark py-1 px-4 rounded">
-                  <img
-                    src="/images/google_icon.svg"
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="apple-icon bg-white text-dark py-1 px-4 rounded">
-                  <img
-                    src="/images/apple_icon.png"
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-              </div>
               <div>
                 <Link
                   to="/account/login"
