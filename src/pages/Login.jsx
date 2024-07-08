@@ -194,31 +194,6 @@ function Login() {
                   );
                 }}
               </Formik>
-
-              <h5 className="mb-4 text-center">او سجل الدخول باستخدام </h5>
-              <div className="social-icons d-flex gap-15 justify-content-center mb-4">
-                <div className="facebook-icon bg-white text-dark py-1 px-4 rounded">
-                  <img
-                    src="/images/facebook_icon.svg"
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="google-icon bg-white text-dark py-1 px-4 rounded">
-                  <img
-                    src="/images/google_icon.svg"
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="apple-icon bg-white text-dark py-1 px-4 rounded">
-                  <img
-                    src="/images/apple_icon.png"
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-              </div>
               <div>
                 <Link
                   to="/account/register"
