@@ -6,12 +6,7 @@ header {
     background-size: cover;
 }
 header .header-img {
-    background-image: url("/images/header-img.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 315px;
-    width: 315px;
+    width: fit-content;
     position: relative;
 }
 header .header-img::after {
@@ -44,16 +39,16 @@ header .img-column .header-img-badge {
     text-align: center;
 }
 header .img-column .header-img-badge.badge-1 {
-    top: 300px;
-    left: 150px;
+    top: 100%;
+    left: 92%;
 }
 header .img-column .header-img-badge.badge-2 {
     top: -45px;
-    left: 545px;
+    left: 100%;
 }
 header .img-column .header-img-badge.badge-3 {
-    top: 300px;
-    left: 530px;
+    top: 100%;
+    left: -17%;
 }
 header .img-column .quote {
     position: absolute;
@@ -63,12 +58,14 @@ header .img-column .quote {
     box-shadow: 0 0 23px -3px gray;
 }
 header .img-column .quote.quote-1 {
-    top: -25px;
-    left: 100px;
+    top: -10%;
+    left: -35%;
 }
 header .img-column .quote.quote-2 {
-    bottom: -105px;
-    left: 275px;
+    bottom: -35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 225px;
 }
 header .img-column {
     position: relative;
