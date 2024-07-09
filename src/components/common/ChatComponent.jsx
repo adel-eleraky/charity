@@ -3,7 +3,12 @@ import { Input, MessageBox, MessageList } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import styles from "./ChatComponent.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getConversation, openChat } from "../../rtk/features/chatSlice";
+import {
+  addMessage,
+  getConversation,
+  openChat,
+  sendMessage,
+} from "../../rtk/features/chatSlice";
 import Loader from "./Loader";
 /*
 todo: 1. go to app 2. use fetch 
@@ -29,25 +34,19 @@ function ChatComponent() {
     }
   }, [conversation, list]);
 
-  function handleSubmit() {
+  function handleSendMessage() {
     // todo: convert it first
-    // if (inputReferance.current.value.trim()) {
-    //   const temp = inputReferance.current.value;
-    //   setConversation((c) => [
-    //     ...c,
-    //     {
-    //       position: "right",
-    //       type: "text",
-    //       text: temp,
-    //     },
-    //   ]);
-    //   inputReferance.current.value = "";
-    // }
+    if (inputReferance.current.value.trim()) {
+      const message = inputReferance.current.value;
+      dispatch(sendMessage({ message, receiverId }));
+      dispatch(addMessage(message));
+      inputReferance.current.value = "";
+    }
   }
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit();
+      handleSendMessage();
     }
   };
   useEffect(
@@ -78,7 +77,7 @@ function ChatComponent() {
         referance={inputReferance}
         placeholder="Type here..."
         multiline={true}
-        rightButtons={<button onClick={handleSubmit}>x</button>}
+        rightButtons={<button onClick={handleSendMessage}>x</button>}
         autofocus={true}
         onKeyPress={handleKeyPress}
         maxHeight={70}
