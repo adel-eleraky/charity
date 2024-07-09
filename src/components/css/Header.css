@@ -96,3 +96,24 @@ header .content button:hover {
         order: 2;
     }
 }
+@media (max-width: 550px) {
+    header .header-img {
+        width: 250px;
+    }
+    header .img-column .header-img-badge.badge-1 {
+        left: 98%;
+    }
+    header .img-column .header-img-badge.badge-3 {
+        left: -29%;
+    }
+    header .img-column .header-img-badge.badge-2 {
+        left: 108%;
+    }
+    header .img-column .quote.quote-1 {
+        left: -50%;
+    }
+    header .img-column .quote.quote-2 {
+        bottom: -46%;
+        width: 170px;
+    }
+}
