@@ -58,6 +58,11 @@ const chatSlice = createSlice({
       state.getConversationStatus = "idle";
       state.sendMessageStatus = "idle";
     },
+    addMessage(state, action) {
+      const message = action.payload;
+      const res = prepareChatMessages([{ message }], state.receiverId);
+      state.messages.push(...res);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -92,5 +97,5 @@ const chatSlice = createSlice({
       });
   },
 });
-export const { openChat, closeChat } = chatSlice.actions;
+export const { openChat, closeChatm, addMessage } = chatSlice.actions;
 export default chatSlice.reducer;

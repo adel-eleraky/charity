@@ -1,3 +1,5 @@
+import React from "react";
+
 const cloudinaryBaseUrl =
   "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273";
 const subDomains = {
@@ -33,10 +35,15 @@ export function cloudinaryUrl(subDomain) {
 }
 
 export function prepareChatMessages(messages, receiverId) {
-  return messages.map((messageObj) => ({
-    ...messageObj,
-    text: messageObj.message,
-    position: messageObj.receiverId === receiverId ? "right" : "left",
-    type: "text",
-  }));
+  return messages.map(function (messageObj) {
+    const span = document.createElement("span");
+    console.log(span);
+    span.innerHTML = `${messageObj.message.replace(/\n/g, "<br>")}`;
+    return {
+      ...messageObj,
+      text: span,
+      position: messageObj.senderId === receiverId ? "left" : "right",
+      type: "text",
+    };
+  });
 }
