@@ -15,11 +15,11 @@ function NavOffcanvas() {
                     <div className="links py-3">
                         <Link to="/" >الرئيسية </Link>
                         <Link to="cases" > الحالات</Link>
-                        <Link to="donations" > قنوات التبرع </Link>
+                        {/* <Link to="donations" > قنوات التبرع </Link> */}
                         <Link to="zakat" >  دفع الزكاة </Link>
                         <Link to="used" > تبرع بالمستعمل   </Link>
                         <Link to="report-case" > ابلاغ عن حالة  </Link>
-                        <Link to="" > تواصل معنا  </Link>
+                        <Link to="contact-us" > تواصل معنا  </Link>
                         <Link to="about-us" > من نحن </Link>
                     </div>
                 </div>

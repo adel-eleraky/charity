@@ -43,8 +43,6 @@ function Footer() {
                             <h2>روابط مهمة</h2>
                             <ul className="list-unstyled">
                                 <li> <i className="bi bi-chevron-double-left ms-2"></i>من نحن</li>
-                                <li> <i className="bi bi-chevron-double-left ms-2"></i>سياسية الخصوصية</li>
-                                <li> <i className="bi bi-chevron-double-left ms-2"></i>الشروط و الاحكام</li>
                                 <li> <i className="bi bi-chevron-double-left ms-2"></i>الدعم الفنى</li>
                             </ul>
                         </div>
@@ -53,7 +51,7 @@ function Footer() {
                             <ul className="list-unstyled">
                                 <li> <i className="bi bi-chevron-double-left ms-2"></i>واتساب: 01554138144</li>
                                 <li> <i className="bi bi-chevron-double-left ms-2"></i>موبايل: 01554138144</li>
-                                <li> <i className="bi bi-chevron-double-left ms-2"></i>البريد:  3dola@gmail.com</li>
+                                <li> <i className="bi bi-chevron-double-left ms-2"></i> البريد: info@subul.me</li>
                             </ul>
                         </div>
                         <div className="col-12 col-sm-4 col-md-3 col-xl-3 mb-3">

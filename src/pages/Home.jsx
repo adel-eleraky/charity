@@ -35,22 +35,28 @@ function Home() {
             <div className="Campaigns py-5">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-lg-5 mb-5 mb-lg-0">
+                        <div className="col-12 col-lg-5 mb-5 mb-lg-0 content">
                             <p className="sec-title mb-3 mt-5"> الحملات </p>
                             <p className="content"> هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان  </p>
                             <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
                         </div>
                         <div className="col-12 col-lg-7 d-flex justify-content-between">
-                            <CampaignCard
-                                img={"campaign-img"}
-                                title={"هو ببساطة نص شكلي "}
-                                description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
-                            />
-                            <CampaignCard
-                                img={"campaign-img"}
-                                title={"هو ببساطة نص شكلي "}
-                                description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
-                            />
+                            <div className="row">
+                                <div className="col-12 col-md-6">
+                                    <CampaignCard
+                                        img={"campaign-img"}
+                                        title={"هو ببساطة نص شكلي "}
+                                        description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
+                                    />
+                                </div>
+                                <div className="col-12 col-md-6">
+                                    <CampaignCard
+                                        img={"campaign-img"}
+                                        title={"هو ببساطة نص شكلي "}
+                                        description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

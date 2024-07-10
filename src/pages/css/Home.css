@@ -33,9 +33,6 @@
     top: 5px;
     right: 160px;
 }
-.home-page .Campaigns .CampaignCard {
-    width: 47%;
-}
 .home-page .Campaigns .CampaignCard:first-child {
     margin-top: 60px;
 }
@@ -55,6 +52,14 @@
 }
 .home-page .Campaigns h1 {
     font-size: 60px;
+}
+@media (max-width: 992px) {
+    .home-page .Campaigns .content {
+        text-align: center;
+    }
+    .home-page .Campaigns .sec-title {
+        margin: auto;
+    }
 }
 /* end Campaigns */
 

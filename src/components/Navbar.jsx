@@ -24,12 +24,12 @@ function Navbar() {
                         </div>
                         <div className="col-md-8 nav-links-col">
                             <ul className='nav-links d-flex justify-content-center m-0 p-0'>
-                                <Link to="cases" className='nav-link'>
+                                <Link to="/" className='nav-link'>
                                     <li className="mx-3">
-                                        الحالات
+                                        الرئيسية
                                     </li>
                                 </Link>
-                                <Link to="cases" className='nav-link'>
+                                <Link to="contact-us" className='nav-link'>
                                     <li className="mx-3">
                                         تواصل معنا
                                     </li>
@@ -60,11 +60,11 @@ function Navbar() {
             <div className="second-nav py-3">
                 <div className="container">
                     <div className='d-flex justify-content-center m-0 p-0'>
+                        <Link to="cases" className="category-link mx-4">
+                            الحالات
+                        </Link>
                         <Link to="zakat" className="category-link mx-4">
                             دفع الزكاة
-                        </Link>
-                        <Link to="donations" className='category-link mx-4'>
-                            قنوات التبرع
                         </Link>
                         <Link to="used" className="category-link mx-4">
                             تبرع بالمستعمل
