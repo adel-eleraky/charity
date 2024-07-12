@@ -107,6 +107,22 @@
     border-radius: 24px;
     box-shadow: 23px 75px 171px 0px #2524241A;
 }
+.home-page .report-case:hover::after {
+    content: 'ستتم اضافته قريبا';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 24px;
+    z-index: 2;
+    background-color: #a59e9ec9;
+}
 .home-page .report-case::before {
     content: "";
     position: absolute;

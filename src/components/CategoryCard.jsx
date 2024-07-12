@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "./css/CategoryCard.css";
+import { Link } from "react-router-dom";
 
-function CategoryCard({ img, title, description, borderStyle }) {
+function CategoryCard({ img, title, description, borderStyle, link }) {
   return (
     <>
       <div className={`category-card ${borderStyle} pt-5`} data-aos="fade-up">
@@ -14,7 +15,9 @@ function CategoryCard({ img, title, description, borderStyle }) {
           </div>
           <div className="verse mb-3">{description}</div>
           <div className="donate-btn">
-            <img src="/images/arrowright.png" alt="" className="img-fluid" />
+            <Link to={link}>
+              <img src="/images/arrowright.png" alt="" className="img-fluid" />
+            </Link>
           </div>
         </div>
       </div>

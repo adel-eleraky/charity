@@ -22,12 +22,17 @@ import RegisterUser from "../components/RegisterUser";
 import RegisterCharity from "../components/RegisterCharity";
 
 function Register() {
-  const { loginStatus, error, registerStatus, user } = useSelector(
+  const { error, registerStatus: registerUserStatus, user } = useSelector(
     (store) => store.userAuth
   );
+
+  const {registerStatus: registerCharityStatus,  error: errorCharity, charity } = useSelector(store => store.charityAuth)
+  
+  console.log('user' , registerUserStatus)
+  console.log('charity' , registerCharityStatus)
   const navigate = useNavigate();
-  if (registerStatus === "finished") {
-    navigate("/account/login");
+  if (registerUserStatus === "finished" || registerCharityStatus === "finished") {
+    return navigate("/activateAccount");
   }
   const [role, setRole] = useState("");
 
@@ -122,7 +127,9 @@ function Register() {
         name: values.name,
         gender: values.gender,
         phone: values.phone,
-        "userLocation[governorate]": values.location,
+        userLocation: { 
+          governorate: values.location
+        },
       };
       console.log(RegisterData);
       toast.promise(dispatch(registerUser(RegisterData)), {
@@ -156,6 +163,7 @@ function Register() {
       
     }
   };
+
 
   return (
     <div className="register-page py-5">

@@ -95,7 +95,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="about-us" element={<About_us />} />
-                <Route path="cases" element={<Cases />} />
+                <Route path="cases/:type?" element={<Cases />} />
                 <Route path="used" element={<Used />} />
                 <Route path="zakat" element={<Zakat />} />
                 <Route path="donations" element={<Donations />} />
@@ -104,7 +104,7 @@ function App() {
                   <Route path="account/login" element={<Login />} />
                   <Route path="account/register" element={<Register />} />
                   <Route
-                    path="account/activate"
+                    path={"activateAccount/:token?"}
                     element={<AccountActivation />}
                   />
                   <Route

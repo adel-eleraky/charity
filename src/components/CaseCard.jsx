@@ -7,7 +7,7 @@ import { addToCart } from '../rtk/features/CartSlice'
 import { toast } from 'react-toastify';
 
 
-function CaseCard({ id, title, img, description, cost, paymentMade, moneyRemaining, timeRemaining }) {
+function CaseCard({ id, title, img, description, targetDonationAmount, currentDonationAmount }) {
 
     const [donationAmount, setDonationAmount] = useState(10)
     const dispatch = useDispatch()
@@ -32,7 +32,7 @@ function CaseCard({ id, title, img, description, cost, paymentMade, moneyRemaini
     return (
         <>
             <div className="CaseCard mb-5" data-aos="fade-up" data-aos-duration="1000">
-                <img src={`/images/${img}.png`} alt="" className="img-fluid w-100 mb-3" />
+                <img src={`https://res.cloudinary.com/ddvetozyq/image/upload/v1720813891/caseCoverImages/${img}`} alt="" className="img-fluid w-100 mb-3" />
                 <div className="content p-2">
                     <div className="title text-center mb-3 "> {title} </div>
                     <div className="description text-center mb-3"> {description} </div>
@@ -42,11 +42,11 @@ function CaseCard({ id, title, img, description, cost, paymentMade, moneyRemaini
                         </div>
                         <div className="d-flex justify-content-between">
                             <div>
-                                <p className='m-0'> EGP 50.000 </p>
+                                <p className='m-0'> EGP {targetDonationAmount} </p>
                                 <p className='m-0 fw-bold'> الهدف </p>
                             </div>
                             <div>
-                                <p className='m-0'> EGP 25.000</p>
+                                <p className='m-0'> EGP {targetDonationAmount - currentDonationAmount}</p>
                                 <p className='m-0 fw-bold'> المتبقى </p>
                             </div>
                         </div>
