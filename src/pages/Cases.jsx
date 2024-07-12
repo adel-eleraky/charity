@@ -4,7 +4,7 @@ import CasesSidebar from '../components/CasesSidebar';
 import "./css/Cases.css"
 import CampaignCard from '../components/CampaignCard';
 import CaseCard from './../components/CaseCard';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Pagination } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCases } from '../rtk/features/CasesSlice';
@@ -12,7 +12,9 @@ import { getCases } from '../rtk/features/CasesSlice';
 function Cases() {
 
 
-    const [mainType , setMainType] = useState()
+    const { type } = useParams()
+console.log(type)
+    const [mainType , setMainType] = useState(type ? type : '')
     const [subType , setSubType] = useState()
     console.log(mainType , subType)
 
@@ -88,25 +90,25 @@ function Cases() {
                                         <nav id="navbar-example3" className="h-100 flex-column align-items-stretch">
                                             <nav className="nav nav-pills flex-column">
                                                 <Link to='/cases'>
-                                                    <p onClick={handleActiveItems} className="nav-link category main-type active" data-category=''> كل الحالات </p>
+                                                    <p onClick={handleActiveItems} className={`nav-link category main-type ${mainType === '' && 'active'}`} data-category=''> كل الحالات </p>
                                                 </Link>
                                                 <Link to='/cases/Sadaqa'>
-                                                    <p onClick={handleActiveItems} className="nav-link category main-type " data-category='Sadaqa'> صدقات </p>
+                                                    <p onClick={handleActiveItems} className={`nav-link category main-type ${mainType === 'Sadaqa' && 'active'}`} data-category='Sadaqa'> صدقات </p>
                                                 </Link>
                                                 <Link to='/cases/Zakah'>
-                                                    <p onClick={handleActiveItems} className="nav-link category main-type" data-category='Zakah'> زكاة </p>
+                                                    <p onClick={handleActiveItems} className={`nav-link category main-type ${mainType === 'Zakah' && 'active'}`} data-category='Zakah'> زكاة </p>
                                                 </Link>
                                                 <Link to='/cases/Kafarat'>
-                                                    <p onClick={handleActiveItems} className="nav-link category main-type" data-category='Kafarat'> كفارة </p>
+                                                    <p onClick={handleActiveItems} className={`nav-link category main-type ${mainType === 'Kafarat' && 'active'}`} data-category='Kafarat'> كفارة </p>
                                                 </Link>
                                                 <Link to='/cases/Adahi'>
-                                                    <p onClick={handleActiveItems} className="nav-link category main-type" data-category='Adahi'> اضاحى </p>
+                                                    <p onClick={handleActiveItems} className={`nav-link category main-type ${mainType === 'Adahi' && 'active'}`} data-category='Adahi'> اضاحى </p>
                                                 </Link>
                                                 <Link to='/cases/BloodDonation'>
-                                                    <p onClick={handleActiveItems} className="nav-link category main-type" data-category='BloodDonation'> تبرع بالدم </p>
+                                                    <p onClick={handleActiveItems} className={`nav-link category main-type ${mainType === 'BloodDonation' && 'active'}`} data-category='BloodDonation'> تبرع بالدم </p>
                                                 </Link>
                                                 <Link to='/cases/Campaigns'>
-                                                    <p onClick={handleActiveItems} className="nav-link category main-type" data-category='Campaigns'> حملات  </p>
+                                                    <p onClick={handleActiveItems} className={`nav-link category main-type ${mainType === 'Campaigns' && 'active'}`} data-category='Campaigns'> حملات  </p>
                                                 </Link>
                                             </nav>
                                         </nav>
