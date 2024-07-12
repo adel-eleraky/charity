@@ -17,13 +17,17 @@ import { loginCharity } from "../rtk/features/charity/charityAuthSlice";
 function Login() {
   const [role, setRole] = React.useState("");
 
-  const { loginStatus, error, registerStatus, user } = useSelector(
+  const { loginStatus, error, user } = useSelector(
     (store) => store.userAuth
   );
 
+  const { loginStatus: loginCharityStatus, error: errorCharity, charity } = useSelector(store => store.charityAuth)
 
-  const isVerified = user?.isVerified
+  console.log("user", user)
+  console.log("charity", charity)
+  const isVerified = role === 'user' ? user?.user?.emailVerification?.isVerified : charity?.charity?.emailVerification?.isVerified
 
+  console.log(isVerified)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -56,23 +60,42 @@ function Login() {
     function () {
       toast.dismiss();
 
-      if (loginStatus === "loading") toast.loading("جارى تسجيل الدخول");
-      if (loginStatus === "finished") {
+      if (loginStatus === "loading" || loginCharityStatus === "loading") toast.loading("جارى تسجيل الدخول");
+      
+      if (loginStatus === "finished" || loginCharityStatus === "finished") {
         toast.success("تم تسجيل الدخول بنجاح");
-
-        isVerified ? navigate("/account") : navigate("/account/activate");
+        setTimeout(() => {
+          isVerified ?
+            navigate("/")
+            :
+            navigate("/activateAccount");
+        }, 4000);
       }
-      if (loginStatus === "failed") toast.error("حدث خطأ فى الدخول");
+
+      if (loginStatus === "failed" || loginCharityStatus === "failed") toast.error("حدث خطأ فى الدخول");
     },
-    [loginStatus]
+    [loginStatus, loginCharityStatus]
   );
+
+  console.log('login', loginStatus)
   const submitHandler = (values) => {
-    if(role === "user"){
+    // if (loginStatus === "loading") toast.loading("جارى تسجيل الدخول");
+    if (role === "user") {
       dispatch(loginUser(values));
-    }else{
+    } else {
       dispatch(loginCharity(values));
     }
-    // dispatch(loginUser(values));
+
+    // console.log(loginStatus)
+    // if (loginStatus === "finished") {
+    //   toast.success("تم تسجيل الدخول بنجاح");
+
+    //   isVerified ?
+    //     navigate("/")
+    //     :
+    //     navigate("/activateAccount");
+    // }
+    // if (loginStatus === "failed") toast.error("حدث خطأ فى الدخول");
 
   };
 
@@ -162,7 +185,7 @@ function Login() {
                           id="user-role"
                         />
                         <label className="form-check-label" htmlFor="user-role">
-                          تسجيل الدخول (متبرع) 
+                          تسجيل الدخول (متبرع)
                         </label>
                       </div>
                       <div className="form-check mb-4">
