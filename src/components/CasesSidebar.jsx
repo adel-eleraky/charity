@@ -1,9 +1,42 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./css/CasesSidebar.css"
+import { Link, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { getCases } from '../rtk/features/CasesSlice'
 
 
 function CasesSidebar() {
+
+    const [mainType , setMainType] = useState()
+    const [subType , setSubType] = useState()
+
+
+    console.log(mainType , subType)
+
+    const dispatch = useDispatch()
+
+    const handleActiveItems = (e) => {
+
+        setMainType(e.target.dataset.category)
+        const items = document.querySelectorAll(".category")
+        items.forEach(item => {
+            item.classList.remove("active")
+        })
+        e.target.classList.add("active")
+    }
+
+    let endpoint = `/charities/allCases`
+    if(mainType){
+        endpoint += `?mainType=${mainType}`
+    }
+
+    useEffect(() => {
+        console.log(endpoint)
+        dispatch(getCases(endpoint))
+
+    }, [mainType , subType])
+
     return (
         <>
             <div className="sidebar">
@@ -11,24 +44,46 @@ function CasesSidebar() {
                     <h4 className='mb-4 fw-bold'> فلترة حسب : </h4>
                     <div className="categories py-3 ms-2 mb-3 border-top border-black border-3">
                         <h5 className='mb-3 fw-bold'> نوع الحالة </h5>
-                        <ul className="list-group">
-                            <li className="list-group-item bg-transparent border-0 active"> كل الحالات </li>
-                            <li className="list-group-item bg-transparent border-0"> كفالة ايتام </li>
-                            <li className="list-group-item bg-transparent border-0"> غارمات </li>
-                            <li className="list-group-item bg-transparent border-0"> مرضى </li>
-                        </ul>
-                    </div>
-                    <div className="price py-3 ms-2 mb-3 border-top border-black border-3">
-                        <h5 className='mb-3 fw-bold'>الاموال المطلوبة</h5>
-                        <div className="inputs d-flex justify-content-between gap-15">
-                            <input type="number" className="form-control" placeholder="From" />
-                            <input type="number" className="form-control" placeholder="To" />
-                        </div>
+                        <nav id="navbar-example3" className="h-100 flex-column align-items-stretch">
+                            <nav className="nav nav-pills flex-column">
+                                <Link to='/cases'>
+                                    <p onClick={handleActiveItems}  className="nav-link category main-type active" data-category=''> كل الحالات </p>
+                                </Link>
+                                <Link to='/cases/Sadaqa'>
+                                    <p onClick={handleActiveItems}  className="nav-link category main-type " data-category='Sadaqa'> صدقات </p>
+                                </Link>
+                                <Link to='/cases/Zakah'>
+                                    <p onClick={handleActiveItems}  className="nav-link category main-type" data-category='Zakah'> زكاة </p>
+                                </Link>
+                                <Link to='/cases/Kafarat'>
+                                    <p onClick={handleActiveItems}  className="nav-link category main-type" data-category='Kafarat'> كفارة </p>
+                                </Link>
+                                <Link to='/cases/Adahi'>
+                                    <p onClick={handleActiveItems}  className="nav-link category main-type" data-category='Adahi'> اضاحى </p>
+                                </Link>
+                                <Link to='/cases/BloodDonation'>
+                                    <p onClick={handleActiveItems}  className="nav-link category main-type" data-category='BloodDonation'> تبرع بالدم </p>
+                                </Link>
+                                <Link to='/cases/Campaigns'>
+                                    <p onClick={handleActiveItems} className="nav-link category main-type" data-category='Campaigns'> حملات  </p>
+                                </Link>
+                                <nav className="nav nav-pills flex-column">
+                                    {/* <a className="nav-link me-3 my-1 sub-type" href="#item-1-2">Item 1-2</a>
+                                    <a className="nav-link me-3 my-1 sub-type" href="#item-1-1">Item 1-1</a> */}
+                                </nav>
+
+                                {/* <nav className="nav nav-pills flex-column">
+                                    <a className="nav-link me-3 my-1 sub-type" href="#item-3-1">Item 3-1</a>
+                                    <a className="nav-link me-3 my-1 sub-type" href="#item-3-2">Item 3-2</a>
+                                </nav> */}
+                            </nav>
+                        </nav>
                     </div>
                 </div>
             </div>
         </>
     )
 }
+
 
 export default CasesSidebar
