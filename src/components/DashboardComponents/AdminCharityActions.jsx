@@ -9,7 +9,7 @@ import {
 } from "../../rtk/features/user/adminSlice";
 
 // todo: handle loading using library
-function AdminCharityActions({ children, charity }) {
+function AdminCharityActions({ children, charity, onSpaceBelow }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   function handleClosePopup() {
@@ -24,7 +24,11 @@ function AdminCharityActions({ children, charity }) {
     dispatch(rejectCharity(charity._id));
   }
   return (
-    <div className={styles.action}>
+    <div
+      className={`${styles.action} ${
+        onSpaceBelow() < 100 ? styles.upward : ""
+      }`}
+    >
       <Popup
         trigger={
           <button>

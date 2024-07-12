@@ -1,15 +1,9 @@
+import { getFormattedDate } from "../../utils/helpers";
 import styles from "./ShowDate.module.css";
 function ShowDate() {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const formattedDate = `${day}/${month}/${year}`;
-  console.log(formattedDate);
-
   return (
     <div className={styles.container}>
-      <div className={styles.date}>{formattedDate}</div>
+      <div className={styles.date}>{getFormattedDate()}</div>
       <svg
         className={styles["date-icon"]}
         xmlns="http://www.w3.org/2000/svg"

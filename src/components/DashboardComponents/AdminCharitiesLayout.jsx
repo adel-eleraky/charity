@@ -3,6 +3,7 @@ import styles from "./AdminCharitiesLayout.module.css";
 import AdminCharityTable from "./AdminCharityTable";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCharities } from "../../rtk/features/user/adminSlice";
+import ShowDate from "../common/ShowDate";
 function AdminCharitiesLayout() {
   const { getAllCharitiesStatus, charities } = useSelector(
     (store) => store.admin
@@ -14,7 +15,9 @@ function AdminCharitiesLayout() {
     },
     [dispatch, getAllCharitiesStatus]
   );
-
+  if (getAllCharitiesStatus === "finished") {
+    console.log("charities", charities);
+  }
   return (
     <div className={styles.container}>
       <div className={styles["heading"]}>
@@ -22,10 +25,12 @@ function AdminCharitiesLayout() {
           <div className={styles.title}>الجمعيات</div>
           <div className={styles["search-filter"]}>
             <input type="text" name="" id="" placeholder="ابحث" />
-            <button className={styles["btn-filter"]}>
+            {/* //! romoved */}
+            {/* <button className={styles["btn-filter"]}>
               <img src="/images/filter-icon.svg" alt="" />
               <span>اضافة فلتر</span>
-            </button>
+            </button> */}
+            <ShowDate />
           </div>
         </div>
       </div>

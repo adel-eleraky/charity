@@ -18,9 +18,13 @@
   position: absolute;
   left: -31px;
   top: 20px;
+  bottom: unset;
   z-index: 100;
 }
-
+.action.upward {
+  top: unset;
+  bottom: 15px;
+}
 .action button {
   font-size: 16px;
   font-weight: 500;

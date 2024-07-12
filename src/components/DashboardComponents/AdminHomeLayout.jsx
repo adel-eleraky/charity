@@ -17,16 +17,16 @@ function AdminHomeLayout() {
           <div className={styles.small}>
             <div className={styles.row}>
               <HomeBox
-                title="عدد الجمعيات"
+                title="عدد المتبرعين"
                 imagePath="/images/admin-users.svg"
-                value="222"
+                value="25"
               >
                 <HomeProgress value="10" isPositive={true} />
               </HomeBox>
               <HomeBox
-                title="عدد الجمعيات"
-                imagePath="/images/admin-users.svg"
-                value="222"
+                title="عدد التبرعات"
+                imagePath="/images/money.svg"
+                value="65"
               >
                 <HomeProgress value="10" isPositive={true} />
               </HomeBox>
@@ -34,15 +34,15 @@ function AdminHomeLayout() {
             <div className={styles.row}>
               <HomeBox
                 title="عدد الجمعيات"
-                imagePath="/images/admin-users.svg"
-                value="222"
+                imagePath="/images/organization-building.svg"
+                value="13"
               >
                 <HomeProgress value="10" isPositive={true} />
               </HomeBox>
               <HomeBox
-                title="عدد الجمعيات"
-                imagePath="/images/admin-users.svg"
-                value="222"
+                title="اجمالي التبرعات"
+                imagePath="/images/coin.svg"
+                value="4150"
               >
                 <HomeProgress value="10" isPositive={true} />
               </HomeBox>
@@ -51,9 +51,9 @@ function AdminHomeLayout() {
           <div className={styles.big}>
             <HomeBox
               isBig={true}
-              title="عدد الجمعيات"
+              title="عدد الحالات"
               imagePath="/images/admin-charity.svg"
-              value="222"
+              value="43"
             >
               <HomeProgress value="10" isPositive={true} />
             </HomeBox>

@@ -22,3 +22,8 @@
   background: #fef4eb;
   color: rgba(242, 147, 57, 1);
 }
+
+.not-uploaded {
+  background: #eeedeb;
+  color: #3c3633;
+}

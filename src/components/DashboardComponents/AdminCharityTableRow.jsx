@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminCharityActions from "./AdminCharityActions";
 import styles from "./AdminCharityTable.module.css";
 import CharityStatus from "./CharityStatus";
@@ -6,6 +6,7 @@ import { useRef } from "react";
 import CharityDetails from "./CharityDetails";
 import Popup from "reactjs-popup";
 import Tooltip from "../common/Tooltip";
+import { cloudinaryUrl, getFormattedDate } from "../../utils/helpers";
 function AdminCharityTableRow({ charity }) {
   // "accepted" /* accepted - rejected - pending*/
   //   {
@@ -20,8 +21,19 @@ function AdminCharityTableRow({ charity }) {
     ? "accepted"
     : charity.isPending
     ? "pending"
-    : "rejected";
+    : "not-uploaded";
 
+  //! leave it for more important tasks
+  const buttonRef = React.useRef(null);
+  function calcSpaceBelow() {
+    const button = buttonRef.current;
+    if (button) {
+      const rect = button.getBoundingClientRect();
+      console.log("from button1", window.innerHeight - rect.bottom);
+      return window.innerHeight - rect.bottom;
+    }
+    return 100;
+  }
   return (
     <>
       <li className={styles["table-row"]}>
@@ -33,33 +45,45 @@ function AdminCharityTableRow({ charity }) {
           data-label="اسم الجمعية"
         >
           {/* //todo: ask for the logo to be reterned #backend */}
-          <img src="/images/charity-logo.png" alt="" />
+          {charity.image ? (
+            <img
+              src={`${cloudinaryUrl("charity")}/${charity.image}`}
+              alt="logo not found"
+              className={styles.chLogo}
+              onError={(e) => {
+                e.target.onerror = null; // Prevents infinite loop if default image fails
+                e.target.src = "/images/organization-building.svg";
+              }}
+            />
+          ) : (
+            ""
+          )}
           {charity.name}
         </div>
         {/* //todo: ask for the casesNum to be reterned #backend */}
         <div className={`${styles.col} ${styles["col-3"]}`} data-label="Amount">
-          {charity.casesNum}
+          {charity.numberOfCases}
         </div>
         {/* //todo: remove it */}
         <div
           className={`${styles.col} ${styles["col-4"]}`}
           data-label="Payment Status"
         >
-          {charity.regDate}
+          {getFormattedDate(charity.createdAt)}
         </div>
         {/* //todo: ask to return it */}
         <div
           className={`${styles.col} ${styles["col-5"]}`}
           data-label="Payment Status"
         >
-          {charity.collectedMoney + "جنيه"}
+          {charity.totalDonationsIncome + "جنيه"}
         </div>
         {/* //todo: ask to return it */}
         <div
           className={`${styles.col} ${styles["col-6"]}`}
           data-label="Payment Status"
         >
-          {charity.donersNum}
+          {charity.totalNumberOfDonors}
         </div>
         <div
           className={`${styles.col} ${styles["col-7"]}`}
@@ -73,7 +97,12 @@ function AdminCharityTableRow({ charity }) {
               arrow={false}
               position="center center"
               trigger={
-                <button>
+                <button
+                  ref={buttonRef}
+                  onClick={() => {
+                    console.log("hello");
+                  }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -89,7 +118,10 @@ function AdminCharityTableRow({ charity }) {
               }
               nested
             >
-              <AdminCharityActions charity={charity}>
+              <AdminCharityActions
+                charity={charity}
+                onSpaceBelow={calcSpaceBelow}
+              >
                 <CharityDetails charityId={charity._id} />
               </AdminCharityActions>
             </Popup>
