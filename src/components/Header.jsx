@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import "./css/Header.css"
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
@@ -15,7 +16,9 @@ function Header() {
                                 <p className='verse'>
                                     <img src="/images/verse.png" alt="" className="img-fluid" />
                                 </p>
-                                <button className='btn rounded text-white px-4 d-flex align-items-center justify-content-between'> تبرع الان <i className="fa-solid fa-arrow-left me-2" style={{ color: "#ffffff" }}></i> </button>
+                                <Link to='/cases'>
+                                    <button className='btn rounded text-white px-4 d-flex align-items-center justify-content-between'> تبرع الان <i className="fa-solid fa-arrow-left me-2" style={{ color: "#ffffff" }}></i> </button>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-12 col-lg-6 img-column text-center position-relative" style={{ zIndex: 2 }} data-aos="fade-down" data-aos-duration="2000">
