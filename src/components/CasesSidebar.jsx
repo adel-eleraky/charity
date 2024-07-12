@@ -67,15 +67,6 @@ function CasesSidebar() {
                                 <Link to='/cases/Campaigns'>
                                     <p onClick={handleActiveItems} className="nav-link category main-type" data-category='Campaigns'> حملات  </p>
                                 </Link>
-                                <nav className="nav nav-pills flex-column">
-                                    {/* <a className="nav-link me-3 my-1 sub-type" href="#item-1-2">Item 1-2</a>
-                                    <a className="nav-link me-3 my-1 sub-type" href="#item-1-1">Item 1-1</a> */}
-                                </nav>
-
-                                {/* <nav className="nav nav-pills flex-column">
-                                    <a className="nav-link me-3 my-1 sub-type" href="#item-3-1">Item 3-1</a>
-                                    <a className="nav-link me-3 my-1 sub-type" href="#item-3-2">Item 3-2</a>
-                                </nav> */}
                             </nav>
                         </nav>
                     </div>
