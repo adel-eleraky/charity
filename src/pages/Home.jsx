@@ -15,18 +15,50 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCases } from '../rtk/features/CasesSlice'
+import { getCampaigns, getCases } from '../rtk/features/CasesSlice'
 
 function Home() {
 
 
     const dispatch = useDispatch()
-    const { cases } = useSelector(state => state.cases)
+    const { cases, campaigns } = useSelector(state => state.cases)
 
-    // dispatch(getCases())
     console.log(cases)
+    console.log(campaigns)
+
+    const casesCards = cases && cases.slice(0, 6).map(el => {
+        return (
+            <SwiperSlide key={el.id}>
+                <CaseCard
+                    img={el.coverImage}
+                    title={el.title}
+                    description={el.description}
+                    targetDonationAmount={el.targetDonationAmount}
+                    currentDonationAmount={el.currentDonationAmount}
+                />
+            </SwiperSlide>
+        )
+    })
+
+    const campaignsCards = campaigns && campaigns.slice(0,2).map(campaign => {
+        return (
+            <div className="col-12 col-md-6" key={campaign.id}>
+                <CampaignCard
+                    img={campaign.coverImage}
+                    title={campaign.title}
+                    targetDonationAmount={campaign.targetDonationAmount}
+                    currentDonationAmount={campaign.currentDonationAmount}
+                    description={campaign.description}
+                />
+            </div>
+        )
+    })
+
+
+    // console.log(casesCards)
     useEffect(() => {
-        dispatch(getCases())
+        dispatch(getCases('charities/allCases'))
+        dispatch(getCampaigns())
     }, [])
 
     return (
@@ -37,25 +69,28 @@ function Home() {
                     <div className="row">
                         <div className="col-12 col-lg-5 mb-5 mb-lg-0 content">
                             <p className="sec-title mb-3 mt-5"> الحملات </p>
-                            <p className="content"> هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان  </p>
-                            <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
+                            <p className="content">  هذه الحملات تعطيك فرصة للناس للتبرع بالمال أو بالخدمات أو بالدعوات لصالح منظمات غير ربحية. </p>
+                            <Link to='/cases?mainType=customizedCampaigns'>
+                                <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
+                            </Link>
                         </div>
                         <div className="col-12 col-lg-7 d-flex justify-content-between">
-                            <div className="row">
-                                <div className="col-12 col-md-6">
-                                    <CampaignCard
-                                        img={"campaign-img"}
-                                        title={"هو ببساطة نص شكلي "}
-                                        description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
-                                    />
-                                </div>
-                                <div className="col-12 col-md-6">
-                                    <CampaignCard
-                                        img={"campaign-img"}
-                                        title={"هو ببساطة نص شكلي "}
-                                        description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
-                                    />
-                                </div>
+                            <div className="row" style={{ width: "100%" }}>
+                                {campaignsCards}
+                                {/* <div className="col-12 col-md-6">
+                                <CampaignCard
+                                    img={"campaign-img"}
+                                    title={"هو ببساطة نص شكلي "}
+                                    description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
+                                />
+                            </div>
+                            <div className="col-12 col-md-6">
+                                <CampaignCard
+                                    img={"campaign-img"}
+                                    title={"هو ببساطة نص شكلي "}
+                                    description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
+                                />
+                            </div> */}
                             </div>
                         </div>
                     </div>
@@ -69,19 +104,19 @@ function Home() {
                     <p className='text-center sec-title mx-auto'>فرص التبرع</p>
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="zakat.png" title="زكاة" description=" { وَالْمُقِيمِينَ الصَّلَاةَ ۚ وَالْمُؤْتُونَ الزَّكَاةَ وَالْمُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أُولَٰئِكَ سَنُؤْتِيهِمْ أَجْرًا عَظِيمًا } [النساء:162]" borderStyle="top" />
+                            <CategoryCard img="zakat.png" title="زكاة" description=" { وَالْمُقِيمِينَ الصَّلَاةَ ۚ وَالْمُؤْتُونَ الزَّكَاةَ وَالْمُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أُولَٰئِكَ سَنُؤْتِيهِمْ أَجْرًا عَظِيمًا } [النساء:162]" borderStyle="top" link='/cases/Zakah' />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="sadakat.png" title="صدقات" description="{ إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ } [التوبة:60]" borderStyle="bottom" />
+                            <CategoryCard img="sadakat.png" title="صدقات" description="{ إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ } [التوبة:60]" borderStyle="bottom" link='/cases/Sadaqa' />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="kafarat.png" title="كفارات" description="{ وَالْجُرُوحَ قِصَاصٌ فَمَن تَصَدَّقَ بِهِ فَهُوَ كَفَّارَةٌ لَّهُ ۚ وَمَن لَّمْ يَحْكُم بِمَا أَنزَلَ اللَّهُ فَأُولَـٰئِكَ هُمُ الظَّالِمُونَ } [المائدة:45] " borderStyle="top" />
+                            <CategoryCard img="kafarat.png" title="كفارات" description="{ وَالْجُرُوحَ قِصَاصٌ فَمَن تَصَدَّقَ بِهِ فَهُوَ كَفَّارَةٌ لَّهُ ۚ وَمَن لَّمْ يَحْكُم بِمَا أَنزَلَ اللَّهُ فَأُولَـٰئِكَ هُمُ الظَّالِمُونَ } [المائدة:45] " borderStyle="top" link='/cases/Kafarat' />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="blood-donation.png" title="تبرع بالدم" description="{ وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا } [المائدة:32]" borderStyle="bottom" />
+                            <CategoryCard img="blood-donation.png" title="تبرع بالدم" description="{ وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا } [المائدة:32]" borderStyle="bottom" link='/cases/BloodDonation' />
                         </div>
                         <div className="col-12 col-md-6 col-lg-4">
-                            <CategoryCard img="used-donation.png" title="التبرعات العينية" description="﴿ وَيُؤثِرونَ عَلى أَنفُسِهِم وَلَو كانَ بِهِم خَصاصَةٌ وَمَن يوقَ شُحَّ نَفسِهِ فَأُولئِكَ هُمُ المُفلِحونَ﴾" borderStyle="top" />
+                            <CategoryCard img="used-donation.png" title="التبرعات العينية" description="﴿ وَيُؤثِرونَ عَلى أَنفُسِهِم وَلَو كانَ بِهِم خَصاصَةٌ وَمَن يوقَ شُحَّ نَفسِهِ فَأُولئِكَ هُمُ المُفلِحونَ﴾" borderStyle="top" link='/used' />
                         </div>
                     </div>
                 </div>
@@ -90,7 +125,9 @@ function Home() {
                 <div className="container">
                     <div className="d-flex justify-content-between align-items-center mb-4">
                         <p className='mb-0 sec-title '>حالات التبرع </p>
-                        <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
+                        <Link to='/cases'>
+                            <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
+                        </Link>
                     </div>
                     <>
                         <Swiper
@@ -117,48 +154,7 @@ function Home() {
                             }}
                             className="mySwiper"
                         >
-                            <SwiperSlide>
-                                <CaseCard
-                                    img={"case-img"}
-                                    title={" تبرع بالملابس "}
-                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <CaseCard
-                                    img={"case-img"}
-                                    title={" تبرع بالملابس "}
-                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <CaseCard
-                                    img={"case-img"}
-                                    title={" تبرع بالملابس "}
-                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <CaseCard
-                                    img={"case-img"}
-                                    title={" تبرع بالملابس "}
-                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <CaseCard
-                                    img={"case-img"}
-                                    title={" تبرع بالملابس "}
-                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <CaseCard
-                                    img={"case-img"}
-                                    title={" تبرع بالملابس "}
-                                    description={" هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان "}
-                                />
-                            </SwiperSlide>
+                            {casesCards}
                         </Swiper>
                     </>
                 </div>
@@ -173,8 +169,10 @@ function Home() {
                     <div className="col-12 col-lg-7 used p-4 d-flex justify-content-between">
                         <div className="content w-50">
                             <p className='fw-normal fs-2'> ملابس او اجهزة مستعملة </p>
-                            <p style={{ lineHeight: 2 }}> هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان  </p>
-                            <button className="btn donate-btn"> تبرع الان <i className="fa-solid fa-arrow-left me-2"></i> </button>
+                            <p style={{ lineHeight: 2 }}> يمكنك تبرع بالملابس أو الأجهزة المستعملة التي ليست أكثر استخداماً لديك. سوف يتمكن من التبرع بها شخص أخرى التي تحتاجها. هذا النمط من التبرع يُعتبر من أهم الطرق لتعزيز التبادل والتفاعل مع المجتمع. </p>
+                            <Link to='/used'>
+                                <button className="btn donate-btn"> تبرع الان <i className="fa-solid fa-arrow-left me-2"></i> </button>
+                            </Link>
                         </div>
                         <img src="/images/used-img.png" alt="" className="img-fluid" />
                     </div>
