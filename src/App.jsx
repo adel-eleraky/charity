@@ -95,7 +95,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="about-us" element={<About_us />} />
-                <Route path="cases/:mainType?/:subType?" element={<Cases />} />
+                <Route path="cases/:type?" element={<Cases />} />
                 <Route path="used" element={<Used />} />
                 <Route path="zakat" element={<Zakat />} />
                 <Route path="donations" element={<Donations />} />
