@@ -49,6 +49,8 @@ console.log(type)
         return (
             <div className="col-md-12 col-lg-6 col-xxl-4" key={el.id}>
                 <CaseCard
+                    caseId={el._id}
+                    charityId={el.charity}
                     img={el.coverImage}
                     title={el.title}
                     description={el.description}
@@ -61,17 +63,21 @@ console.log(type)
         )
     })
 
-    console.log(mainType)
-    let endpoint = `/charities/allCases`
-    if(mainType){
-        endpoint += `?mainType=${mainType}`
+    // console.log(mainType)
+    let queryString = '';
+    if (mainType) {
+        queryString += `mainType=${mainType}`;
     }
-    if(page) {
-        endpoint += `&page=${page}`
+    if (page) {
+        if (queryString.length > 0) {
+            queryString += '&';
+        }
+        queryString += `page=${page}`;
     }
+    const endpoint = `/charities/allCases${queryString.length > 0 ? `?${queryString}` : ''}`;
 
-    console.log(endpoint)
     useEffect(() => {
+        console.log(endpoint)
         dispatch(getCases(endpoint))
     }, [page , mainType, subType])
 
