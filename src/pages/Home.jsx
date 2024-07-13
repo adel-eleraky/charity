@@ -30,6 +30,8 @@ function Home() {
         return (
             <SwiperSlide key={el._id}>
                 <CaseCard
+                    caseId={el._id}
+                    charityId={el.charity}
                     img={el.coverImage}
                     title={el.title}
                     description={el.description}
@@ -42,10 +44,12 @@ function Home() {
         )
     })
 
-    const campaignsCards = campaigns && campaigns.slice(0,2).map(campaign => {
+    const campaignsCards = campaigns && campaigns.slice(0, 2).map(campaign => {
         return (
-            <div className="col-12 col-md-6" key={campaign._id}>
+            <div className="col-12 col-md-6 campaign-card" key={campaign._id}>
                 <CampaignCard
+                    caseId={campaign._id}
+                    charityId={campaign.charity}
                     img={campaign.coverImage}
                     title={campaign.title}
                     targetDonationAmount={campaign.targetDonationAmount}
@@ -78,8 +82,8 @@ function Home() {
                                 <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
                             </Link>
                         </div>
-                        <div className="col-12 col-lg-7 d-flex justify-content-between">
-                            <div className="row" style={{ width: "100%" }}>
+                        <div className="col-12 col-lg-7 d-flex justify-content-center">
+                            <div className="row justify-content-between">
                                 {campaignsCards}
                             </div>
                         </div>
