@@ -33,7 +33,7 @@
     top: 5px;
     right: 160px;
 }
-.home-page .Campaigns .CampaignCard:first-child {
+.home-page .Campaigns .campaign-card:first-child {
     margin-top: 60px;
 }
 .home-page .CampaignCard {
