@@ -8,9 +8,9 @@ function RestrictCharity() {
 
     const navigate = useNavigate()
 
-    const {userProfile} = useSelector((state) => state.userProfile)
-
-    if(userProfile.isAdmin) return navigate('/')
+    const {charityProfile} = useSelector((state) => state.charityProfile)
+    
+    if(Object.keys(charityProfile).length === 0) return navigate('/')
 
     return (
         <>

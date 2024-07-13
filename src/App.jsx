@@ -55,6 +55,8 @@ import UnAuthRoute from "./components/UnAuthRoute.jsx";
 import ChatComponent from "./components/common/ChatComponent.jsx";
 import RestrictAdmin from "./components/RestrictAdmin.jsx";
 import { getCharityProfile } from "./rtk/features/charity/charityProfileSlice.js";
+import RestrictCharity from './components/RestrictCharity';
+import RestrictUser from './components/RestrictUser';
 
 AOS.init();
 function App() {
@@ -65,18 +67,22 @@ function App() {
   const { userProfile } = useSelector((store) => store.userProfile);
   const { charityProfile } = useSelector((store) => store.charityProfile);
 
-  console.log("user profile" ,userProfile);
-  console.log("charity profile" , charityProfile);
+  console.log("user profile", userProfile);
+  console.log("charity profile", charityProfile);
   const cloudinaryBaseUrl =
     "https://res.cloudinary.com/ddvetozyq/image/upload/v1715928273/";
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
+    async function fetchData() {
+      setTimeout(() => {
+        setLoading(false);
+      }, 4000);
 
-    if (Object.keys(userProfile).length === 0) dispatch(getUserProfile());
-    if (Object.keys(charityProfile).length === 0) dispatch(getCharityProfile());
+      if (Object.keys(userProfile).length === 0) await dispatch(getUserProfile());
+      if (Object.keys(charityProfile).length === 0) await dispatch(getCharityProfile());
+    }
+
+    fetchData()
   }, [userProfile, charityProfile]);
 
   return (
@@ -146,52 +152,57 @@ function App() {
                   </Route>
                 </Route>
 
-                {/* //*charity dashboard*/}
-                <Route path="charity-dashboard" element={<CharityDashboard />}>
-                  <Route index element={<Navigate replace to="home" />} />
-                  <Route path="home" element={<CharityHomeLayout />} />
-                  <Route path="cases" element={<CharityCasesLayout />} />
-                  <Route
-                    path="transactions"
-                    element={<CharityTransactionsLayout />}
-                  />
-                  <Route path="campaigns" element={<CharityCampaignsLayout />} />
-                  <Route path="upload-docs" element={<CharityDocsLayout />} />
-                  <Route path="profile" element={<EditProfileLayout />}>
+                <Route element={<RestrictCharity />}>
+                  {/* //*charity dashboard*/}
+                  <Route path="charity-dashboard" element={<CharityDashboard />}>
+                    <Route index element={<Navigate replace to="home" />} />
+                    <Route path="home" element={<CharityHomeLayout />} />
+                    <Route path="cases" element={<CharityCasesLayout />} />
                     <Route
-                      index
-                      element={<Navigate replace to="edit-profile" />}
+                      path="transactions"
+                      element={<CharityTransactionsLayout />}
                     />
-                    <Route path="edit-profile" element={<EditCharityData />} />
-                    <Route
-                      path="change-pwd"
-                      element={<EditProfilePassword type="charity" />}
-                    />
+                    <Route path="campaigns" element={<CharityCampaignsLayout />} />
+                    <Route path="upload-docs" element={<CharityDocsLayout />} />
+                    <Route path="profile" element={<EditProfileLayout />}>
+                      <Route
+                        index
+                        element={<Navigate replace to="edit-profile" />}
+                      />
+                      <Route path="edit-profile" element={<EditCharityData />} />
+                      <Route
+                        path="change-pwd"
+                        element={<EditProfilePassword type="charity" />}
+                      />
+                    </Route>
                   </Route>
                 </Route>
 
-                {/* //*user dashboard */}
-                <Route path="user-dashboard" element={<UserDashboard />}>
-                  <Route index element={<Navigate replace to="home" />} />
-                  <Route path="home" element={<UserHomeLayout />} />
-                  <Route
-                    path="transactions"
-                    element={<UserTransactionsLayout />}
-                  />
+                <Route element={<RestrictUser />}>
+                  {/* //*user dashboard */}
+                  <Route path="user-dashboard" element={<UserDashboard />}>
+                    <Route index element={<Navigate replace to="home" />} />
+                    <Route path="home" element={<UserHomeLayout />} />
+                    <Route
+                      path="transactions"
+                      element={<UserTransactionsLayout />}
+                    />
 
-                  {/* //*really same as admin */}
-                  <Route path="profile" element={<EditProfileLayout />}>
-                    <Route
-                      index
-                      element={<Navigate replace to="edit-profile" />}
-                    />
-                    <Route path="edit-profile" element={<EditUserData />} />
-                    <Route
-                      path="change-pwd"
-                      element={<EditProfilePassword type={"user"} />}
-                    />
+                    {/* //*really same as admin */}
+                    <Route path="profile" element={<EditProfileLayout />}>
+                      <Route
+                        index
+                        element={<Navigate replace to="edit-profile" />}
+                      />
+                      <Route path="edit-profile" element={<EditUserData />} />
+                      <Route
+                        path="change-pwd"
+                        element={<EditProfilePassword type={"user"} />}
+                      />
+                    </Route>
                   </Route>
                 </Route>
+
               </Route>
             </Routes>
           </BrowserRouter>
