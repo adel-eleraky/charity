@@ -5,9 +5,6 @@ import { getData } from "./../../utils/api";
 export const getCases = createAsyncThunk(
     "cases/getCases",
     async function (endpoint) {
-        // let endpoint = 'charities/allCases';
-        // endpoint += queryString ? `?${queryString}` : '';
-        // console.log(endpoint)
         try {
             return getData(endpoint);
         } catch (error) {
