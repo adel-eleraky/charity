@@ -10,6 +10,7 @@ import adminReducer from "./features/user/adminSlice";
 import UsedItemSlice from "./features/UsedItemSlice";
 import CasesSlice from "./features/CasesSlice";
 import chatReducer from "./features/chatSlice";
+import transactionReducer from "./features/TransactionSlice";
 
 const Store = configureStore({
   reducer: {
@@ -23,6 +24,7 @@ const Store = configureStore({
     usedItems: UsedItemSlice,
     cases: CasesSlice,
     chat: chatReducer,
+    transaction: transactionReducer
   },
 });
 
