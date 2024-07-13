@@ -28,13 +28,15 @@ function Home() {
 
     const casesCards = cases && cases.slice(0, 6).map(el => {
         return (
-            <SwiperSlide key={el.id}>
+            <SwiperSlide key={el._id}>
                 <CaseCard
                     img={el.coverImage}
                     title={el.title}
                     description={el.description}
                     targetDonationAmount={el.targetDonationAmount}
                     currentDonationAmount={el.currentDonationAmount}
+                    charityImage={el.charityImage}
+                    charityName={el.charityName}
                 />
             </SwiperSlide>
         )
@@ -42,13 +44,15 @@ function Home() {
 
     const campaignsCards = campaigns && campaigns.slice(0,2).map(campaign => {
         return (
-            <div className="col-12 col-md-6" key={campaign.id}>
+            <div className="col-12 col-md-6" key={campaign._id}>
                 <CampaignCard
                     img={campaign.coverImage}
                     title={campaign.title}
                     targetDonationAmount={campaign.targetDonationAmount}
                     currentDonationAmount={campaign.currentDonationAmount}
                     description={campaign.description}
+                    charityImage={campaign.charityImage}
+                    charityName={campaign.charityName}
                 />
             </div>
         )
@@ -70,27 +74,13 @@ function Home() {
                         <div className="col-12 col-lg-5 mb-5 mb-lg-0 content">
                             <p className="sec-title mb-3 mt-5"> الحملات </p>
                             <p className="content">  هذه الحملات تعطيك فرصة للناس للتبرع بالمال أو بالخدمات أو بالدعوات لصالح منظمات غير ربحية. </p>
-                            <Link to='/cases?mainType=customizedCampaigns'>
+                            <Link to='/cases/Campaigns'>
                                 <button className="btn more-btn"> رؤية المزيد <i className='bi bi-arrow-left'></i>  </button>
                             </Link>
                         </div>
                         <div className="col-12 col-lg-7 d-flex justify-content-between">
                             <div className="row" style={{ width: "100%" }}>
                                 {campaignsCards}
-                                {/* <div className="col-12 col-md-6">
-                                <CampaignCard
-                                    img={"campaign-img"}
-                                    title={"هو ببساطة نص شكلي "}
-                                    description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
-                                />
-                            </div>
-                            <div className="col-12 col-md-6">
-                                <CampaignCard
-                                    img={"campaign-img"}
-                                    title={"هو ببساطة نص شكلي "}
-                                    description={"هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم  "}
-                                />
-                            </div> */}
                             </div>
                         </div>
                     </div>
