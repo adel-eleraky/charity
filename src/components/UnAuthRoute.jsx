@@ -9,7 +9,7 @@ function UnAuthRoute() {
 
     const {userProfile} = useSelector((state) => state.userProfile)
 
-    if(Object.keys(userProfile).length !== 0) {
+    if(Object.keys(userProfile).length !== 0 && userProfile.emailVerification.isVerified) {
         if(userProfile.isAdmin) return navigate('/admin-dashboard/home')
         if(! userProfile.isAdmin) return navigate('/user-dashboard/home')
     }
