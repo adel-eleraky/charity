@@ -46,8 +46,26 @@
     box-shadow: 0 0 25px 1px #a98a52;
     background-color: white;
 }
+.cases-page .main-content .CaseCard .money_section  {
+    background-color: #EDDCC8;
+    border-radius: 16px;
+    padding: 10px;
+}
+.cases-page .CaseCard .money_section .progress {
+    height: 8px;
+}
 .cases-page .main-content .CaseCard .progress-bar {
     background-color: black;
+}
+.cases-page .main-content .CaseCard .charity-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.cases-page .main-content .CaseCard .chat-btn {
+    width: fit-content;
+    background-color: #91683A;
+    color: white;
 }
 .cases-page .main-content .heading div:last-of-type {
     width: 125px;

@@ -36,7 +36,8 @@ ul {
     margin-right: 15px;
 }
 .badge {
-    right: 5px;
+    right: 25px;
+    top: -5px;
     background-color: #C7AB77;
 }
 @media (max-width: 768px) {

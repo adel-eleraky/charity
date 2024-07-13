@@ -1,3 +1,6 @@
+.CaseCard .content .description {
+    height: 55px;
+}
 .CaseCard .content .money_section .money_remaining {
     color: var(--secondary-color);
 }
@@ -49,4 +52,14 @@
 }
 .home-page .CaseCard .money_section .progress-bar {
     background-color: #343D40;
+}
+.home-page .CaseCard .charity-sec .chat-btn{
+    width: fit-content;
+    background-color: #91683A;
+    color: white;
+}
+.home-page .CaseCard .charity-sec .charity-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }

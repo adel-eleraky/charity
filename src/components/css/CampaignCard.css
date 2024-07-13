@@ -65,3 +65,13 @@
 .home-page .CampaignCard .money_section .progress-bar {
     background-color: #343D40;
 }
+.home-page .CampaignCard .charity-sec .chat-btn{
+    width: fit-content;
+    background-color: #91683A;
+    color: white;
+}
+.home-page .CampaignCard .charity-sec .charity-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
