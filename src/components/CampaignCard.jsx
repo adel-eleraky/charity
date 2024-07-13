@@ -6,28 +6,44 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../rtk/features/CartSlice'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { createTransaction } from '../rtk/features/TransactionSlice';
 
 
-function CampaignCard({ id, title, img, description, targetDonationAmount, currentDonationAmount, charityImage, charityName }) {
+function CampaignCard({ caseId, title, img, description, targetDonationAmount, currentDonationAmount, charityImage, charityName, charityId }) {
 
-    const [donationAmount, setDonationAmount] = useState(10)
+    const [donationAmount, setDonationAmount] = useState(0)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const caseProgress = (currentDonationAmount / targetDonationAmount) * 100
 
     const { userProfile } = useSelector((store) => store.userProfile);
+    const { transactionStatus, transactionData } = useSelector((store) => store.transaction)
+
 
     const handleDonation = () => {
-        if (!userProfile.user) {
+        console.log(userProfile)
+        if (!userProfile || !userProfile.emailVerification.isVerified) {
             toast.error("يجب عليك تسجيل الدخول اولا");
             setTimeout(() => {
 
                 return navigate("/account/login");
             }, 4000);
+        } else {
+            if (donationAmount === 0) {
+                toast.error("يجب عليك تحديد المبلغ المطلوب للتبرع");
+            } else {
+                dispatch(createTransaction({ caseId, charityId, caseTitle: title, amount: +donationAmount, mainTypePayment: "onlineCard" }))
+            }
+            // console.log({caseId ,charityId , caseTitle: title ,amount: donationAmount})
         }
-
     }
+
+    if(transactionStatus === "finished" && transactionData.url){
+        console.log("paymentUrl: ", transactionData.url)
+        window.open(transactionData.url , "_blank")
+    }
+
     return (
         <>
             <div className="CampaignCard mb-5" data-aos="fade-up" data-aos-duration="1000">
