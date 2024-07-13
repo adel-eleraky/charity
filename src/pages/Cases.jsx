@@ -54,6 +54,8 @@ console.log(type)
                     description={el.description}
                     targetDonationAmount={el.targetDonationAmount}
                     currentDonationAmount={el.currentDonationAmount}
+                    charityImage={el.charityImage}
+                    charityName={el.charityName}
                 />
             </div>
         )
