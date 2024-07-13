@@ -68,7 +68,7 @@ function AccountActivation() {
         {token ?
 
           <>
-            <h1>تأكيد البريد الالكترونى جارى</h1>
+            <h1>جارى تأكيد البريد الالكترونى </h1>
             <BeatLoader
               color={"black"}
               className="d-block mt-3"
