@@ -1,25 +1,45 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./CharityDetails.module.css";
 import CharityInfo from "./CharityInfo";
-function CharityDetails() {
+import { getCharityById } from "../../rtk/features/user/adminSlice";
+import { useEffect } from "react";
+import { getFormattedDate } from "../../utils/helpers";
+import Loader from "../common/Loader";
+function CharityDetails({ charityId, onClosePopup }) {
   // load data here and also add the loader
-  console.log("hello from charityDetails");
-  // todo: async. to fetchCharityById -> waiting #backend
+  const { currentCharity, getCharityByIdStatus } = useSelector(
+    (store) => store.admin
+  );
+  console.log("charity", currentCharity);
+  const dispatch = useDispatch();
+  useEffect(
+    function () {
+      if (getCharityByIdStatus === "idle") dispatch(getCharityById(charityId));
+    },
+    [charityId, dispatch, getCharityByIdStatus]
+  );
+  if (getCharityByIdStatus !== "finished") return <Loader type="mosaic" />;
+  const bankAcountArr = currentCharity.paymentMethods?.bankAccount || [];
+  let accNum = "غير مسجل";
+  bankAcountArr.forEach((e) => {
+    if (e.enable) accNum = e.accNumber;
+  });
   return (
     <div className={styles.popup}>
+      <button className="close" onClick={onClosePopup}>
+        &times;
+      </button>
       <div className={styles.heading}></div>
       <div className={styles.info}>
         <div className={styles.head}>
           <div>
-            <h3>اسم الجمعية</h3>
+            <h3>{currentCharity.name}</h3>
             <span>
-              01112120215
+              {currentCharity.contactInfo?.phone || "غير مسجل"}
               <img src="/images/phone-icon.svg" alt="" />
             </span>
           </div>
-          <p>
-            هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس النشر. الشكل وليس
-            النشرهو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس النشر. الشكل
-          </p>
+          <p>{currentCharity.description}</p>
         </div>
         <div className={styles.details}>
           <div className={styles.right}>
@@ -28,46 +48,50 @@ function CharityDetails() {
               imagePath="/images/charity-mail.svg"
               title="الايميل المتسجل بيه الجمعية"
             >
-              abdorabea1@gmail.com
+              {currentCharity.email}
             </CharityInfo>
 
             <CharityInfo imagePath="/images/charity-mail.svg" title="العنوان">
-              هو ببساطة نص شكلي
+              {currentCharity.charityLocation[0]?.governorate || "cairo"}
             </CharityInfo>
 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="تاريح الانشاء"
             >
-              هو ببساطة نص شكلي
+              {getFormattedDate(currentCharity.charityInfo.establishedDate)}
             </CharityInfo>
 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="عدد الحالات التي تم رفعها"
             >
-              1500
+              {currentCharity.numberOfCases}
             </CharityInfo>
 
+            {/*
+            //todo: add it in the future 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="عدد الحالات المكتملة"
             >
               1500
-            </CharityInfo>
+            </CharityInfo> */}
 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="عدد المتبرعين"
             >
-              4000
+              {currentCharity.totalNumberOfDonors}
             </CharityInfo>
 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="فودافون كاش"
             >
-              010254162
+              {currentCharity.paymentMethods?.vodafoneCash[0] ||
+                currentCharity.contactInfo?.phone ||
+                "غير مسجل"}
             </CharityInfo>
           </div>
           <div className={styles.left}>
@@ -76,43 +100,43 @@ function CharityDetails() {
               imagePath="/images/charity-mail.svg"
               title="الايميل الجمعية للتواصل"
             >
-              abdorabea1@gmail.com
+              {currentCharity.contactInfo?.email || currentCharity.email}
             </CharityInfo>
 
             <CharityInfo imagePath="/images/charity-mail.svg" title="العملة">
-              هو ببساطة نص شكلي
+              {currentCharity.currency[0] || "EGP"}
             </CharityInfo>
 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="تاريح تسجيل الجمعية علي الموقع"
             >
-              هو ببساطة نص شكلي
+              {getFormattedDate(currentCharity.createdAt)}
             </CharityInfo>
 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="المبلغ الذي تم جمعة"
             >
-              1500
+              {currentCharity.totalDonationsIncome}
             </CharityInfo>
-
-            <CharityInfo
+            {/* //! there is no api */}
+            {/* <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="عدد الحالات الغير مكتملة"
             >
               1500
-            </CharityInfo>
+            </CharityInfo> */}
 
             <CharityInfo imagePath="/images/charity-mail.svg" title="رقم فوري">
-              4000
+              {currentCharity.paymentMethods?.fawry[0] || "غير مسجل"}
             </CharityInfo>
 
             <CharityInfo
               imagePath="/images/charity-mail.svg"
               title="الحساب البنكي"
             >
-              010254162
+              {accNum}
             </CharityInfo>
           </div>
         </div>

@@ -121,9 +121,7 @@ function AdminCharityTableRow({ charity }) {
               <AdminCharityActions
                 charity={charity}
                 onSpaceBelow={calcSpaceBelow}
-              >
-                <CharityDetails charityId={charity._id} />
-              </AdminCharityActions>
+              />
             </Popup>
           </div>
         </div>

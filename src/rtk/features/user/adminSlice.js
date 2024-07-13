@@ -13,6 +13,16 @@ export const getAllCharities = createAsyncThunk(
     }
   }
 );
+export const getCharityById = createAsyncThunk(
+  "admin/getCharityById",
+  async function (charityId) {
+    try {
+      return getData(`admin/GetCharity/${charityId}`);
+    } catch (error) {
+      fetchingErrorHandling(error, "getAllCharities");
+    }
+  }
+);
 
 //* will not be used
 export const getAllPendingRequestsCharities = createAsyncThunk(
@@ -125,11 +135,13 @@ const adminSlice = createSlice({
   name: "admin",
   initialState: {
     charities: [],
+    currentCharity: null,
     pendingRequestsCharities: [],
     pendingRequestCharity: {},
     requestsPaymentMethods: [],
     paymentsRequestForCharity: {},
     getAllCharitiesStatus: "idle",
+    getCharityByIdStatus: "idle",
     getAllPendingRequestsCharitiesStatus: "idle",
     getPendingRequestCharityByIdStatus: "idle",
     getAllRequestsPaymentMethodsForConfirmedCharityStatus: "idle",
@@ -140,7 +152,15 @@ const adminSlice = createSlice({
     rejectPaymentAccountRequestForConfirmedCharitiesStatus: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetCurrentCharity(state) {
+      state.getCharityByIdStatus = "idle";
+      state.currentCharity = null;
+    },
+    // finishGetCaseByIdStatus(state) {
+    //   state.getCaseByIdStatus = "finished";
+    // },
+  },
   extraReducers: (builder) => {
     builder
       // Reducers for getAllCharities action
@@ -153,6 +173,17 @@ const adminSlice = createSlice({
       })
       .addCase(getAllCharities.rejected, (state, action) => {
         state.getAllCharitiesStatus = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(getCharityById.pending, (state) => {
+        state.getCharityByIdStatus = "loading";
+      })
+      .addCase(getCharityById.fulfilled, (state, action) => {
+        state.getCharityByIdStatus = "finished";
+        state.currentCharity = action.payload.charity;
+      })
+      .addCase(getCharityById.rejected, (state, action) => {
+        state.getCharityByIdStatus = "failed";
         state.error = action.error.message;
       })
 
@@ -257,6 +288,7 @@ const adminSlice = createSlice({
           if (item._id === charity._id) {
             state.charities[index].isConfirmed = charity.isConfirmed;
             state.charities[index].isPending = charity.isPending;
+            console.log(index);
           }
         });
 
@@ -265,6 +297,7 @@ const adminSlice = createSlice({
       .addCase(rejectCharity.rejected, (state, action) => {
         state.rejectCharityStatus = "failed";
         state.error = action.error.message;
+        console.log(action.error.message);
       })
 
       // Reducers for confirmPaymentAccountRequestForConfirmedCharities action
@@ -316,5 +349,5 @@ const adminSlice = createSlice({
       );
   },
 });
-
+export const { resetCurrentCharity } = adminSlice.actions;
 export default adminSlice.reducer;

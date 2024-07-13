@@ -2,16 +2,29 @@ import Popup from "reactjs-popup";
 import AdminCharityDocs from "./AdminCharityDocs";
 import styles from "./AdminCharityActions.module.css";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   confirmCharity,
   rejectCharity,
+  resetCurrentCharity,
 } from "../../rtk/features/user/adminSlice";
+import CharityDetails from "./CharityDetails";
+import useToastCustomReducer from "../../hooks/useToastCustomReducer";
 
 // todo: handle loading using library
-function AdminCharityActions({ children, charity, onSpaceBelow }) {
+function AdminCharityActions({ charity, onSpaceBelow }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+
+  // rejectCharityStatus;
+  const { rejectCharityStatus } = useSelector((store) => store.admin);
+  useToastCustomReducer(
+    rejectCharityStatus,
+    "جاري رفض الجمعية",
+    "تم رفض الجمعية بنجاح",
+    "حدث خطأ اثناء رفض الجمعية"
+  );
+
   function handleClosePopup() {
     setOpen(false);
     console.log(open);
@@ -38,8 +51,11 @@ function AdminCharityActions({ children, charity, onSpaceBelow }) {
         }
         modal
         nested
+        onClose={() => dispatch(resetCurrentCharity())}
       >
-        {children}
+        {(close) => (
+          <CharityDetails charityId={charity._id} onClosePopup={close} />
+        )}
       </Popup>
       {charity.isPending && (
         <>
