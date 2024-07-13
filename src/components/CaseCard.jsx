@@ -21,8 +21,6 @@ function CaseCard({ caseId, title, img, description, targetDonationAmount, curre
 
     const caseProgress = (currentDonationAmount / targetDonationAmount) * 100
 
-    // user profile is not fetched after login
-
     const handleDonation = () => {
         console.log(userProfile)
         if (!userProfile || !userProfile.emailVerification.isVerified) {
