@@ -13,6 +13,7 @@ import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import { loginCharity } from "../rtk/features/charity/charityAuthSlice";
+import { getUserProfile } from "../rtk/features/user/userProfileSlice";
 
 function Login() {
   const [role, setRole] = React.useState("");
@@ -61,14 +62,17 @@ function Login() {
       toast.dismiss();
 
       if (loginStatus === "loading" || loginCharityStatus === "loading") toast.loading("جارى تسجيل الدخول");
-      
+
       if (loginStatus === "finished" || loginCharityStatus === "finished") {
         toast.success("تم تسجيل الدخول بنجاح");
         setTimeout(() => {
-          isVerified ?
+          if (isVerified) {
+            dispatch(getUserProfile())
             navigate("/")
-            :
+          } else {
             navigate("/activateAccount");
+          }
+
         }, 4000);
       }
 
