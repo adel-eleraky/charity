@@ -31,12 +31,12 @@ function Register() {
   console.log('user' , registerUserStatus)
   console.log('charity' , registerCharityStatus)
   const navigate = useNavigate();
+  const [role, setRole] = useState("");
+  const dispatch = useDispatch();
+
   if (registerUserStatus === "finished" || registerCharityStatus === "finished") {
     return navigate("/activateAccount");
   }
-  const [role, setRole] = useState("");
-
-  const dispatch = useDispatch();
 
   const initialValues = {
     email: "",
@@ -48,9 +48,7 @@ function Register() {
     },
     gender: "",
     phone: "",
-    location: {
-      governorate: "",
-    },
+    location: "",
     organizationName: "",
     organizationImage: "",
     organizationDescription: "",
@@ -86,9 +84,7 @@ function Register() {
       .string()
       .matches(/^[0-9]{11}$/, "يجب أن يحتوي رقم الهاتف على 11 رقمًا")
       .required("ادخل رقم التليفون"),
-    location: yup.object().shape({
-      governorate: yup.string().required("اختار محافظة"),
-    }),
+    location: yup.string().required("ادخل المحافظة"),
   });
 
   if (role === "user") {
@@ -119,7 +115,8 @@ function Register() {
     );
   }
 
-  const submitHandler = async (values) => {
+  const submitHandler = (values) => {
+    console.log(values)
     let RegisterData = { email: values.email, password: values.password };
     if (values.role === "user") {
       RegisterData = {
@@ -186,6 +183,7 @@ function Register() {
                 validationSchema={validationSchema}
               >
                 {({ values, errors, touched, setFieldValue }) => {
+                  console.log("errors",errors)
                   return (
                     <Form method="post" className="needs-validation" noValidate encType="multipart/form-data">
                       
@@ -323,10 +321,10 @@ function Register() {
                           >
                             <option value="">اختر المحافظة</option>
                             <option value="Helwan"> حلوان </option>
-                            <option value="governorate2">محافظة 2</option>
+                            <option value="cairo"> القاهرة </option>
                           </Field>
                           <ErrorMessage
-                            name="location[governorate]"
+                            name="location"
                             component="div"
                             className="invalid-feedback d-block fs-6 fw-bold"
                           />
