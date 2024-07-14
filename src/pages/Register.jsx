@@ -183,7 +183,7 @@ function Register() {
               <Formik
                 initialValues={initialValues}
                 onSubmit={submitHandler}
-                // validationSchema={validationSchema}
+                validationSchema={validationSchema}
               >
                 {({ values, errors, touched, setFieldValue }) => {
                   return (
